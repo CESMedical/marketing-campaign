@@ -1,0 +1,1203 @@
+[
+  {
+    "id": "P01",
+    "slug": "p01-campaign-launch---meet-the-ces-team",
+    "title": "Campaign launch — meet the CES team",
+    "pillar": "leadership",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-01",
+    "weekNumber": 1,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "carousel",
+    "caption": "We're starting a new chapter with you. Over the next three months, we'll share what happens behind the doors at CES Medical — from consultant insights to the procedures we offer, and the small moments that make our clinics feel like the local fixtures they are. Welcome along.",
+    "cta": {
+      "label": "Follow our journey",
+      "type": "save"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P02",
+    "slug": "p02-myth-vs-fact---cataracts-only-affect-older-people",
+    "title": "Myth vs Fact — cataracts only affect older people",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-03",
+    "weekNumber": 1,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "carousel",
+    "caption": "Cataracts are most common after 60, but they can develop earlier — sometimes from injury, certain medications, or other health conditions. If your vision feels cloudy, foggy, or like you're looking through a smudged lens, it's worth a check.",
+    "cta": {
+      "label": "Find your nearest clinic",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P02"
+    },
+    "productionLocation": "stock",
+    "productionLead": "stock"
+  },
+  {
+    "id": "P03",
+    "slug": "p03-what-is-a-cataract---explained-in-60-seconds",
+    "title": "What is a cataract — explained in 60 seconds",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "youtube",
+      "x"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-05",
+    "weekNumber": 1,
+    "isCommercialPriority": true,
+    "service": "cataract-monofocal",
+    "format": "reel",
+    "caption": "A cataract is a clouding of the eye's natural lens — gradual, painless, and very treatable. In this short video, our consultant walks through what's happening inside the eye and what it feels like for patients in the early stages.",
+    "cta": {
+      "label": "Learn more about cataract care",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P03"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P04",
+    "slug": "p04-meet-mr-[consultant]-frcophth---cataract-surgeon",
+    "title": "Meet Mr [Consultant], FRCOphth — cataract surgeon",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-08",
+    "weekNumber": 2,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "single-image",
+    "caption": "Our cataract surgeons operate within both NHS and private pathways, which means the same hands and the same standards regardless of how you come to us. Today we're introducing one of the consultants leading our cataract list at Chatham.",
+    "cta": {
+      "label": "Meet the team",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P04"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P05",
+    "slug": "p05-monofocal-lenses---what-they-are-and-who-they-suit",
+    "title": "Monofocal lenses — what they are and who they suit",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-10",
+    "weekNumber": 2,
+    "isCommercialPriority": true,
+    "service": "cataract-monofocal",
+    "format": "carousel",
+    "caption": "A monofocal lens corrects vision at one distance — most people choose distance vision and use reading glasses for close-up work. Reliable, well-established, and the lens included in standard cataract surgery. Swipe through to see who they suit best.",
+    "cta": {
+      "label": "See if a consultation is right for you",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P05"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P06",
+    "slug": "p06-nhs-waiting-list-vs-private---whats-the-actual-difference",
+    "title": "NHS waiting list vs private — what's the actual difference?",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "linkedin"
+    ],
+    "status": "live",
+    "scheduledDate": "2026-05-12",
+    "weekNumber": 2,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "single-image",
+    "caption": "NHS cataract waiting times have stretched in many regions. Going private with CES means you can typically be assessed within two weeks and have surgery shortly after — by the same consultants who work in the NHS. We've laid out the practical differences below.",
+    "cta": {
+      "label": "Speak to our team",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P07",
+    "slug": "p07-a-morning-at-our-chatham-surgical-centre",
+    "title": "A morning at our Chatham surgical centre",
+    "pillar": "premises",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "scheduled",
+    "scheduledDate": "2026-05-15",
+    "weekNumber": 3,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "reel",
+    "caption": "Theatre prep, the team checking the day's list, the first patient through the door. A short walk-through of how a cataract surgery morning starts at our Chatham centre.",
+    "cta": {
+      "label": "Visit Chatham",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk/service-chatham-eye-clinic-and-surgical-centre",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P07"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P08",
+    "slug": "p08-multifocal-lenses---freedom-from-glasses-explained-honestly",
+    "title": "Multifocal lenses — freedom from glasses, explained honestly",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "scheduled",
+    "scheduledDate": "2026-05-17",
+    "weekNumber": 3,
+    "isCommercialPriority": true,
+    "service": "cataract-multifocal",
+    "format": "carousel",
+    "caption": "Multifocal lenses can give you vision at multiple distances — meaning many people don't need glasses afterwards. They're not for everyone, and we'll always tell you honestly whether they suit your eyes and lifestyle. This is what to expect.",
+    "cta": {
+      "label": "Book a lens consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P08"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P09",
+    "slug": "p09-which-cataract-lens-is-right-for-you---interactive-guide",
+    "title": "Which cataract lens is right for you? — interactive guide",
+    "pillar": "business",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "scheduled",
+    "scheduledDate": "2026-05-19",
+    "weekNumber": 3,
+    "isCommercialPriority": true,
+    "service": "cataract-multifocal",
+    "format": "carousel",
+    "caption": "Monofocal, multifocal, EDOF, toric — the choice can feel overwhelming. We've broken it down by what matters most: how you use your eyes, your hobbies, your driving, and whether you're comfortable still wearing glasses for some tasks.",
+    "cta": {
+      "label": "Book a lens consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P09"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P10",
+    "slug": "p10-eyelid-surgery---when-is-it-medical-when-is-it-cosmetic",
+    "title": "Eyelid surgery — when is it medical, when is it cosmetic?",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "scheduled",
+    "scheduledDate": "2026-05-22",
+    "weekNumber": 4,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "carousel",
+    "caption": "Drooping upper eyelids that affect your vision (ptosis) are a medical issue, not a cosmetic one — and that distinction matters for both your eyes and how the procedure is funded. Here's how we tell the difference at consultation.",
+    "cta": {
+      "label": "Read about eyelid surgery",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P10"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P11",
+    "slug": "p11-that-lump-on-your-eyelid---when-to-get-it-checked",
+    "title": "That lump on your eyelid — when to get it checked",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-05-24",
+    "weekNumber": 4,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "single-image",
+    "caption": "Most lid lesions are harmless, but some need a closer look. If something has appeared, changed shape, bled, or persisted longer than a few weeks, it's worth a specialist assessment. Our oculoplastic team can usually see you within a week.",
+    "cta": {
+      "label": "Request an assessment",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P11"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P12",
+    "slug": "p12-behind-the-scenes---sterilising-the-theatre-between-cases",
+    "title": "Behind the scenes — sterilising the theatre between cases",
+    "pillar": "premises",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-05-26",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "reel",
+    "caption": "Every patient goes into a theatre that's been fully reset and sterilised. It's invisible to most people — but it's one of the most important things we do, and we wanted to show you how it works.",
+    "cta": {
+      "label": "Learn more about our standards",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P12"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P13",
+    "slug": "p13-patient-story---susans-cataract-journey",
+    "title": "Patient story — Susan's cataract journey",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin",
+      "youtube"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-05-29",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "video",
+    "caption": "Susan delayed her cataract surgery for years. In her own words, she shares why she decided it was time, what surprised her about the day itself, and how she felt the morning after.",
+    "cta": {
+      "label": "Read more patient stories",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P13"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P14",
+    "slug": "p14-five-myths-about-laser-eye-surgery",
+    "title": "Five myths about laser eye surgery",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "x"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-05-31",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "carousel",
+    "caption": "\"Laser eye surgery is risky.\" \"It's painful.\" \"You'll need it redone in ten years.\" We've heard them all. Here are the five most common myths and what the evidence actually says.",
+    "cta": {
+      "label": "Save for later",
+      "type": "save"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P15",
+    "slug": "p15-toric-lenses-for-astigmatism---a-quick-explainer",
+    "title": "Toric lenses for astigmatism — a quick explainer",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-06-02",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "service": "cataract-toric",
+    "format": "single-image",
+    "caption": "If you have astigmatism alongside cataracts, a toric lens can correct both at once — meaning you may no longer need distance glasses afterwards. Worth raising at your consultation if it applies to you.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P15"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P16",
+    "slug": "p16-the-pantiles---filming-an-eyelid-surgery-explainer-with-leon",
+    "title": "The Pantiles — filming an eyelid surgery explainer with Leonna",
+    "pillar": "premises",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-06-04",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "service": "oculoplastic-eyelid",
+    "format": "reel",
+    "caption": "A behind-the-scenes look at our Pantiles location, where we're filming a series of explainers on oculoplastic procedures. Leonna walks through how we choose what to show — and what we leave to the consultation.",
+    "cta": {
+      "label": "Follow the series",
+      "type": "save"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P17",
+    "slug": "p17-what-does-frcophth-mean---and-why-it-matters",
+    "title": "What does FRCOphth mean — and why it matters",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin",
+      "instagram"
+    ],
+    "status": "brand-review",
+    "scheduledDate": "2026-06-05",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "single-image",
+    "caption": "You'll see FRCOphth after our consultants' names. It stands for Fellow of the Royal College of Ophthalmologists — the highest professional qualification for eye surgeons in the UK. Here's what it represents in practical terms for your care.",
+    "cta": {
+      "label": "Meet our consultants",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=linkedin&utm_campaign=may-jul-2026&utm_content=P17"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P18",
+    "slug": "p18-recovery-after-eyelid-surgery---day-by-day",
+    "title": "Recovery after eyelid surgery — day by day",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "brand-review",
+    "scheduledDate": "2026-06-07",
+    "weekNumber": 6,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "carousel",
+    "caption": "Day 1: bruising and swelling are normal. Day 7: stitches usually come out. Week 2: most people are back to normal activities. Week 6: final result settles. Here's what to expect honestly, with no hidden surprises.",
+    "cta": {
+      "label": "Read the full guide",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P18"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P19",
+    "slug": "p19-did-you-know-your-insurance-may-cover-this",
+    "title": "Did you know your insurance may cover this?",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "linkedin"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-06-09",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "single-image",
+    "caption": "Bupa, AXA, Vitality, WPA — many UK private medical insurance policies cover cataract and oculoplastic surgery. Our team can check your cover before you commit to anything, with no obligation.",
+    "cta": {
+      "label": "Check your cover",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P20",
+    "slug": "p20-glaucoma-awareness---silent-and-slow",
+    "title": "Glaucoma awareness — silent and slow",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "approved",
+    "scheduledDate": "2026-06-11",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "service": "glaucoma",
+    "format": "carousel",
+    "caption": "Glaucoma rarely has symptoms in its early stages, which is what makes regular eye exams so important — especially after 40. We diagnose and manage glaucoma at all our centres, including laser treatments where appropriate.",
+    "cta": {
+      "label": "Find your nearest clinic",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P20"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P21",
+    "slug": "p21-a-morning-with-our-oculoplastic-consultant",
+    "title": "A morning with our oculoplastic consultant",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "brand-review",
+    "scheduledDate": "2026-06-12",
+    "weekNumber": 7,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "reel",
+    "caption": "From the first consultation of the day to the operating list, a behind-the-scenes morning with our oculoplastic consultant. The work goes well beyond eyelids — but eyelids are where most patients first meet us.",
+    "cta": {
+      "label": "Book an oculoplastic consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P21"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P22",
+    "slug": "p22-why-both-eyes-matter---the-case-for-second-eye-surgery",
+    "title": "Why both eyes matter — the case for second-eye surgery",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-14",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "carousel",
+    "caption": "Many people have one cataract treated and then put off the second. But depth perception, balance, and night driving all rely on both eyes working together. Here's why the second eye usually matters more than people expect.",
+    "cta": {
+      "label": "Discuss your options",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P23",
+    "slug": "p23-dry-eye---more-than-just-discomfort",
+    "title": "Dry eye — more than just discomfort",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "x"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-16",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "service": "dry-eye",
+    "format": "single-image",
+    "caption": "Persistent dry eye can affect your reading, your screen work, and even your driving. We offer IPL (Intense Pulsed Light) treatment alongside conventional management for patients whose dry eye isn't responding to drops alone.",
+    "cta": {
+      "label": "Book a dry eye assessment",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P23"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P24",
+    "slug": "p24-tour-our-headcorn-diagnostic-and-surgical-centre",
+    "title": "Tour our Headcorn diagnostic and surgical centre",
+    "pillar": "premises",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin",
+      "youtube"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-18",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "video",
+    "caption": "A short walk-through of our Headcorn site — diagnostics, consulting rooms, theatres, and the team that makes it all run. If you're considering a procedure with us, this is the place you'll likely visit.",
+    "cta": {
+      "label": "Book at Headcorn",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk/service-headcorn-diagnostic-surgical-centre",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P24"
+    },
+    "productionLocation": "headcorn",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P25",
+    "slug": "p25-multifocal-vs-varifocal---theyre-not-the-same-thing",
+    "title": "Multifocal vs varifocal — they're not the same thing",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-19",
+    "weekNumber": 8,
+    "isCommercialPriority": true,
+    "service": "cataract-multifocal",
+    "format": "carousel",
+    "caption": "Varifocals are glasses. Multifocal lenses are implants placed inside your eye during cataract surgery. The confusion is common — and important to clear up before your consultation. Swipe through for the difference.",
+    "cta": {
+      "label": "Book a lens consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P25"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P26",
+    "slug": "p26-self-referral---you-dont-always-need-to-see-your-gp",
+    "title": "Self-referral — you don't always need to see your GP",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-21",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "single-image",
+    "caption": "For private appointments at CES Medical, you can refer yourself directly — no GP letter needed. Our team will guide you through what we need from your optician and book you in with the right consultant.",
+    "cta": {
+      "label": "Self-refer today",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P27",
+    "slug": "p27-patient-story---jamess-urgent-eye-condition",
+    "title": "Patient story — James's urgent eye condition",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "youtube"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-23",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "video",
+    "caption": "James was referred to us with an acute eye condition and was nervous and in pain. He shares the journey from first call to recovery — and what surprised him about how quickly he was seen.",
+    "cta": {
+      "label": "Read more patient stories",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P27"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P28",
+    "slug": "p28-eyelid-surgery---why-an-ophthalmologist-not-a-cosmetic-surge",
+    "title": "Eyelid surgery — why an ophthalmologist, not a cosmetic surgeon",
+    "pillar": "business",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-25",
+    "weekNumber": 8,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "carousel",
+    "caption": "Your eyelids protect your eyes. Surgery on them sits closer to ophthalmology than to aesthetics — which is why an oculoplastic surgeon (an ophthalmologist with extra training) is the right specialist for both functional and cosmetic eyelid work.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P28"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P29",
+    "slug": "p29-tech-we-use---the-zeiss-iolmaster-700",
+    "title": "Tech we use — the Zeiss IOLMaster 700",
+    "pillar": "tech",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-26",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "single-image",
+    "caption": "Precise lens selection starts with precise measurement. The Zeiss IOLMaster 700 is one of the standards of care for cataract surgery planning — and it's part of why our outcomes are so consistent.",
+    "cta": {
+      "label": "Learn about our technology",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P29"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P30",
+    "slug": "p30-whats-actually-included-in-our-cataract-package",
+    "title": "What's actually included in our cataract package?",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "linkedin"
+    ],
+    "status": "clinical-review",
+    "scheduledDate": "2026-06-28",
+    "weekNumber": 9,
+    "isCommercialPriority": true,
+    "service": "cataract-monofocal",
+    "format": "carousel",
+    "caption": "A clear breakdown — pre-op assessment, the surgery itself, the lens, follow-up appointments, and any additional services if needed. No hidden fees, no surprises after the fact. Swipe through for the full list.",
+    "cta": {
+      "label": "Speak to our team",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P31",
+    "slug": "p31-qanda---your-questions-on-multifocal-lenses",
+    "title": "Q&A — your questions on multifocal lenses",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "linkedin",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-30",
+    "weekNumber": 9,
+    "isCommercialPriority": true,
+    "service": "cataract-multifocal",
+    "format": "video",
+    "caption": "You sent us your questions about multifocal lenses. We sat down with one of our consultants to work through the most common ones honestly — including the trade-offs nobody talks about.",
+    "cta": {
+      "label": "Ask your own question",
+      "type": "dm"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P32",
+    "slug": "p32-founder-message-from-elion-hyseni",
+    "title": "Founder message from Elion Hyseni",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin",
+      "instagram"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-02",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "single-image",
+    "caption": "\"We started CES Medical with one idea — that world-class eye care should be available locally, without compromise. Six years on, that's still what every decision comes back to.\" — Elion Hyseni, CEO and Consultant Clinical Optometrist.",
+    "cta": {
+      "label": "About CES Medical",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=linkedin&utm_campaign=may-jul-2026&utm_content=P32"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P33",
+    "slug": "p33-after-your-cataract-surgery---what-to-expect-in-week-one",
+    "title": "After your cataract surgery — what to expect in week one",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-03",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "carousel",
+    "caption": "Most people are back to gentle daily activities the day after cataract surgery. Here's a realistic week-one timeline — what's normal, what's worth a phone call, and what we expect at your follow-up appointment.",
+    "cta": {
+      "label": "Read the full recovery guide",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P33"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P34",
+    "slug": "p34-funded-by-your-insurance---the-actual-process",
+    "title": "Funded by your insurance — the actual process",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-05",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "service": "oculoplastic-eyelid",
+    "format": "single-image",
+    "caption": "Step one: pre-authorisation from your insurer. Step two: consultation. Step three: confirmation of cover. Step four: surgery. We handle most of the paperwork — here's what you'd actually need to do.",
+    "cta": {
+      "label": "Check your cover",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P35",
+    "slug": "p35-meet-our-patient-coordinator",
+    "title": "Meet our patient coordinator",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-07",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "single-image",
+    "caption": "Before you ever meet a consultant, you'll likely speak to our patient coordinator. She's the first voice you'll hear when you call — and she'll be the one helping you navigate appointments, paperwork, and any questions along the way.",
+    "cta": {
+      "label": "Get in touch",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P36",
+    "slug": "p36-diabetes-and-your-eyes---what-to-watch-for",
+    "title": "Diabetes and your eyes — what to watch for",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-09",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "carousel",
+    "caption": "Diabetes can affect the small blood vessels in your retina — sometimes years before you notice anything. Annual diabetic eye screening matters. We diagnose and manage diabetic retinopathy alongside our wider retina services.",
+    "cta": {
+      "label": "Book a retinal assessment",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P36"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P37",
+    "slug": "p37-cataract-package---limited-summer-consultation-slots",
+    "title": "Cataract package — limited summer consultation slots",
+    "pillar": "business",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-10",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "single-image",
+    "caption": "We've opened additional cataract consultation slots through July at Chatham and Headcorn. If you've been waiting on the NHS list and want to know your options, this is a useful moment to have an initial conversation.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P38",
+    "slug": "p38-patient-story---annas-eyelid-surgery",
+    "title": "Patient story — Anna's eyelid surgery",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-12",
+    "weekNumber": 11,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "video",
+    "caption": "Anna's drooping upper eyelids had been affecting her peripheral vision for years before she sought help. She shares why she finally booked a consultation, what the procedure was like, and how she sees the world now.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P38"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P39",
+    "slug": "p39-yag-laser-capsulotomy---when-cataract-surgery-isnt-quite-fin",
+    "title": "YAG laser capsulotomy — when cataract surgery isn't quite finished",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-14",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "service": "general",
+    "format": "single-image",
+    "caption": "Some patients develop cloudy vision months or years after successful cataract surgery — usually because the lens capsule has thickened. A short YAG laser procedure clears it, often in under ten minutes. We do this routinely.",
+    "cta": {
+      "label": "Book a YAG appointment",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P39"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P40",
+    "slug": "p40-behind-the-scenes---leonna-filming-at-the-pantiles",
+    "title": "Behind the scenes — Leonna filming at the Pantiles",
+    "pillar": "premises",
+    "platforms": [
+      "instagram",
+      "x"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-17",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "reel",
+    "caption": "A short look at how we put our patient education content together. Leonna walks through what we film, what we cut, and why the questions you ask us shape what we make next.",
+    "cta": {
+      "label": "Send us a question",
+      "type": "dm"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P41",
+    "slug": "p41-five-questions-to-ask-at-your-cataract-consultation",
+    "title": "Five questions to ask at your cataract consultation",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-19",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "service": "cataract-multifocal",
+    "format": "carousel",
+    "caption": "Save this for your appointment. Five questions worth asking any cataract surgeon — at CES or elsewhere — about lens choice, the surgeon's volume, what's included in the package, recovery, and what happens if something doesn't go to plan.",
+    "cta": {
+      "label": "Save for later",
+      "type": "save"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P42",
+    "slug": "p42-local-roots---serving-tunbridge-wells-maidstone-medway-and-b",
+    "title": "Local roots — serving Tunbridge Wells, Maidstone, Medway and beyond",
+    "pillar": "leadership",
+    "platforms": [
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-21",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "single-image",
+    "caption": "Our centres aren't far. Pantiles, Chatham, Headcorn, Northfleet — we built CES around the idea that specialist eye care shouldn't mean a trip into London. If you're in Kent, you're already close to us.",
+    "cta": {
+      "label": "Find your nearest centre",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=facebook&utm_campaign=may-jul-2026&utm_content=P42"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P43",
+    "slug": "p43-final-week---book-your-free-15-minute-lens-chat",
+    "title": "Final week — book your free 15-minute lens chat",
+    "pillar": "business",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-24",
+    "weekNumber": 13,
+    "isCommercialPriority": true,
+    "service": "cataract-multifocal",
+    "format": "single-image",
+    "caption": "To close out this campaign, we're offering a free 15-minute phone consultation with our team — no obligation, no pressure. If you've been thinking about cataract surgery and want to know your lens options before you commit to a full consultation, this is for you.",
+    "cta": {
+      "label": "Book your free chat",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P44",
+    "slug": "p44-eyelid-surgery---final-consultations-of-the-summer",
+    "title": "Eyelid surgery — final consultations of the summer",
+    "pillar": "business",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-26",
+    "weekNumber": 13,
+    "isCommercialPriority": true,
+    "service": "oculoplastic-eyelid",
+    "format": "single-image",
+    "caption": "Surgery dates through autumn are filling. If you've been considering eyelid surgery — functional or cosmetic — booking your consultation now means you'll have time to weigh things up before committing.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P44"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  },
+  {
+    "id": "P45",
+    "slug": "p45-three-months-in---what-weve-learned-from-your-messages",
+    "title": "Three months in — what we've learned from your messages",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin",
+      "instagram"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-28",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "carousel",
+    "caption": "Across three months, you've sent us hundreds of questions — about cataracts, about lenses, about eyelids, about whether something is normal. We've grouped the most common ones and what we've learned from sharing this much, this openly.",
+    "cta": {
+      "label": "Keep the questions coming",
+      "type": "dm"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P46",
+    "slug": "p46-patient-story---a-glaucoma-diagnosis-that-changed-everything",
+    "title": "Patient story — a glaucoma diagnosis that changed everything",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-29",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "service": "glaucoma",
+    "format": "video",
+    "caption": "A patient shares how a routine eye test picked up early-stage glaucoma — and what the past two years of treatment have meant for their vision and their daily life. The case for regular checks, in human terms.",
+    "cta": {
+      "label": "Book an eye check",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P46"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P47",
+    "slug": "p47-thank-you---whats-next-for-ces-medical",
+    "title": "Thank you — what's next for CES Medical",
+    "pillar": "leadership",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-30",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "service": "brand",
+    "format": "video",
+    "caption": "A thank you from the team. Three months, dozens of conversations, and a lot of new faces in our clinics because of what we shared here. A short message from Elion on what's coming next, and how to stay close.",
+    "cta": {
+      "label": "Follow what's next",
+      "type": "save"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna"
+  },
+  {
+    "id": "P48",
+    "slug": "p48-book-a-consultation---your-next-step",
+    "title": "Book a consultation — your next step",
+    "pillar": "business",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-31",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "service": "cataract-multifocal",
+    "format": "single-image",
+    "caption": "If something here has stayed with you — if you've been putting off a question about your eyes, your vision, or your options — this is your nudge. Our team is on the phone, in the inbox, and at our centres. The first step is always a conversation.",
+    "cta": {
+      "label": "Book a consultation",
+      "type": "phone",
+      "target": "tel:01732755771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external"
+  }
+]
