@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/brand/Logo';
 import { Nav } from '@/components/layout/Nav';
+import { AuthButton } from '@/components/layout/AuthButton';
 
 export function Header() {
   return (
@@ -9,7 +10,10 @@ export function Header() {
         <Link href="/" className="flex items-center" aria-label="CES Medical home">
           <Logo className="h-7 w-auto" />
         </Link>
-        <Nav />
+        <div className="flex items-center gap-6">
+          <Nav />
+          <AuthButton />
+        </div>
       </div>
     </header>
   );

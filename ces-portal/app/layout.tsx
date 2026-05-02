@@ -3,6 +3,7 @@ import { Fraunces, Work_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Providers } from '@/components/providers/SessionProvider';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -33,12 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
       <body>
-        <a href="#main" className="skip-link">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <Providers>
+          <a href="#main" className="skip-link">
+            Skip to main content
+          </a>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
