@@ -12,7 +12,7 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ profile }) {
       const email = (profile?.email ?? (profile as Record<string, unknown>)?.preferred_username ?? '') as string
-      return email.endsWith('@alastralabs.com')
+      return email.endsWith('@alastralabs.com') || email.endsWith('@cesmedical.co.uk')
     },
   },
   pages: {
