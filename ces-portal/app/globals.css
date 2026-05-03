@@ -108,3 +108,7 @@
 .timeline-scroll::-webkit-scrollbar-thumb:hover {
   background: var(--brand-tint-1);
 }
+
+.label-xs {
+  @apply text-[10px] font-bold uppercase tracking-widest text-brand-deep/40;
+}

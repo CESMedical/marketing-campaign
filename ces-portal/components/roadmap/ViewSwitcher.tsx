@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
-import { Calendar, KanbanSquare, Star } from 'lucide-react';
+import { LayoutGrid, Calendar, KanbanSquare, Star } from 'lucide-react';
 
 const views = [
-  { id: '', label: 'Timeline', icon: Calendar },
+  { id: 'canvas', label: 'Canvas', icon: LayoutGrid },
+  { id: 'timeline', label: 'Timeline', icon: Calendar },
   { id: 'board', label: 'Board', icon: KanbanSquare },
   { id: 'priority', label: 'Priority', icon: Star },
 ];
@@ -24,16 +25,12 @@ export function ViewSwitcher() {
     >
       {views.map((v) => {
         const Icon = v.icon;
-        const active = currentView === v.id;
+        const active = currentView === v.id || (currentView === '' && v.id === 'canvas');
         const params = new URLSearchParams(searchParams.toString());
-        if (v.id) {
-          params.set('view', v.id);
-        } else {
-          params.delete('view');
-        }
+        params.set('view', v.id);
         return (
           <Link
-            key={v.id || 'timeline'}
+            key={v.id}
             href={`${pathname}?${params.toString()}`}
             role="tab"
             aria-selected={active}

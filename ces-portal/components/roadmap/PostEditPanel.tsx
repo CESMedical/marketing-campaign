@@ -1,0 +1,185 @@
+'use client'
+import { useState } from 'react'
+import { X, Save } from 'lucide-react'
+import {
+  Post,
+  Status,
+  Platform,
+  STATUS_LABELS,
+  PLATFORM_LABELS,
+  PILLAR_LABELS,
+} from '@/types/post'
+
+const ALL_STATUSES: Status[] = [
+  'draft',
+  'clinical-review',
+  'brand-review',
+  'approved',
+  'scheduled',
+  'live',
+]
+const ALL_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
+
+export function PostEditPanel({
+  post,
+  onClose,
+  onSave,
+}: {
+  post: Post
+  onClose: () => void
+  onSave: (updated: Post) => void
+}) {
+  const [caption, setCaption] = useState(post.caption)
+  const [status, setStatus] = useState<Status>(post.status)
+  const [platforms, setPlatforms] = useState<Platform[]>(post.platforms)
+  const [notes, setNotes] = useState(post.notes ?? '')
+  const [saving, setSaving] = useState(false)
+  const [savedAt, setSavedAt] = useState<number | null>(null)
+
+  async function handleSave() {
+    setSaving(true)
+    try {
+      const res = await fetch(`/api/posts/${post.slug}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ caption, status, platforms, notes }),
+      })
+      if (res.ok) {
+        const updated: Post = await res.json()
+        onSave(updated)
+        setSavedAt(Date.now())
+      }
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  function togglePlatform(p: Platform) {
+    setPlatforms(prev =>
+      prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p],
+    )
+  }
+
+  const justSaved = savedAt !== null && Date.now() - savedAt < 3000
+
+  return (
+    <div className="fixed inset-y-0 right-0 z-50 flex w-96 flex-col bg-white border-l border-brand-deep/10 shadow-2xl">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-3 border-b border-brand-deep/10 p-5">
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-brand-deep/40">
+            {post.id} · {PILLAR_LABELS[post.pillar]}
+          </p>
+          <h2 className="mt-1 text-sm font-semibold leading-snug text-brand-deep">
+            {post.title}
+          </h2>
+        </div>
+        <button
+          onClick={onClose}
+          className="shrink-0 rounded p-1 text-brand-deep/40 hover:text-brand-deep transition-colors"
+          aria-label="Close panel"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      {/* Body */}
+      <div className="flex-1 overflow-y-auto p-5 space-y-6">
+        {/* Meta */}
+        <div className="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <p className="label-xs">Date</p>
+            <p className="mt-1 text-brand-deep">
+              {new Date(post.scheduledDate).toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+              })}
+            </p>
+          </div>
+          <div>
+            <p className="label-xs">Format</p>
+            <p className="mt-1 text-brand-deep capitalize">{post.format}</p>
+          </div>
+        </div>
+
+        {/* Status */}
+        <div>
+          <p className="label-xs mb-2">Status</p>
+          <div className="flex flex-wrap gap-2">
+            {ALL_STATUSES.map(s => (
+              <button
+                key={s}
+                onClick={() => setStatus(s)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  status === s
+                    ? 'border-brand-teal bg-brand-teal text-white'
+                    : 'border-brand-deep/20 text-brand-deep/60 hover:border-brand-teal'
+                }`}
+              >
+                {STATUS_LABELS[s]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Platforms */}
+        <div>
+          <p className="label-xs mb-2">Platforms</p>
+          <div className="flex flex-wrap gap-2">
+            {ALL_PLATFORMS.map(p => (
+              <button
+                key={p}
+                onClick={() => togglePlatform(p)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  platforms.includes(p)
+                    ? 'border-brand-deep bg-brand-deep text-white'
+                    : 'border-brand-deep/20 text-brand-deep/60 hover:border-brand-deep'
+                }`}
+              >
+                {PLATFORM_LABELS[p]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Caption */}
+        <div>
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="label-xs">Caption</p>
+            <span className="text-[10px] text-brand-deep/30">{caption.length} chars</span>
+          </div>
+          <textarea
+            value={caption}
+            onChange={e => setCaption(e.target.value)}
+            rows={9}
+            className="w-full rounded-lg border border-brand-deep/20 px-3 py-2 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none"
+          />
+        </div>
+
+        {/* Notes */}
+        <div>
+          <p className="label-xs mb-2">Production notes</p>
+          <textarea
+            value={notes}
+            onChange={e => setNotes(e.target.value)}
+            rows={3}
+            placeholder="Add notes for the production team…"
+            className="w-full rounded-lg border border-brand-deep/20 px-3 py-2 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none"
+          />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-brand-deep/10 p-5">
+        <button
+          onClick={handleSave}
+          disabled={saving}
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-teal px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-deep disabled:opacity-50"
+        >
+          <Save size={14} />
+          {saving ? 'Saving…' : justSaved ? 'Saved ✓' : 'Save changes'}
+        </button>
+      </div>
+    </div>
+  )
+}

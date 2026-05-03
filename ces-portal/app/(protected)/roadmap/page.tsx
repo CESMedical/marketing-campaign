@@ -8,6 +8,7 @@ import { ViewSwitcher } from '@/components/roadmap/ViewSwitcher';
 import { RoadmapTimeline } from '@/components/roadmap/RoadmapTimeline';
 import { RoadmapBoard } from '@/components/roadmap/RoadmapBoard';
 import { RoadmapPriority } from '@/components/roadmap/RoadmapPriority';
+import { CanvasBoard } from '@/components/roadmap/CanvasBoard';
 import { paramsToFilters } from '@/lib/filters';
 
 export default function RoadmapPage() {
@@ -28,18 +29,9 @@ function RoadmapFallback() {
 
 function RoadmapPageInner() {
   const searchParams = useSearchParams();
-  const view = searchParams.get('view') ?? 'timeline';
+  const view = searchParams.get('view') ?? 'canvas';
   const filters = paramsToFilters(searchParams);
   const posts = filterPosts(loadPosts(), filters);
-
-  if (view === 'priority') {
-    return (
-      <>
-        <PostFilters />
-        <RoadmapPriority posts={posts} />
-      </>
-    );
-  }
 
   return (
     <>
@@ -51,15 +43,22 @@ function RoadmapPageInner() {
               Campaign roadmap
             </h1>
             <p className="mt-1 text-sm text-muted">
-              {posts.length} {posts.length === 1 ? 'post' : 'posts'}
-              {' '}showing
+              {posts.length} {posts.length === 1 ? 'post' : 'posts'} showing
             </p>
           </div>
           <ViewSwitcher />
         </div>
       </div>
 
-      {view === 'board' ? <RoadmapBoard posts={posts} /> : <RoadmapTimeline posts={posts} />}
+      {view === 'board' ? (
+        <RoadmapBoard posts={posts} />
+      ) : view === 'priority' ? (
+        <RoadmapPriority posts={posts} />
+      ) : view === 'timeline' ? (
+        <RoadmapTimeline posts={posts} />
+      ) : (
+        <CanvasBoard posts={posts} />
+      )}
     </>
   );
 }
