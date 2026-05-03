@@ -110,5 +110,6 @@
 }
 
 .label-xs {
-  @apply text-[10px] font-bold uppercase tracking-widest text-brand-deep/40;
+  @apply text-[10px] font-bold uppercase tracking-widest;
+  color: rgb(0 56 69 / 0.4);
 }
