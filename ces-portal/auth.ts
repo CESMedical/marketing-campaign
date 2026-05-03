@@ -13,7 +13,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     async signIn({ profile }) {
-      const email = (profile?.email ?? '') as string
+      const email = (
+        profile?.email ??
+        (profile as Record<string, unknown>)?.preferred_username ??
+        (profile as Record<string, unknown>)?.upn ??
+        ''
+      ) as string
       return email.endsWith('@alastralabs.com') || email.endsWith('@cesmedical.co.uk')
     },
   },
