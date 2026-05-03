@@ -14,7 +14,7 @@ export default function SignInPage() {
           <p className="text-sm text-brand-deep/50">Alastra team access only</p>
         </div>
         <button
-          onClick={() => signIn('azure-ad', { callbackUrl: '/' })}
+          onClick={() => signIn('microsoft-entra-id', { callbackUrl: '/' })}
           className="w-full flex items-center justify-center gap-3 bg-brand-deep text-white rounded-lg px-4 py-3 text-sm font-semibold hover:bg-brand-teal transition-colors"
         >
           <MicrosoftIcon />
