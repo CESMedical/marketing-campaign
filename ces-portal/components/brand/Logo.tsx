@@ -49,7 +49,7 @@ export function Logo({
       height={showTagline ? 18 : 10}
       viewBox={showTagline ? '0 0 96 18' : '0 0 96 10'}
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx('block h-auto', className)}
+      className={clsx('block', className ?? 'h-auto')}
       aria-label="CES Medical — Global Care for Local People"
       role="img"
       preserveAspectRatio="xMinYMid meet"
