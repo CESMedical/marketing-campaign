@@ -4,6 +4,17 @@ import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout } from 'lucide-reac
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
 
+// Fetched server-side so it's immune to client session field differences
+async function fetchAdminStatus(): Promise<{ isAdmin: boolean; name: string }> {
+  try {
+    const r = await fetch('/api/whoami/')
+    const d = await r.json()
+    return { isAdmin: d.isAdmin ?? false, name: d.name ?? d.displayName ?? '' }
+  } catch {
+    return { isAdmin: false, name: '' }
+  }
+}
+
 const ALL_STATUSES: Status[] = ['draft', 'clinical-review', 'brand-review', 'approved', 'scheduled', 'live']
 const ALL_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
 
@@ -28,9 +39,15 @@ export function PostEditPanel({ post, onClose, onSave }: {
   post: Post; onClose: () => void; onSave: (u: Post) => void
 }) {
   const { data: session } = useSession()
-  const ADMIN_EMAILS = ['kush@cesmedical.co.uk', 'miran@alastralabs.com']
-  const userEmail = (session?.user?.email ?? '').toLowerCase()
-  const isAdmin = session?.user?.role === 'admin' || ADMIN_EMAILS.includes(userEmail)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [serverName, setServerName] = useState('')
+
+  useEffect(() => {
+    fetchAdminStatus().then(({ isAdmin, name }) => {
+      setIsAdmin(isAdmin)
+      if (name) setServerName(name.split(' ')[0])
+    })
+  }, [])
 
   const [caption, setCaption]     = useState(post.caption)
   const [status, setStatus]       = useState<Status>(post.status)
@@ -258,7 +275,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
             <div className="flex gap-2 items-end">
               {session?.user && (
                 <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style={{ background: avatarColor(session.user.displayName ?? session.user.name ?? 'U') }}>
-                  {((session.user.displayName ?? session.user.name ?? 'U').split(' ')[0][0] ?? 'U').toUpperCase()}
+                  {(serverName || (session.user.displayName ?? session.user.name ?? 'U').split(' ')[0])[0].toUpperCase()}
                 </div>
               )}
               <div className="flex-1 flex gap-2 items-end">
