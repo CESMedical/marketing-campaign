@@ -31,18 +31,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (profile) {
         const email = getEmail(profile as Record<string, unknown>)
         token.email = email
-        token.role = ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer'
         token.displayName = (profile.name as string) ?? email
       }
+      // Always recalculate role so existing sessions pick it up on next refresh
+      const email = ((token.email as string) ?? '').toLowerCase()
+      token.role = ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer'
       return token
     },
     async session({ session, token }) {
+      // Derive role from stored email so it's always correct
+      const email = ((token.email as string) ?? '').toLowerCase()
       return {
         ...session,
         user: {
           ...session.user,
-          role: token.role as 'admin' | 'viewer',
-          displayName: token.displayName as string,
+          email: token.email as string,
+          role: ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer',
+          displayName: (token.displayName as string) ?? token.email as string,
         },
       }
     },
