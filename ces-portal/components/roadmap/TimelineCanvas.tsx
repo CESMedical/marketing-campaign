@@ -1,36 +1,41 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { clsx } from 'clsx'
 import { ZoomIn, ZoomOut, Maximize2, CalendarDays } from 'lucide-react'
-import { Post, STATUS_LABELS, PILLAR_LABELS } from '@/types/post'
+import { Post, STATUS_LABELS } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
 
-// ─── World-space constants ────────────────────────────────────────────────────
+// ─── World-space layout ───────────────────────────────────────────────────────
 const DAY_W       = 200
-const TOTAL_DAYS  = 184          // May 5 → Nov 5
-const WORLD_W     = DAY_W * TOTAL_DAYS
+const TOTAL_DAYS  = 184
+const PANEL_W     = DAY_W * TOTAL_DAYS   // the roadmap board
 const HEADER_H    = 96
 const CARD_W      = 182
 const CARD_H      = 230
 const CARD_GAP    = 16
 const ROW_H       = CARD_H + CARD_GAP
 const CONNECTOR_H = 24
-const WORLD_H     = HEADER_H + CONNECTOR_H + 6 * ROW_H + 80
+const PANEL_H     = HEADER_H + CONNECTOR_H + 6 * ROW_H + 80
+
+// Empty galaxy space around the panel (in world px)
+const GAL_PAD     = 800
+// Total world canvas size
+const WORLD_W     = PANEL_W + GAL_PAD * 2
+const WORLD_H     = PANEL_H + GAL_PAD * 2
 
 const EPOCH     = new Date('2026-05-05T00:00:00Z')
-const MIN_ZOOM  = 0.04
+const MIN_ZOOM  = 0.03
 const MAX_ZOOM  = 3.0
-const INIT_ZOOM = 0.55           // start more zoomed in so cards are legible
+const INIT_ZOOM = 0.55
 
-// ─── CES Medical brand palette ────────────────────────────────────────────────
+// ─── Brand palette ────────────────────────────────────────────────────────────
 const PILLAR_COLOR: Record<string, string> = {
-  educational: '#008080',   // brand-teal
+  educational: '#008080',
   business:    '#2563eb',
   premises:    '#d97706',
   employee:    '#16a34a',
-  leadership:  '#003845',   // brand-deep
+  leadership:  '#003845',
   events:      '#7c3aed',
   tech:        '#ea580c',
 }
@@ -57,11 +62,11 @@ function fmtDay(s: string) {
   return new Date(s + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
 }
 
-// ─── Header data ──────────────────────────────────────────────────────────────
+// ─── Header ───────────────────────────────────────────────────────────────────
 function buildMonths() {
   const out: { label: string; x: number; w: number }[] = []
   let cur = new Date(EPOCH), x = 0
-  while (x < WORLD_W) {
+  while (x < PANEL_W) {
     const y = cur.getUTCFullYear(), m = cur.getUTCMonth()
     const dim = new Date(Date.UTC(y, m + 1, 0)).getUTCDate()
     const used = Math.min(dim - cur.getUTCDate() + 1, TOTAL_DAYS - Math.round(x / DAY_W))
@@ -95,93 +100,103 @@ function stackCards(posts: Post[], dragSlug: string | null, dragOff: number) {
     .map(({ p, off }) => { const r = cols.get(off) ?? 0; cols.set(off, r + 1); return { post: p, off, row: r } })
 }
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 interface CardDrag { slug: string; startX: number; startOff: number; curOff: number }
-interface PanDrag  { startX: number; startPanX: number }
+interface PanDrag  { startX: number; startY: number; startPanX: number; startPanY: number }
 
 const MONTHS = buildMonths()
 const WEEKS  = buildWeeks()
 
-// ─── Sidebar button ───────────────────────────────────────────────────────────
 function SideBtn({ onClick, title, children }: { onClick: () => void; title: string; children: React.ReactNode }) {
   return (
-    <button
-      onClick={onClick}
-      title={title}
-      className="flex items-center justify-center w-9 h-9 rounded-xl border border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft hover:border-brand-deep/20 transition-all"
-    >
+    <button onClick={onClick} title={title}
+      className="flex items-center justify-center w-9 h-9 rounded-xl border border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft transition-all">
       {children}
     </button>
   )
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
   const [cardDrag, setCardDrag] = useState<CardDrag | null>(null)
   const [zoomPct, setZoomPct]   = useState(Math.round(INIT_ZOOM * 100))
+  const [panY, setPanY]         = useState(0)
 
   const zoomRef  = useRef(INIT_ZOOM)
   const panXRef  = useRef(0)
-  const panDrag  = useRef<PanDrag | null>(null)   // canvas-pan, not React state (no re-render needed)
+  const panYRef  = useRef(0)
+  const panDrag  = useRef<PanDrag | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef    = useRef<HTMLDivElement>(null)
   const rafRef       = useRef<number>(0)
 
-  // ── helpers ────────────────────────────────────────────────────────────────
-  function clampX(x: number, z: number) {
-    const vw = containerRef.current?.clientWidth ?? window.innerWidth
-    const sw = WORLD_W * z
-    // When fully zoomed out centre the content; otherwise allow free panning
-    if (sw <= vw) return (vw - sw) / 2
-    return x  // no hard stops — truly infinite canvas
-  }
-  function applyTransform(z: number, x: number) {
-    zoomRef.current = z; panXRef.current = x
+  function applyTransform(z: number, x: number, y: number) {
+    zoomRef.current = z; panXRef.current = x; panYRef.current = y
     if (canvasRef.current)
-      canvasRef.current.style.transform = `translateX(${x}px) scale(${z})`
+      canvasRef.current.style.transform = `translate(${x}px, ${y}px) scale(${z})`
     cancelAnimationFrame(rafRef.current)
-    rafRef.current = requestAnimationFrame(() => setZoomPct(Math.round(z * 100)))
+    rafRef.current = requestAnimationFrame(() => {
+      setZoomPct(Math.round(z * 100))
+      setPanY(y)
+    })
   }
 
-  // ── wheel: scroll = pan, ctrl+scroll = zoom ────────────────────────────────
+  function centerOnPanel(z: number) {
+    const vw = containerRef.current?.clientWidth  ?? window.innerWidth
+    const vh = containerRef.current?.clientHeight ?? window.innerHeight
+    // x: put today near 40% from left
+    const todayX = -(GAL_PAD + todayOff() * DAY_W) * z + vw * 0.4
+    // y: center the panel
+    const panelCenterY = -(GAL_PAD + PANEL_H / 2) * z + vh / 2
+    return { x: todayX, y: panelCenterY }
+  }
+
+  // ── wheel: vertical = zoom, horizontal = pan ──────────────────────────────
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const vw = el.clientWidth
-    applyTransform(INIT_ZOOM, clampX(-(todayOff() * DAY_W * INIT_ZOOM) + vw / 2, INIT_ZOOM))
+    const { x, y } = centerOnPanel(INIT_ZOOM)
+    applyTransform(INIT_ZOOM, x, y)
 
     function onWheel(e: WheelEvent) {
       e.preventDefault()
-      const z = zoomRef.current, x = panXRef.current
-      if (e.ctrlKey || e.metaKey) {
-        // zoom to cursor
+      const z = zoomRef.current, px = panXRef.current, py = panYRef.current
+
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY)
+
+      if (isHorizontal) {
+        // horizontal scroll → pan left/right
+        applyTransform(z, px - e.deltaX, py)
+      } else if (e.ctrlKey || e.metaKey) {
+        // pinch / ctrl+scroll → zoom
         const rect = (containerRef.current as HTMLDivElement).getBoundingClientRect()
-        const mx = e.clientX - rect.left
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top
         const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * Math.pow(0.999, e.deltaY)))
-        applyTransform(nz, clampX(mx + (x - mx) * nz / z, nz))
+        applyTransform(nz, mx + (px - mx) * nz / z, my + (py - my) * nz / z)
       } else {
-        // pan — prefer deltaX (MX Master horizontal), fall back to deltaY
-        const raw = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
-        applyTransform(z, clampX(x - raw, z))
+        // vertical scroll → zoom to cursor
+        const rect = (containerRef.current as HTMLDivElement).getBoundingClientRect()
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top
+        const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * Math.pow(0.998, e.deltaY)))
+        applyTransform(nz, mx + (px - mx) * nz / z, my + (py - my) * nz / z)
       }
     }
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => (el as HTMLDivElement).removeEventListener('wheel', onWheel)
   }, []) // eslint-disable-line
 
-  // ── canvas pointer-drag to pan ─────────────────────────────────────────────
+  // ── canvas drag-to-pan ────────────────────────────────────────────────────
   function onCanvasPointerDown(e: React.PointerEvent<HTMLDivElement>) {
-    // Only act on direct clicks on the canvas bg (not card children)
     if ((e.target as HTMLElement).closest('[data-card]')) return
     e.currentTarget.setPointerCapture(e.pointerId)
-    panDrag.current = { startX: e.clientX, startPanX: panXRef.current }
+    panDrag.current = { startX: e.clientX, startY: e.clientY, startPanX: panXRef.current, startPanY: panYRef.current }
   }
   function onCanvasPointerMove(e: React.PointerEvent<HTMLDivElement>) {
     if (!panDrag.current) return
-    const dx = e.clientX - panDrag.current.startX
-    applyTransform(zoomRef.current, clampX(panDrag.current.startPanX + dx, zoomRef.current))
+    applyTransform(zoomRef.current,
+      panDrag.current.startPanX + e.clientX - panDrag.current.startX,
+      panDrag.current.startPanY + e.clientY - panDrag.current.startY,
+    )
   }
   function onCanvasPointerUp(e: React.PointerEvent<HTMLDivElement>) {
     if (!panDrag.current) return
@@ -189,10 +204,9 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     panDrag.current = null
   }
 
-  // ── card drag ──────────────────────────────────────────────────────────────
+  // ── card drag ─────────────────────────────────────────────────────────────
   function onCardPointerDown(e: React.PointerEvent, post: Post) {
-    e.stopPropagation()   // don't trigger canvas pan
-    e.preventDefault()
+    e.stopPropagation(); e.preventDefault()
     ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
     setCardDrag({ slug: post.slug, startX: e.clientX, startOff: toOff(post.scheduledDate), curOff: toOff(post.scheduledDate) })
     setSelected(null)
@@ -207,10 +221,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     ;(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId)
     const { curOff, startOff } = cardDrag
     setCardDrag(null)
-    if (curOff === startOff) {
-      setSelected(s => s?.slug === post.slug ? null : post)
-      return
-    }
+    if (curOff === startOff) { setSelected(s => s?.slug === post.slug ? null : post); return }
     const res = await fetch(`/api/posts/${post.slug}`, {
       method: 'PATCH', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ scheduledDate: fromOff(curOff) }),
@@ -222,22 +233,26 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     }
   }, [cardDrag, selected])
 
-  // ── nav controls ───────────────────────────────────────────────────────────
+  // ── controls ──────────────────────────────────────────────────────────────
   function zoomBy(f: number) {
-    const vw = containerRef.current?.clientWidth ?? window.innerWidth
-    const mx = vw / 2, z = zoomRef.current, x = panXRef.current
+    const vw = containerRef.current?.clientWidth  ?? window.innerWidth
+    const vh = containerRef.current?.clientHeight ?? window.innerHeight
+    const mx = vw / 2, my = vh / 2
+    const z = zoomRef.current, px = panXRef.current, py = panYRef.current
     const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * f))
-    applyTransform(nz, clampX(mx + (x - mx) * nz / z, nz))
+    applyTransform(nz, mx + (px - mx) * nz / z, my + (py - my) * nz / z)
   }
   function jumpToday() {
-    const vw = containerRef.current?.clientWidth ?? window.innerWidth
-    const z = zoomRef.current
-    applyTransform(z, clampX(-(todayOff() * DAY_W * z) + vw / 2, z))
+    const { x, y } = centerOnPanel(zoomRef.current)
+    applyTransform(zoomRef.current, x, y)
   }
   function fitAll() {
-    const vw = containerRef.current?.clientWidth ?? window.innerWidth
-    const nz = Math.max(MIN_ZOOM, (vw / WORLD_W) * 0.95)
-    applyTransform(nz, clampX(0, nz))
+    const vw = containerRef.current?.clientWidth  ?? window.innerWidth
+    const vh = containerRef.current?.clientHeight ?? window.innerHeight
+    const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, Math.min(vw / WORLD_W, vh / WORLD_H) * 0.85))
+    const cx = (vw - WORLD_W * nz) / 2
+    const cy = (vh - WORLD_H * nz) / 2
+    applyTransform(nz, cx, cy)
   }
 
   const layout = stackCards(posts, cardDrag?.slug ?? null, cardDrag?.curOff ?? 0)
@@ -246,11 +261,9 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   return (
     <div className="flex" style={{ height: 'calc(100vh - 64px)' }}>
 
-      {/* ── Left sidebar ──────────────────────────────────────────────────── */}
+      {/* ── Sidebar ────────────────────────────────────────────────────────── */}
       <div className="flex flex-col items-center gap-2 px-2 py-3 bg-white border-r border-brand-deep/10 shrink-0 z-40">
-        <span className="text-[10px] font-mono font-bold text-brand-deep/30 tabular-nums pb-1">
-          {zoomPct}%
-        </span>
+        <span className="text-[10px] font-mono font-bold text-brand-deep/30 tabular-nums pb-1">{zoomPct}%</span>
         <div className="w-7 h-px bg-brand-deep/10" />
         <SideBtn onClick={() => zoomBy(1.5)} title="Zoom in"><ZoomIn size={15} /></SideBtn>
         <SideBtn onClick={() => zoomBy(0.67)} title="Zoom out"><ZoomOut size={15} /></SideBtn>
@@ -259,13 +272,13 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         <SideBtn onClick={jumpToday} title="Jump to today"><CalendarDays size={14} /></SideBtn>
       </div>
 
-      {/* ── Canvas viewport ───────────────────────────────────────────────── */}
+      {/* ── Infinite canvas viewport ──────────────────────────────────────── */}
       <div
         ref={containerRef}
         className="flex-1 overflow-hidden relative"
         style={{
-          backgroundColor: '#F4F7F8',
-          backgroundImage: 'radial-gradient(circle, rgba(0,56,69,0.14) 1.5px, transparent 1.5px)',
+          backgroundColor: '#eef2f4',
+          backgroundImage: 'radial-gradient(circle, rgba(0,56,69,0.18) 1.5px, transparent 1.5px)',
           backgroundSize: '26px 26px',
           cursor: panDrag.current ? 'grabbing' : cardDrag ? 'grabbing' : 'grab',
         }}
@@ -274,129 +287,118 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         onPointerUp={onCanvasPointerUp}
         onPointerCancel={onCanvasPointerUp}
       >
-        {/* World canvas */}
+        {/* World canvas — includes galaxy padding around the panel */}
         <div
           ref={canvasRef}
-          className="absolute top-0 left-0 select-none"
+          className="absolute top-0 left-0"
           style={{
             width: WORLD_W,
             height: WORLD_H,
             transformOrigin: '0 0',
-            transform: `translateX(0px) scale(${INIT_ZOOM})`,
+            transform: `translate(0px, 0px) scale(${INIT_ZOOM})`,
             willChange: 'transform',
           }}
         >
-          {/* Month header */}
-          {MONTHS.map((m, i) => (
-            <div key={i} className="absolute top-0 flex items-end bg-white border-r border-brand-deep/8"
-              style={{ left: m.x, width: m.w, height: 52 }}>
-              <span style={{ fontSize: 22, fontWeight: 800, color: '#003845', paddingLeft: 20, paddingBottom: 10, letterSpacing: '-0.4px' }}>
-                {m.label}
-              </span>
-            </div>
-          ))}
-
-          {/* Week header */}
-          {WEEKS.map((w, i) => (
-            <div key={i} className="absolute flex items-center"
-              style={{ left: w.x, top: 52, height: 44, minWidth: DAY_W }}>
-              <div className="absolute left-0 top-0 h-full w-px bg-brand-deep/10" />
-              <div className="absolute left-0 w-px bg-brand-deep/5" style={{ top: 0, height: WORLD_H }} />
-              <span style={{ fontSize: 17, fontWeight: 600, color: '#003845', opacity: 0.35, paddingLeft: 14 }}>
-                {w.label}
-              </span>
-            </div>
-          ))}
-
-          {/* Timeline bar */}
-          <div className="absolute left-0 right-0 bg-brand-deep/15"
-            style={{ top: HEADER_H, height: 3 }} />
-
-          {/* Today */}
-          {tOff >= 0 && tOff < TOTAL_DAYS && (
-            <>
-              <div style={{ position: 'absolute', left: tOff * DAY_W, width: DAY_W, top: 0, height: WORLD_H, background: 'rgba(0,128,128,0.06)' }} />
-              <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 1, top: HEADER_H - 12, width: 2, height: WORLD_H - HEADER_H + 12, background: '#008080' }} />
-              <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 8, top: HEADER_H - 12, width: 16, height: 16, borderRadius: '50%', background: '#008080', border: '3px solid #F4F7F8', boxShadow: '0 0 0 3px rgba(0,128,128,0.25)' }} />
-              <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 + 14, top: HEADER_H - 38, background: '#008080', color: '#fff', fontSize: 16, fontWeight: 800, padding: '4px 12px', borderRadius: 8 }}>
-                Today
+          {/* ── The roadmap panel — a single board floating in space ───────── */}
+          <div
+            style={{
+              position: 'absolute',
+              left: GAL_PAD,
+              top: GAL_PAD,
+              width: PANEL_W,
+              height: PANEL_H,
+              background: '#ffffff',
+              borderRadius: 28,
+              boxShadow: '0 0 0 1px rgba(0,56,69,0.07), 0 8px 32px rgba(0,56,69,0.08), 0 32px 80px rgba(0,56,69,0.12)',
+              overflow: 'hidden',
+            }}
+          >
+            {/* Month header */}
+            {MONTHS.map((m, i) => (
+              <div key={i} className="absolute top-0 flex items-end"
+                style={{ left: m.x, width: m.w, height: 52, background: '#fff', borderRight: '1px solid rgba(0,56,69,0.07)', borderBottom: '1px solid rgba(0,56,69,0.06)' }}>
+                <span style={{ fontSize: 22, fontWeight: 800, color: '#003845', paddingLeft: 20, paddingBottom: 10, letterSpacing: '-0.4px' }}>
+                  {m.label}
+                </span>
               </div>
-            </>
-          )}
+            ))}
 
-          {/* Cards */}
-          {layout.map(({ post, off, row }) => {
-            const isDragging = cardDrag?.slug === post.slug
-            const isSelected = selected?.slug === post.slug
-            const x = off * DAY_W + (DAY_W - CARD_W) / 2
-            const y = HEADER_H + CONNECTOR_H + row * ROW_H
-            const sc = STATUS_COLOR[post.status] ?? '#9ca3af'
-            const pc = PILLAR_COLOR[post.pillar] ?? '#003845'
+            {/* Week header */}
+            {WEEKS.map((w, i) => (
+              <div key={i} className="absolute flex items-center"
+                style={{ left: w.x, top: 52, height: 44, minWidth: DAY_W }}>
+                <div className="absolute left-0 top-0 h-full w-px" style={{ background: 'rgba(0,56,69,0.08)' }} />
+                <div className="absolute left-0 w-px" style={{ background: 'rgba(0,56,69,0.04)', top: 0, height: PANEL_H }} />
+                <span style={{ fontSize: 17, fontWeight: 600, color: '#003845', opacity: 0.32, paddingLeft: 14 }}>{w.label}</span>
+              </div>
+            ))}
 
-            return (
-              <div key={post.slug} data-card="1" className="absolute"
-                style={{ left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : 10 }}>
+            {/* Timeline bar */}
+            <div className="absolute left-0 right-0" style={{ top: HEADER_H, height: 3, background: 'rgba(0,56,69,0.12)' }} />
 
-                {/* Connector */}
-                <div style={{ position: 'absolute', left: CARD_W / 2 - 1, bottom: CARD_H, width: 2, height: CONNECTOR_H, background: 'rgba(0,56,69,0.2)' }} />
-                {/* Dot on timeline */}
-                <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #F4F7F8', boxShadow: '0 1px 4px rgba(0,0,0,0.15)' }} />
+            {/* Today */}
+            {tOff >= 0 && tOff < TOTAL_DAYS && (
+              <>
+                <div style={{ position: 'absolute', left: tOff * DAY_W, width: DAY_W, top: 0, height: PANEL_H, background: 'rgba(0,128,128,0.05)' }} />
+                <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 1, top: HEADER_H - 12, width: 2, height: PANEL_H - HEADER_H + 12, background: '#008080' }} />
+                <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 9, top: HEADER_H - 12, width: 18, height: 18, borderRadius: '50%', background: '#008080', border: '3px solid #fff', boxShadow: '0 0 0 3px rgba(0,128,128,0.2)' }} />
+                <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 + 16, top: HEADER_H - 40, background: '#008080', color: '#fff', fontSize: 16, fontWeight: 800, padding: '4px 12px', borderRadius: 8 }}>
+                  Today
+                </div>
+              </>
+            )}
 
-                {/* Card */}
-                <div
-                  data-card="1"
-                  onPointerDown={e => onCardPointerDown(e, post)}
-                  onPointerMove={e => onCardPointerMove(e, post.slug)}
-                  onPointerUp={e => onCardPointerUp(e, post)}
-                  style={{
-                    height: CARD_H,
-                    touchAction: 'none',
-                    borderRadius: 20,
-                    background: '#ffffff',
-                    borderLeft: `6px solid ${pc}`,
-                    border: `1.5px solid ${isSelected || isDragging ? pc : 'rgba(0,56,69,0.1)'}`,
-                    borderLeftWidth: 6,
-                    borderLeftColor: pc,
-                    boxShadow: isSelected || isDragging
-                      ? `0 0 0 3px ${pc}30, 0 16px 40px rgba(0,56,69,0.15)`
-                      : '0 2px 12px rgba(0,56,69,0.08)',
-                    transform: isDragging ? 'scale(1.03)' : 'scale(1)',
-                    transition: isDragging ? 'none' : 'box-shadow 0.2s, border-color 0.2s, transform 0.1s',
-                    overflow: 'hidden',
-                    cursor: isDragging ? 'grabbing' : 'grab',
-                  }}
-                >
-                  {/* Status strip */}
-                  <div style={{ height: 7, background: sc }} />
+            {/* Cards */}
+            {layout.map(({ post, off, row }) => {
+              const isDragging = cardDrag?.slug === post.slug
+              const isSelected = selected?.slug === post.slug
+              const x = off * DAY_W + (DAY_W - CARD_W) / 2
+              const y = HEADER_H + CONNECTOR_H + row * ROW_H
+              const sc = STATUS_COLOR[post.status] ?? '#9ca3af'
+              const pc = PILLAR_COLOR[post.pillar] ?? '#003845'
 
-                  <div style={{ padding: '16px 18px', height: CARD_H - 7, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    {/* ID + platforms */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.05em', color: pc, background: pc + '15', padding: '3px 10px', borderRadius: 6 }}>
-                        {post.id}
-                      </span>
-                      <PlatformIcons platforms={post.platforms} size={14} />
-                    </div>
+              return (
+                <div key={post.slug} data-card="1" style={{ position: 'absolute', left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : 10 }}>
+                  <div style={{ position: 'absolute', left: CARD_W / 2 - 1, bottom: CARD_H, width: 2, height: CONNECTOR_H, background: 'rgba(0,56,69,0.15)' }} />
+                  <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }} />
 
-                    {/* Title */}
-                    <p className="line-clamp-4" style={{ fontSize: 18, fontWeight: 600, color: '#003845', lineHeight: 1.4, flex: 1 }}>
-                      {post.title}
-                    </p>
-
-                    {/* Date + status */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: 13, fontWeight: 600, color: isDragging ? '#008080' : 'rgba(0,56,69,0.4)' }}>
-                        {fmtDay(fromOff(off))}
-                      </span>
-                      <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, color: '#fff', background: sc }}>
-                        {STATUS_LABELS[post.status]}
-                      </span>
+                  <div
+                    data-card="1"
+                    onPointerDown={e => onCardPointerDown(e, post)}
+                    onPointerMove={e => onCardPointerMove(e, post.slug)}
+                    onPointerUp={e => onCardPointerUp(e, post)}
+                    style={{
+                      height: CARD_H, touchAction: 'none',
+                      borderRadius: 18,
+                      background: '#fff',
+                      border: `1.5px solid ${isSelected || isDragging ? pc : 'rgba(0,56,69,0.1)'}`,
+                      borderLeft: `6px solid ${pc}`,
+                      boxShadow: isSelected || isDragging
+                        ? `0 0 0 3px ${pc}28, 0 12px 32px rgba(0,56,69,0.15)`
+                        : '0 2px 12px rgba(0,56,69,0.07)',
+                      transform: isDragging ? 'scale(1.03)' : 'scale(1)',
+                      transition: isDragging ? 'none' : 'box-shadow 0.2s, border-color 0.2s, transform 0.1s',
+                      overflow: 'hidden',
+                      cursor: isDragging ? 'grabbing' : 'grab',
+                    }}
+                  >
+                    <div style={{ height: 7, background: sc }} />
+                    <div style={{ padding: '16px 18px', height: CARD_H - 7, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.05em', color: pc, background: pc + '15', padding: '3px 10px', borderRadius: 6 }}>{post.id}</span>
+                        <PlatformIcons platforms={post.platforms} size={14} />
+                      </div>
+                      <p className="line-clamp-4" style={{ fontSize: 18, fontWeight: 600, color: '#003845', lineHeight: 1.4, flex: 1 }}>{post.title}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: isDragging ? '#008080' : 'rgba(0,56,69,0.38)' }}>{fmtDay(fromOff(off))}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, color: '#fff', background: sc }}>{STATUS_LABELS[post.status]}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </div>
 
