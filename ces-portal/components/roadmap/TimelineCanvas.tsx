@@ -304,7 +304,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
             willChange: 'transform',
           }}
         >
-          {/* ── The roadmap panel — a single board floating in space ───────── */}
+          {/* ── Roadmap content — cards float directly on the canvas ──────── */}
           <div
             style={{
               position: 'absolute',
@@ -312,16 +312,12 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
               top: GAL_PAD,
               width: PANEL_W,
               height: PANEL_H,
-              background: '#ffffff',
-              borderRadius: 28,
-              boxShadow: '0 0 0 1px rgba(0,56,69,0.07), 0 8px 32px rgba(0,56,69,0.08), 0 32px 80px rgba(0,56,69,0.12)',
-              overflow: 'hidden',
             }}
           >
             {/* Month header */}
             {MONTHS.map((m, i) => (
               <div key={i} className="absolute top-0 flex items-end"
-                style={{ left: m.x, width: m.w, height: 52, background: '#fff', borderRight: '1px solid rgba(0,56,69,0.07)', borderBottom: '1px solid rgba(0,56,69,0.06)' }}>
+                style={{ left: m.x, width: m.w, height: 52, borderRight: '1px solid rgba(0,56,69,0.12)', borderBottom: '1px solid rgba(0,56,69,0.1)' }}>
                 <span style={{ fontSize: 22, fontWeight: 800, color: '#003845', paddingLeft: 20, paddingBottom: 10, letterSpacing: '-0.4px' }}>
                   {m.label}
                 </span>
@@ -346,7 +342,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
               <>
                 <div style={{ position: 'absolute', left: tOff * DAY_W, width: DAY_W, top: 0, height: PANEL_H, background: 'rgba(0,128,128,0.05)' }} />
                 <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 1, top: HEADER_H - 12, width: 2, height: PANEL_H - HEADER_H + 12, background: '#008080' }} />
-                <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 9, top: HEADER_H - 12, width: 18, height: 18, borderRadius: '50%', background: '#008080', border: '3px solid #fff', boxShadow: '0 0 0 3px rgba(0,128,128,0.2)' }} />
+                <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 - 9, top: HEADER_H - 12, width: 18, height: 18, borderRadius: '50%', background: '#008080', border: '3px solid #eef2f4', boxShadow: '0 0 0 3px rgba(0,128,128,0.2)' }} />
                 <div style={{ position: 'absolute', left: tOff * DAY_W + DAY_W / 2 + 16, top: HEADER_H - 40, background: '#008080', color: '#fff', fontSize: 16, fontWeight: 800, padding: '4px 12px', borderRadius: 8 }}>
                   Today
                 </div>
@@ -365,7 +361,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
               return (
                 <div key={post.slug} data-card="1" style={{ position: 'absolute', left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : 10 }}>
                   <div style={{ position: 'absolute', left: CARD_W / 2 - 1, bottom: CARD_H, width: 2, height: CONNECTOR_H, background: 'rgba(0,56,69,0.15)' }} />
-                  <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }} />
+                  <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #eef2f4', boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }} />
 
                   <div
                     data-card="1"
