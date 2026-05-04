@@ -28,7 +28,9 @@ export function PostEditPanel({ post, onClose, onSave }: {
   post: Post; onClose: () => void; onSave: (u: Post) => void
 }) {
   const { data: session } = useSession()
-  const isAdmin = session?.user?.role === 'admin'
+  const ADMIN_EMAILS = ['kush@cesmedical.co.uk', 'miran@alastralabs.com']
+  const userEmail = (session?.user?.email ?? '').toLowerCase()
+  const isAdmin = session?.user?.role === 'admin' || ADMIN_EMAILS.includes(userEmail)
 
   const [caption, setCaption]     = useState(post.caption)
   const [status, setStatus]       = useState<Status>(post.status)
