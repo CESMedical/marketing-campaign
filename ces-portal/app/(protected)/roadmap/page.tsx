@@ -13,17 +13,9 @@ import { paramsToFilters } from '@/lib/filters';
 
 export default function RoadmapPage() {
   return (
-    <Suspense fallback={<RoadmapFallback />}>
+    <Suspense fallback={<div className="container-page py-12 text-sm text-muted">Loading…</div>}>
       <RoadmapPageInner />
     </Suspense>
-  );
-}
-
-function RoadmapFallback() {
-  return (
-    <div className="container-page py-12">
-      <p className="text-muted">Loading roadmap…</p>
-    </div>
   );
 }
 
@@ -32,6 +24,11 @@ function RoadmapPageInner() {
   const view = searchParams.get('view') ?? 'timeline';
   const filters = paramsToFilters(searchParams);
   const posts = filterPosts(loadPosts(), filters);
+
+  // Timeline gets the full viewport — no heading above it
+  if (view === 'timeline') {
+    return <TimelineCanvas posts={posts} />;
+  }
 
   return (
     <>
@@ -54,10 +51,8 @@ function RoadmapPageInner() {
         <RoadmapBoard posts={posts} />
       ) : view === 'priority' ? (
         <RoadmapPriority posts={posts} />
-      ) : view === 'canvas' ? (
-        <CanvasBoard posts={posts} />
       ) : (
-        <TimelineCanvas posts={posts} />
+        <CanvasBoard posts={posts} />
       )}
     </>
   );

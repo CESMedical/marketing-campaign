@@ -5,6 +5,7 @@ import { ZoomIn, ZoomOut, Maximize2, CalendarDays } from 'lucide-react'
 import { Post, STATUS_LABELS } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
+import { ViewSwitcher } from './ViewSwitcher'
 
 // ─── World-space layout ───────────────────────────────────────────────────────
 const DAY_W       = 200
@@ -259,7 +260,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const tOff   = todayOff()
 
   return (
-    <div className="flex" style={{ height: 'calc(100vh - 64px)' }}>
+    <div className="flex fixed inset-0 z-10" style={{ paddingTop: '64px' }}>
 
       {/* ── Sidebar ────────────────────────────────────────────────────────── */}
       <div className="flex flex-col items-center gap-2 px-2 py-3 bg-white border-r border-brand-deep/10 shrink-0 z-40">
@@ -273,6 +274,10 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
       </div>
 
       {/* ── Infinite canvas viewport ──────────────────────────────────────── */}
+      {/* Floating overlay: view switcher top-right, controls bottom-left */}
+      <div className="absolute top-[72px] right-4 z-20 pointer-events-auto">
+        <ViewSwitcher />
+      </div>
       <div
         ref={containerRef}
         className="flex-1 overflow-hidden relative"
