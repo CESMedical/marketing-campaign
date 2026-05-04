@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
-import { LayoutGrid, Calendar, KanbanSquare, Star } from 'lucide-react';
+import { GanttChart, LayoutGrid, KanbanSquare, Star } from 'lucide-react';
 
 const views = [
+  { id: 'timeline', label: 'Timeline', icon: GanttChart },
   { id: 'canvas', label: 'Canvas', icon: LayoutGrid },
-  { id: 'timeline', label: 'Timeline', icon: Calendar },
   { id: 'board', label: 'Board', icon: KanbanSquare },
   { id: 'priority', label: 'Priority', icon: Star },
 ];
@@ -15,7 +15,7 @@ const views = [
 export function ViewSwitcher() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentView = searchParams.get('view') ?? '';
+  const currentView = searchParams.get('view') ?? 'timeline';
 
   return (
     <div
@@ -25,7 +25,7 @@ export function ViewSwitcher() {
     >
       {views.map((v) => {
         const Icon = v.icon;
-        const active = currentView === v.id || (currentView === '' && v.id === 'canvas');
+        const active = currentView === v.id;
         const params = new URLSearchParams(searchParams.toString());
         params.set('view', v.id);
         return (

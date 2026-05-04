@@ -5,10 +5,10 @@ import { Suspense } from 'react';
 import { loadPosts, filterPosts } from '@/lib/posts';
 import { PostFilters } from '@/components/roadmap/PostFilters';
 import { ViewSwitcher } from '@/components/roadmap/ViewSwitcher';
-import { RoadmapTimeline } from '@/components/roadmap/RoadmapTimeline';
+import { TimelineCanvas } from '@/components/roadmap/TimelineCanvas';
+import { CanvasBoard } from '@/components/roadmap/CanvasBoard';
 import { RoadmapBoard } from '@/components/roadmap/RoadmapBoard';
 import { RoadmapPriority } from '@/components/roadmap/RoadmapPriority';
-import { CanvasBoard } from '@/components/roadmap/CanvasBoard';
 import { paramsToFilters } from '@/lib/filters';
 
 export default function RoadmapPage() {
@@ -29,7 +29,7 @@ function RoadmapFallback() {
 
 function RoadmapPageInner() {
   const searchParams = useSearchParams();
-  const view = searchParams.get('view') ?? 'canvas';
+  const view = searchParams.get('view') ?? 'timeline';
   const filters = paramsToFilters(searchParams);
   const posts = filterPosts(loadPosts(), filters);
 
@@ -54,10 +54,10 @@ function RoadmapPageInner() {
         <RoadmapBoard posts={posts} />
       ) : view === 'priority' ? (
         <RoadmapPriority posts={posts} />
-      ) : view === 'timeline' ? (
-        <RoadmapTimeline posts={posts} />
-      ) : (
+      ) : view === 'canvas' ? (
         <CanvasBoard posts={posts} />
+      ) : (
+        <TimelineCanvas posts={posts} />
       )}
     </>
   );

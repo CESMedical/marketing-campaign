@@ -79,6 +79,7 @@ export interface Post {
   brandReviewer?: string;
   approvedAt?: string;
 
+  imageUrl?: string;
   notes?: string;
   tags?: string[];
 }

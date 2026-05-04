@@ -9,7 +9,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-01",
     "weekNumber": 1,
     "isCommercialPriority": false,
@@ -32,7 +32,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-03",
     "weekNumber": 1,
     "isCommercialPriority": false,
@@ -58,7 +58,7 @@
       "youtube",
       "x"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-05",
     "weekNumber": 1,
     "isCommercialPriority": true,
@@ -84,7 +84,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-08",
     "weekNumber": 2,
     "isCommercialPriority": false,
@@ -110,7 +110,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-10",
     "weekNumber": 2,
     "isCommercialPriority": true,
@@ -135,7 +135,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "live",
+    "status": "draft",
     "scheduledDate": "2026-05-12",
     "weekNumber": 2,
     "isCommercialPriority": false,
@@ -159,7 +159,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "scheduled",
+    "status": "draft",
     "scheduledDate": "2026-05-15",
     "weekNumber": 3,
     "isCommercialPriority": false,
@@ -185,7 +185,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "scheduled",
+    "status": "draft",
     "scheduledDate": "2026-05-17",
     "weekNumber": 3,
     "isCommercialPriority": true,
@@ -211,7 +211,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "scheduled",
+    "status": "draft",
     "scheduledDate": "2026-05-19",
     "weekNumber": 3,
     "isCommercialPriority": true,
@@ -237,7 +237,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "scheduled",
+    "status": "draft",
     "scheduledDate": "2026-05-22",
     "weekNumber": 4,
     "isCommercialPriority": true,
@@ -262,7 +262,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-05-24",
     "weekNumber": 4,
     "isCommercialPriority": true,
@@ -287,7 +287,7 @@
       "instagram",
       "linkedin"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-05-26",
     "weekNumber": 4,
     "isCommercialPriority": false,
@@ -314,7 +314,7 @@
       "linkedin",
       "youtube"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-05-29",
     "weekNumber": 5,
     "isCommercialPriority": false,
@@ -340,7 +340,7 @@
       "facebook",
       "x"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-05-31",
     "weekNumber": 5,
     "isCommercialPriority": false,
@@ -363,7 +363,7 @@
       "instagram",
       "linkedin"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-06-02",
     "weekNumber": 5,
     "isCommercialPriority": false,
@@ -388,7 +388,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-06-04",
     "weekNumber": 5,
     "isCommercialPriority": false,
@@ -411,7 +411,7 @@
       "linkedin",
       "instagram"
     ],
-    "status": "brand-review",
+    "status": "draft",
     "scheduledDate": "2026-06-05",
     "weekNumber": 6,
     "isCommercialPriority": false,
@@ -436,7 +436,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "brand-review",
+    "status": "draft",
     "scheduledDate": "2026-06-07",
     "weekNumber": 6,
     "isCommercialPriority": true,
@@ -461,7 +461,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-06-09",
     "weekNumber": 6,
     "isCommercialPriority": false,
@@ -486,7 +486,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "approved",
+    "status": "draft",
     "scheduledDate": "2026-06-11",
     "weekNumber": 6,
     "isCommercialPriority": false,
@@ -511,7 +511,7 @@
       "instagram",
       "linkedin"
     ],
-    "status": "brand-review",
+    "status": "draft",
     "scheduledDate": "2026-06-12",
     "weekNumber": 7,
     "isCommercialPriority": true,
@@ -536,7 +536,7 @@
       "instagram",
       "facebook"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-14",
     "weekNumber": 7,
     "isCommercialPriority": false,
@@ -561,7 +561,7 @@
       "facebook",
       "x"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-16",
     "weekNumber": 7,
     "isCommercialPriority": false,
@@ -588,7 +588,7 @@
       "linkedin",
       "youtube"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-18",
     "weekNumber": 7,
     "isCommercialPriority": false,
@@ -614,7 +614,7 @@
       "facebook",
       "linkedin"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-19",
     "weekNumber": 8,
     "isCommercialPriority": true,
@@ -639,7 +639,7 @@
       "facebook",
       "instagram"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-21",
     "weekNumber": 8,
     "isCommercialPriority": false,
@@ -664,7 +664,7 @@
       "facebook",
       "youtube"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-23",
     "weekNumber": 8,
     "isCommercialPriority": false,
@@ -689,7 +689,7 @@
       "instagram",
       "linkedin"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-25",
     "weekNumber": 8,
     "isCommercialPriority": true,
@@ -740,7 +740,7 @@
       "instagram",
       "linkedin"
     ],
-    "status": "clinical-review",
+    "status": "draft",
     "scheduledDate": "2026-06-28",
     "weekNumber": 9,
     "isCommercialPriority": true,

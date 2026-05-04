@@ -1,6 +1,6 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { X, Save, MessageCircle, Send } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { X, Save, MessageCircle, Send, ImagePlus, Loader2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import {
   Post,
@@ -44,8 +44,11 @@ export function PostEditPanel({
   const [status, setStatus] = useState<Status>(post.status)
   const [platforms, setPlatforms] = useState<Platform[]>(post.platforms)
   const [notes, setNotes] = useState(post.notes ?? '')
+  const [imageUrl, setImageUrl] = useState(post.imageUrl ?? '')
+  const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [savedAt, setSavedAt] = useState<number | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const [comments, setComments] = useState<Comment[]>([])
   const [commentText, setCommentText] = useState('')
@@ -64,7 +67,7 @@ export function PostEditPanel({
       const res = await fetch(`/api/posts/${post.slug}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ caption, status, platforms, notes }),
+        body: JSON.stringify({ caption, status, platforms, notes, imageUrl }),
       })
       if (res.ok) {
         onSave(await res.json())
@@ -91,6 +94,23 @@ export function PostEditPanel({
       }
     } finally {
       setSubmitting(false)
+    }
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    try {
+      const form = new FormData()
+      form.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: form })
+      if (res.ok) {
+        const { url } = await res.json()
+        setImageUrl(url)
+      }
+    } finally {
+      setUploading(false)
     }
   }
 
@@ -172,6 +192,22 @@ export function PostEditPanel({
               <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={3}
                 placeholder="Add notes for the production team…"
                 className="w-full rounded-lg border border-brand-deep/20 px-3 py-2 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none" />
+            </div>
+
+            <div>
+              <p className="label-xs mb-2">Image</p>
+              {imageUrl && (
+                <img src={imageUrl} alt="Post image" className="w-full rounded-lg mb-2 object-cover" style={{ maxHeight: 160 }} />
+              )}
+              <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="flex items-center gap-2 rounded-lg border border-dashed border-brand-deep/30 px-3 py-2 text-xs text-brand-deep/60 hover:border-brand-teal hover:text-brand-teal transition-colors w-full justify-center"
+              >
+                {uploading ? <Loader2 size={13} className="animate-spin" /> : <ImagePlus size={13} />}
+                {uploading ? 'Uploading…' : imageUrl ? 'Replace image' : 'Upload image'}
+              </button>
             </div>
           </>
         ) : (
