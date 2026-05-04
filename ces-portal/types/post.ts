@@ -29,12 +29,9 @@ export type Service =
   | 'brand';
 
 export type Location =
-  | 'pantiles'
   | 'chatham'
-  | 'headcorn'
-  | 'northfleet'
-  | 'stock'
-  | 'remote';
+  | 'tunbridge-wells'
+  | 'headcorn';
 
 export type Format = 'single-image' | 'carousel' | 'reel' | 'story' | 'video' | 'text';
 
@@ -134,12 +131,9 @@ export const SERVICE_LABELS: Record<Service, string> = {
 };
 
 export const LOCATION_LABELS: Record<Location, string> = {
-  pantiles: 'Pantiles',
   chatham: 'Chatham',
+  'tunbridge-wells': 'Tunbridge Wells',
   headcorn: 'Headcorn',
-  northfleet: 'Northfleet',
-  stock: 'Stock / desk',
-  remote: 'Remote',
 };
 
 export const STATUS_ORDER: Status[] = [

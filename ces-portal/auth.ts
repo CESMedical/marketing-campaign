@@ -1,6 +1,17 @@
 import NextAuth from 'next-auth'
 import MicrosoftEntraID from 'next-auth/providers/microsoft-entra-id'
 
+const ADMIN_EMAILS = ['kush@cesmedical.co.uk', 'miran@alastralabs.com']
+
+function getEmail(profile: Record<string, unknown>): string {
+  return (
+    (profile.email as string) ??
+    (profile.preferred_username as string) ??
+    (profile.upn as string) ??
+    ''
+  ).toLowerCase()
+}
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
   secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
@@ -13,13 +24,27 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     async signIn({ profile }) {
-      const email = (
-        profile?.email ??
-        (profile as Record<string, unknown>)?.preferred_username ??
-        (profile as Record<string, unknown>)?.upn ??
-        ''
-      ) as string
+      const email = getEmail(profile as Record<string, unknown>)
       return email.endsWith('@alastralabs.com') || email.endsWith('@cesmedical.co.uk')
+    },
+    async jwt({ token, profile }) {
+      if (profile) {
+        const email = getEmail(profile as Record<string, unknown>)
+        token.email = email
+        token.role = ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer'
+        token.displayName = (profile.name as string) ?? email
+      }
+      return token
+    },
+    async session({ session, token }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          role: token.role as 'admin' | 'viewer',
+          displayName: token.displayName as string,
+        },
+      }
     },
   },
   pages: {

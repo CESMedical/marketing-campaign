@@ -52,7 +52,7 @@ const SERVICES: Service[] = [
   'brand',
 ];
 
-const LOCATIONS: Location[] = ['pantiles', 'chatham', 'headcorn', 'northfleet', 'stock', 'remote'];
+const LOCATIONS: Location[] = ['chatham', 'tunbridge-wells', 'headcorn'];
 
 const LEADS: ProductionLead[] = ['leonna', 'external', 'stock'];
 
