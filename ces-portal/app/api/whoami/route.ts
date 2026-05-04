@@ -8,15 +8,27 @@ export async function GET() {
   if (!session) return NextResponse.json({ isAdmin: false })
 
   const u = session.user as Record<string, unknown>
-  const email = ((u.email ?? u.displayName ?? u.name ?? '') as string).toLowerCase()
-  const role = u.role as string | undefined
-  const isAdmin = role === 'admin' || ADMIN_EMAILS.some(a => email === a || email.startsWith(a.split('@')[0] + '@'))
+
+  // Collect every possible identifier the session might carry
+  const candidates: string[] = [
+    u.email, u.displayName, u.name, u.role,
+  ].filter((v): v is string => typeof v === 'string' && v.length > 0)
+    .map(s => s.toLowerCase())
+
+  // Match on exact email, email prefix, or role
+  const isAdmin =
+    candidates.includes('admin') ||
+    ADMIN_EMAILS.some(a =>
+      candidates.includes(a) ||
+      candidates.some(c => c.startsWith(a.split('@')[0] + '@') || c === a)
+    )
 
   return NextResponse.json({
     isAdmin,
-    email,
-    role,
-    name: u.name,
+    candidates,    // ← tells us exactly what fields arrived
+    email:       u.email,
+    name:        u.name,
     displayName: u.displayName,
+    role:        u.role,
   })
 }
