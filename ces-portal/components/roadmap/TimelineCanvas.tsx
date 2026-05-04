@@ -133,8 +133,9 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   function clampX(x: number, z: number) {
     const vw = containerRef.current?.clientWidth ?? window.innerWidth
     const sw = WORLD_W * z
+    // When fully zoomed out centre the content; otherwise allow free panning
     if (sw <= vw) return (vw - sw) / 2
-    return Math.max(vw - sw, Math.min(0, x))
+    return x  // no hard stops — truly infinite canvas
   }
   function applyTransform(z: number, x: number) {
     zoomRef.current = z; panXRef.current = x
