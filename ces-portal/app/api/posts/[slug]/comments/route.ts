@@ -68,7 +68,7 @@ export async function POST(
   const comment: Comment = {
     id: randomUUID(),
     postSlug: slug,
-    authorName: session.user.displayName ?? session.user.name ?? session.user.email ?? 'Unknown',
+    authorName: (session.user.displayName ?? session.user.name ?? session.user.email ?? 'Unknown').split(' ')[0],
     authorEmail: session.user.email ?? '',
     text: trimmedText,
     createdAt: new Date().toISOString(),

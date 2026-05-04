@@ -228,7 +228,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
                 <p className="text-xs text-brand-deep/35 italic">No comments yet — be the first.</p>
               )}
               {comments.map(c => {
-                const initials = c.authorName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()
+                const initials = c.authorName[0]?.toUpperCase() ?? '?'
                 const color = avatarColor(c.authorName)
                 return (
                   <div key={c.id} className="flex gap-3">
@@ -256,7 +256,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
             <div className="flex gap-2 items-end">
               {session?.user && (
                 <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style={{ background: avatarColor(session.user.displayName ?? session.user.name ?? 'U') }}>
-                  {(session.user.displayName ?? session.user.name ?? 'U').split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()}
+                  {((session.user.displayName ?? session.user.name ?? 'U').split(' ')[0][0] ?? 'U').toUpperCase()}
                 </div>
               )}
               <div className="flex-1 flex gap-2 items-end">
