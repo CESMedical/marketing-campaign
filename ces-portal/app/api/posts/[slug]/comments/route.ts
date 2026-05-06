@@ -16,22 +16,17 @@ interface Comment {
 
 const FILE = join(process.cwd(), 'content', 'comments.json')
 const MAX_COMMENT_LENGTH = 1000
+const ADMIN_EMAILS = ['kush@alastralabs.com', 'miran@alastralabs.com']
 
 function readComments(): Comment[] {
-  try {
-    return JSON.parse(readFileSync(FILE, 'utf-8'))
-  } catch {
-    return []
-  }
+  try { return JSON.parse(readFileSync(FILE, 'utf-8')) }
+  catch { return [] }
 }
-
-function publicComment(comment: Comment) {
-  return {
-    id: comment.id,
-    authorName: comment.authorName,
-    text: comment.text,
-    createdAt: comment.createdAt,
-  }
+function save(comments: Comment[]) {
+  writeFileSync(FILE, JSON.stringify(comments, null, 2))
+}
+function publicComment(c: Comment) {
+  return { id: c.id, authorName: c.authorName, authorEmail: c.authorEmail, text: c.text, createdAt: c.createdAt }
 }
 
 export async function GET(
@@ -40,12 +35,9 @@ export async function GET(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
   const { slug } = await params
   if (!getPostBySlug(slug)) return NextResponse.json({ error: 'Not found' }, { status: 404 })
-
-  const comments = readComments().filter(c => c.postSlug === slug).map(publicComment)
-  return NextResponse.json(comments)
+  return NextResponse.json(readComments().filter(c => c.postSlug === slug).map(publicComment))
 }
 
 export async function POST(
@@ -54,29 +46,50 @@ export async function POST(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
   const { slug } = await params
   if (!getPostBySlug(slug)) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const { text } = await request.json()
-  const trimmedText = typeof text === 'string' ? text.trim() : ''
-  if (!trimmedText) return NextResponse.json({ error: 'Empty comment' }, { status: 400 })
-  if (trimmedText.length > MAX_COMMENT_LENGTH) {
-    return NextResponse.json({ error: 'Comment too long' }, { status: 400 })
-  }
+  const trimmed = typeof text === 'string' ? text.trim() : ''
+  if (!trimmed) return NextResponse.json({ error: 'Empty comment' }, { status: 400 })
+  if (trimmed.length > MAX_COMMENT_LENGTH) return NextResponse.json({ error: 'Comment too long' }, { status: 400 })
 
   const comment: Comment = {
     id: randomUUID(),
     postSlug: slug,
     authorName: (session.user.displayName ?? session.user.name ?? session.user.email ?? 'Unknown').split(' ')[0],
     authorEmail: session.user.email ?? '',
-    text: trimmedText,
+    text: trimmed,
     createdAt: new Date().toISOString(),
   }
 
   const all = readComments()
   all.push(comment)
-  writeFileSync(FILE, JSON.stringify(all, null, 2))
-
+  save(all)
   return NextResponse.json(publicComment(comment), { status: 201 })
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> },
+) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { slug } = await params
+  const { id } = await request.json()
+  if (!id) return NextResponse.json({ error: 'Missing comment id' }, { status: 400 })
+
+  const all = readComments()
+  const comment = all.find(c => c.id === id && c.postSlug === slug)
+  if (!comment) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+  const userEmail = (session.user.email ?? '').toLowerCase()
+  const isAdmin = ADMIN_EMAILS.includes(userEmail)
+  const isOwner = comment.authorEmail === session.user.email
+
+  if (!isAdmin && !isOwner) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+
+  save(all.filter(c => c.id !== id))
+  return NextResponse.json({ ok: true })
 }

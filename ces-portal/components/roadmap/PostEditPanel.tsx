@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout } from 'lucide-react'
+import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
 
@@ -27,7 +27,7 @@ const PILLAR_COLOR: Record<string, string> = {
   employee: '#16a34a', leadership: '#003845', events: '#7c3aed', tech: '#ea580c',
 }
 
-interface Comment { id: string; authorName: string; text: string; createdAt: string }
+interface Comment { id: string; authorName: string; authorEmail: string; text: string; createdAt: string }
 
 function avatarColor(name: string) {
   const colors = ['#008080','#2563eb','#7c3aed','#ea580c','#16a34a','#d97706','#003845','#ec4899']
@@ -92,6 +92,14 @@ export function PostEditPanel({ post, onClose, onSave }: {
       const res = await fetch('/api/upload', { method: 'POST', body: form })
       if (res.ok) setImageUrl((await res.json()).url)
     } finally { setUploading(false) }
+  }
+
+  async function handleDeleteComment(id: string) {
+    const res = await fetch(`/api/posts/${post.slug}/comments`, {
+      method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    })
+    if (res.ok) setComments(prev => prev.filter(c => c.id !== id))
   }
 
   async function handleComment() {
@@ -255,13 +263,20 @@ export function PostEditPanel({ post, onClose, onSave }: {
                       {initials}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-baseline gap-2 mb-1">
-                        <span className="text-xs font-bold text-brand-deep">{c.authorName}</span>
-                        <span className="text-[10px] text-brand-deep/35">
-                          {new Date(c.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
-                          {' · '}
-                          {new Date(c.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
-                        </span>
+                      <div className="flex items-baseline justify-between gap-2 mb-1">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-xs font-bold text-brand-deep">{c.authorName}</span>
+                          <span className="text-[10px] text-brand-deep/35">
+                            {new Date(c.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                            {' · '}
+                            {new Date(c.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                        </div>
+                        {(isAdmin || c.authorEmail === session?.user?.email) && (
+                          <button onClick={() => handleDeleteComment(c.id)} className="text-brand-deep/25 hover:text-red-400 transition-colors shrink-0" title="Delete comment">
+                            <Trash2 size={12} />
+                          </button>
+                        )}
                       </div>
                       <p className="text-sm text-brand-deep/80 leading-relaxed">{c.text}</p>
                     </div>
