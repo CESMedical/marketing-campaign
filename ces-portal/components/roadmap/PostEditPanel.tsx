@@ -2,12 +2,18 @@
 import { useState, useEffect, useRef } from 'react'
 import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import { Post, Status, Platform, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
+import { Post, Status, Platform, Format, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
+
+const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
+const FORMAT_LABELS: Record<Format, string> = {
+  'single-image': 'Single Image', carousel: 'Carousel', reel: 'Reel',
+  story: 'Story', video: 'Video', text: 'Text',
+}
 
 // Fetched server-side so it's immune to client session field differences
 async function fetchAdminStatus(): Promise<{ isAdmin: boolean; name: string }> {
   try {
-    const r = await fetch('/api/whoami/')
+    const r = await fetch('/api/whoami')
     const d = await r.json()
     return { isAdmin: d.isAdmin ?? false, name: d.name ?? d.displayName ?? '' }
   } catch {
@@ -49,8 +55,10 @@ export function PostEditPanel({ post, onClose, onSave }: {
     })
   }, [])
 
+  const [title, setTitle]         = useState(post.title)
   const [caption, setCaption]     = useState(post.caption)
   const [status, setStatus]       = useState<Status>(post.status)
+  const [format, setFormat]       = useState<Format>(post.format)
   const [platforms, setPlatforms] = useState<Platform[]>(post.platforms)
   const [notes, setNotes]         = useState(post.notes ?? '')
   const [imageUrl, setImageUrl]   = useState(post.imageUrl ?? '')
@@ -64,7 +72,8 @@ export function PostEditPanel({ post, onClose, onSave }: {
   const commentsEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setCaption(post.caption); setStatus(post.status); setPlatforms(post.platforms)
+    setTitle(post.title); setCaption(post.caption); setStatus(post.status)
+    setFormat(post.format); setPlatforms(post.platforms)
     setNotes(post.notes ?? ''); setImageUrl(post.imageUrl ?? '')
     fetch(`/api/posts/${post.slug}/comments`).then(r => r.json()).then(setComments).catch(() => {})
   }, [post.slug]) // eslint-disable-line
@@ -78,7 +87,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
     try {
       const res = await fetch(`/api/posts/${post.slug}`, {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ caption, status, platforms, notes, imageUrl }),
+        body: JSON.stringify({ title, caption, status, format, platforms, notes, imageUrl }),
       })
       if (res.ok) { onSave(await res.json()); setSavedAt(Date.now()) }
     } finally { setSaving(false) }
@@ -193,6 +202,13 @@ export function PostEditPanel({ post, onClose, onSave }: {
 
           {isAdmin ? (
             <>
+              {/* Title */}
+              <div>
+                <p className="label-xs mb-2">Title</p>
+                <input value={title} onChange={e => setTitle(e.target.value)}
+                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep font-semibold focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+              </div>
+
               {/* Status */}
               <div>
                 <p className="label-xs mb-2">Status</p>
@@ -216,6 +232,20 @@ export function PostEditPanel({ post, onClose, onSave }: {
                       className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
                       style={platforms.includes(p) ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
                       {PLATFORM_LABELS[p]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Format */}
+              <div>
+                <p className="label-xs mb-2">Format</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {ALL_FORMATS.map(f => (
+                    <button key={f} onClick={() => setFormat(f)}
+                      className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                      style={format === f ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                      {FORMAT_LABELS[f]}
                     </button>
                   ))}
                 </div>
