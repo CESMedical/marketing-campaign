@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import MicrosoftEntraID from 'next-auth/providers/microsoft-entra-id'
 
-const ADMIN_EMAILS = ['kush@cesmedical.co.uk', 'miran@alastralabs.com']
+const ADMIN_EMAILS = ['kush@alastralabs.com', 'miran@alastralabs.com']
 
 function getEmail(profile: Record<string, unknown>): string {
   return (

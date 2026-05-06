@@ -1,7 +1,7 @@
 import { auth } from '@/auth'
 import { NextResponse } from 'next/server'
 
-const ADMIN_EMAILS = ['kush@cesmedical.co.uk', 'miran@alastralabs.com']
+const ADMIN_EMAILS = ['kush@alastralabs.com', 'miran@alastralabs.com']
 
 export async function GET() {
   const session = await auth()
