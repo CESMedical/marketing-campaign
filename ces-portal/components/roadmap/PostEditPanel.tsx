@@ -10,15 +10,10 @@ const FORMAT_LABELS: Record<Format, string> = {
   story: 'Story', video: 'Video', text: 'Text',
 }
 
-// Fetched server-side so it's immune to client session field differences
-async function fetchAdminStatus(): Promise<{ isAdmin: boolean; name: string }> {
-  try {
-    const r = await fetch('/api/whoami')
-    const d = await r.json()
-    return { isAdmin: d.isAdmin ?? false, name: d.name ?? d.displayName ?? '' }
-  } catch {
-    return { isAdmin: false, name: '' }
-  }
+const ADMIN_FIRST_NAMES = ['kush', 'miran']
+
+function getFirstName(s: { name?: string | null; email?: string | null } | undefined) {
+  return ((s?.name ?? s?.email ?? '').split(/[\s@]/)[0]).toLowerCase()
 }
 
 const ALL_STATUSES: Status[] = ['draft', 'clinical-review', 'brand-review', 'approved', 'scheduled', 'live']
@@ -45,15 +40,9 @@ export function PostEditPanel({ post, onClose, onSave }: {
   post: Post; onClose: () => void; onSave: (u: Post) => void
 }) {
   const { data: session } = useSession()
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [serverName, setServerName] = useState('')
-
-  useEffect(() => {
-    fetchAdminStatus().then(({ isAdmin, name }) => {
-      setIsAdmin(isAdmin)
-      if (name) setServerName(name.split(' ')[0])
-    })
-  }, [])
+  const firstName = getFirstName(session?.user)
+  const isAdmin = ADMIN_FIRST_NAMES.includes(firstName) || session?.user?.role === 'admin'
+  const serverName = (session?.user?.name ?? session?.user?.email ?? '').split(/[\s@]/)[0]
 
   const [title, setTitle]         = useState(post.title)
   const [caption, setCaption]     = useState(post.caption)
