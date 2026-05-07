@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFileSync, mkdirSync } from 'fs'
-import { join } from 'path'
 import { randomUUID } from 'crypto'
 import { auth } from '@/auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { canUploadAsset } from '@/lib/roles'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'] as const
-const MAX_BYTES = 10 * 1024 * 1024 // 10 MB
+const MAX_BYTES = 10 * 1024 * 1024
 type AllowedImageType = (typeof ALLOWED_TYPES)[number]
 
 function isAllowedType(type: string): type is AllowedImageType {
@@ -16,15 +14,63 @@ function isAllowedType(type: string): type is AllowedImageType {
 
 function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
   if (type === 'image/jpeg') return buffer.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))
-  if (type === 'image/png') return buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+  if (type === 'image/png')
+    return buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
   if (type === 'image/webp') {
-    return buffer.subarray(0, 4).toString('ascii') === 'RIFF' && buffer.subarray(8, 12).toString('ascii') === 'WEBP'
+    return (
+      buffer.subarray(0, 4).toString('ascii') === 'RIFF' &&
+      buffer.subarray(8, 12).toString('ascii') === 'WEBP'
+    )
   }
   if (type === 'image/gif') {
-    const signature = buffer.subarray(0, 6).toString('ascii')
-    return signature === 'GIF87a' || signature === 'GIF89a'
+    const sig = buffer.subarray(0, 6).toString('ascii')
+    return sig === 'GIF87a' || sig === 'GIF89a'
   }
   return false
+}
+
+function hasCloudinary() {
+  return Boolean(
+    process.env.CLOUDINARY_CLOUD_NAME &&
+      process.env.CLOUDINARY_API_KEY &&
+      process.env.CLOUDINARY_API_SECRET,
+  )
+}
+
+async function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<string> {
+  const { v2: cloudinary } = await import('cloudinary')
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  })
+
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: 'ces-portal',
+        resource_type: 'image',
+        format: mimeType === 'image/gif' ? 'gif' : 'webp',
+        transformation: [{ quality: 'auto', fetch_format: 'auto' }],
+      },
+      (error, result) => {
+        if (error || !result) return reject(error ?? new Error('Upload failed'))
+        resolve(result.secure_url)
+      },
+    )
+    stream.end(buffer)
+  })
+}
+
+async function uploadToLocal(buffer: Buffer, mimeType: string): Promise<string> {
+  const { writeFileSync, mkdirSync } = await import('fs')
+  const { join } = await import('path')
+  const ext = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const filename = `${randomUUID()}.${ext}`
+  const dir = join(process.cwd(), 'public', 'uploads')
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, filename), buffer)
+  return `/uploads/${filename}`
 }
 
 export async function POST(request: NextRequest) {
@@ -51,11 +97,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid image file' }, { status: 400 })
   }
 
-  const ext = file.type.split('/')[1].replace('jpeg', 'jpg')
-  const filename = `${randomUUID()}.${ext}`
-  const dir = join(process.cwd(), 'public', 'uploads')
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, filename), buffer)
-
-  return NextResponse.json({ url: `/uploads/${filename}` })
+  try {
+    const url = hasCloudinary()
+      ? await uploadToCloudinary(buffer, file.type)
+      : await uploadToLocal(buffer, file.type)
+    return NextResponse.json({ url })
+  } catch {
+    return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
+  }
 }

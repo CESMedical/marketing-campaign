@@ -49,8 +49,12 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   }
 
   if ('imageUrl' in input) {
-    if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 500) return null
-    if (input.imageUrl && !input.imageUrl.startsWith('/uploads/')) return null
+    if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 1000) return null
+    if (
+      input.imageUrl &&
+      !input.imageUrl.startsWith('/uploads/') &&
+      !input.imageUrl.startsWith('https://res.cloudinary.com/')
+    ) return null
     updates.imageUrl = input.imageUrl
   }
 
