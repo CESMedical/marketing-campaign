@@ -49,6 +49,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
   const [status, setStatus]       = useState<Status>(post.status)
   const [format, setFormat]       = useState<Format>(post.format)
   const [platforms, setPlatforms] = useState<Platform[]>(post.platforms)
+  const [scheduledDate, setScheduledDate] = useState(post.scheduledDate.slice(0, 10))
   const [notes, setNotes]         = useState(post.notes ?? '')
   const [imageUrl, setImageUrl]   = useState(post.imageUrl ?? '')
   const [uploading, setUploading] = useState(false)
@@ -63,6 +64,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
   useEffect(() => {
     setTitle(post.title); setCaption(post.caption); setStatus(post.status)
     setFormat(post.format); setPlatforms(post.platforms)
+    setScheduledDate(post.scheduledDate.slice(0, 10))
     setNotes(post.notes ?? ''); setImageUrl(post.imageUrl ?? '')
     fetch(`/api/posts/${post.slug}/comments`).then(r => r.json()).then(setComments).catch(() => {})
   }, [post.slug]) // eslint-disable-line
@@ -76,7 +78,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
     try {
       const res = await fetch(`/api/posts/${post.slug}`, {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, caption, status, format, platforms, notes, imageUrl }),
+        body: JSON.stringify({ title, caption, status, format, platforms, scheduledDate, notes, imageUrl }),
       })
       if (res.ok) { onSave(await res.json()); setSavedAt(Date.now()) }
     } finally { setSaving(false) }
@@ -196,6 +198,19 @@ export function PostEditPanel({ post, onClose, onSave }: {
                 <p className="label-xs mb-2">Title</p>
                 <input value={title} onChange={e => setTitle(e.target.value)}
                   className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep font-semibold focus:outline-none focus:ring-2 focus:ring-brand-teal" />
+              </div>
+
+              {/* Date */}
+              <div>
+                <p className="label-xs mb-2">Scheduled date</p>
+                <input
+                  type="date"
+                  value={scheduledDate}
+                  onChange={e => setScheduledDate(e.target.value)}
+                  min="2026-05-05"
+                  max="2026-11-05"
+                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-teal"
+                />
               </div>
 
               {/* Status */}

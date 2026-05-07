@@ -122,6 +122,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const [cardDrag, setCardDrag] = useState<CardDrag | null>(null)
   const [zoomPct, setZoomPct]   = useState(Math.round(INIT_ZOOM * 100))
   const [panY, setPanY]         = useState(0)
+  const [savedSlug, setSavedSlug] = useState<string | null>(null)
 
   const zoomRef  = useRef(INIT_ZOOM)
   const panXRef  = useRef(0)
@@ -231,6 +232,8 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
       const updated = await res.json()
       setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
       if (selected?.slug === updated.slug) setSelected(updated)
+      setSavedSlug(updated.slug)
+      setTimeout(() => setSavedSlug(s => s === updated.slug ? null : s), 2500)
     }
   }, [cardDrag, selected])
 
@@ -292,6 +295,25 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         onPointerUp={onCanvasPointerUp}
         onPointerCancel={onCanvasPointerUp}
       >
+        {/* Drag date tooltip */}
+        {cardDrag && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+            <div className="flex items-center gap-2 bg-brand-deep text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
+              <span className="opacity-60">→</span>
+              {new Date(fromOff(cardDrag.curOff) + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' })}
+            </div>
+          </div>
+        )}
+
+        {/* Save confirmation toast */}
+        {savedSlug && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+            <div className="flex items-center gap-2 bg-green-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-xl">
+              ✓ Date saved
+            </div>
+          </div>
+        )}
+
         {/* World canvas — includes galaxy padding around the panel */}
         <div
           ref={canvasRef}
