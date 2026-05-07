@@ -43,7 +43,46 @@ export async function loadPostsData(): Promise<Post[]> {
   const posts = await prisma.post.findMany({
     orderBy: [{ scheduledDate: 'asc' }, { id: 'asc' }],
   })
+  // If database is connected but empty, seed it and return JSON in the meantime
+  if (posts.length === 0) {
+    seedDatabase().catch(() => {})
+    return jsonPosts()
+  }
   return posts.map(toPost)
+}
+
+async function seedDatabase() {
+  const posts = jsonPosts()
+  for (const post of posts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      create: {
+        id: post.id,
+        slug: post.slug,
+        title: post.title,
+        pillar: post.pillar,
+        platforms: post.platforms,
+        status: post.status,
+        scheduledDate: post.scheduledDate,
+        weekNumber: post.weekNumber,
+        isCommercialPriority: post.isCommercialPriority,
+        service: post.service ?? null,
+        format: post.format,
+        caption: post.caption,
+        cta: post.cta,
+        asset: post.asset ?? undefined,
+        productionLocation: post.productionLocation ?? null,
+        productionLead: post.productionLead ?? null,
+        clinicalReviewer: post.clinicalReviewer ?? null,
+        brandReviewer: post.brandReviewer ?? null,
+        approvedAt: post.approvedAt ?? null,
+        imageUrl: post.imageUrl ?? null,
+        notes: post.notes ?? null,
+        tags: post.tags ?? undefined,
+      },
+      update: {},
+    })
+  }
 }
 
 export async function getPostBySlugData(slug: string): Promise<Post | undefined> {
