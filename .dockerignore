@@ -1,0 +1,8 @@
+ces-portal/node_modules/
+ces-portal/.next/
+.git/
+*.log
+ces-portal/.env
+ces-portal/.env.local
+ces-portal/.env.production
+.DS_Store
