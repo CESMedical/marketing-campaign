@@ -1,11 +1,11 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "npm install && npm run build",
-    "preDeployCommand": "npx prisma migrate deploy && node scripts/seed-db.js"
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile"
   },
   "deploy": {
+    "preDeployCommand": "npx prisma migrate deploy && node scripts/seed-db.js",
     "startCommand": "node_modules/.bin/next start -p $PORT",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
