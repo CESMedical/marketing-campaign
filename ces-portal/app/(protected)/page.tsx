@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import { ArrowRight, Star, Calendar, Layers } from 'lucide-react';
-import { loadCampaign, loadPosts, getCommercialPriority } from '@/lib/posts';
+import { loadCampaign, getCommercialPriority } from '@/lib/posts';
+import { loadPostsData } from '@/lib/post-data';
 import { LinkButton } from '@/components/ui/Button';
 import { Logo } from '@/components/brand/Logo';
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
   const campaign = loadCampaign();
-  const posts = loadPosts();
+  const posts = await loadPostsData();
   const priority = getCommercialPriority(posts);
 
   // Calculate weeks remaining (or campaign complete)

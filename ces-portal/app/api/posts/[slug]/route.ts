@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync, writeFileSync } from 'fs'
-import { join } from 'path'
 import { auth } from '@/auth'
 import { Format, Platform, Post, Status } from '@/types/post'
 import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
+import { updatePostData } from '@/lib/post-data'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -106,18 +105,10 @@ export async function PATCH(
   const updates = pickPostUpdates(await request.json())
   if (!updates) return NextResponse.json({ error: 'Invalid update' }, { status: 400 })
 
-  const filePath = join(process.cwd(), 'content', 'posts.json')
-
   try {
-    const posts: Post[] = JSON.parse(readFileSync(filePath, 'utf-8'))
-    const index = posts.findIndex((p) => p.slug === slug)
-    if (index === -1)
-      return NextResponse.json({ error: 'Not found' }, { status: 404 })
-
-    posts[index] = { ...posts[index], ...updates }
-    writeFileSync(filePath, JSON.stringify(posts, null, 2))
-
-    return NextResponse.json(posts[index])
+    const updated = await updatePostData(slug, updates)
+    if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+    return NextResponse.json(updated)
   } catch {
     return NextResponse.json({ error: 'Failed to update' }, { status: 500 })
   }

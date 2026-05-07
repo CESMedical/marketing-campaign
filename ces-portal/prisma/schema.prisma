@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id                   String    @id
+  slug                 String    @unique
+  title                String
+  pillar               String
+  platforms            Json
+  status               String
+  scheduledDate        String
+  weekNumber           Int
+  isCommercialPriority Boolean   @default(false)
+  service              String?
+  format               String
+  caption              String    @db.Text
+  cta                  Json
+  asset                Json?
+  productionLocation   String?
+  productionLead       String?
+  clinicalReviewer     String?
+  brandReviewer        String?
+  approvedAt           String?
+  imageUrl             String?
+  notes                String?   @db.Text
+  tags                 Json?
+  comments             Comment[]
+  updatedAt            DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([scheduledDate])
+  @@index([status])
+}
+
+model Comment {
+  id          String   @id @default(uuid())
+  postSlug    String
+  authorName  String
+  authorEmail String
+  text        String   @db.Text
+  createdAt   DateTime @default(now())
+  post        Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
+
+  @@index([postSlug])
+  @@index([authorEmail])
+}

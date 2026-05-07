@@ -23,6 +23,18 @@ npm run build
 
 Static output is written to `out/`. That's the directory Cloudflare Pages serves.
 
+## Database
+
+Mutable post edits, comments, and uploaded image references are designed to use MySQL in production.
+Set `DATABASE_URL` to the Railway MySQL connection string, then run:
+
+```bash
+npm run db:push
+npm run db:seed
+```
+
+`db:seed` imports the current JSON posts/comments only when rows do not already exist, so it is safe to run again without overwriting live edits.
+
 ## Deploy to Cloudflare Pages
 
 1. Push this repo to GitHub.

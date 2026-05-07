@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { loadPosts, getPostBySlug, getAdjacentPosts } from '@/lib/posts';
+import { getAdjacentPostsData, getPostBySlugData, seedPostSlugs } from '@/lib/post-data';
 import { PostHero } from '@/components/post/PostHero';
 import { PostTimeline } from '@/components/post/PostTimeline';
 import { PostCTA } from '@/components/post/PostCTA';
@@ -10,13 +10,15 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamic = 'force-dynamic';
+
 export function generateStaticParams() {
-  return loadPosts().map((p) => ({ slug: p.slug }));
+  return seedPostSlugs();
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugData(slug);
   if (!post) return {};
   return {
     title: `${post.id} — ${post.title} | CES Roadmap`,
@@ -25,10 +27,10 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugData(slug);
   if (!post) notFound();
 
-  const { prev, next } = getAdjacentPosts(slug);
+  const { prev, next } = await getAdjacentPostsData(slug);
 
   return (
     <article className="container-page py-8 sm:py-12">
