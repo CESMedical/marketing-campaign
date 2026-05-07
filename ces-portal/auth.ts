@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth'
 import MicrosoftEntraID from 'next-auth/providers/microsoft-entra-id'
-
-const ADMIN_EMAILS = ['kush@alastralabs.com', 'miran@alastralabs.com']
+import { resolveRole, isDomainAllowed } from '@/lib/roles'
 
 function getEmail(profile: Record<string, unknown>): string {
   return (
@@ -25,7 +24,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     async signIn({ profile }) {
       const email = getEmail(profile as Record<string, unknown>)
-      return email.endsWith('@alastralabs.com') || email.endsWith('@cesmedical.co.uk')
+      return isDomainAllowed(email)
     },
     async jwt({ token, profile }) {
       if (profile) {
@@ -33,21 +32,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.email = email
         token.displayName = (profile.name as string) ?? email
       }
-      // Always recalculate role so existing sessions pick it up on next refresh
       const email = ((token.email as string) ?? '').toLowerCase()
-      token.role = ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer'
+      token.role = resolveRole(email)
       return token
     },
     async session({ session, token }) {
-      // Derive role from stored email so it's always correct
       const email = ((token.email as string) ?? '').toLowerCase()
       return {
         ...session,
         user: {
           ...session.user,
           email: token.email as string,
-          role: ADMIN_EMAILS.includes(email) ? 'admin' : 'viewer',
-          displayName: (token.displayName as string) ?? token.email as string,
+          role: resolveRole(email),
+          displayName: (token.displayName as string) ?? (token.email as string),
         },
       }
     },

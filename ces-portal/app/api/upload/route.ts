@@ -4,6 +4,7 @@ import { join } from 'path'
 import { randomUUID } from 'crypto'
 import { auth } from '@/auth'
 import { rateLimit } from '@/lib/rate-limit'
+import { canUploadAsset } from '@/lib/roles'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'] as const
 const MAX_BYTES = 10 * 1024 * 1024 // 10 MB
@@ -28,7 +29,7 @@ function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
 
 export async function POST(request: NextRequest) {
   const session = await auth()
-  if (!session || session.user.role !== 'admin') {
+  if (!session || !canUploadAsset(session.user.role)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
   if (!rateLimit({ key: `upload:${session.user.email ?? 'unknown'}`, limit: 10, windowMs: 5 * 60_000 })) {

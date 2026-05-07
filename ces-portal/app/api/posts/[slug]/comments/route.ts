@@ -3,6 +3,7 @@ import { auth } from '@/auth'
 import { postExistsData } from '@/lib/post-data'
 import { prisma } from '@/lib/prisma'
 import { rateLimit } from '@/lib/rate-limit'
+import { canEditPost } from '@/lib/roles'
 
 const MAX_COMMENT_LENGTH = 1000
 
@@ -42,7 +43,7 @@ export async function GET(
   })
 
   return NextResponse.json(
-    comments.map((comment) => publicComment(comment, sessionEmail, session.user.role === 'admin')),
+    comments.map((comment) => publicComment(comment, sessionEmail, canEditPost(session.user.role))),
   )
 }
 
@@ -77,7 +78,7 @@ export async function POST(
   })
 
   return NextResponse.json(
-    publicComment(comment, (session.user.email ?? '').toLowerCase(), session.user.role === 'admin'),
+    publicComment(comment, (session.user.email ?? '').toLowerCase(), canEditPost(session.user.role)),
     { status: 201 },
   )
 }
@@ -103,7 +104,7 @@ export async function DELETE(
   if (!comment) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const userEmail = (session.user.email ?? '').toLowerCase()
-  const isAdmin = session.user.role === 'admin'
+  const isAdmin = canEditPost(session.user.role)
   const isOwner = comment.authorEmail.toLowerCase() === userEmail
   if (!isAdmin && !isOwner) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 

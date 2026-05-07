@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, Format, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
+import { canEditPost, roleLabel } from '@/lib/permissions'
 
 const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
 const FORMAT_LABELS: Record<Format, string> = {
@@ -34,7 +35,9 @@ export function PostEditPanel({ post, onClose, onSave }: {
   post: Post; onClose: () => void; onSave: (u: Post) => void
 }) {
   const { data: session } = useSession()
-  const isAdmin = session?.user?.role === 'admin'
+  const role = session?.user?.role
+  const canEdit = canEditPost(role)
+  const badge = roleLabel(role)
   const serverName = (session?.user?.name ?? session?.user?.email ?? '').split(/[\s@]/)[0]
 
   const [title, setTitle]         = useState(post.title)
@@ -126,7 +129,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
             <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide">
               {PILLAR_LABELS[post.pillar]}
             </span>
-            {isAdmin && <span className="text-[10px] font-bold text-brand-teal uppercase tracking-wide">Admin</span>}
+            {badge && <span className="text-[10px] font-bold text-brand-teal uppercase tracking-wide">{badge}</span>}
           </div>
           <h2 className="text-sm font-semibold text-brand-deep leading-snug line-clamp-2">{post.title}</h2>
         </div>
@@ -143,7 +146,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
           {imageUrl ? (
             <div className="relative group">
               <img src={imageUrl} alt="Post image" className="w-full object-cover" style={{ maxHeight: 200 }} />
-              {isAdmin && (
+              {canEdit && (
                 <button
                   onClick={() => fileRef.current?.click()}
                   className="absolute inset-0 flex items-center justify-center bg-brand-deep/50 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs font-semibold gap-2"
@@ -152,7 +155,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
                 </button>
               )}
             </div>
-          ) : isAdmin ? (
+          ) : canEdit ? (
             <button
               onClick={() => fileRef.current?.click()}
               className="flex flex-col items-center justify-center gap-2 w-full py-8 text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft transition-colors"
@@ -184,7 +187,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
             </div>
           </div>
 
-          {isAdmin ? (
+          {canEdit ? (
             <>
               {/* Title */}
               <div>
@@ -341,7 +344,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
       </div>
 
       {/* ── Save footer (admin only) ─────────────────────────────────────────── */}
-      {isAdmin && (
+      {canEdit && (
         <div className="border-t border-brand-deep/10 px-5 py-4 shrink-0">
           <button onClick={handleSave} disabled={saving}
             className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-50"

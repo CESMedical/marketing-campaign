@@ -4,6 +4,7 @@ import { Format, Platform, Post, Status } from '@/types/post'
 import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
 import { updatePostData } from '@/lib/post-data'
+import { canEditPost } from '@/lib/roles'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -96,7 +97,7 @@ export async function PATCH(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  if (session.user.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  if (!canEditPost(session.user.role)) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   if (!rateLimit({ key: `post:${session.user.email ?? 'unknown'}`, limit: 60, windowMs: 60_000 })) {
     return NextResponse.json({ error: 'Too many updates' }, { status: 429 })
   }
