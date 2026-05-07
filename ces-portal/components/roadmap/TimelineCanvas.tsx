@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ZoomIn, ZoomOut, Maximize2, CalendarDays } from 'lucide-react'
 import { Post, STATUS_LABELS } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
@@ -101,7 +101,7 @@ function stackCards(posts: Post[], dragSlug: string | null, dragOff: number) {
     .map(({ p, off }) => { const r = cols.get(off) ?? 0; cols.set(off, r + 1); return { post: p, off, row: r } })
 }
 
-interface CardDrag { slug: string; startX: number; startOff: number; curOff: number }
+interface CardDrag { slug: string; post: Post; startX: number; startOff: number; curOff: number }
 interface PanDrag  { startX: number; startY: number; startPanX: number; startPanY: number }
 
 const MONTHS = buildMonths()
@@ -119,15 +119,16 @@ function SideBtn({ onClick, title, children }: { onClick: () => void; title: str
 export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
-  const [cardDrag, setCardDrag] = useState<CardDrag | null>(null)
-  const [zoomPct, setZoomPct]   = useState(Math.round(INIT_ZOOM * 100))
-  const [panY, setPanY]         = useState(0)
-  const [savedSlug, setSavedSlug] = useState<string | null>(null)
+  // dragVisual drives layout recalc — ref holds the real-time drag state
+  const [dragVisual, setDragVisual] = useState<{ slug: string; curOff: number } | null>(null)
+  const [savedSlug, setSavedSlug]   = useState<string | null>(null)
+  const [zoomPct, setZoomPct]       = useState(Math.round(INIT_ZOOM * 100))
 
-  const zoomRef  = useRef(INIT_ZOOM)
-  const panXRef  = useRef(0)
-  const panYRef  = useRef(0)
-  const panDrag  = useRef<PanDrag | null>(null)
+  const zoomRef    = useRef(INIT_ZOOM)
+  const panXRef    = useRef(0)
+  const panYRef    = useRef(0)
+  const panDrag    = useRef<PanDrag | null>(null)
+  const cardDragRef = useRef<CardDrag | null>(null)   // always fresh, no stale closures
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef    = useRef<HTMLDivElement>(null)
   const rafRef       = useRef<number>(0)
@@ -139,7 +140,6 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     cancelAnimationFrame(rafRef.current)
     rafRef.current = requestAnimationFrame(() => {
       setZoomPct(Math.round(z * 100))
-      setPanY(y)
     })
   }
 
@@ -187,55 +187,69 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     return () => (el as HTMLDivElement).removeEventListener('wheel', onWheel)
   }, []) // eslint-disable-line
 
-  // ── canvas drag-to-pan ────────────────────────────────────────────────────
-  function onCanvasPointerDown(e: React.PointerEvent<HTMLDivElement>) {
-    if ((e.target as HTMLElement).closest('[data-card]')) return
-    e.currentTarget.setPointerCapture(e.pointerId)
-    panDrag.current = { startX: e.clientX, startY: e.clientY, startPanX: panXRef.current, startPanY: panYRef.current }
-  }
-  function onCanvasPointerMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (!panDrag.current) return
-    applyTransform(zoomRef.current,
-      panDrag.current.startPanX + e.clientX - panDrag.current.startX,
-      panDrag.current.startPanY + e.clientY - panDrag.current.startY,
-    )
-  }
-  function onCanvasPointerUp(e: React.PointerEvent<HTMLDivElement>) {
-    if (!panDrag.current) return
-    e.currentTarget.releasePointerCapture(e.pointerId)
-    panDrag.current = null
+  // ── unified container pointer handlers ───────────────────────────────────
+  function onContainerPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    const cardEl = (e.target as HTMLElement).closest('[data-card]') as HTMLElement | null
+    if (cardEl) {
+      // Card drag start
+      const slug = cardEl.dataset.slug!
+      const post = posts.find(p => p.slug === slug)
+      if (!post) return
+      e.currentTarget.setPointerCapture(e.pointerId)
+      const startOff = toOff(post.scheduledDate)
+      cardDragRef.current = { slug, post, startX: e.clientX, startOff, curOff: startOff }
+      setDragVisual({ slug, curOff: startOff })
+      setSelected(null)
+    } else {
+      // Canvas pan start
+      e.currentTarget.setPointerCapture(e.pointerId)
+      panDrag.current = { startX: e.clientX, startY: e.clientY, startPanX: panXRef.current, startPanY: panYRef.current }
+    }
   }
 
-  // ── card drag ─────────────────────────────────────────────────────────────
-  function onCardPointerDown(e: React.PointerEvent, post: Post) {
-    e.stopPropagation(); e.preventDefault()
-    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
-    setCardDrag({ slug: post.slug, startX: e.clientX, startOff: toOff(post.scheduledDate), curOff: toOff(post.scheduledDate) })
-    setSelected(null)
-  }
-  function onCardPointerMove(e: React.PointerEvent, slug: string) {
-    if (!cardDrag || cardDrag.slug !== slug) return
-    const delta = Math.round((e.clientX - cardDrag.startX) / (DAY_W * zoomRef.current))
-    setCardDrag(d => d ? { ...d, curOff: Math.max(0, Math.min(TOTAL_DAYS - 1, d.startOff + delta)) } : null)
-  }
-  const onCardPointerUp = useCallback(async (e: React.PointerEvent, post: Post) => {
-    if (!cardDrag || cardDrag.slug !== post.slug) return
-    ;(e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId)
-    const { curOff, startOff } = cardDrag
-    setCardDrag(null)
-    if (curOff === startOff) { setSelected(s => s?.slug === post.slug ? null : post); return }
-    const res = await fetch(`/api/posts/${post.slug}`, {
-      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ scheduledDate: fromOff(curOff) }),
-    })
-    if (res.ok) {
-      const updated = await res.json()
-      setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
-      if (selected?.slug === updated.slug) setSelected(updated)
-      setSavedSlug(updated.slug)
-      setTimeout(() => setSavedSlug(s => s === updated.slug ? null : s), 2500)
+  function onContainerPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    const cd = cardDragRef.current
+    if (cd) {
+      const delta = Math.round((e.clientX - cd.startX) / (DAY_W * zoomRef.current))
+      const newOff = Math.max(0, Math.min(TOTAL_DAYS - 1, cd.startOff + delta))
+      if (newOff !== cd.curOff) {
+        cd.curOff = newOff
+        setDragVisual({ slug: cd.slug, curOff: newOff })
+      }
+    } else if (panDrag.current) {
+      applyTransform(zoomRef.current,
+        panDrag.current.startPanX + e.clientX - panDrag.current.startX,
+        panDrag.current.startPanY + e.clientY - panDrag.current.startY,
+      )
     }
-  }, [cardDrag, selected])
+  }
+
+  async function onContainerPointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    e.currentTarget.releasePointerCapture(e.pointerId)
+    const cd = cardDragRef.current
+    if (cd) {
+      cardDragRef.current = null
+      setDragVisual(null)
+      if (cd.curOff === cd.startOff) {
+        // Tap — open panel
+        setSelected(s => s?.slug === cd.slug ? null : cd.post)
+      } else {
+        // Drop — save new date
+        const res = await fetch(`/api/posts/${cd.slug}`, {
+          method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scheduledDate: fromOff(cd.curOff) }),
+        })
+        if (res.ok) {
+          const updated = await res.json()
+          setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
+          if (selected?.slug === updated.slug) setSelected(updated)
+          setSavedSlug(updated.slug)
+          setTimeout(() => setSavedSlug(s => s === updated.slug ? null : s), 2500)
+        }
+      }
+    }
+    panDrag.current = null
+  }
 
   // ── controls ──────────────────────────────────────────────────────────────
   function zoomBy(f: number) {
@@ -259,7 +273,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     applyTransform(nz, cx, cy)
   }
 
-  const layout = stackCards(posts, cardDrag?.slug ?? null, cardDrag?.curOff ?? 0)
+  const layout = stackCards(posts, dragVisual?.slug ?? null, dragVisual?.curOff ?? 0)
   const tOff   = todayOff()
 
   return (
@@ -288,19 +302,19 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
           backgroundColor: '#eef2f4',
           backgroundImage: 'radial-gradient(circle, rgba(0,56,69,0.18) 1.5px, transparent 1.5px)',
           backgroundSize: '26px 26px',
-          cursor: panDrag.current ? 'grabbing' : cardDrag ? 'grabbing' : 'grab',
+          cursor: panDrag.current || cardDragRef.current ? 'grabbing' : 'grab',
         }}
-        onPointerDown={onCanvasPointerDown}
-        onPointerMove={onCanvasPointerMove}
-        onPointerUp={onCanvasPointerUp}
-        onPointerCancel={onCanvasPointerUp}
+        onPointerDown={onContainerPointerDown}
+        onPointerMove={onContainerPointerMove}
+        onPointerUp={onContainerPointerUp}
+        onPointerCancel={onContainerPointerUp}
       >
         {/* Drag date tooltip */}
-        {cardDrag && (
+        {dragVisual && (
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="flex items-center gap-2 bg-brand-deep text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
               <span className="opacity-60">→</span>
-              {new Date(fromOff(cardDrag.curOff) + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' })}
+              {new Date(fromOff(dragVisual.curOff) + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' })}
             </div>
           </div>
         )}
@@ -373,7 +387,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
 
             {/* Cards */}
             {layout.map(({ post, off, row }) => {
-              const isDragging = cardDrag?.slug === post.slug
+              const isDragging = dragVisual?.slug === post.slug
               const isSelected = selected?.slug === post.slug
               const x = off * DAY_W + (DAY_W - CARD_W) / 2
               const y = HEADER_H + CONNECTOR_H + row * ROW_H
@@ -387,9 +401,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
 
                   <div
                     data-card="1"
-                    onPointerDown={e => onCardPointerDown(e, post)}
-                    onPointerMove={e => onCardPointerMove(e, post.slug)}
-                    onPointerUp={e => onCardPointerUp(e, post)}
+                    data-slug={post.slug}
                     style={{
                       height: CARD_H, touchAction: 'none',
                       borderRadius: 18,

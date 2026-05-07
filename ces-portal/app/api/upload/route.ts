@@ -3,6 +3,7 @@ import { writeFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { randomUUID } from 'crypto'
 import { auth } from '@/auth'
+import { rateLimit } from '@/lib/rate-limit'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'] as const
 const MAX_BYTES = 10 * 1024 * 1024 // 10 MB
@@ -29,6 +30,9 @@ export async function POST(request: NextRequest) {
   const session = await auth()
   if (!session || session.user.role !== 'admin') {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+  if (!rateLimit({ key: `upload:${session.user.email ?? 'unknown'}`, limit: 10, windowMs: 5 * 60_000 })) {
+    return NextResponse.json({ error: 'Too many uploads' }, { status: 429 })
   }
 
   const formData = await request.formData()

@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { auth } from '@/auth'
-import { Platform, Post, Status } from '@/types/post'
+import { Format, Platform, Post, Status } from '@/types/post'
+import { loadCampaign } from '@/lib/posts'
+import { rateLimit } from '@/lib/rate-limit'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -14,11 +16,27 @@ const ALLOWED_STATUSES: Status[] = [
 ]
 
 const ALLOWED_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
+const ALLOWED_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+
+function weekNumberFor(date: string): number {
+  const campaign = loadCampaign()
+  const start = new Date(`${campaign.startDate}T00:00:00Z`).getTime()
+  const current = new Date(`${date}T00:00:00Z`).getTime()
+  return Math.max(1, Math.ceil((current - start + 1) / (1000 * 60 * 60 * 24 * 7)))
+}
 
 function pickPostUpdates(body: unknown): Partial<Post> | null {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return null
   const input = body as Record<string, unknown>
   const updates: Partial<Post> = {}
+
+  if ('title' in input) {
+    if (typeof input.title !== 'string' || input.title.trim().length === 0 || input.title.length > 180) {
+      return null
+    }
+    updates.title = input.title.trim()
+  }
 
   if ('caption' in input) {
     if (typeof input.caption !== 'string' || input.caption.length > 5000) return null
@@ -28,6 +46,25 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   if ('notes' in input) {
     if (typeof input.notes !== 'string' || input.notes.length > 2000) return null
     updates.notes = input.notes
+  }
+
+  if ('imageUrl' in input) {
+    if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 500) return null
+    if (input.imageUrl && !input.imageUrl.startsWith('/uploads/')) return null
+    updates.imageUrl = input.imageUrl
+  }
+
+  if ('scheduledDate' in input) {
+    if (typeof input.scheduledDate !== 'string' || !ISO_DATE.test(input.scheduledDate)) return null
+    updates.scheduledDate = input.scheduledDate
+    updates.weekNumber = weekNumberFor(input.scheduledDate)
+  }
+
+  if ('format' in input) {
+    if (typeof input.format !== 'string' || !ALLOWED_FORMATS.includes(input.format as Format)) {
+      return null
+    }
+    updates.format = input.format as Format
   }
 
   if ('status' in input) {
@@ -61,6 +98,9 @@ export async function PATCH(
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   if (session.user.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  if (!rateLimit({ key: `post:${session.user.email ?? 'unknown'}`, limit: 60, windowMs: 60_000 })) {
+    return NextResponse.json({ error: 'Too many updates' }, { status: 429 })
+  }
 
   const { slug } = await params
   const updates = pickPostUpdates(await request.json())

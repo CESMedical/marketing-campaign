@@ -10,12 +10,6 @@ const FORMAT_LABELS: Record<Format, string> = {
   story: 'Story', video: 'Video', text: 'Text',
 }
 
-const ADMIN_FIRST_NAMES = ['kush', 'miran']
-
-function getFirstName(s: { name?: string | null; email?: string | null } | undefined) {
-  return ((s?.name ?? s?.email ?? '').split(/[\s@]/)[0]).toLowerCase()
-}
-
 const ALL_STATUSES: Status[] = ['draft', 'clinical-review', 'brand-review', 'approved', 'scheduled', 'live']
 const ALL_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
 
@@ -28,7 +22,7 @@ const PILLAR_COLOR: Record<string, string> = {
   employee: '#16a34a', leadership: '#003845', events: '#7c3aed', tech: '#ea580c',
 }
 
-interface Comment { id: string; authorName: string; authorEmail: string; text: string; createdAt: string }
+interface Comment { id: string; authorName: string; text: string; createdAt: string; canDelete: boolean }
 
 function avatarColor(name: string) {
   const colors = ['#008080','#2563eb','#7c3aed','#ea580c','#16a34a','#d97706','#003845','#ec4899']
@@ -40,8 +34,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
   post: Post; onClose: () => void; onSave: (u: Post) => void
 }) {
   const { data: session } = useSession()
-  const firstName = getFirstName(session?.user)
-  const isAdmin = ADMIN_FIRST_NAMES.includes(firstName) || session?.user?.role === 'admin'
+  const isAdmin = session?.user?.role === 'admin'
   const serverName = (session?.user?.name ?? session?.user?.email ?? '').split(/[\s@]/)[0]
 
   const [title, setTitle]         = useState(post.title)
@@ -306,7 +299,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
                             {new Date(c.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                           </span>
                         </div>
-                        {(isAdmin || c.authorEmail === session?.user?.email) && (
+                        {c.canDelete && (
                           <button onClick={() => handleDeleteComment(c.id)} className="text-brand-deep/25 hover:text-red-400 transition-colors shrink-0" title="Delete comment">
                             <Trash2 size={12} />
                           </button>

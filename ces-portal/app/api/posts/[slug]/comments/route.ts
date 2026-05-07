@@ -4,6 +4,7 @@ import { join } from 'path'
 import { randomUUID } from 'crypto'
 import { auth } from '@/auth'
 import { getPostBySlug } from '@/lib/posts'
+import { rateLimit } from '@/lib/rate-limit'
 
 interface Comment {
   id: string
@@ -16,8 +17,6 @@ interface Comment {
 
 const FILE = join(process.cwd(), 'content', 'comments.json')
 const MAX_COMMENT_LENGTH = 1000
-const ADMIN_EMAILS = ['kush@alastralabs.com', 'miran@alastralabs.com']
-
 function readComments(): Comment[] {
   try { return JSON.parse(readFileSync(FILE, 'utf-8')) }
   catch { return [] }
@@ -25,8 +24,14 @@ function readComments(): Comment[] {
 function save(comments: Comment[]) {
   writeFileSync(FILE, JSON.stringify(comments, null, 2))
 }
-function publicComment(c: Comment) {
-  return { id: c.id, authorName: c.authorName, authorEmail: c.authorEmail, text: c.text, createdAt: c.createdAt }
+function publicComment(c: Comment, sessionEmail: string, isAdmin: boolean) {
+  return {
+    id: c.id,
+    authorName: c.authorName,
+    text: c.text,
+    createdAt: c.createdAt,
+    canDelete: isAdmin || c.authorEmail.toLowerCase() === sessionEmail,
+  }
 }
 
 export async function GET(
@@ -35,9 +40,17 @@ export async function GET(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!rateLimit({ key: `comment:${session.user.email ?? 'unknown'}`, limit: 20, windowMs: 60_000 })) {
+    return NextResponse.json({ error: 'Too many comments' }, { status: 429 })
+  }
   const { slug } = await params
   if (!getPostBySlug(slug)) return NextResponse.json({ error: 'Not found' }, { status: 404 })
-  return NextResponse.json(readComments().filter(c => c.postSlug === slug).map(publicComment))
+  const email = (session.user.email ?? '').toLowerCase()
+  return NextResponse.json(
+    readComments()
+      .filter(c => c.postSlug === slug)
+      .map(c => publicComment(c, email, session.user.role === 'admin')),
+  )
 }
 
 export async function POST(
@@ -66,7 +79,10 @@ export async function POST(
   const all = readComments()
   all.push(comment)
   save(all)
-  return NextResponse.json(publicComment(comment), { status: 201 })
+  return NextResponse.json(
+    publicComment(comment, (session.user.email ?? '').toLowerCase(), session.user.role === 'admin'),
+    { status: 201 },
+  )
 }
 
 export async function DELETE(
@@ -75,6 +91,9 @@ export async function DELETE(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!rateLimit({ key: `comment-delete:${session.user.email ?? 'unknown'}`, limit: 30, windowMs: 60_000 })) {
+    return NextResponse.json({ error: 'Too many deletes' }, { status: 429 })
+  }
 
   const { slug } = await params
   const { id } = await request.json()
@@ -85,8 +104,8 @@ export async function DELETE(
   if (!comment) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   const userEmail = (session.user.email ?? '').toLowerCase()
-  const isAdmin = ADMIN_EMAILS.includes(userEmail)
-  const isOwner = comment.authorEmail === session.user.email
+  const isAdmin = session.user.role === 'admin'
+  const isOwner = comment.authorEmail.toLowerCase() === userEmail
 
   if (!isAdmin && !isOwner) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
