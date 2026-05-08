@@ -3,8 +3,9 @@ import { auth } from '@/auth'
 import { Format, Platform, Post, Status } from '@/types/post'
 import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
-import { updatePostData } from '@/lib/post-data'
+import { updatePostData, getPostBySlugData } from '@/lib/post-data'
 import { canEditPost } from '@/lib/roles'
+import { notifyStatusChange } from '@/lib/notify'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -116,8 +117,20 @@ export async function PATCH(
   if (!updates) return NextResponse.json({ error: 'Invalid update' }, { status: 400 })
 
   try {
+    const before = await getPostBySlugData(slug)
     const updated = await updatePostData(slug, updates)
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+    if (before && updates.status && before.status !== updates.status) {
+      notifyStatusChange({
+        oldStatus: before.status,
+        newStatus: updates.status,
+        postTitle: updated.title,
+        postSlug: slug,
+        changedBy: session.user.email ?? '',
+      }).catch(console.error)
+    }
+
     return NextResponse.json(updated)
   } catch {
     return NextResponse.json({ error: 'Failed to update' }, { status: 500 })

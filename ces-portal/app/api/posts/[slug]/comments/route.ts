@@ -6,6 +6,8 @@ import { rateLimit } from '@/lib/rate-limit'
 import { canEditPost } from '@/lib/roles'
 import { sendMentionEmail } from '@/lib/email'
 import { getPostBySlugData } from '@/lib/post-data'
+import { notifyNewComment } from '@/lib/notify'
+import { logEmail } from '@/lib/email-log'
 
 const MAX_COMMENT_LENGTH = 1000
 
@@ -81,27 +83,36 @@ export async function POST(
 
   const response = publicComment(comment, (session.user.email ?? '').toLowerCase(), canEditPost(session.user.role))
 
-  // Fire @mention notifications in the background
+  // Fire notifications in the background
   const authorFirstName = comment.authorName
   const mentions = [...new Set((trimmed.match(/@(\w+)/g) ?? []).map(m => m.slice(1)))]
-  if (mentions.length > 0) {
-    const post = await getPostBySlugData(slug)
-    if (post) {
+  const post = await getPostBySlugData(slug)
+  if (post) {
+    // @mention emails
+    let mentionedEmails: string[] = []
+    if (mentions.length > 0) {
       prisma.user.findMany({
         where: { firstName: { in: mentions }, NOT: { email: comment.authorEmail } },
-      }).then(users =>
-        Promise.all(users.map(u =>
+      }).then(users => {
+        mentionedEmails = users.map(u => u.email)
+        return Promise.all(users.map(u =>
           sendMentionEmail({
-            to: u.email,
-            toFirstName: u.firstName,
+            to: u.email, toFirstName: u.firstName,
             byFirstName: authorFirstName,
-            postTitle: post.title,
-            postSlug: slug,
-            commentText: trimmed,
-          }).catch(console.error)
+            postTitle: post.title, postSlug: slug, commentText: trimmed,
+          }).then(() => logEmail({ type: 'mention', to: u.email, subject: `${authorFirstName} mentioned you on "${post.title}"`, postSlug: slug, triggeredBy: comment.authorEmail }))
+          .catch(console.error)
         ))
-      ).catch(console.error)
+      }).catch(console.error)
     }
+    // New comment notification to admins
+    notifyNewComment({
+      postTitle: post.title, postSlug: slug,
+      commentAuthor: authorFirstName,
+      commentText: trimmed,
+      commenterEmail: comment.authorEmail,
+      mentionedEmails,
+    }).catch(console.error)
   }
 
   return NextResponse.json(response, { status: 201 })
