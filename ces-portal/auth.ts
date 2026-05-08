@@ -49,6 +49,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
     },
   },
+  events: {
+    async signIn({ profile }) {
+      if (!profile) return
+      const email = getEmail(profile as Record<string, unknown>)
+      if (!email) return
+      const displayName = (profile.name as string) ?? email
+      const { syncUserOnSignIn } = await import('@/lib/user-sync')
+      syncUserOnSignIn(email, displayName).catch(console.error)
+    },
+  },
   pages: {
     signIn: '/auth/signin',
   },

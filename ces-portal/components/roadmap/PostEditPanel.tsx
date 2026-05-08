@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, Format, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
@@ -24,6 +24,7 @@ const PILLAR_COLOR: Record<string, string> = {
 }
 
 interface Comment { id: string; authorName: string; text: string; createdAt: string; canDelete: boolean }
+interface PortalUser { firstName: string; email: string }
 
 function avatarColor(name: string) {
   const colors = ['#008080','#2563eb','#7c3aed','#ea580c','#16a34a','#d97706','#003845','#ec4899']
@@ -54,8 +55,12 @@ export function PostEditPanel({ post, onClose, onSave }: {
   const [comments, setComments]   = useState<Comment[]>([])
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting]   = useState(false)
-  const fileRef = useRef<HTMLInputElement>(null)
+  const [portalUsers, setPortalUsers] = useState<PortalUser[]>([])
+  const [mentionQuery, setMentionQuery] = useState<string | null>(null)
+  const [mentionSel, setMentionSel]     = useState(0)
+  const fileRef        = useRef<HTMLInputElement>(null)
   const commentsEndRef = useRef<HTMLDivElement>(null)
+  const textareaRef    = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
     setTitle(post.title); setCaption(post.caption); setStatus(post.status)
@@ -63,6 +68,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
     setScheduledDate(post.scheduledDate.slice(0, 10))
     setNotes(post.notes ?? ''); setImageUrl(post.imageUrl ?? '')
     fetch(`/api/posts/${post.slug}/comments`).then(r => r.json()).then(setComments).catch(() => {})
+    fetch('/api/users').then(r => r.json()).then(setPortalUsers).catch(() => {})
   }, [post.slug]) // eslint-disable-line
 
   useEffect(() => {
@@ -108,6 +114,41 @@ export function PostEditPanel({ post, onClose, onSave }: {
       })
       if (res.ok) { const c = await res.json(); setComments(prev => [...prev, c]); setCommentText('') }
     } finally { setSubmitting(false) }
+  }
+
+  const filteredUsers = mentionQuery !== null
+    ? portalUsers.filter(u => u.firstName.toLowerCase().startsWith(mentionQuery.toLowerCase()) && u.email !== session?.user?.email)
+    : []
+
+  const handleCommentChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const val = e.target.value
+    setCommentText(val)
+    const cursor = e.target.selectionStart ?? val.length
+    const before = val.slice(0, cursor)
+    const m = before.match(/@(\w*)$/)
+    if (m) { setMentionQuery(m[1]); setMentionSel(0) }
+    else setMentionQuery(null)
+  }, [session?.user?.email])
+
+  function insertMention(firstName: string) {
+    const el = textareaRef.current
+    const cursor = el?.selectionStart ?? commentText.length
+    const before = commentText.slice(0, cursor)
+    const m = before.match(/@(\w*)$/)
+    if (!m) return
+    const start = cursor - m[0].length
+    const newText = commentText.slice(0, start) + `@${firstName} ` + commentText.slice(cursor)
+    setCommentText(newText)
+    setMentionQuery(null)
+    setTimeout(() => { el?.focus(); const pos = start + firstName.length + 2; el?.setSelectionRange(pos, pos) }, 0)
+  }
+
+  function renderCommentText(text: string) {
+    return text.split(/(@\w+)/g).map((part, i) =>
+      part.startsWith('@')
+        ? <span key={i} style={{ color: '#008080', fontWeight: 700 }}>{part}</span>
+        : <span key={i}>{part}</span>
+    )
   }
 
   const pc = PILLAR_COLOR[post.pillar] ?? '#003845'
@@ -308,7 +349,7 @@ export function PostEditPanel({ post, onClose, onSave }: {
                           </button>
                         )}
                       </div>
-                      <p className="text-sm text-brand-deep/80 leading-relaxed">{c.text}</p>
+                      <p className="text-sm text-brand-deep/80 leading-relaxed">{renderCommentText(c.text)}</p>
                     </div>
                   </div>
                 )
@@ -323,13 +364,41 @@ export function PostEditPanel({ post, onClose, onSave }: {
                   {(serverName || (session.user.displayName ?? session.user.name ?? 'U').split(' ')[0])[0].toUpperCase()}
                 </div>
               )}
-              <div className="flex-1 flex gap-2 items-end">
+              <div className="flex-1 flex gap-2 items-end relative">
+                {/* @mention autocomplete dropdown */}
+                {filteredUsers.length > 0 && (
+                  <div className="absolute bottom-full left-0 mb-1 z-50 bg-white border border-brand-deep/15 rounded-xl shadow-xl overflow-hidden min-w-[160px]">
+                    {filteredUsers.map((u, i) => (
+                      <button
+                        key={u.email}
+                        onMouseDown={e => { e.preventDefault(); insertMention(u.firstName) }}
+                        onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); insertMention(u.firstName) } }}
+                        className="flex items-center gap-2 w-full px-3 py-2 text-left hover:bg-brand-bg-soft transition-colors"
+                        style={{ background: i === mentionSel ? '#F4F7F8' : undefined }}
+                      >
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0" style={{ background: avatarColor(u.firstName) }}>
+                          {u.firstName[0].toUpperCase()}
+                        </div>
+                        <span className="text-xs font-semibold text-brand-deep">{u.firstName}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <textarea
+                  ref={textareaRef}
                   value={commentText}
-                  onChange={e => setCommentText(e.target.value)}
-                  placeholder="Add a comment…"
+                  onChange={handleCommentChange}
+                  placeholder="Add a comment… type @ to mention someone"
                   rows={2}
-                  onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleComment() }}
+                  onKeyDown={e => {
+                    if (filteredUsers.length > 0) {
+                      if (e.key === 'ArrowDown') { e.preventDefault(); setMentionSel(s => Math.min(s + 1, filteredUsers.length - 1)) }
+                      if (e.key === 'ArrowUp')   { e.preventDefault(); setMentionSel(s => Math.max(s - 1, 0)) }
+                      if (e.key === 'Enter' && !e.metaKey && !e.ctrlKey) { e.preventDefault(); insertMention(filteredUsers[mentionSel].firstName); return }
+                      if (e.key === 'Escape') { setMentionQuery(null) }
+                    }
+                    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleComment()
+                  }}
                   className="flex-1 rounded-xl border border-brand-deep/20 px-3 py-2 text-xs text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none"
                 />
                 <button onClick={handleComment} disabled={submitting || !commentText.trim()}

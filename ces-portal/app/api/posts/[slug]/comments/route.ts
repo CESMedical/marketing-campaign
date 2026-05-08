@@ -4,6 +4,8 @@ import { postExistsData } from '@/lib/post-data'
 import { prisma } from '@/lib/prisma'
 import { rateLimit } from '@/lib/rate-limit'
 import { canEditPost } from '@/lib/roles'
+import { sendMentionEmail } from '@/lib/email'
+import { getPostBySlugData } from '@/lib/post-data'
 
 const MAX_COMMENT_LENGTH = 1000
 
@@ -77,10 +79,32 @@ export async function POST(
     },
   })
 
-  return NextResponse.json(
-    publicComment(comment, (session.user.email ?? '').toLowerCase(), canEditPost(session.user.role)),
-    { status: 201 },
-  )
+  const response = publicComment(comment, (session.user.email ?? '').toLowerCase(), canEditPost(session.user.role))
+
+  // Fire @mention notifications in the background
+  const authorFirstName = comment.authorName
+  const mentions = [...new Set((trimmed.match(/@(\w+)/g) ?? []).map(m => m.slice(1)))]
+  if (mentions.length > 0) {
+    const post = await getPostBySlugData(slug)
+    if (post) {
+      prisma.user.findMany({
+        where: { firstName: { in: mentions }, NOT: { email: comment.authorEmail } },
+      }).then(users =>
+        Promise.all(users.map(u =>
+          sendMentionEmail({
+            to: u.email,
+            toFirstName: u.firstName,
+            byFirstName: authorFirstName,
+            postTitle: post.title,
+            postSlug: slug,
+            commentText: trimmed,
+          }).catch(console.error)
+        ))
+      ).catch(console.error)
+    }
+  }
+
+  return NextResponse.json(response, { status: 201 })
 }
 
 export async function DELETE(
