@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-const FROM = 'CES Medical <marketing@cesmedical.co.uk>'
+const FROM = 'CES Medical <noreply@cesmedical.co.uk>'
 const PORTAL = process.env.AUTH_URL ?? 'https://marketing.cesmedical.co.uk'
 
 function client(): Resend | null {
@@ -37,7 +37,7 @@ export async function sendWelcomeEmail(to: string, firstName: string): Promise<v
           <a href="${PORTAL}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">Open the portal →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
-          <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · marketing@cesmedical.co.uk</p>
+          <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · noreply@cesmedical.co.uk — please do not reply to this email</p>
         </td></tr>
       </table>
     </td></tr>
@@ -84,7 +84,7 @@ export async function sendMentionEmail(opts: {
           <a href="${postUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">View the post →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
-          <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · marketing@cesmedical.co.uk</p>
+          <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · noreply@cesmedical.co.uk — please do not reply to this email</p>
         </td></tr>
       </table>
     </td></tr>
