@@ -1,25 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { clsx } from 'clsx';
 
 const links = [
-  { href: '/', label: 'Overview' },
-  { href: '/roadmap', label: 'Roadmap' },
-  { href: '/roadmap/?view=priority', label: 'Priority Board' },
-  { href: '/about', label: 'About' },
+  { href: '/',                      label: 'Overview',      exact: true,  view: null },
+  { href: '/roadmap',               label: 'Roadmap',       exact: false, view: '' },
+  { href: '/roadmap/?view=priority',label: 'Priority Board',exact: false, view: 'priority' },
+  { href: '/about',                 label: 'About',         exact: false, view: null },
 ];
 
 export function Nav() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentView = searchParams.get('view') ?? '';
 
   return (
     <nav aria-label="Primary">
       <ul className="flex items-center gap-1 sm:gap-2">
         {links.map((link) => {
           const linkPath = link.href.split('?')[0];
-          const active = linkPath === '/' ? pathname === '/' : pathname.startsWith(linkPath);
+          const pathMatch = link.exact ? pathname === linkPath : pathname.startsWith(linkPath);
+          const active = link.view === null
+            ? pathMatch
+            : pathMatch && currentView === link.view;
           return (
             <li key={link.href}>
               <Link
