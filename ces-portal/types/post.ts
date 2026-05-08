@@ -82,6 +82,7 @@ export interface Post {
   imageUrl?: string;
   notes?: string;
   tags?: string[];
+  sortOrder?: number;
 }
 
 export interface Campaign {

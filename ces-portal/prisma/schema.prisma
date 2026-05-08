@@ -30,6 +30,7 @@ model Post {
   imageUrl             String?
   notes                String?   @db.Text
   tags                 Json?
+  sortOrder            Int       @default(0)
   comments             Comment[]
   updatedAt            DateTime  @updatedAt
 

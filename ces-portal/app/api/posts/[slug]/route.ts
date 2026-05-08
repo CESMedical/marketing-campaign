@@ -78,6 +78,11 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
     updates.status = input.status as Status
   }
 
+  if ('sortOrder' in input) {
+    if (typeof input.sortOrder !== 'number' || !Number.isInteger(input.sortOrder)) return null
+    updates.sortOrder = input.sortOrder
+  }
+
   if ('platforms' in input) {
     if (
       !Array.isArray(input.platforms) ||

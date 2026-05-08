@@ -10,7 +10,7 @@ import { ViewSwitcher } from './ViewSwitcher'
 // ─── World-space layout ───────────────────────────────────────────────────────
 const DAY_W       = 200
 const TOTAL_DAYS  = 184
-const PANEL_W     = DAY_W * TOTAL_DAYS   // the roadmap board
+const PANEL_W     = DAY_W * TOTAL_DAYS
 const HEADER_H    = 96
 const CARD_W      = 182
 const CARD_H      = 230
@@ -18,10 +18,7 @@ const CARD_GAP    = 16
 const ROW_H       = CARD_H + CARD_GAP
 const CONNECTOR_H = 24
 const PANEL_H     = HEADER_H + CONNECTOR_H + 6 * ROW_H + 80
-
-// Empty galaxy space around the panel (in world px)
 const GAL_PAD     = 800
-// Total world canvas size
 const WORLD_W     = PANEL_W + GAL_PAD * 2
 const WORLD_H     = PANEL_H + GAL_PAD * 2
 
@@ -30,26 +27,15 @@ const MIN_ZOOM  = 0.03
 const MAX_ZOOM  = 3.0
 const INIT_ZOOM = 0.55
 
-// ─── Brand palette ────────────────────────────────────────────────────────────
 const PILLAR_COLOR: Record<string, string> = {
-  educational: '#008080',
-  business:    '#2563eb',
-  premises:    '#d97706',
-  employee:    '#16a34a',
-  leadership:  '#003845',
-  events:      '#7c3aed',
-  tech:        '#ea580c',
+  educational: '#008080', business: '#2563eb', premises: '#d97706',
+  employee: '#16a34a', leadership: '#003845', events: '#7c3aed', tech: '#ea580c',
 }
 const STATUS_COLOR: Record<string, string> = {
-  draft:            '#9ca3af',
-  'clinical-review':'#f59e0b',
-  'brand-review':   '#f97316',
-  approved:         '#22c55e',
-  scheduled:        '#3b82f6',
-  live:             '#008080',
+  draft: '#9ca3af', 'clinical-review': '#f59e0b', 'brand-review': '#f97316',
+  approved: '#22c55e', scheduled: '#3b82f6', live: '#008080',
 }
 
-// ─── Date helpers ─────────────────────────────────────────────────────────────
 function toOff(s: string) {
   return Math.round((new Date(s.slice(0, 10) + 'T00:00:00Z').getTime() - EPOCH.getTime()) / 86_400_000)
 }
@@ -63,7 +49,6 @@ function fmtDay(s: string) {
   return new Date(s + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
 }
 
-// ─── Header ───────────────────────────────────────────────────────────────────
 function buildMonths() {
   const out: { label: string; x: number; w: number }[] = []
   let cur = new Date(EPOCH), x = 0
@@ -72,8 +57,7 @@ function buildMonths() {
     const dim = new Date(Date.UTC(y, m + 1, 0)).getUTCDate()
     const used = Math.min(dim - cur.getUTCDate() + 1, TOTAL_DAYS - Math.round(x / DAY_W))
     out.push({ label: cur.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }), x, w: used * DAY_W })
-    cur = new Date(Date.UTC(y, m + 1, 1))
-    x += used * DAY_W
+    cur = new Date(Date.UTC(y, m + 1, 1)); x += used * DAY_W
   }
   return out
 }
@@ -92,17 +76,54 @@ function buildWeeks() {
   return out
 }
 
-// ─── Card stacking ────────────────────────────────────────────────────────────
-function stackCards(posts: Post[], dragSlug: string | null, dragOff: number) {
-  const cols = new Map<number, number>()
-  return posts
-    .map(p => ({ p, off: Math.max(0, Math.min(TOTAL_DAYS - 1, dragSlug === p.slug ? dragOff : toOff(p.scheduledDate))) }))
-    .sort((a, b) => a.off - b.off)
-    .map(({ p, off }) => { const r = cols.get(off) ?? 0; cols.set(off, r + 1); return { post: p, off, row: r } })
+// ─── 2D card stacking ─────────────────────────────────────────────────────────
+// drag.idx = insert-before index in the target column (0 = top)
+function stackCards(posts: Post[], drag: { slug: string; off: number; idx: number } | null) {
+  if (!drag) {
+    const cols = new Map<number, number>()
+    return [...posts]
+      .sort((a, b) => {
+        const oa = toOff(a.scheduledDate), ob = toOff(b.scheduledDate)
+        if (oa !== ob) return oa - ob
+        return (a.sortOrder ?? 0) - (b.sortOrder ?? 0)
+      })
+      .map(p => {
+        const off = Math.max(0, Math.min(TOTAL_DAYS - 1, toOff(p.scheduledDate)))
+        const r = cols.get(off) ?? 0; cols.set(off, r + 1)
+        return { post: p, off, row: r }
+      })
+  }
+
+  const { slug: ds, off: dOff, idx } = drag
+  const draggedPost = posts.find(p => p.slug === ds)!
+
+  // Build columns without dragged card
+  const colMap = new Map<number, Post[]>()
+  for (const p of posts) {
+    if (p.slug === ds) continue
+    const off = Math.max(0, Math.min(TOTAL_DAYS - 1, toOff(p.scheduledDate)))
+    if (!colMap.has(off)) colMap.set(off, [])
+    colMap.get(off)!.push(p)
+  }
+  for (const [, col] of colMap) col.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+
+  // Insert dragged card at target position in target column
+  if (!colMap.has(dOff)) colMap.set(dOff, [])
+  const tc = colMap.get(dOff)!
+  tc.splice(Math.min(idx, tc.length), 0, draggedPost)
+
+  const result: { post: Post; off: number; row: number }[] = []
+  for (const [off, col] of colMap) col.forEach((p, row) => result.push({ post: p, off, row }))
+  return result
 }
 
-interface CardDrag { slug: string; post: Post; startX: number; startOff: number; curOff: number }
-interface PanDrag  { startX: number; startY: number; startPanX: number; startPanY: number }
+interface CardDrag {
+  slug: string; post: Post
+  startX: number; startY: number
+  startOff: number; curOff: number
+  startRow: number; insertIdx: number
+}
+interface PanDrag { startX: number; startY: number; startPanX: number; startPanY: number }
 
 const MONTHS = buildMonths()
 const WEEKS  = buildWeeks()
@@ -119,64 +140,55 @@ function SideBtn({ onClick, title, children }: { onClick: () => void; title: str
 export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
-  // dragVisual drives layout recalc — ref holds the real-time drag state
-  const [dragVisual, setDragVisual] = useState<{ slug: string; curOff: number } | null>(null)
+  const [dragVisual, setDragVisual] = useState<{ slug: string; curOff: number; insertIdx: number } | null>(null)
   const [savedSlug, setSavedSlug]   = useState<string | null>(null)
   const [zoomPct, setZoomPct]       = useState(Math.round(INIT_ZOOM * 100))
 
-  const zoomRef    = useRef(INIT_ZOOM)
-  const panXRef    = useRef(0)
-  const panYRef    = useRef(0)
-  const panDrag    = useRef<PanDrag | null>(null)
-  const cardDragRef = useRef<CardDrag | null>(null)   // always fresh, no stale closures
+  const zoomRef      = useRef(INIT_ZOOM)
+  const panXRef      = useRef(0)
+  const panYRef      = useRef(0)
+  const panDrag      = useRef<PanDrag | null>(null)
+  const cardDragRef  = useRef<CardDrag | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef    = useRef<HTMLDivElement>(null)
   const rafRef       = useRef<number>(0)
 
+  // Compute layout — used both for rendering and for startRow calculation on drag start
+  const drag = dragVisual ? { slug: dragVisual.slug, off: dragVisual.curOff, idx: dragVisual.insertIdx } : null
+  const layout = stackCards(posts, drag)
+
   function applyTransform(z: number, x: number, y: number) {
     zoomRef.current = z; panXRef.current = x; panYRef.current = y
-    if (canvasRef.current)
-      canvasRef.current.style.transform = `translate(${x}px, ${y}px) scale(${z})`
+    if (canvasRef.current) canvasRef.current.style.transform = `translate(${x}px, ${y}px) scale(${z})`
     cancelAnimationFrame(rafRef.current)
-    rafRef.current = requestAnimationFrame(() => {
-      setZoomPct(Math.round(z * 100))
-    })
+    rafRef.current = requestAnimationFrame(() => setZoomPct(Math.round(z * 100)))
   }
 
   function centerOnPanel(z: number) {
     const vw = containerRef.current?.clientWidth  ?? window.innerWidth
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
-    // x: put today near 40% from left
     const todayX = -(GAL_PAD + todayOff() * DAY_W) * z + vw * 0.4
-    // y: center the panel
     const panelCenterY = -(GAL_PAD + PANEL_H / 2) * z + vh / 2
     return { x: todayX, y: panelCenterY }
   }
 
-  // ── wheel: vertical = zoom, horizontal = pan ──────────────────────────────
   useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
+    const el = containerRef.current; if (!el) return
     const { x, y } = centerOnPanel(INIT_ZOOM)
     applyTransform(INIT_ZOOM, x, y)
 
     function onWheel(e: WheelEvent) {
       e.preventDefault()
       const z = zoomRef.current, px = panXRef.current, py = panYRef.current
-
       const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY)
-
       if (isHorizontal) {
-        // horizontal scroll → pan left/right
         applyTransform(z, px - e.deltaX, py)
       } else if (e.ctrlKey || e.metaKey) {
-        // pinch / ctrl+scroll → zoom
         const rect = (containerRef.current as HTMLDivElement).getBoundingClientRect()
         const mx = e.clientX - rect.left, my = e.clientY - rect.top
         const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * Math.pow(0.999, e.deltaY)))
         applyTransform(nz, mx + (px - mx) * nz / z, my + (py - my) * nz / z)
       } else {
-        // vertical scroll → zoom to cursor
         const rect = (containerRef.current as HTMLDivElement).getBoundingClientRect()
         const mx = e.clientX - rect.left, my = e.clientY - rect.top
         const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * Math.pow(0.998, e.deltaY)))
@@ -187,21 +199,19 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     return () => (el as HTMLDivElement).removeEventListener('wheel', onWheel)
   }, []) // eslint-disable-line
 
-  // ── unified container pointer handlers ───────────────────────────────────
   function onContainerPointerDown(e: React.PointerEvent<HTMLDivElement>) {
     const cardEl = (e.target as HTMLElement).closest('[data-card]') as HTMLElement | null
     if (cardEl) {
-      // Card drag start
       const slug = cardEl.dataset.slug!
       const post = posts.find(p => p.slug === slug)
       if (!post) return
       e.currentTarget.setPointerCapture(e.pointerId)
       const startOff = toOff(post.scheduledDate)
-      cardDragRef.current = { slug, post, startX: e.clientX, startOff, curOff: startOff }
-      setDragVisual({ slug, curOff: startOff })
+      const startRow = layout.find(l => l.post.slug === slug)?.row ?? 0
+      cardDragRef.current = { slug, post, startX: e.clientX, startY: e.clientY, startOff, curOff: startOff, startRow, insertIdx: startRow }
+      setDragVisual({ slug, curOff: startOff, insertIdx: startRow })
       setSelected(null)
     } else {
-      // Canvas pan start
       e.currentTarget.setPointerCapture(e.pointerId)
       panDrag.current = { startX: e.clientX, startY: e.clientY, startPanX: panXRef.current, startPanY: panYRef.current }
     }
@@ -210,11 +220,24 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   function onContainerPointerMove(e: React.PointerEvent<HTMLDivElement>) {
     const cd = cardDragRef.current
     if (cd) {
-      const delta = Math.round((e.clientX - cd.startX) / (DAY_W * zoomRef.current))
-      const newOff = Math.max(0, Math.min(TOTAL_DAYS - 1, cd.startOff + delta))
-      if (newOff !== cd.curOff) {
-        cd.curOff = newOff
-        setDragVisual({ slug: cd.slug, curOff: newOff })
+      // Horizontal → date
+      const newOff = Math.max(0, Math.min(TOTAL_DAYS - 1,
+        cd.startOff + Math.round((e.clientX - cd.startX) / (DAY_W * zoomRef.current))
+      ))
+
+      // Vertical → insert position within target column
+      const rect = (containerRef.current as HTMLDivElement).getBoundingClientRect()
+      const worldY = (e.clientY - rect.top - panYRef.current) / zoomRef.current - GAL_PAD
+      const panelY = worldY - HEADER_H - CONNECTOR_H
+      const targetColCount = posts.filter(p =>
+        p.slug !== cd.slug &&
+        Math.max(0, Math.min(TOTAL_DAYS - 1, toOff(p.scheduledDate))) === newOff
+      ).length
+      const newInsertIdx = Math.max(0, Math.min(targetColCount, Math.round(panelY / ROW_H)))
+
+      if (newOff !== cd.curOff || newInsertIdx !== cd.insertIdx) {
+        cd.curOff = newOff; cd.insertIdx = newInsertIdx
+        setDragVisual({ slug: cd.slug, curOff: newOff, insertIdx: newInsertIdx })
       }
     } else if (panDrag.current) {
       applyTransform(zoomRef.current,
@@ -230,28 +253,52 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     if (cd) {
       cardDragRef.current = null
       setDragVisual(null)
-      if (cd.curOff === cd.startOff) {
+
+      const dragDist = Math.sqrt((e.clientX - cd.startX) ** 2 + (e.clientY - cd.startY) ** 2)
+
+      if (dragDist < 8) {
         // Tap — open panel
         setSelected(s => s?.slug === cd.slug ? null : cd.post)
       } else {
-        // Drop — save new date
-        const res = await fetch(`/api/posts/${cd.slug}`, {
-          method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ scheduledDate: fromOff(cd.curOff) }),
-        })
-        if (res.ok) {
-          const updated = await res.json()
-          setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
-          if (selected?.slug === updated.slug) setSelected(updated)
-          setSavedSlug(updated.slug)
-          setTimeout(() => setSavedSlug(s => s === updated.slug ? null : s), 2500)
-        }
+        // Drag — save new date + position
+        const newDate = fromOff(cd.curOff)
+
+        // Build target column: non-dragged cards sorted by sortOrder
+        const targetColPosts = posts
+          .filter(p => p.slug !== cd.slug && toOff(p.scheduledDate) === cd.curOff)
+          .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+
+        // Insert dragged card at chosen position
+        const newCol = [...targetColPosts]
+        newCol.splice(Math.min(cd.insertIdx, newCol.length), 0, cd.post)
+
+        // PATCH all cards in target column with new sortOrder (and date for dragged card)
+        const results = await Promise.all(
+          newCol.map((p, idx) =>
+            fetch(`/api/posts/${p.slug}`, {
+              method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                sortOrder: idx,
+                ...(p.slug === cd.slug ? { scheduledDate: newDate } : {}),
+              }),
+            }).then(r => r.ok ? r.json() : null)
+          )
+        )
+
+        // Update local state
+        const updMap = new Map(
+          (results as (Post | null)[]).filter(Boolean).map(r => [r!.slug, r!])
+        )
+        setPosts(prev => prev.map(p => updMap.get(p.slug) ?? p))
+        if (selected?.slug && updMap.has(selected.slug)) setSelected(updMap.get(selected.slug)!)
+
+        setSavedSlug(cd.slug)
+        setTimeout(() => setSavedSlug(s => s === cd.slug ? null : s), 2500)
       }
     }
     panDrag.current = null
   }
 
-  // ── controls ──────────────────────────────────────────────────────────────
   function zoomBy(f: number) {
     const vw = containerRef.current?.clientWidth  ?? window.innerWidth
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
@@ -260,26 +307,20 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
     const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z * f))
     applyTransform(nz, mx + (px - mx) * nz / z, my + (py - my) * nz / z)
   }
-  function jumpToday() {
-    const { x, y } = centerOnPanel(zoomRef.current)
-    applyTransform(zoomRef.current, x, y)
-  }
+  function jumpToday() { const { x, y } = centerOnPanel(zoomRef.current); applyTransform(zoomRef.current, x, y) }
   function fitAll() {
     const vw = containerRef.current?.clientWidth  ?? window.innerWidth
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
     const nz = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, Math.min(vw / WORLD_W, vh / WORLD_H) * 0.85))
-    const cx = (vw - WORLD_W * nz) / 2
-    const cy = (vh - WORLD_H * nz) / 2
-    applyTransform(nz, cx, cy)
+    applyTransform(nz, (vw - WORLD_W * nz) / 2, (vh - WORLD_H * nz) / 2)
   }
 
-  const layout = stackCards(posts, dragVisual?.slug ?? null, dragVisual?.curOff ?? 0)
-  const tOff   = todayOff()
+  const tOff = todayOff()
 
   return (
     <div className="flex fixed inset-0 z-10" style={{ paddingTop: '64px' }}>
 
-      {/* ── Sidebar ────────────────────────────────────────────────────────── */}
+      {/* Sidebar */}
       <div className="flex flex-col items-center gap-2 px-2 py-3 bg-white border-r border-brand-deep/10 shrink-0 z-40">
         <span className="text-[10px] font-mono font-bold text-brand-deep/30 tabular-nums pb-1">{zoomPct}%</span>
         <div className="w-7 h-px bg-brand-deep/10" />
@@ -290,8 +331,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         <SideBtn onClick={jumpToday} title="Jump to today"><CalendarDays size={14} /></SideBtn>
       </div>
 
-      {/* ── Infinite canvas viewport ──────────────────────────────────────── */}
-      {/* Floating overlay: view switcher top-right, controls bottom-left */}
+      {/* Canvas viewport */}
       <div className="absolute top-[72px] right-4 z-20 pointer-events-auto">
         <ViewSwitcher />
       </div>
@@ -309,54 +349,48 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         onPointerUp={onContainerPointerUp}
         onPointerCancel={onContainerPointerUp}
       >
-        {/* Drag date tooltip */}
-        {dragVisual && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-            <div className="flex items-center gap-2 bg-brand-deep text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
-              <span className="opacity-60">→</span>
-              {new Date(fromOff(dragVisual.curOff) + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' })}
+        {/* Drag tooltip: date + position within column */}
+        {dragVisual && (() => {
+          const colCount = layout.filter(l => l.off === dragVisual.curOff).length
+          const dateStr = new Date(fromOff(dragVisual.curOff) + 'T00:00:00Z')
+            .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' })
+          return (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+              <div className="flex items-center gap-3 bg-brand-deep text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
+                <span className="opacity-60">→</span>
+                {dateStr}
+                {colCount > 1 && (
+                  <span className="text-[11px] font-normal opacity-60">
+                    · {dragVisual.insertIdx + 1} of {colCount}
+                  </span>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        })()}
 
-        {/* Save confirmation toast */}
+        {/* Save toast */}
         {savedSlug && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="flex items-center gap-2 bg-green-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-xl">
-              ✓ Date saved
+              ✓ Saved
             </div>
           </div>
         )}
 
-        {/* World canvas — includes galaxy padding around the panel */}
+        {/* World canvas */}
         <div
           ref={canvasRef}
           className="absolute top-0 left-0"
-          style={{
-            width: WORLD_W,
-            height: WORLD_H,
-            transformOrigin: '0 0',
-            transform: `translate(0px, 0px) scale(${INIT_ZOOM})`,
-            willChange: 'transform',
-          }}
+          style={{ width: WORLD_W, height: WORLD_H, transformOrigin: '0 0', transform: `translate(0px, 0px) scale(${INIT_ZOOM})`, willChange: 'transform' }}
         >
-          {/* ── Roadmap content — cards float directly on the canvas ──────── */}
-          <div
-            style={{
-              position: 'absolute',
-              left: GAL_PAD,
-              top: GAL_PAD,
-              width: PANEL_W,
-              height: PANEL_H,
-            }}
-          >
+          <div style={{ position: 'absolute', left: GAL_PAD, top: GAL_PAD, width: PANEL_W, height: PANEL_H }}>
+
             {/* Month header */}
             {MONTHS.map((m, i) => (
               <div key={i} className="absolute top-0 flex items-end"
                 style={{ left: m.x, width: m.w, height: 52, borderRight: '1px solid rgba(0,56,69,0.12)', borderBottom: '1px solid rgba(0,56,69,0.1)' }}>
-                <span style={{ fontSize: 22, fontWeight: 800, color: '#003845', paddingLeft: 20, paddingBottom: 10, letterSpacing: '-0.4px' }}>
-                  {m.label}
-                </span>
+                <span style={{ fontSize: 22, fontWeight: 800, color: '#003845', paddingLeft: 20, paddingBottom: 10, letterSpacing: '-0.4px' }}>{m.label}</span>
               </div>
             ))}
 
@@ -373,7 +407,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
             {/* Timeline bar */}
             <div className="absolute left-0 right-0" style={{ top: HEADER_H, height: 3, background: 'rgba(0,56,69,0.12)' }} />
 
-            {/* Today */}
+            {/* Today indicator */}
             {tOff >= 0 && tOff < TOTAL_DAYS && (
               <>
                 <div style={{ position: 'absolute', left: tOff * DAY_W, width: DAY_W, top: 0, height: PANEL_H, background: 'rgba(0,128,128,0.05)' }} />
@@ -384,6 +418,22 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
                 </div>
               </>
             )}
+
+            {/* Drop indicator line — shows where dragged card will land */}
+            {dragVisual && (() => {
+              const { curOff, insertIdx } = dragVisual
+              const x = curOff * DAY_W + (DAY_W - CARD_W) / 2 - 4
+              const y = HEADER_H + CONNECTOR_H + insertIdx * ROW_H - 5
+              return (
+                <div style={{
+                  position: 'absolute', left: x, top: y,
+                  width: CARD_W + 8, height: 4,
+                  background: '#008080', borderRadius: 2,
+                  pointerEvents: 'none', zIndex: 60,
+                  boxShadow: '0 0 8px rgba(0,128,128,0.5)',
+                }} />
+              )
+            })()}
 
             {/* Cards */}
             {layout.map(({ post, off, row }) => {
@@ -398,7 +448,6 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
                 <div key={post.slug} data-card="1" style={{ position: 'absolute', left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : 10 }}>
                   <div style={{ position: 'absolute', left: CARD_W / 2 - 1, bottom: CARD_H, width: 2, height: CONNECTOR_H, background: 'rgba(0,56,69,0.15)' }} />
                   <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #eef2f4', boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }} />
-
                   <div
                     data-card="1"
                     data-slug={post.slug}

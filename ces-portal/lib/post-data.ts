@@ -31,6 +31,7 @@ function toPost(post: DbPost): Post {
     imageUrl: post.imageUrl ?? undefined,
     notes: post.notes ?? undefined,
     tags: (post.tags ?? undefined) as unknown as Post['tags'],
+    sortOrder: post.sortOrder,
   }
 }
 
@@ -41,7 +42,7 @@ function jsonPosts(): Post[] {
 export async function loadPostsData(): Promise<Post[]> {
   if (!hasDatabase()) return jsonPosts()
   const posts = await prisma.post.findMany({
-    orderBy: [{ scheduledDate: 'asc' }, { id: 'asc' }],
+    orderBy: [{ scheduledDate: 'asc' }, { sortOrder: 'asc' }, { id: 'asc' }],
   })
   // If database is connected but empty, seed it and return JSON in the meantime
   if (posts.length === 0) {
@@ -118,6 +119,7 @@ export async function updatePostData(slug: string, updates: Partial<Post>): Prom
       caption: updates.caption,
       imageUrl: updates.imageUrl,
       notes: updates.notes,
+      sortOrder: updates.sortOrder,
     },
   })
   return toPost(post)
