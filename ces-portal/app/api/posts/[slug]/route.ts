@@ -5,7 +5,7 @@ import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
 import { updatePostData, getPostBySlugData } from '@/lib/post-data'
 import { canEditPost } from '@/lib/roles'
-import { notifyStatusChange } from '@/lib/notify'
+import { notifyStatusChange, notifyScheduledThisWeek, isThisWeek } from '@/lib/notify'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -128,6 +128,15 @@ export async function PATCH(
         postTitle: updated.title,
         postSlug: slug,
         changedBy: session.user.email ?? '',
+      }).catch(console.error)
+    }
+
+    if (before && updates.scheduledDate && updates.scheduledDate !== before.scheduledDate && isThisWeek(updates.scheduledDate)) {
+      notifyScheduledThisWeek({
+        postTitle: updated.title,
+        postSlug: slug,
+        scheduledDate: updates.scheduledDate,
+        movedBy: session.user.email ?? '',
       }).catch(console.error)
     }
 

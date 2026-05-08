@@ -1,4 +1,4 @@
-import { sendStatusChangeEmail, sendNewCommentEmail } from './email'
+import { sendStatusChangeEmail, sendNewCommentEmail, sendScheduledThisWeekEmail } from './email'
 import { logEmail } from './email-log'
 import { prisma } from './prisma'
 
@@ -39,6 +39,41 @@ export async function notifyStatusChange(opts: {
     const toFirstName = await firstNameFor(to)
     await sendStatusChangeEmail({ to, toFirstName, ...opts, changedBy: opts.changedBy.split('@')[0] }).catch(console.error)
     await logEmail({ type: 'status_change', to, subject, postSlug: opts.postSlug, triggeredBy: opts.changedBy })
+  }))
+}
+
+function currentWeekRange(): { from: string; to: string } {
+  const now = new Date()
+  const day = now.getUTCDay() || 7
+  const monday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - day + 1))
+  const sunday = new Date(Date.UTC(monday.getUTCFullYear(), monday.getUTCMonth(), monday.getUTCDate() + 6))
+  return { from: monday.toISOString().slice(0, 10), to: sunday.toISOString().slice(0, 10) }
+}
+
+export function isThisWeek(date: string): boolean {
+  const { from, to } = currentWeekRange()
+  return date >= from && date <= to
+}
+
+export async function notifyScheduledThisWeek(opts: {
+  postTitle: string
+  postSlug: string
+  scheduledDate: string
+  movedBy: string
+}): Promise<void> {
+  const recipients = splitEnvEmails('ADMIN_EMAILS', 'EDITOR_EMAILS').filter(
+    e => e !== opts.movedBy.toLowerCase()
+  )
+  if (recipients.length === 0) return
+
+  const dateLabel = new Date(opts.scheduledDate + 'T00:00:00Z')
+    .toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' })
+  const subject = `Post scheduled for this week: "${opts.postTitle}"`
+
+  await Promise.all(recipients.map(async to => {
+    const firstName = await firstNameFor(to)
+    await sendScheduledThisWeekEmail({ to, toFirstName: firstName, ...opts, dateLabel }).catch(console.error)
+    await logEmail({ type: 'scheduled_this_week', to, subject, postSlug: opts.postSlug, triggeredBy: opts.movedBy })
   }))
 }
 
