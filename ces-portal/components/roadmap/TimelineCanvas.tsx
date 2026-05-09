@@ -146,6 +146,9 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
   const [showNewPost, setShowNewPost] = useState(false)
+
+  // Sync when roadmap changes (key prop handles full remount, this covers partial updates)
+  useEffect(() => { setPosts(init) }, [init])
   const [dragVisual, setDragVisual] = useState<{ slug: string; curOff: number; insertIdx: number } | null>(null)
   const [savedSlug, setSavedSlug]   = useState<string | null>(null)
   const [zoomPct, setZoomPct]       = useState(Math.round(INIT_ZOOM * 100))

@@ -32,7 +32,7 @@ export function RoadmapClient({ posts: allPosts, roadmaps, currentRoadmapId }: {
   );
 
   if (view === 'timeline') {
-    return <TimelineCanvas posts={posts} roadmapId={currentRoadmapId} switcher={switcher} />;
+    return <TimelineCanvas key={currentRoadmapId ?? 'all'} posts={posts} roadmapId={currentRoadmapId} switcher={switcher} />;
   }
 
   return (
