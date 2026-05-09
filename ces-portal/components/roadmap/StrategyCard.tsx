@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { FileText, Upload, Download, Eye, Pencil, Check, X, Loader2 } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
@@ -21,11 +21,10 @@ function viewerUrl(fileUrl: string, fileName: string | null): string {
   if (officeExts.includes(ext)) {
     return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`
   }
-  return fileUrl // PDF and others open natively in browser
+  return fileUrl
 }
 
 function downloadUrl(fileUrl: string): string {
-  // Cloudinary raw uploads: insert fl_attachment to force download
   if (fileUrl.includes('res.cloudinary.com')) {
     return fileUrl.replace('/raw/upload/', '/raw/upload/fl_attachment/')
   }
@@ -42,7 +41,6 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
   const [title, setTitle]         = useState('Strategy Document')
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving]       = useState(false)
-  const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!roadmapId) { setLoading(false); return }
@@ -54,6 +52,7 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
   }, [roadmapId])
 
   async function saveStrategy(patch: Partial<{ strategyTitle: string; strategyFileUrl: string; strategyFileName: string }>) {
+    if (!roadmapId) return
     const res = await fetch(`/api/roadmaps/${roadmapId}/strategy`, {
       method: 'PATCH', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(patch),
@@ -83,9 +82,14 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
   const extColor: Record<string, string> = { PDF: '#e34234', DOCX: '#2b579a', DOC: '#2b579a', XLSX: '#217346', XLS: '#217346', PPTX: '#d24726', PPT: '#d24726' }
   const badgeColor = extColor[ext] ?? '#003845'
 
-  return (
-    <div style={{ width: CARD_W, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: '6px solid #003845', overflow: 'hidden' }}>
+  // Stop canvas pan from intercepting clicks on this card
+  function stopPan(e: React.PointerEvent) { e.stopPropagation() }
 
+  return (
+    <div
+      onPointerDown={stopPan}
+      style={{ width: CARD_W, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: '6px solid #003845', overflow: 'hidden', userSelect: 'none' }}
+    >
       {/* Header */}
       <div style={{ background: '#003845', padding: '18px 20px' }}>
         <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 8 }}>
@@ -135,7 +139,6 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
           <Loader2 size={28} style={{ color: 'rgba(0,56,69,0.2)', marginTop: 40 }} />
         ) : doc?.fileUrl ? (
           <>
-            {/* File type badge + icon */}
             <div style={{ position: 'relative' }}>
               <div style={{ width: 72, height: 80, borderRadius: 12, background: '#f4f7f8', border: '1.5px solid rgba(0,56,69,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <FileText size={36} color="#003845" />
@@ -157,33 +160,21 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
             </div>
 
             <div style={{ display: 'flex', gap: 8 }}>
-              <a
-                href={viewerUrl(doc.fileUrl, doc.fileName)}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 7, background: '#003845', color: '#fff', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
-              >
+              <a href={viewerUrl(doc.fileUrl, doc.fileName)} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 7, background: '#003845', color: '#fff', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 <Eye size={14} /> View
               </a>
-              <a
-                href={downloadUrl(doc.fileUrl)}
-                download={doc.fileName ?? 'strategy'}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,56,69,0.08)', border: '1.5px solid rgba(0,56,69,0.15)', color: '#003845', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}
-              >
+              <a href={downloadUrl(doc.fileUrl)} download={doc.fileName ?? 'strategy'} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,56,69,0.08)', border: '1.5px solid rgba(0,56,69,0.15)', color: '#003845', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 <Download size={14} /> Download
               </a>
             </div>
 
             {canEdit && (
-              <button
-                onClick={() => fileRef.current?.click()}
-                disabled={uploading}
-                style={{ fontSize: 12, color: 'rgba(0,56,69,0.4)', cursor: 'pointer', background: 'none', border: 'none', textDecoration: 'underline' }}
-              >
+              <label style={{ fontSize: 12, color: 'rgba(0,56,69,0.4)', cursor: 'pointer', textDecoration: 'underline' }}>
                 {uploading ? 'Uploading…' : 'Replace document'}
-              </button>
+                <input type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }} onChange={handleUpload} disabled={uploading} />
+              </label>
             )}
           </>
         ) : canEdit ? (
@@ -194,13 +185,10 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
             <p style={{ fontSize: 13, color: 'rgba(0,56,69,0.45)', textAlign: 'center', lineHeight: 1.5, maxWidth: 220 }}>
               Upload your strategy document to reference it alongside the roadmap
             </p>
-            <button
-              onClick={() => fileRef.current?.click()}
-              disabled={uploading}
-              style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(0,56,69,0.05)', border: '1.5px dashed rgba(0,56,69,0.2)', borderRadius: 12, padding: '11px 20px', fontSize: 13, fontWeight: 700, color: '#003845', cursor: 'pointer' }}
-            >
+            <label style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(0,56,69,0.05)', border: '1.5px dashed rgba(0,56,69,0.2)', borderRadius: 12, padding: '11px 20px', fontSize: 13, fontWeight: 700, color: '#003845', cursor: uploading ? 'wait' : 'pointer' }}>
               {uploading ? <><Loader2 size={14} /> Uploading…</> : <><Upload size={14} /> Upload document</>}
-            </button>
+              <input type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }} onChange={handleUpload} disabled={uploading} />
+            </label>
             <p style={{ fontSize: 11, color: 'rgba(0,56,69,0.3)', textAlign: 'center' }}>PDF, Word, Excel, PowerPoint · max 50 MB</p>
           </>
         ) : (
@@ -211,8 +199,6 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
             <p style={{ fontSize: 13, color: 'rgba(0,56,69,0.4)', textAlign: 'center' }}>No strategy document uploaded yet</p>
           </>
         )}
-
-        {roadmapId && <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }} onChange={handleUpload} />}
       </div>
     </div>
   )
