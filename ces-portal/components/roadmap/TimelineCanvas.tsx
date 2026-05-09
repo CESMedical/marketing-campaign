@@ -182,9 +182,17 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   function centerOnPanel(z: number) {
     const vw = containerRef.current?.clientWidth  ?? window.innerWidth
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
-    const todayX = -(GAL_PAD + todayOff() * DAY_W) * z + vw * 0.4
     const panelCenterY = -(GAL_PAD + PANEL_H / 2) * z + vh / 2
-    return { x: todayX, y: panelCenterY }
+
+    if (roadmapId) {
+      // Centre between strategy card mid-point and today so both are visible
+      const stratMid  = STRAT_X + STRAT_W / 2
+      const todayWorld = GAL_PAD + todayOff() * DAY_W
+      const midWorld   = (stratMid + todayWorld) / 2
+      return { x: -midWorld * z + vw / 2, y: panelCenterY }
+    }
+
+    return { x: -(GAL_PAD + todayOff() * DAY_W) * z + vw * 0.4, y: panelCenterY }
   }
 
   useEffect(() => {

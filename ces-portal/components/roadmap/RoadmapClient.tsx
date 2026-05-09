@@ -31,8 +31,11 @@ export function RoadmapClient({ posts: allPosts, roadmaps, currentRoadmapId }: {
     <RoadmapSwitcher roadmaps={roadmaps} currentId={currentRoadmapId} canEdit={editable} />
   );
 
+  // Fall back to first roadmap so the strategy card always appears
+  const effectiveRoadmapId = currentRoadmapId ?? roadmaps[0]?.id
+
   if (view === 'timeline') {
-    return <TimelineCanvas key={currentRoadmapId ?? 'all'} posts={posts} roadmapId={currentRoadmapId} switcher={switcher} />;
+    return <TimelineCanvas key={effectiveRoadmapId ?? 'all'} posts={posts} roadmapId={effectiveRoadmapId} switcher={switcher} />;
   }
 
   return (
