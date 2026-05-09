@@ -16,8 +16,9 @@ const PILLAR_COLOR: Record<string, string> = {
   employee: '#16a34a', leadership: '#003845', events: '#7c3aed', tech: '#ea580c',
 }
 
-export function NewPostModal({ defaultDate, onClose, onCreate }: {
+export function NewPostModal({ defaultDate, roadmapId, onClose, onCreate }: {
   defaultDate: string
+  roadmapId?: string
   onClose: () => void
   onCreate: (post: Post) => void
 }) {
@@ -42,7 +43,7 @@ export function NewPostModal({ defaultDate, onClose, onCreate }: {
       const res = await fetch('/api/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: title.trim(), pillar, platforms, format, scheduledDate: date }),
+        body: JSON.stringify({ title: title.trim(), pillar, platforms, format, scheduledDate: date, roadmapId }),
       })
       if (res.ok) { onCreate(await res.json()); onClose() }
       else { const d = await res.json(); setError(d.error ?? 'Failed to create') }

@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json()
-  const { title, pillar, platforms, format, scheduledDate } = body
+  const { title, pillar, platforms, format, scheduledDate, roadmapId } = body
 
   if (typeof title !== 'string' || title.trim().length === 0 || title.length > 180) {
     return NextResponse.json({ error: 'Invalid title' }, { status: 400 })
@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
     format,
     scheduledDate,
     weekNumber: weekNumberFor(scheduledDate),
+    roadmapId: typeof roadmapId === 'string' ? roadmapId : undefined,
   })
 
   if (!post) return NextResponse.json({ error: 'Database unavailable' }, { status: 503 })

@@ -138,7 +138,11 @@ function SideBtn({ onClick, title, children }: { onClick: () => void; title: str
   )
 }
 
-export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
+export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
+  posts: Post[]
+  roadmapId?: string
+  switcher?: React.ReactNode
+}) {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
   const [showNewPost, setShowNewPost] = useState(false)
@@ -335,7 +339,12 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         <SideBtn onClick={() => setShowNewPost(true)} title="New post"><Plus size={15} /></SideBtn>
       </div>
 
-      {/* Canvas viewport */}
+      {/* Canvas overlays: roadmap switcher top-left, view switcher top-right */}
+      {switcher && (
+        <div className="absolute top-[72px] left-14 z-20 pointer-events-auto">
+          {switcher}
+        </div>
+      )}
       <div className="absolute top-[72px] right-4 z-20 pointer-events-auto">
         <ViewSwitcher />
       </div>
@@ -526,6 +535,7 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
       {showNewPost && (
         <NewPostModal
           defaultDate={new Date().toISOString().slice(0, 10)}
+          roadmapId={roadmapId}
           onClose={() => setShowNewPost(false)}
           onCreate={post => setPosts(prev => [...prev, post])}
         />

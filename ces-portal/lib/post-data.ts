@@ -32,6 +32,7 @@ function toPost(post: DbPost): Post {
     notes: post.notes ?? undefined,
     tags: (post.tags ?? undefined) as unknown as Post['tags'],
     sortOrder: post.sortOrder,
+    roadmapId: post.roadmapId ?? undefined,
   }
 }
 
@@ -39,13 +40,14 @@ function jsonPosts(): Post[] {
   return postsData as Post[]
 }
 
-export async function loadPostsData(): Promise<Post[]> {
+export async function loadPostsData(opts?: { roadmapId?: string }): Promise<Post[]> {
   if (!hasDatabase()) return jsonPosts()
+  const where = opts?.roadmapId ? { roadmapId: opts.roadmapId } : {}
   const posts = await prisma.post.findMany({
+    where,
     orderBy: [{ scheduledDate: 'asc' }, { sortOrder: 'asc' }, { id: 'asc' }],
   })
-  // If database is connected but empty, seed it and return JSON in the meantime
-  if (posts.length === 0) {
+  if (posts.length === 0 && !opts?.roadmapId) {
     seedDatabase().catch(() => {})
     return jsonPosts()
   }
@@ -142,6 +144,7 @@ export async function createPostData(data: {
   format: Post['format']
   scheduledDate: string
   weekNumber: number
+  roadmapId?: string
 }): Promise<Post | undefined> {
   if (!hasDatabase()) return undefined
   const count = await prisma.post.count()
@@ -163,6 +166,7 @@ export async function createPostData(data: {
       caption: '',
       cta: { label: 'Book a consultation', type: 'web', target: 'https://cesmedical.co.uk' },
       sortOrder: num,
+      roadmapId: data.roadmapId ?? null,
     },
   })
   return toPost(post)

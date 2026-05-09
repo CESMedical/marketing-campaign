@@ -83,6 +83,7 @@ export interface Post {
   notes?: string;
   tags?: string[];
   sortOrder?: number;
+  roadmapId?: string;
 }
 
 export interface Campaign {
