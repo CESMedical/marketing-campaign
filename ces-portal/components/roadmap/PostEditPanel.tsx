@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2 } from 'lucide-react'
+import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2, AlertTriangle } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, Format, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
 import { canEditPost, roleLabel } from '@/lib/permissions'
@@ -32,8 +32,8 @@ function avatarColor(name: string) {
   return colors[h % colors.length]
 }
 
-export function PostEditPanel({ post, onClose, onSave }: {
-  post: Post; onClose: () => void; onSave: (u: Post) => void
+export function PostEditPanel({ post, onClose, onSave, onDelete }: {
+  post: Post; onClose: () => void; onSave: (u: Post) => void; onDelete?: (slug: string) => void
 }) {
   const { data: session } = useSession()
   const role = session?.user?.role
@@ -50,8 +50,10 @@ export function PostEditPanel({ post, onClose, onSave }: {
   const [notes, setNotes]         = useState(post.notes ?? '')
   const [imageUrl, setImageUrl]   = useState(post.imageUrl ?? '')
   const [uploading, setUploading] = useState(false)
-  const [saving, setSaving]       = useState(false)
-  const [savedAt, setSavedAt]     = useState<number | null>(null)
+  const [saving, setSaving]         = useState(false)
+  const [savedAt, setSavedAt]       = useState<number | null>(null)
+  const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deleting, setDeleting]     = useState(false)
   const [comments, setComments]   = useState<Comment[]>([])
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting]   = useState(false)
@@ -74,6 +76,14 @@ export function PostEditPanel({ post, onClose, onSave }: {
   useEffect(() => {
     commentsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [comments])
+
+  async function handleDelete() {
+    setDeleting(true)
+    try {
+      const res = await fetch(`/api/posts/${post.slug}`, { method: 'DELETE' })
+      if (res.ok) { onDelete?.(post.slug); onClose() }
+    } finally { setDeleting(false) }
+  }
 
   async function handleSave() {
     setSaving(true)
@@ -412,15 +422,45 @@ export function PostEditPanel({ post, onClose, onSave }: {
         </div>
       </div>
 
-      {/* ── Save footer (admin only) ─────────────────────────────────────────── */}
+      {/* ── Footer ───────────────────────────────────────────────────────────── */}
       {canEdit && (
-        <div className="border-t border-brand-deep/10 px-5 py-4 shrink-0">
-          <button onClick={handleSave} disabled={saving}
-            className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-50"
-            style={{ background: justSaved ? '#22c55e' : '#008080' }}>
-            <Save size={14} />
-            {saving ? 'Saving…' : justSaved ? 'Saved ✓' : 'Save changes'}
-          </button>
+        <div className="border-t border-brand-deep/10 px-5 py-4 shrink-0 space-y-2">
+          {/* Delete confirmation */}
+          {confirmDelete ? (
+            <div className="rounded-xl border border-red-200 bg-red-50 p-3">
+              <div className="flex items-center gap-2 mb-2.5">
+                <AlertTriangle size={14} className="text-red-500 shrink-0" />
+                <p className="text-xs font-semibold text-red-700">Delete this post permanently?</p>
+              </div>
+              <p className="text-[11px] text-red-600 mb-3">This will remove the post and all its comments. This cannot be undone.</p>
+              <div className="flex gap-2">
+                <button onClick={() => setConfirmDelete(false)}
+                  className="flex-1 rounded-lg border border-red-200 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-100 transition-colors">
+                  Cancel
+                </button>
+                <button onClick={handleDelete} disabled={deleting}
+                  className="flex-1 rounded-lg bg-red-500 py-1.5 text-xs font-bold text-white hover:bg-red-600 transition-colors disabled:opacity-50">
+                  {deleting ? 'Deleting…' : 'Yes, delete'}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              {role === 'admin' && (
+                <button onClick={() => setConfirmDelete(true)}
+                  className="flex items-center justify-center gap-1.5 rounded-xl border border-brand-deep/15 px-3 py-2.5 text-xs font-semibold text-brand-deep/50 hover:border-red-200 hover:text-red-400 transition-colors"
+                  title="Delete post">
+                  <Trash2 size={13} />
+                </button>
+              )}
+              <button onClick={handleSave} disabled={saving}
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-50"
+                style={{ background: justSaved ? '#22c55e' : '#008080' }}>
+                <Save size={14} />
+                {saving ? 'Saving…' : justSaved ? 'Saved ✓' : 'Save changes'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

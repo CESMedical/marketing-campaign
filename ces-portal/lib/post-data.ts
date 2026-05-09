@@ -134,3 +134,42 @@ export async function postExistsData(slug: string): Promise<boolean> {
 export function seedPostSlugs(): { slug: string }[] {
   return jsonPosts().map((post) => ({ slug: post.slug }))
 }
+
+export async function createPostData(data: {
+  title: string
+  pillar: Post['pillar']
+  platforms: Post['platforms']
+  format: Post['format']
+  scheduledDate: string
+  weekNumber: number
+}): Promise<Post | undefined> {
+  if (!hasDatabase()) return undefined
+  const count = await prisma.post.count()
+  const num = count + 1
+  const id = `P${String(num).padStart(2, '0')}`
+  const slug = `${id.toLowerCase()}-${data.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50)}`
+  const post = await prisma.post.create({
+    data: {
+      id,
+      slug,
+      title: data.title,
+      pillar: data.pillar,
+      platforms: data.platforms,
+      status: 'draft',
+      scheduledDate: data.scheduledDate,
+      weekNumber: data.weekNumber,
+      isCommercialPriority: false,
+      format: data.format,
+      caption: '',
+      cta: { label: 'Book a consultation', type: 'web', target: 'https://cesmedical.co.uk' },
+      sortOrder: num,
+    },
+  })
+  return toPost(post)
+}
+
+export async function deletePostData(slug: string): Promise<boolean> {
+  if (!hasDatabase()) return false
+  await prisma.post.delete({ where: { slug } })
+  return true
+}

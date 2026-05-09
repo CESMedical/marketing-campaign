@@ -3,7 +3,7 @@ import { auth } from '@/auth'
 import { Format, Platform, Post, Status } from '@/types/post'
 import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
-import { updatePostData, getPostBySlugData } from '@/lib/post-data'
+import { updatePostData, getPostBySlugData, deletePostData } from '@/lib/post-data'
 import { canEditPost } from '@/lib/roles'
 import { notifyStatusChange, notifyScheduledThisWeek, isThisWeek } from '@/lib/notify'
 
@@ -99,6 +99,20 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   }
 
   return updates
+}
+
+export async function DELETE(
+  _request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> },
+) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (session.user.role !== 'admin') return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+
+  const { slug } = await params
+  const deleted = await deletePostData(slug)
+  if (!deleted) return NextResponse.json({ error: 'Not found or database unavailable' }, { status: 404 })
+  return NextResponse.json({ ok: true })
 }
 
 export async function PATCH(

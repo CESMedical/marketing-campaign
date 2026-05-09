@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays } from 'lucide-react'
-import { Post, STATUS_LABELS } from '@/types/post'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus } from 'lucide-react'
+import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
+import { NewPostModal } from './NewPostModal'
 import { ViewSwitcher } from './ViewSwitcher'
 
 // ─── World-space layout ───────────────────────────────────────────────────────
@@ -140,6 +141,7 @@ function SideBtn({ onClick, title, children }: { onClick: () => void; title: str
 export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
+  const [showNewPost, setShowNewPost] = useState(false)
   const [dragVisual, setDragVisual] = useState<{ slug: string; curOff: number; insertIdx: number } | null>(null)
   const [savedSlug, setSavedSlug]   = useState<string | null>(null)
   const [zoomPct, setZoomPct]       = useState(Math.round(INIT_ZOOM * 100))
@@ -329,6 +331,8 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         <SideBtn onClick={fitAll} title="Fit all"><Maximize2 size={14} /></SideBtn>
         <div className="w-7 h-px bg-brand-deep/10" />
         <SideBtn onClick={jumpToday} title="Jump to today"><CalendarDays size={14} /></SideBtn>
+        <div className="w-7 h-px bg-brand-deep/10" />
+        <SideBtn onClick={() => setShowNewPost(true)} title="New post"><Plus size={15} /></SideBtn>
       </div>
 
       {/* Canvas viewport */}
@@ -486,6 +490,24 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
         </div>
       </div>
 
+      {/* Pillar colour legend — bottom-left of canvas */}
+      <div className="absolute bottom-4 z-20 pointer-events-none"
+        style={{ left: 56 }}>
+        <div className="bg-white/90 backdrop-blur border border-brand-deep/10 rounded-xl px-3 py-2.5 shadow-sm">
+          <p className="text-[9px] font-bold uppercase tracking-widest text-brand-deep/40 mb-2">Content pillars</p>
+          <div className="flex flex-col gap-1">
+            {(Object.entries(PILLAR_COLOR) as [Pillar, string][]).map(([pillar, color]) => (
+              <div key={pillar} className="flex items-center gap-1.5">
+                <div style={{ width: 8, height: 8, borderRadius: 2, background: color, flexShrink: 0 }} />
+                <span className="text-[10px] font-medium" style={{ color: 'rgba(0,56,69,0.7)' }}>
+                  {PILLAR_LABELS[pillar]}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {selected && (
         <PostEditPanel
           post={selected}
@@ -494,6 +516,18 @@ export function TimelineCanvas({ posts: init }: { posts: Post[] }) {
             setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
             setSelected(updated)
           }}
+          onDelete={slug => {
+            setPosts(prev => prev.filter(p => p.slug !== slug))
+            setSelected(null)
+          }}
+        />
+      )}
+
+      {showNewPost && (
+        <NewPostModal
+          defaultDate={new Date().toISOString().slice(0, 10)}
+          onClose={() => setShowNewPost(false)}
+          onCreate={post => setPosts(prev => [...prev, post])}
         />
       )}
     </div>
