@@ -8,24 +8,12 @@ function extractPublicId(cloudinaryUrl: string): string {
   return match?.[1] ?? ''
 }
 
-async function buildSignedUrl(fileUrl: string): Promise<string> {
-  const { v2: cloudinary } = await import('cloudinary')
+function configureCloudinary(cloudinary: { config: (opts: object) => void }) {
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key:    process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
     secure:     true,
-  })
-
-  const publicId  = extractPublicId(fileUrl)
-  const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60 // 1 hour
-
-  return cloudinary.url(publicId, {
-    resource_type: 'raw',
-    type:          'upload',
-    secure:        true,
-    sign_url:      true,
-    expires_at:    expiresAt,
   })
 }
 
@@ -36,29 +24,52 @@ export async function GET(
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { id }  = await params
-  const mode    = request.nextUrl.searchParams.get('mode') ?? 'view'
+  const { id } = await params
+  const mode   = request.nextUrl.searchParams.get('mode') ?? 'view'
 
   const roadmap = await getRoadmapData(id)
   if (!roadmap?.strategyFileUrl) {
     return NextResponse.json({ error: 'No strategy document' }, { status: 404 })
   }
 
-  // Local files (dev fallback) — redirect directly
+  // Local dev files — redirect directly
   if (!roadmap.strategyFileUrl.includes('res.cloudinary.com')) {
     return NextResponse.redirect(roadmap.strategyFileUrl)
   }
 
-  try {
-    // Generate signed URL server-side then stream the file through this route.
-    // This means the browser never talks to Cloudinary directly, bypassing
-    // any account-level delivery restrictions entirely.
-    const signed = await buildSignedUrl(roadmap.strategyFileUrl)
+  const { v2: cloudinary } = await import('cloudinary')
+  configureCloudinary(cloudinary)
 
-    const upstream = await fetch(signed)
+  const publicId  = extractPublicId(roadmap.strategyFileUrl)
+  const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60
+
+  // Build download URL using the admin-API signature method (private_download_url)
+  // This works regardless of account-level delivery restrictions.
+  const ext         = (roadmap.strategyFileName ?? 'document').split('.').pop() ?? 'pdf'
+  // Cloudinary stores the extension as part of the public_id for raw files;
+  // private_download_url appends the format separately, so strip it to avoid doubling.
+  const publicIdBase = publicId.endsWith(`.${ext}`) ? publicId.slice(0, -(ext.length + 1)) : publicId
+
+  const downloadUrl: string = (cloudinary.utils as unknown as {
+    private_download_url: (id: string, fmt: string, opts: object) => string
+  }).private_download_url(publicIdBase, ext, {
+    resource_type: 'raw',
+    expires_at:    expiresAt,
+    attachment:    mode === 'download',
+  })
+
+  try {
+    const upstream = await fetch(downloadUrl)
+
     if (!upstream.ok) {
-      console.error('[strategy/file] upstream fetch failed', upstream.status, signed)
-      return NextResponse.json({ error: 'Failed to fetch document' }, { status: 502 })
+      const body = await upstream.text().catch(() => '')
+      console.error('[strategy/file] Cloudinary error', upstream.status, body.slice(0, 400))
+      // Return diagnostic info in non-prod or fall through to the generic error
+      return NextResponse.json({
+        error:            'Failed to fetch document',
+        cloudinaryStatus: upstream.status,
+        hint:             body.slice(0, 300),
+      }, { status: 502 })
     }
 
     const contentType = upstream.headers.get('Content-Type') ?? 'application/octet-stream'
@@ -72,12 +83,11 @@ export async function GET(
         ? `attachment; filename="${fileName}"`
         : `inline; filename="${fileName}"`,
     )
-    // Allow browser to cache for 55 min (slightly less than the signed URL TTL)
     headers.set('Cache-Control', 'private, max-age=3300')
 
     return new NextResponse(upstream.body, { status: 200, headers })
   } catch (err) {
-    console.error('[strategy/file] error', err)
+    console.error('[strategy/file] fetch threw', err)
     return NextResponse.json({ error: 'Failed to serve document' }, { status: 500 })
   }
 }
