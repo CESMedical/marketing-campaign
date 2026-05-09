@@ -15,20 +15,8 @@ interface StrategyDoc {
 
 const CARD_W = 300
 
-function viewerUrl(fileUrl: string, fileName: string | null): string {
-  const ext = fileName?.split('.').pop()?.toLowerCase() ?? ''
-  const officeExts = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx']
-  if (officeExts.includes(ext)) {
-    return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`
-  }
-  return fileUrl
-}
-
-function downloadUrl(fileUrl: string): string {
-  if (fileUrl.includes('res.cloudinary.com')) {
-    return fileUrl.replace('/raw/upload/', '/raw/upload/fl_attachment/')
-  }
-  return fileUrl
+function proxyUrl(roadmapId: string, mode: 'view' | 'download'): string {
+  return `/api/roadmaps/${roadmapId}/strategy/file?mode=${mode}`
 }
 
 export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
@@ -160,11 +148,11 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
             </div>
 
             <div style={{ display: 'flex', gap: 8 }}>
-              <a href={viewerUrl(doc.fileUrl, doc.fileName)} target="_blank" rel="noopener noreferrer"
+              <a href={roadmapId ? proxyUrl(roadmapId, 'view') : '#'} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: 7, background: '#003845', color: '#fff', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 <Eye size={14} /> View
               </a>
-              <a href={downloadUrl(doc.fileUrl)} download={doc.fileName ?? 'strategy'} target="_blank" rel="noopener noreferrer"
+              <a href={roadmapId ? proxyUrl(roadmapId, 'download') : '#'} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,56,69,0.08)', border: '1.5px solid rgba(0,56,69,0.15)', color: '#003845', borderRadius: 12, padding: '10px 18px', fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 <Download size={14} /> Download
               </a>
