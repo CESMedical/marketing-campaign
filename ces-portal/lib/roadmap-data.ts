@@ -36,8 +36,12 @@ const INCLUDE = { _count: { select: { posts: true } } } as const
 
 export async function loadRoadmapsData(): Promise<RoadmapMeta[]> {
   if (!process.env.DATABASE_URL) return []
-  const rows = await prisma.roadmap.findMany({ orderBy: { createdAt: 'asc' }, include: INCLUDE })
-  return rows.map(toMeta)
+  try {
+    const rows = await prisma.roadmap.findMany({ orderBy: { createdAt: 'asc' }, include: INCLUDE })
+    return rows.map(toMeta)
+  } catch {
+    return []
+  }
 }
 
 export async function getRoadmapData(id: string): Promise<RoadmapMeta | null> {

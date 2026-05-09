@@ -184,15 +184,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
     const panelCenterY = -(GAL_PAD + PANEL_H / 2) * z + vh / 2
 
-    if (roadmapId) {
-      // Centre between strategy card mid-point and today so both are visible
-      const stratMid  = STRAT_X + STRAT_W / 2
-      const todayWorld = GAL_PAD + todayOff() * DAY_W
-      const midWorld   = (stratMid + todayWorld) / 2
-      return { x: -midWorld * z + vw / 2, y: panelCenterY }
-    }
-
-    return { x: -(GAL_PAD + todayOff() * DAY_W) * z + vw * 0.4, y: panelCenterY }
+    // Always centre between strategy card and today so both are visible
+    const stratMid   = STRAT_X + STRAT_W / 2
+    const todayWorld = GAL_PAD + todayOff() * DAY_W
+    const midWorld   = (stratMid + todayWorld) / 2
+    return { x: -midWorld * z + vw / 2, y: panelCenterY }
   }
 
   useEffect(() => {
@@ -414,17 +410,13 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           className="absolute top-0 left-0"
           style={{ width: WORLD_W, height: WORLD_H, transformOrigin: '0 0', transform: `translate(0px, 0px) scale(${INIT_ZOOM})`, willChange: 'transform' }}
         >
-          {/* ── Strategy card — left of roadmap ─────────────────────────── */}
-          {roadmapId && (
-            <>
-              <div style={{ position: 'absolute', left: STRAT_X, top: STRAT_Y, zIndex: 5 }}>
-                <StrategyCard roadmapId={roadmapId} />
-              </div>
-              <div style={{ position: 'absolute', left: STRAT_X + STRAT_W, top: STRAT_Y + 200, width: GAL_PAD - STRAT_W - 160, height: 0, borderTop: '2px dashed rgba(0,56,69,0.14)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', left: STRAT_X + STRAT_W + 10, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Strategy</div>
-              <div style={{ position: 'absolute', left: GAL_PAD - 72, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Roadmap</div>
-            </>
-          )}
+          {/* ── Strategy card — always visible left of roadmap ───────────── */}
+          <div style={{ position: 'absolute', left: STRAT_X, top: STRAT_Y, zIndex: 5 }}>
+            <StrategyCard roadmapId={roadmapId} />
+          </div>
+          <div style={{ position: 'absolute', left: STRAT_X + STRAT_W, top: STRAT_Y + 200, width: GAL_PAD - STRAT_W - 160, height: 0, borderTop: '2px dashed rgba(0,56,69,0.14)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', left: STRAT_X + STRAT_W + 10, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Strategy</div>
+          <div style={{ position: 'absolute', left: GAL_PAD - 72, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Roadmap</div>
 
           <div style={{ position: 'absolute', left: GAL_PAD, top: GAL_PAD, width: PANEL_W, height: PANEL_H }}>
 

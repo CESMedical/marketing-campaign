@@ -15,7 +15,7 @@ interface StrategyDoc {
 
 const CARD_W = 300
 
-export function StrategyCard({ roadmapId }: { roadmapId: string }) {
+export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
   const { data: session } = useSession()
   const canEdit = canEditPost(session?.user?.role)
 
@@ -28,6 +28,7 @@ export function StrategyCard({ roadmapId }: { roadmapId: string }) {
   const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    if (!roadmapId) { setLoading(false); return }
     fetch(`/api/roadmaps/${roadmapId}/strategy`)
       .then(r => r.ok ? r.json() : null)
       .then(d => { setDoc(d); if (d?.title) setTitle(d.title) })
@@ -104,7 +105,16 @@ export function StrategyCard({ roadmapId }: { roadmapId: string }) {
 
       {/* Body */}
       <div style={{ padding: '28px 20px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, minHeight: 240 }}>
-        {loading ? (
+        {!roadmapId ? (
+          <>
+            <div style={{ width: 72, height: 80, borderRadius: 12, background: '#f4f7f8', border: '1.5px dashed rgba(0,56,69,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <FileText size={36} color="rgba(0,56,69,0.18)" />
+            </div>
+            <p style={{ fontSize: 13, color: 'rgba(0,56,69,0.4)', textAlign: 'center', lineHeight: 1.6, maxWidth: 220 }}>
+              Select a roadmap from the dropdown to attach a strategy document
+            </p>
+          </>
+        ) : loading ? (
           <Loader2 size={28} style={{ color: 'rgba(0,56,69,0.2)', marginTop: 40 }} />
         ) : doc?.fileUrl ? (
           <>
@@ -175,7 +185,7 @@ export function StrategyCard({ roadmapId }: { roadmapId: string }) {
           </>
         )}
 
-        <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }} onChange={handleUpload} />
+        {roadmapId && <input ref={fileRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" style={{ display: 'none' }} onChange={handleUpload} />}
       </div>
     </div>
   )
