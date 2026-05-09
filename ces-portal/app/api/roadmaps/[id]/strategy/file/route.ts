@@ -45,15 +45,13 @@ export async function GET(
 
   // Build download URL using the admin-API signature method (private_download_url)
   // This works regardless of account-level delivery restrictions.
-  const ext         = (roadmap.strategyFileName ?? 'document').split('.').pop() ?? 'pdf'
-  // Cloudinary stores the extension as part of the public_id for raw files;
-  // private_download_url appends the format separately, so strip it to avoid doubling.
-  const publicIdBase = publicId.endsWith(`.${ext}`) ? publicId.slice(0, -(ext.length + 1)) : publicId
-
+  // For Cloudinary raw files the extension IS part of the public_id.
+  // Pass the full publicId and an empty format so the SDK doesn't double-append it.
   const downloadUrl: string = (cloudinary.utils as unknown as {
     private_download_url: (id: string, fmt: string, opts: object) => string
-  }).private_download_url(publicIdBase, ext, {
+  }).private_download_url(publicId, '', {
     resource_type: 'raw',
+    type:          'upload',
     expires_at:    expiresAt,
     attachment:    mode === 'download',
   })
