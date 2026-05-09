@@ -1,13 +1,15 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus } from 'lucide-react'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
 import { NewPostModal } from './NewPostModal'
 import { StrategyCard } from './StrategyCard'
 import { ViewSwitcher } from './ViewSwitcher'
+import { useSession } from 'next-auth/react'
+import { canEditPost } from '@/lib/permissions'
 
 // ─── World-space layout ───────────────────────────────────────────────────────
 const DAY_W       = 200
@@ -149,9 +151,15 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   roadmapId?: string
   switcher?: React.ReactNode
 }) {
+  const { data: session } = useSession()
+  const canEdit = canEditPost(session?.user?.role)
+
   const [posts, setPosts]       = useState(init)
   const [selected, setSelected] = useState<Post | null>(null)
   const [showNewPost, setShowNewPost] = useState(false)
+  const [showShift, setShowShift]     = useState(false)
+  const [shiftAmt, setShiftAmt]       = useState(7)
+  const [shifting, setShifting]       = useState(false)
 
   // Sync when roadmap changes (key prop handles full remount, this covers partial updates)
   useEffect(() => { setPosts(init) }, [init])
@@ -318,6 +326,36 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     panDrag.current = null
   }
 
+  function addDays(dateStr: string, delta: number): string {
+    const d = new Date(dateStr + 'T00:00:00Z')
+    d.setUTCDate(d.getUTCDate() + delta)
+    return d.toISOString().slice(0, 10)
+  }
+
+  async function applyShift(delta: number) {
+    if (!delta || shifting) return
+    setShifting(true)
+    try {
+      const results = await Promise.all(
+        posts.map(post =>
+          fetch(`/api/posts/${post.slug}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ scheduledDate: addDays(post.scheduledDate, delta) }),
+          }).then(r => r.ok ? r.json() : null)
+        )
+      )
+      const updMap = new Map(
+        (results as (Post | null)[]).filter(Boolean).map(r => [r!.slug, r!])
+      )
+      setPosts(prev => prev.map(p => updMap.get(p.slug) ?? p))
+      setShowShift(false)
+      setSavedSlug('__shift__')
+      setTimeout(() => setSavedSlug(s => s === '__shift__' ? null : s), 2500)
+    } finally {
+      setShifting(false)
+    }
+  }
+
   function zoomBy(f: number) {
     const vw = containerRef.current?.clientWidth  ?? window.innerWidth
     const vh = containerRef.current?.clientHeight ?? window.innerHeight
@@ -350,6 +388,10 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         <SideBtn onClick={jumpToday} title="Jump to today"><CalendarDays size={14} /></SideBtn>
         <div className="w-7 h-px bg-brand-deep/10" />
         <SideBtn onClick={() => setShowNewPost(true)} title="New post"><Plus size={15} /></SideBtn>
+        {canEdit && <>
+          <div className="w-7 h-px bg-brand-deep/10" />
+          <SideBtn onClick={() => setShowShift(true)} title="Shift all posts in time"><ChevronsRight size={15} /></SideBtn>
+        </>}
       </div>
 
       {/* Canvas overlays: roadmap switcher top-left, view switcher top-right */}
@@ -395,11 +437,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           )
         })()}
 
-        {/* Save toast */}
+        {/* Save / shift toast */}
         {savedSlug && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="flex items-center gap-2 bg-green-500 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-xl">
-              ✓ Saved
+              {savedSlug === '__shift__' ? '⏩ All posts shifted' : '✓ Saved'}
             </div>
           </div>
         )}
@@ -566,6 +608,94 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           </div>
         </div>
       </div>
+
+      {/* ── Shift-all-posts modal ─────────────────────────────────── */}
+      {showShift && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center"
+          style={{ background: 'rgba(0,0,0,0.35)' }}
+          onClick={() => !shifting && setShowShift(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl"
+            style={{ width: 340, padding: '28px 28px 24px' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-1">
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: '#003845' }}>Shift all posts</h3>
+              {!shifting && (
+                <button onClick={() => setShowShift(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,56,69,0.4)', padding: 4 }}>
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+            <p style={{ fontSize: 13, color: 'rgba(0,56,69,0.5)', lineHeight: 1.5, marginBottom: 24 }}>
+              Move every post on this roadmap forward or backward by the same number of days.
+            </p>
+
+            {/* Quick presets */}
+            <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Quick select</p>
+            <div style={{ display: 'flex', gap: 6, marginBottom: 20 }}>
+              {[1, 3, 7, 14, 30].map(n => (
+                <button
+                  key={n}
+                  onClick={() => setShiftAmt(n)}
+                  style={{
+                    flex: 1, padding: '6px 0', borderRadius: 10, fontSize: 12, fontWeight: 700, cursor: 'pointer',
+                    background: shiftAmt === n ? '#003845' : 'rgba(0,56,69,0.06)',
+                    color: shiftAmt === n ? '#fff' : '#003845',
+                    border: shiftAmt === n ? '1.5px solid #003845' : '1.5px solid transparent',
+                  }}
+                >
+                  {n}d
+                </button>
+              ))}
+            </div>
+
+            {/* Custom day picker */}
+            <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Custom</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+              <button
+                onClick={() => setShiftAmt(d => Math.max(1, d - 1))}
+                disabled={shifting}
+                style={{ width: 36, height: 36, borderRadius: 10, border: '1.5px solid rgba(0,56,69,0.15)', background: 'rgba(0,56,69,0.04)', cursor: 'pointer', fontSize: 18, fontWeight: 700, color: '#003845', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >−</button>
+              <div style={{ flex: 1, textAlign: 'center' }}>
+                <span style={{ fontSize: 28, fontWeight: 800, color: '#003845' }}>{shiftAmt}</span>
+                <span style={{ fontSize: 13, color: 'rgba(0,56,69,0.5)', marginLeft: 6 }}>days</span>
+              </div>
+              <button
+                onClick={() => setShiftAmt(d => d + 1)}
+                disabled={shifting}
+                style={{ width: 36, height: 36, borderRadius: 10, border: '1.5px solid rgba(0,56,69,0.15)', background: 'rgba(0,56,69,0.04)', cursor: 'pointer', fontSize: 18, fontWeight: 700, color: '#003845', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >+</button>
+            </div>
+
+            {/* Action buttons */}
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => applyShift(-shiftAmt)}
+                disabled={shifting}
+                style={{ flex: 1, padding: '11px 0', borderRadius: 12, border: '1.5px solid rgba(0,56,69,0.2)', background: 'rgba(0,56,69,0.05)', cursor: shifting ? 'wait' : 'pointer', fontSize: 13, fontWeight: 700, color: '#003845', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+              >
+                {shifting ? <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> : '←'} Earlier
+              </button>
+              <button
+                onClick={() => applyShift(shiftAmt)}
+                disabled={shifting}
+                style={{ flex: 1, padding: '11px 0', borderRadius: 12, border: 'none', background: '#003845', cursor: shifting ? 'wait' : 'pointer', fontSize: 13, fontWeight: 700, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+              >
+                Later {shifting ? <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> : '→'}
+              </button>
+            </div>
+
+            <p style={{ fontSize: 11, color: 'rgba(0,56,69,0.35)', textAlign: 'center', marginTop: 14 }}>
+              Affects all {posts.length} posts · cannot be undone
+            </p>
+          </div>
+        </div>
+      )}
 
       {selected && (
         <PostEditPanel
