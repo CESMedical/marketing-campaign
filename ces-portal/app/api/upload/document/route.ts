@@ -29,7 +29,14 @@ async function uploadToCloudinary(buffer: Buffer, originalName: string): Promise
   return new Promise((resolve, reject) => {
     const safeName = originalName.replace(/[^a-z0-9._-]/gi, '_').slice(0, 80)
     const stream = cloudinary.uploader.upload_stream(
-      { folder: 'ces-portal/strategy', resource_type: 'raw', public_id: `${Date.now()}-${safeName}`, use_filename: false },
+      {
+        folder: 'ces-portal/strategy',
+        resource_type: 'raw',
+        type: 'upload',           // public delivery (not private/authenticated)
+        access_mode: 'public',    // explicitly allow unsigned URL access
+        public_id: `${Date.now()}-${safeName}`,
+        use_filename: false,
+      },
       (error, result) => {
         if (error || !result) return reject(error ?? new Error('Upload failed'))
         resolve(result.secure_url)

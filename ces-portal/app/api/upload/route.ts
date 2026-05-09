@@ -50,6 +50,8 @@ async function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<str
       {
         folder: 'ces-portal',
         resource_type: 'image',
+        type: 'upload',
+        access_mode: 'public',
         format: mimeType === 'image/gif' ? 'gif' : 'webp',
         transformation: [{ quality: 'auto', fetch_format: 'auto' }],
       },
