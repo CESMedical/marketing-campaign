@@ -31,7 +31,7 @@ const STRAT_W     = 300
 const STRAT_X     = GAL_PAD - STRAT_W - 160   // 160 px gap before roadmap
 const STRAT_Y     = GAL_PAD + PANEL_H / 2 - 200 // vertically centred
 
-const EPOCH     = new Date('2026-05-05T00:00:00Z')
+const EPOCH     = new Date('2026-04-27T00:00:00Z')
 const MIN_ZOOM  = 0.03
 const MAX_ZOOM  = 3.0
 const INIT_ZOOM = 0.55
@@ -327,7 +327,8 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   }
 
   function addDays(dateStr: string, delta: number): string {
-    const d = new Date(dateStr + 'T00:00:00Z')
+    // slice(0,10) handles both 'YYYY-MM-DD' and full ISO strings from the DB
+    const d = new Date(dateStr.slice(0, 10) + 'T00:00:00Z')
     d.setUTCDate(d.getUTCDate() + delta)
     return d.toISOString().slice(0, 10)
   }
@@ -341,7 +342,9 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           fetch(`/api/posts/${post.slug}`, {
             method: 'PATCH', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ scheduledDate: addDays(post.scheduledDate, delta) }),
-          }).then(r => r.ok ? r.json() : null)
+          })
+            .then(r => r.ok ? r.json() : null)
+            .catch(() => null)          // one failure must not cancel the rest
         )
       )
       const updMap = new Map(
