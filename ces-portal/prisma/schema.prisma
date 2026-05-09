@@ -44,11 +44,16 @@ model Post {
 }
 
 model Roadmap {
-  id        String   @id @default(uuid())
-  title     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  posts     Post[]
+  id                   String    @id @default(uuid())
+  title                String
+  strategyTitle        String?
+  strategyFileUrl      String?
+  strategyFileName     String?
+  strategyUploadedBy   String?
+  strategyUploadedAt   DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  posts                Post[]
 }
 
 model EmailLog {

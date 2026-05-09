@@ -6,6 +6,7 @@ import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
 import { NewPostModal } from './NewPostModal'
+import { StrategyCard } from './StrategyCard'
 import { ViewSwitcher } from './ViewSwitcher'
 
 // ─── World-space layout ───────────────────────────────────────────────────────
@@ -22,6 +23,11 @@ const PANEL_H     = HEADER_H + CONNECTOR_H + 6 * ROW_H + 80
 const GAL_PAD     = 800
 const WORLD_W     = PANEL_W + GAL_PAD * 2
 const WORLD_H     = PANEL_H + GAL_PAD * 2
+
+// Strategy card geometry (world-space, left of roadmap panel)
+const STRAT_W     = 300
+const STRAT_X     = GAL_PAD - STRAT_W - 160   // 160 px gap before roadmap
+const STRAT_Y     = GAL_PAD + PANEL_H / 2 - 200 // vertically centred
 
 const EPOCH     = new Date('2026-05-05T00:00:00Z')
 const MIN_ZOOM  = 0.03
@@ -400,6 +406,18 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           className="absolute top-0 left-0"
           style={{ width: WORLD_W, height: WORLD_H, transformOrigin: '0 0', transform: `translate(0px, 0px) scale(${INIT_ZOOM})`, willChange: 'transform' }}
         >
+          {/* ── Strategy card — left of roadmap ─────────────────────────── */}
+          {roadmapId && (
+            <>
+              <div style={{ position: 'absolute', left: STRAT_X, top: STRAT_Y, zIndex: 5 }}>
+                <StrategyCard roadmapId={roadmapId} />
+              </div>
+              <div style={{ position: 'absolute', left: STRAT_X + STRAT_W, top: STRAT_Y + 200, width: GAL_PAD - STRAT_W - 160, height: 0, borderTop: '2px dashed rgba(0,56,69,0.14)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', left: STRAT_X + STRAT_W + 10, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Strategy</div>
+              <div style={{ position: 'absolute', left: GAL_PAD - 72, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Roadmap</div>
+            </>
+          )}
+
           <div style={{ position: 'absolute', left: GAL_PAD, top: GAL_PAD, width: PANEL_W, height: PANEL_H }}>
 
             {/* Month header */}
