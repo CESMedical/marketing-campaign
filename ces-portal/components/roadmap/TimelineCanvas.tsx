@@ -414,9 +414,38 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           <div style={{ position: 'absolute', left: STRAT_X, top: STRAT_Y, zIndex: 5 }}>
             <StrategyCard roadmapId={roadmapId} />
           </div>
-          <div style={{ position: 'absolute', left: STRAT_X + STRAT_W, top: STRAT_Y + 200, width: GAL_PAD - STRAT_W - 160, height: 0, borderTop: '2px dashed rgba(0,56,69,0.14)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', left: STRAT_X + STRAT_W + 10, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Strategy</div>
-          <div style={{ position: 'absolute', left: GAL_PAD - 72, top: STRAT_Y + 200 - 18, fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', pointerEvents: 'none' }}>Roadmap</div>
+
+          {/* L-connector: up from strategy card top-right → right to roadmap timeline bar */}
+          {(() => {
+            const connX  = STRAT_X + STRAT_W          // 640 — strategy card right edge
+            const connY1 = GAL_PAD + HEADER_H          // 896 — roadmap timeline bar (fixed anchor)
+            const connY2 = STRAT_Y                     // 1438 — strategy card top edge
+            const connW  = GAL_PAD - connX             // 160
+            const connH  = connY2 - connY1             // 542
+            return (
+              <svg
+                style={{ position: 'absolute', left: connX, top: connY1, width: connW, height: connH, overflow: 'visible', pointerEvents: 'none' }}
+              >
+                {/* L-shape: start at card top-right, go up, go right to roadmap */}
+                <path
+                  d={`M 0 ${connH} L 0 0 L ${connW} 0`}
+                  fill="none"
+                  stroke="rgba(0,56,69,0.2)"
+                  strokeWidth="2"
+                  strokeDasharray="8 5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                {/* Dot at roadmap anchor */}
+                <circle cx={connW} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
+                {/* Dot at strategy card */}
+                <circle cx={0} cy={connH} r={5} fill="rgba(0,56,69,0.25)" />
+                {/* Labels */}
+                <text x={8} y={connH - 10} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.28)" style={{ textTransform: 'uppercase', letterSpacing: '0.08em' }}>Strategy</text>
+                <text x={connW - 75} y={-8} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.28)" style={{ textTransform: 'uppercase', letterSpacing: '0.08em' }}>Roadmap</text>
+              </svg>
+            )
+          })()}
 
           <div style={{ position: 'absolute', left: GAL_PAD, top: GAL_PAD, width: PANEL_W, height: PANEL_H }}>
 
