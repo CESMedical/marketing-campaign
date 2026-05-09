@@ -8,23 +8,24 @@ function extractPublicId(cloudinaryUrl: string): string {
   return match?.[1] ?? ''
 }
 
-async function signedUrl(fileUrl: string, forDownload: boolean, fileName: string | null): Promise<string> {
+async function buildSignedUrl(fileUrl: string): Promise<string> {
   const { v2: cloudinary } = await import('cloudinary')
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
+    api_key:    process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure:     true,
   })
 
-  const publicId = extractPublicId(fileUrl)
+  const publicId  = extractPublicId(fileUrl)
   const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60 // 1 hour
 
   return cloudinary.url(publicId, {
     resource_type: 'raw',
-    type: 'upload',
-    sign_url: true,
-    expires_at: expiresAt,
-    ...(forDownload ? { flags: `attachment:${(fileName ?? 'document').replace(/\s+/g, '_')}` } : {}),
+    type:          'upload',
+    secure:        true,
+    sign_url:      true,
+    expires_at:    expiresAt,
   })
 }
 
@@ -35,23 +36,48 @@ export async function GET(
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { id } = await params
-  const mode = request.nextUrl.searchParams.get('mode') ?? 'view'
+  const { id }  = await params
+  const mode    = request.nextUrl.searchParams.get('mode') ?? 'view'
 
   const roadmap = await getRoadmapData(id)
   if (!roadmap?.strategyFileUrl) {
     return NextResponse.json({ error: 'No strategy document' }, { status: 404 })
   }
 
-  // For local files (non-Cloudinary), redirect directly
+  // Local files (dev fallback) — redirect directly
   if (!roadmap.strategyFileUrl.includes('res.cloudinary.com')) {
     return NextResponse.redirect(roadmap.strategyFileUrl)
   }
 
   try {
-    const url = await signedUrl(roadmap.strategyFileUrl, mode === 'download', roadmap.strategyFileName ?? null)
-    return NextResponse.redirect(url)
-  } catch {
-    return NextResponse.json({ error: 'Failed to generate link' }, { status: 500 })
+    // Generate signed URL server-side then stream the file through this route.
+    // This means the browser never talks to Cloudinary directly, bypassing
+    // any account-level delivery restrictions entirely.
+    const signed = await buildSignedUrl(roadmap.strategyFileUrl)
+
+    const upstream = await fetch(signed)
+    if (!upstream.ok) {
+      console.error('[strategy/file] upstream fetch failed', upstream.status, signed)
+      return NextResponse.json({ error: 'Failed to fetch document' }, { status: 502 })
+    }
+
+    const contentType = upstream.headers.get('Content-Type') ?? 'application/octet-stream'
+    const fileName    = (roadmap.strategyFileName ?? 'document').replace(/"/g, '')
+
+    const headers = new Headers()
+    headers.set('Content-Type', contentType)
+    headers.set(
+      'Content-Disposition',
+      mode === 'download'
+        ? `attachment; filename="${fileName}"`
+        : `inline; filename="${fileName}"`,
+    )
+    // Allow browser to cache for 55 min (slightly less than the signed URL TTL)
+    headers.set('Cache-Control', 'private, max-age=3300')
+
+    return new NextResponse(upstream.body, { status: 200, headers })
+  } catch (err) {
+    console.error('[strategy/file] error', err)
+    return NextResponse.json({ error: 'Failed to serve document' }, { status: 500 })
   }
 }
