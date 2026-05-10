@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Video, X, ChevronDown, ChevronRight } from 'lucide-react'
-import { VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, type ConsultantInterview, type InterviewQuestion } from '@/lib/videography-content'
+import { VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, DEFAULT_PRODUCTION_NOTES, type ConsultantInterview, type InterviewQuestion, type ProductionNotes } from '@/lib/videography-content'
 
 const PILLAR_COLOR       = '#003845'
 const CONSULTANT_COLORS  = ['#7c3aed', '#2563eb', '#16a34a', '#008080']
@@ -93,6 +93,62 @@ function QuestionRow({
   )
 }
 
+// ─── Production notes panel ───────────────────────────────────────────────────
+
+function ProductionNotesPanel({ notes, accent, onChange }: {
+  notes: ProductionNotes
+  accent: string
+  onChange: (patch: Partial<ProductionNotes>) => void
+}) {
+  const sectionLabel: React.CSSProperties = {
+    fontSize: 10, fontWeight: 800, color: accent, textTransform: 'uppercase',
+    letterSpacing: '0.1em', marginTop: 20, marginBottom: 12, display: 'block',
+    borderBottom: `2px solid ${accent}`, paddingBottom: 6,
+  }
+
+  function Field({ label, field, rows }: { label: string; field: keyof ProductionNotes; rows?: number }) {
+    return (
+      <div style={{ marginBottom: 14 }}>
+        <label style={labelStyle}>{label}</label>
+        {rows ? (
+          <textarea
+            value={notes[field]}
+            rows={rows}
+            onChange={e => onChange({ [field]: e.target.value })}
+            style={fieldStyle}
+            placeholder={`Add ${label.toLowerCase()}…`}
+          />
+        ) : (
+          <input
+            value={notes[field]}
+            onChange={e => onChange({ [field]: e.target.value })}
+            style={{ ...fieldStyle, resize: undefined, height: 36 }}
+            placeholder={`Add ${label.toLowerCase()}…`}
+          />
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div style={{ padding: '4px 24px 24px' }}>
+      <span style={sectionLabel}>Scheduling</span>
+      <Field label="Filming location" field="location" />
+      <Field label="Planned date" field="plannedDate" />
+      <Field label="Travel & logistics" field="travelLogistics" rows={3} />
+
+      <span style={sectionLabel}>On the Day</span>
+      <Field label="Part 1 outfit (business attire)" field="part1Outfit" rows={2} />
+      <Field label="Part 2 outfit (clinical attire)" field="part2Outfit" rows={2} />
+      <Field label="Equipment & AV notes" field="equipmentNotes" rows={4} />
+      <Field label="B-roll to capture" field="bRollNotes" rows={4} />
+
+      <span style={sectionLabel}>Team Notes</span>
+      <Field label="Additional comments for production team" field="teamNotes" rows={5} />
+    </div>
+  )
+}
+
 // ─── Script modal (portal — outside the transformed canvas) ───────────────────
 
 function ScriptModal({
@@ -102,18 +158,27 @@ function ScriptModal({
   accent: string
   onClose: () => void
 }) {
-  const storageKey = `ces-videography-interview-${init.id}`
+  const scriptKey = `ces-videography-interview-${init.id}`
+  const prodKey   = `ces-videography-prodnotes-${init.id}`
 
-  // Load saved edits from localStorage, fall back to hardcoded content
+  const [tab, setTab]   = useState<'script' | 'production'>('script')
+
   const [data, setData] = useState<ConsultantInterview>(() => {
     if (typeof window === 'undefined') return init
     try {
-      const saved = localStorage.getItem(storageKey)
+      const saved = localStorage.getItem(scriptKey)
       return saved ? (JSON.parse(saved) as ConsultantInterview) : init
     } catch { return init }
   })
 
-  // ESC to close
+  const [prodNotes, setProdNotes] = useState<ProductionNotes>(() => {
+    if (typeof window === 'undefined') return DEFAULT_PRODUCTION_NOTES
+    try {
+      const saved = localStorage.getItem(prodKey)
+      return saved ? (JSON.parse(saved) as ProductionNotes) : DEFAULT_PRODUCTION_NOTES
+    } catch { return DEFAULT_PRODUCTION_NOTES }
+  })
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
@@ -129,42 +194,63 @@ function ScriptModal({
           questions: prev[partKey].questions.map(q => q.id === qId ? { ...q, ...patch } : q),
         },
       }
-      try { localStorage.setItem(storageKey, JSON.stringify(next)) } catch {}
+      try { localStorage.setItem(scriptKey, JSON.stringify(next)) } catch {}
       return next
     })
   }
 
+  function patchProdNotes(patch: Partial<ProductionNotes>) {
+    setProdNotes(prev => {
+      const next = { ...prev, ...patch }
+      try { localStorage.setItem(prodKey, JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
+
+  const tabBtn = (id: typeof tab, label: string): React.CSSProperties => ({
+    flex: 1, padding: '9px 0', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 700,
+    borderBottom: `3px solid ${tab === id ? accent : 'transparent'}`,
+    background: tab === id ? accent + '10' : 'transparent',
+    color: tab === id ? accent : 'rgba(0,56,69,0.45)',
+    transition: 'all 0.15s',
+  })
+
   return createPortal(
-    // Backdrop — stopPropagation on pointerDown prevents canvas intercepting events
     <div
       style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onPointerDown={e => e.stopPropagation()}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
-      {/* Modal panel */}
       <div style={{ background: '#fff', borderRadius: 20, width: 680, maxHeight: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.22)' }}>
 
         {/* Header */}
         <div style={{ background: accent, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>
-              Interview {data.id} · Script
+              Interview {data.id}
             </div>
             <div style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>{data.name}</div>
             <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 2 }}>{data.specialty}</div>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            style={{ background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: 10, padding: 8, cursor: 'pointer', color: '#fff', display: 'flex', alignItems: 'center' }}
-          >
+          <button type="button" onClick={onClose}
+            style={{ background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: 10, padding: 8, cursor: 'pointer', color: '#fff', display: 'flex', alignItems: 'center' }}>
             <X size={16} />
           </button>
         </div>
 
-        {/* Posts fed */}
-        <div style={{ padding: '14px 24px', borderBottom: '1px solid rgba(0,56,69,0.1)', background: '#f9fafb', flexShrink: 0 }}>
-          <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Posts this interview feeds</p>
+        {/* Tab bar */}
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(0,56,69,0.1)', flexShrink: 0 }}>
+          <button type="button" style={tabBtn('script', 'Script')} onClick={() => setTab('script')}>
+            Script
+          </button>
+          <button type="button" style={tabBtn('production', 'Production Notes')} onClick={() => setTab('production')}>
+            Production Notes
+          </button>
+        </div>
+
+        {/* Posts fed — shown on both tabs */}
+        <div style={{ padding: '12px 24px', borderBottom: '1px solid rgba(0,56,69,0.08)', background: '#f9fafb', flexShrink: 0 }}>
+          <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 7 }}>Posts this interview feeds</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
             {data.postsFed.map(p => (
               <span key={p} style={{ fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: accent + '18', color: accent }}>{p}</span>
@@ -172,29 +258,31 @@ function ScriptModal({
           </div>
         </div>
 
-        {/* Scrollable Q&A */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '0 24px 24px' }}>
-          {(['part1', 'part2'] as const).map(partKey => {
-            const part = data[partKey]
-            return (
-              <div key={partKey}>
-                <div style={{ position: 'sticky', top: 0, background: '#fff', zIndex: 10, padding: '16px 0 8px', borderBottom: `2px solid ${accent}`, marginBottom: 4 }}>
-                  <span style={{ fontSize: 10, fontWeight: 800, color: accent, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                    Part {partKey === 'part1' ? '1' : '2'} — {part.attire} Attire
-                  </span>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: '#003845', marginTop: 2 }}>{part.title}</p>
-                </div>
-                {part.questions.map(q => (
-                  <QuestionRow
-                    key={q.id}
-                    q={q}
-                    accent={accent}
-                    onUpdate={patch => patchQuestion(partKey, q.id, patch)}
-                  />
-                ))}
-              </div>
-            )
-          })}
+        {/* Tab content */}
+        <div style={{ flex: 1, overflowY: 'auto' }}>
+          {tab === 'script' ? (
+            <div style={{ padding: '0 24px 24px' }}>
+              {(['part1', 'part2'] as const).map(partKey => {
+                const part = data[partKey]
+                return (
+                  <div key={partKey}>
+                    <div style={{ position: 'sticky', top: 0, background: '#fff', zIndex: 10, padding: '16px 0 8px', borderBottom: `2px solid ${accent}`, marginBottom: 4 }}>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: accent, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                        Part {partKey === 'part1' ? '1' : '2'} — {part.attire} Attire
+                      </span>
+                      <p style={{ fontSize: 15, fontWeight: 700, color: '#003845', marginTop: 2 }}>{part.title}</p>
+                    </div>
+                    {part.questions.map(q => (
+                      <QuestionRow key={q.id} q={q} accent={accent}
+                        onUpdate={patch => patchQuestion(partKey, q.id, patch)} />
+                    ))}
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <ProductionNotesPanel notes={prodNotes} accent={accent} onChange={patchProdNotes} />
+          )}
         </div>
       </div>
     </div>,

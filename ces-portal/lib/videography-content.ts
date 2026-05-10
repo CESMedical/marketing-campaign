@@ -13,6 +13,28 @@ export interface InterviewPart {
   questions: InterviewQuestion[]
 }
 
+export interface ProductionNotes {
+  location: string
+  plannedDate: string
+  part1Outfit: string
+  part2Outfit: string
+  equipmentNotes: string
+  bRollNotes: string
+  travelLogistics: string
+  teamNotes: string
+}
+
+export const DEFAULT_PRODUCTION_NOTES: ProductionNotes = {
+  location: '',
+  plannedDate: '',
+  part1Outfit: 'Business attire — suit or smart professional wear',
+  part2Outfit: 'Clinical attire — white coat or scrubs',
+  equipmentNotes: 'Lapel microphone. Clean audio — no clinical background noise during answers.\n\nQuestions displayed on screen: PP Telegraph font · #003845 background · white text · held 3 seconds before consultant begins.',
+  bRollNotes: 'Between answers:\n· Consultant at their desk\n· Walking through the clinic\n· At diagnostic equipment (IOLMaster 700, slit lamp)\n· In theatre environment where applicable',
+  travelLogistics: '',
+  teamNotes: '',
+}
+
 export interface ConsultantInterview {
   id: number
   name: string
