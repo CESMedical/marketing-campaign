@@ -166,7 +166,8 @@ function DraggableWorldCard({
       return saved ? JSON.parse(saved) : { x: initialX, y: initialY }
     } catch { return { x: initialX, y: initialY } }
   })
-  const [dragging, setDragging] = useState(false)
+  const [dragging, setDragging]   = useState(false)
+  const [justSaved, setJustSaved] = useState(false)
   const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
 
   function onPointerDown(e: React.PointerEvent) {
@@ -194,6 +195,8 @@ function DraggableWorldCard({
       const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
       setPos(final)
       try { localStorage.setItem(`card-pos-${storageKey}`, JSON.stringify(final)) } catch {}
+      setJustSaved(true)
+      setTimeout(() => setJustSaved(false), 2000)
     }
     dragRef.current = null
     setDragging(false)
@@ -207,6 +210,17 @@ function DraggableWorldCard({
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
     >
+      {justSaved && (
+        <div style={{
+          position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)',
+          marginBottom: 8, background: '#22c55e', color: '#fff',
+          fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 8,
+          pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 100,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+        }}>
+          ✓ Position saved
+        </div>
+      )}
       {children}
     </div>
   )
