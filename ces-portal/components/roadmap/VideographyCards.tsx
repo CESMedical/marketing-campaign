@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Video, X, ChevronDown, ChevronRight } from 'lucide-react'
 import { VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, type ConsultantInterview, type InterviewQuestion } from '@/lib/videography-content'
 
@@ -42,7 +43,7 @@ function QuestionRow({ q, accent }: { q: InterviewQuestion; accent: string }) {
 }
 
 function ScriptModal({ interview, accent, onClose }: { interview: ConsultantInterview; accent: string; onClose: () => void }) {
-  return (
+  return createPortal(
     <div
       style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClick={onClose}
@@ -88,7 +89,8 @@ function ScriptModal({ interview, accent, onClose }: { interview: ConsultantInte
           ))}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
