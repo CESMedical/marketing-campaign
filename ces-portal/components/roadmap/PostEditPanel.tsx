@@ -350,9 +350,10 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
                         <div className="flex items-baseline gap-2">
                           <span className="text-xs font-bold text-brand-deep">{c.authorName}</span>
                           <span className="text-[10px] text-brand-deep/35">
-                            {new Date(c.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                            {new Date(c.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/London' })}
                             {' · '}
-                            {new Date(c.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+                            {new Date(c.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' })}
+                            {' BST'}
                           </span>
                         </div>
                         {c.canDelete && (
