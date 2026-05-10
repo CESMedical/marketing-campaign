@@ -486,6 +486,62 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             </div>
           ))}
 
+          {/* ── Videography connector: vid strategy card → 4 consultant cards ── */}
+          {(() => {
+            // Trunk rises from bottom-centre of the videography strategy card
+            const trunkX    = VID_STRAT_X + VID_CARD_W / 2                      // 490 — card centre
+            const trunkTopY = VID_STRAT_Y + 480                                  // approx card bottom
+            const junctionY = CONSULT_Y - 50                                     // horizontal bar, 50 px above cards
+            const rightmostX = GAL_PAD + 3 * (VID_CARD_W + CONSULT_GAP) + VID_CARD_W / 2  // centre of 4th card
+
+            // SVG bounding box in world coordinates
+            const svgL = trunkX - 6
+            const svgT = trunkTopY
+            const svgW = rightmostX - svgL + 10
+            const svgH = CONSULT_Y - trunkTopY + 10
+
+            // X centres of the four consultant cards
+            const centers = [0, 1, 2, 3].map(
+              i => GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + VID_CARD_W / 2
+            )
+
+            const stroke = { fill: 'none', stroke: 'rgba(0,56,69,0.22)', strokeWidth: 2, strokeDasharray: '8 5', strokeLinecap: 'round' as const }
+
+            return (
+              <svg
+                style={{ position: 'absolute', left: svgL, top: svgT, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}
+              >
+                {/* Vertical trunk from vid card bottom to junction bar */}
+                <line x1={trunkX - svgL} y1={0} x2={trunkX - svgL} y2={junctionY - svgT} {...stroke} />
+
+                {/* Horizontal bar spanning all four card centres */}
+                <line x1={trunkX - svgL} y1={junctionY - svgT} x2={rightmostX - svgL} y2={junctionY - svgT} {...stroke} />
+
+                {/* Four vertical branches down to card tops */}
+                {centers.map((cx, i) => (
+                  <line key={i} x1={cx - svgL} y1={junctionY - svgT} x2={cx - svgL} y2={CONSULT_Y - svgT} {...stroke} />
+                ))}
+
+                {/* Connection dots */}
+                <circle cx={trunkX - svgL} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
+                {centers.map((cx, i) => (
+                  <circle key={i} cx={cx - svgL} cy={CONSULT_Y - svgT} r={5} fill="rgba(0,56,69,0.25)" />
+                ))}
+
+                {/* Label */}
+                <text
+                  x={trunkX - svgL + 10}
+                  y={(junctionY - svgT) / 2}
+                  fontSize={10} fontWeight={700}
+                  fill="rgba(0,56,69,0.30)"
+                  style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                >
+                  Videography
+                </text>
+              </svg>
+            )
+          })()}
+
           {/* L-connector: up from strategy card top-right → right to roadmap timeline bar */}
           {(() => {
             const connX  = STRAT_X + STRAT_W          // 640 — strategy card right edge
