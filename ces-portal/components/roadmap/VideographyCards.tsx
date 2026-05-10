@@ -12,7 +12,7 @@ import {
 } from '@/lib/videography-content'
 
 const PILLAR_COLOR       = '#003845'
-const CONSULTANT_COLORS  = ['#7c3aed', '#2563eb', '#16a34a', '#008080']
+const CONSULTANT_COLORS  = ['#008080', '#008080', '#008080', '#008080']
 
 const labelStyle: React.CSSProperties = {
   fontSize: 11, fontWeight: 700, color: 'rgba(0,56,69,0.4)',

@@ -378,7 +378,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
   },
   {
     id: 4,
-    name: 'Elion Hyseni',
+    name: 'Mr Elion Hyseni',
     specialty: 'Founder and CEO',
     postsFed: ['P01', 'P04', 'P06', 'P17', 'P32', 'P42', 'P45', 'P47', 'P48'],
     part1: {
