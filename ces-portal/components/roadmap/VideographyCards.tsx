@@ -501,7 +501,7 @@ function EditableNotes({ storageKey, accent }: { storageKey: string; accent: str
 
 // ─── Leonna card ──────────────────────────────────────────────────────────────
 
-function LeonnaVideoRow({ v, accent }: { v: LeonnaVideo; accent: string }) {
+function LeonnaVideoRow({ v, accent, onUpdate }: { v: LeonnaVideo; accent: string; onUpdate: (p: Partial<LeonnaVideo>) => void }) {
   const [open, setOpen] = useState(false)
   return (
     <div style={{ borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
@@ -521,21 +521,20 @@ function LeonnaVideoRow({ v, accent }: { v: LeonnaVideo; accent: string }) {
       {open && (
         <div style={{ paddingLeft: 21, paddingBottom: 16 }}>
           <label style={labelStyle}>Concept</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{v.concept}</p>
-          <label style={labelStyle}>Shot list</label>
-          <ul style={{ margin: '0 0 12px', paddingLeft: 16 }}>
-            {v.shotList.map((s, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 4 }}>{s}</li>)}
-          </ul>
+          <textarea value={v.concept} rows={3} style={fieldStyle} onChange={e => onUpdate({ concept: e.target.value })} />
+          <label style={labelStyle}>Shot list (one per line)</label>
+          <textarea value={v.shotList.join('\n')} rows={v.shotList.length + 1} style={fieldStyle}
+            onChange={e => onUpdate({ shotList: e.target.value.split('\n') })} />
           <label style={labelStyle}>Script guidance — Leonna</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, whiteSpace: 'pre-wrap', marginBottom: 12 }}>{v.scriptGuidanceLeonna}</p>
-          {v.scriptGuidanceConsultant && <>
-            <label style={labelStyle}>Script guidance — Consultant</label>
-            <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{v.scriptGuidanceConsultant}</p>
-          </>}
+          <textarea value={v.scriptGuidanceLeonna} rows={5} style={fieldStyle}
+            onChange={e => onUpdate({ scriptGuidanceLeonna: e.target.value })} />
+          <label style={labelStyle}>Script guidance — Consultant</label>
+          <textarea value={v.scriptGuidanceConsultant ?? ''} rows={3} style={fieldStyle}
+            onChange={e => onUpdate({ scriptGuidanceConsultant: e.target.value })} />
           <label style={labelStyle}>Caption</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 8 }}>{v.caption}</p>
+          <textarea value={v.caption} rows={3} style={fieldStyle} onChange={e => onUpdate({ caption: e.target.value })} />
           <label style={labelStyle}>CTA</label>
-          <p style={{ fontSize: 12, color: accent }}>{v.cta}</p>
+          <input value={v.cta} style={{ ...fieldStyle, resize: undefined, height: 36 }} onChange={e => onUpdate({ cta: e.target.value })} />
         </div>
       )}
     </div>
@@ -546,6 +545,20 @@ export function LeonnaProductionCard() {
   const [show, setShow] = useState(false)
   const [tab, setTab]   = useState('Videos')
   const accent = '#d97706'
+  const storageKey = 'ces-prod-leonna-videos'
+
+  const [videos, setVideos] = useState<LeonnaVideo[]>(() => {
+    if (typeof window === 'undefined') return LEONNA_VIDEOS
+    try { const s = localStorage.getItem(storageKey); return s ? JSON.parse(s) : LEONNA_VIDEOS } catch { return LEONNA_VIDEOS }
+  })
+
+  function patchVideo(id: string, patch: Partial<LeonnaVideo>) {
+    setVideos(prev => {
+      const next = prev.map(v => v.id === id ? { ...v, ...patch } : v)
+      try { localStorage.setItem(storageKey, JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
 
   return (
     <>
@@ -565,7 +578,7 @@ export function LeonnaProductionCard() {
         >
           {tab === 'Videos' ? (
             <div style={{ padding: '0 24px 24px' }}>
-              {LEONNA_VIDEOS.map(v => <LeonnaVideoRow key={v.id} v={v} accent={accent} />)}
+              {videos.map(v => <LeonnaVideoRow key={v.id} v={v} accent={accent} onUpdate={p => patchVideo(v.id, p)} />)}
             </div>
           ) : <EditableNotes storageKey="ces-prod-leonna-notes" accent={accent} />}
         </ProductionModal>
@@ -576,7 +589,7 @@ export function LeonnaProductionCard() {
 
 // ─── Patient stories card ─────────────────────────────────────────────────────
 
-function StoryRow({ s, accent }: { s: PatientStory; accent: string }) {
+function StoryRow({ s, accent, onUpdate }: { s: PatientStory; accent: string; onUpdate: (p: Partial<PatientStory>) => void }) {
   const [open, setOpen] = useState(false)
   return (
     <div style={{ borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
@@ -595,18 +608,21 @@ function StoryRow({ s, accent }: { s: PatientStory; accent: string }) {
       </button>
       {open && (
         <div style={{ paddingLeft: 21, paddingBottom: 16 }}>
+          <label style={labelStyle}>Patient name / placeholder</label>
+          <input value={s.patient} style={{ ...fieldStyle, resize: undefined, height: 36 }} onChange={e => onUpdate({ patient: e.target.value })} />
+          <label style={labelStyle}>Condition</label>
+          <input value={s.condition} style={{ ...fieldStyle, resize: undefined, height: 36 }} onChange={e => onUpdate({ condition: e.target.value })} />
           <label style={labelStyle}>Why this story matters</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{s.whyMatters}</p>
-          <label style={labelStyle}>Suggested prompt questions</label>
-          <ul style={{ margin: '0 0 12px', paddingLeft: 16 }}>
-            {s.promptQuestions.map((q, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 4 }}>{q}</li>)}
-          </ul>
+          <textarea value={s.whyMatters} rows={4} style={fieldStyle} onChange={e => onUpdate({ whyMatters: e.target.value })} />
+          <label style={labelStyle}>Prompt questions (one per line)</label>
+          <textarea value={s.promptQuestions.join('\n')} rows={s.promptQuestions.length + 1} style={fieldStyle}
+            onChange={e => onUpdate({ promptQuestions: e.target.value.split('\n') })} />
           <label style={labelStyle}>What we need</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{s.whatWeNeed}</p>
+          <textarea value={s.whatWeNeed} rows={4} style={fieldStyle} onChange={e => onUpdate({ whatWeNeed: e.target.value })} />
           <label style={labelStyle}>Caption</label>
-          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 8 }}>{s.caption}</p>
+          <textarea value={s.caption} rows={3} style={fieldStyle} onChange={e => onUpdate({ caption: e.target.value })} />
           <label style={labelStyle}>CTA</label>
-          <p style={{ fontSize: 12, color: accent }}>{s.cta}</p>
+          <input value={s.cta} style={{ ...fieldStyle, resize: undefined, height: 36 }} onChange={e => onUpdate({ cta: e.target.value })} />
         </div>
       )}
     </div>
@@ -617,6 +633,20 @@ export function PatientStoriesCard() {
   const [show, setShow] = useState(false)
   const [tab, setTab]   = useState('Stories')
   const accent = '#16a34a'
+  const storageKey = 'ces-prod-patient-stories'
+
+  const [stories, setStories] = useState<PatientStory[]>(() => {
+    if (typeof window === 'undefined') return PATIENT_STORIES
+    try { const s = localStorage.getItem(storageKey); return s ? JSON.parse(s) : PATIENT_STORIES } catch { return PATIENT_STORIES }
+  })
+
+  function patchStory(id: string, patch: Partial<PatientStory>) {
+    setStories(prev => {
+      const next = prev.map(s => s.id === id ? { ...s, ...patch } : s)
+      try { localStorage.setItem(storageKey, JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
 
   return (
     <>
@@ -636,7 +666,7 @@ export function PatientStoriesCard() {
         >
           {tab === 'Stories' ? (
             <div style={{ padding: '0 24px 24px' }}>
-              {PATIENT_STORIES.map(s => <StoryRow key={s.id} s={s} accent={accent} />)}
+              {stories.map(s => <StoryRow key={s.id} s={s} accent={accent} onUpdate={p => patchStory(s.id, p)} />)}
             </div>
           ) : tab === 'Framework' ? (
             <div style={{ padding: '20px 24px' }}>
@@ -673,6 +703,20 @@ export function TeamPhotographyCard() {
   const [show, setShow] = useState(false)
   const [tab, setTab]   = useState('Assets')
   const accent = '#2563eb'
+  const storageKey = 'ces-prod-team-assets'
+
+  const [assets, setAssets] = useState<TeamAsset[]>(() => {
+    if (typeof window === 'undefined') return TEAM_ASSETS
+    try { const s = localStorage.getItem(storageKey); return s ? JSON.parse(s) : TEAM_ASSETS } catch { return TEAM_ASSETS }
+  })
+
+  function patchAsset(id: string, patch: Partial<TeamAsset>) {
+    setAssets(prev => {
+      const next = prev.map(a => a.id === id ? { ...a, ...patch } : a)
+      try { localStorage.setItem(storageKey, JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
 
   return (
     <>
@@ -691,17 +735,18 @@ export function TeamPhotographyCard() {
         >
           {tab === 'Assets' ? (
             <div style={{ padding: '20px 24px' }}>
-              {TEAM_ASSETS.map((a: TeamAsset) => (
+              {assets.map((a: TeamAsset) => (
                 <div key={a.id} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                     <span style={{ fontSize: 12, fontWeight: 800, color: accent }}>{a.id}</span>
                     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.45)' }}>→ {a.post} · {a.date} · {a.location}</span>
                   </div>
-                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#003845', marginBottom: 10 }}>{a.subject}</h4>
+                  <label style={labelStyle}>Subject</label>
+                  <input value={a.subject} style={{ ...fieldStyle, resize: undefined, height: 36 }} onChange={e => patchAsset(a.id, { subject: e.target.value })} />
                   <label style={labelStyle}>What to capture</label>
-                  <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{a.whatToCapture}</p>
+                  <textarea value={a.whatToCapture} rows={4} style={fieldStyle} onChange={e => patchAsset(a.id, { whatToCapture: e.target.value })} />
                   <label style={labelStyle}>Guidance</label>
-                  <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55 }}>{a.guidance}</p>
+                  <textarea value={a.guidance} rows={4} style={fieldStyle} onChange={e => patchAsset(a.id, { guidance: e.target.value })} />
                 </div>
               ))}
             </div>
@@ -718,6 +763,20 @@ export function ProductionScheduleCard() {
   const [show, setShow] = useState(false)
   const [tab, setTab]   = useState('Schedule')
   const accent = '#003845'
+  const entriesKey = 'ces-prod-schedule-entries'
+
+  const [entries, setEntries] = useState(() => {
+    if (typeof window === 'undefined') return SCHEDULE_ENTRIES
+    try { const s = localStorage.getItem(entriesKey); return s ? JSON.parse(s) : SCHEDULE_ENTRIES } catch { return SCHEDULE_ENTRIES }
+  })
+
+  function patchEntry(idx: number, patch: Partial<typeof SCHEDULE_ENTRIES[0]>) {
+    setEntries((prev: typeof SCHEDULE_ENTRIES) => {
+      const next = prev.map((e, i) => i === idx ? { ...e, ...patch } : e)
+      try { localStorage.setItem(entriesKey, JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
 
   return (
     <>
@@ -779,11 +838,17 @@ export function ProductionScheduleCard() {
                 <tbody>
                   {SCHEDULE_ENTRIES.map((e, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid rgba(0,56,69,0.06)' }}>
-                      <td style={{ padding: '8px 10px', fontWeight: 700, color: '#003845' }}>{e.post}</td>
-                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.7)' }}>{e.asset}</td>
-                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.5)' }}>{e.type}</td>
-                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.5)' }}>{e.location}</td>
-                      <td style={{ padding: '8px 10px', fontWeight: 700, color: accent }}>{e.deadline}</td>
+                      {(['post','asset','type','location','deadline'] as const).map(field => (
+                        <td key={field} style={{ padding: '4px 6px' }}>
+                          <input
+                            value={e[field]}
+                            onChange={ev => patchEntry(i, { [field]: ev.target.value })}
+                            style={{ width: '100%', fontSize: 12, border: '1px solid transparent', borderRadius: 4, padding: '3px 6px', background: 'transparent', color: field === 'deadline' ? accent : field === 'post' ? '#003845' : 'rgba(0,56,69,0.65)', fontWeight: field === 'post' || field === 'deadline' ? 700 : 400, outline: 'none', fontFamily: 'inherit' }}
+                            onFocus={e => (e.target.style.borderColor = accent)}
+                            onBlur={e => (e.target.style.borderColor = 'transparent')}
+                          />
+                        </td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>
