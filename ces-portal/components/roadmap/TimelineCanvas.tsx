@@ -8,6 +8,8 @@ import { PostEditPanel } from './PostEditPanel'
 import { NewPostModal } from './NewPostModal'
 import { StrategyCard } from './StrategyCard'
 import { ViewSwitcher } from './ViewSwitcher'
+import { VideographyStrategyCard, ConsultantInterviewCard } from './VideographyCards'
+import { CONSULTANT_INTERVIEWS } from '@/lib/videography-content'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
 
@@ -30,6 +32,15 @@ const WORLD_H     = PANEL_H + GAL_PAD * 2
 const STRAT_W     = 300
 const STRAT_X     = GAL_PAD - STRAT_W - 160   // 160 px gap before roadmap
 const STRAT_Y     = GAL_PAD + PANEL_H / 2 - 200 // vertically centred
+
+// Videography strategy card — below strategy card
+const VID_CARD_W  = 300
+const VID_STRAT_X = STRAT_X
+const VID_STRAT_Y = STRAT_Y + 520
+
+// Consultant interview cards — row below the roadmap panel
+const CONSULT_Y   = GAL_PAD + PANEL_H + 100
+const CONSULT_GAP = 40
 
 const EPOCH     = new Date('2026-04-27T00:00:00Z')
 const MIN_ZOOM  = 0.03
@@ -459,6 +470,21 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           <div style={{ position: 'absolute', left: STRAT_X, top: STRAT_Y, zIndex: 5 }}>
             <StrategyCard roadmapId={roadmapId} />
           </div>
+
+          {/* ── Videography strategy card — below strategy card ───────────── */}
+          <div style={{ position: 'absolute', left: VID_STRAT_X, top: VID_STRAT_Y, zIndex: 5 }}>
+            <VideographyStrategyCard />
+          </div>
+
+          {/* ── Consultant interview cards — row below roadmap ────────────── */}
+          {CONSULTANT_INTERVIEWS.map((interview, i) => (
+            <div
+              key={interview.id}
+              style={{ position: 'absolute', left: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP), top: CONSULT_Y, zIndex: 5 }}
+            >
+              <ConsultantInterviewCard interview={interview} index={i} />
+            </div>
+          ))}
 
           {/* L-connector: up from strategy card top-right → right to roadmap timeline bar */}
           {(() => {
