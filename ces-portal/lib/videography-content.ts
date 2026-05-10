@@ -482,3 +482,348 @@ export const POST_MAPPING: Record<string, string[]> = {
   P47: ['Elion B5', 'B4'],
   P48: ['Elion C2'],
 }
+
+// ─── Production card types ────────────────────────────────────────────────────
+
+export interface LeonnaVideo {
+  id: string
+  post: string
+  date: string
+  title: string
+  format: string
+  platforms: string
+  location: string
+  isCommercialPriority?: boolean
+  concept: string
+  shotList: string[]
+  scriptGuidanceLeonna: string
+  scriptGuidanceConsultant?: string
+  caption: string
+  cta: string
+}
+
+export interface PatientStory {
+  id: string
+  post: string
+  date: string
+  patient: string
+  condition: string
+  location: string
+  platforms: string
+  isCommercialPriority?: boolean
+  whyMatters: string
+  promptQuestions: string[]
+  whatWeNeed: string
+  caption: string
+  cta: string
+}
+
+export interface TeamAsset {
+  id: string
+  post: string
+  date: string
+  subject: string
+  format: string
+  location: string
+  platforms: string
+  whatToCapture: string
+  guidance: string
+}
+
+export interface ScheduleEntry {
+  post: string
+  asset: string
+  type: string
+  location: string
+  deadline: string
+}
+
+// ─── Leonna videos ────────────────────────────────────────────────────────────
+
+export const LEONNA_VIDEOS: LeonnaVideo[] = [
+  {
+    id: 'L01', post: 'P07', date: '15 May',
+    title: 'A morning at our Chatham surgical centre',
+    format: 'Reel · 60–90 seconds', platforms: 'IG, FB', location: 'Chatham',
+    concept: 'The viewer follows Leonna through the start of a surgical day at Chatham. This is not a promotional tour. It is an honest, observational walk-through of what actually happens before the first patient goes into theatre. The goal is to reduce patient anxiety by making the unfamiliar familiar.',
+    shotList: [
+      'Exterior of Chatham centre, early morning, team arriving',
+      'Reception desk being set up, screens on, notes being checked',
+      'Theatre being prepared: surgical instruments laid out, lights adjusted, team in scrubs going through the morning checklist',
+      'The day list being reviewed by the clinical team',
+      'First patient of the day arriving at reception, being greeted warmly',
+      'Leonna to camera: a brief, natural observation about what this morning represents for the patient about to come through',
+    ],
+    scriptGuidanceLeonna: 'Do not script this. Leonna should speak naturally as if showing a friend around for the first time.\n\nSuggested opener: "Every morning here starts the same way. Before any patient walks through that door, the team has already been here for an hour. I wanted to show you what that looks like."\n\nClose: "All of this, before the first patient even checks in. That is what you are walking into when you come here."',
+    caption: 'Theatre prep, the team checking the day list, the first patient through the door. A short walk-through of how a cataract surgery morning starts at our Chatham centre.',
+    cta: 'cesmedical.co.uk/service-chatham-eye-clinic-and-surgical-centre',
+  },
+  {
+    id: 'L02', post: 'P12', date: '26 May',
+    title: 'Behind the scenes — sterilising the theatre between cases',
+    format: 'Reel · 60 seconds', platforms: 'IG, LI', location: 'Chatham',
+    concept: 'Show the theatre reset and sterilisation process between surgical cases. This is content patients never see but that directly affects their safety and confidence. Showing it openly is a trust-building act. Clinical rigour presented warmly.',
+    shotList: [
+      'Theatre immediately after a case: drapes being removed, instruments being collected',
+      'The sterilisation team entering with cleaning equipment',
+      'Surfaces being wiped, instruments being bagged for sterilisation',
+      'Fresh drapes and instruments being laid for the next case',
+      'Theatre ready for the next patient: clean, quiet, reset',
+      'Leonna to camera: brief observation on why this is important and why CES shows it openly',
+    ],
+    scriptGuidanceLeonna: 'Natural and direct. Not clinical in tone.\n\nSuggested approach: "Most patients never see this part. Between every single case, this theatre is completely reset. I wanted to show you because I think it matters that you know what happens in the time between."\n\nDo not use the word "safe" as a standalone claim. Instead: "This is the standard we hold ourselves to every time. Not just the first case of the day."',
+    caption: 'Every patient goes into a theatre that has been fully reset and sterilised. It is invisible to most people but it is one of the most important things we do, and we wanted to show you how it works.',
+    cta: 'cesmedical.co.uk',
+  },
+  {
+    id: 'L03', post: 'P24', date: '18 June',
+    title: 'Tour our Headcorn diagnostic and surgical centre',
+    format: 'Video · 90 seconds', platforms: 'IG, FB, LI, YT', location: 'Headcorn',
+    concept: 'A full location walk-through of Headcorn for patients who have been referred there or are considering a private appointment. Many patients will not have visited before. This video removes the uncertainty of arriving at an unfamiliar place. Show the whole journey from car park to consulting room.',
+    shotList: [
+      'Exterior of Headcorn centre and signage',
+      'Reception and waiting area: welcoming, calm, clean',
+      'Diagnostic suite: show equipment in use or being prepared, including the Zeiss IOLMaster 700 if located here',
+      'Consulting rooms: clean, well-lit, properly equipped',
+      'Theatre or surgical preparation area if accessible and appropriate',
+      'The team: reception staff, clinical staff, seen naturally going about their work',
+      'Leonna to camera at the end: a direct address to any patient who is coming here for the first time',
+    ],
+    scriptGuidanceLeonna: 'Walk and talk where possible. Let the location do the work.\n\nFinal piece to camera: "If you have got an appointment coming up at Headcorn and you are not sure what to expect, this is it. The team here sees both NHS and private patients. You will be looked after from the moment you arrive."\n\nAdditional recommendation: On this filming day also capture a consultant on camera at the IOLMaster 700 explaining what the measurement does for the patient (feeds P29), and B-roll of the diagnostic suite to support future educational content.',
+    caption: 'A short walk-through of our Headcorn site — diagnostics, consulting rooms, theatres and the team that makes it all run. If you are considering a procedure with us, this is the place you will likely visit.',
+    cta: 'cesmedical.co.uk/service-headcorn-diagnostic-surgical-centre',
+  },
+  {
+    id: 'L04', post: 'P16', date: '4 June',
+    title: 'The Pantiles — filming an eyelid surgery explainer with Leonna',
+    format: 'Reel · 60 seconds', platforms: 'IG, FB', location: 'Tunbridge Wells',
+    concept: 'Meta content. Leonna behind the scenes of the filming itself. This works well mid-campaign when the audience is already following the series. It humanises the content production process and builds loyalty. Leonna talks directly to the camera about how the team decides what to film and what they leave to the consultation.',
+    shotList: [
+      'Leonna with camera crew at Pantiles, natural and unposed',
+      'The clinic space being used as a filming location',
+      'A moment of preparation or review between takes',
+      'Leonna direct to camera for the main piece',
+    ],
+    scriptGuidanceLeonna: 'Conversational and personal. This is the most relaxed video in the series.\n\n"We film here at the Pantiles quite a lot. People always ask what we choose to show and what we hold back. The honest answer is: we show you everything that helps you feel ready. The things that are better explained face to face with a consultant, we leave for the consultation. That is not us being cagey. It is us being honest about what a two-minute video can and cannot do."',
+    caption: 'A behind-the-scenes look at our Pantiles location, where we are filming a series of explainers on oculoplastic procedures. Leonna walks through how we choose what to show and what we leave to the consultation.',
+    cta: 'Follow the series (save)',
+  },
+  {
+    id: 'L05', post: 'P21', date: '12 June',
+    title: 'A morning with our oculoplastic consultant',
+    format: 'Reel · 90 seconds', platforms: 'IG, LI', location: 'Tunbridge Wells',
+    isCommercialPriority: true,
+    concept: 'This is the highest-value premises video in the campaign and a commercial priority post. The goal is to show the oculoplastic service in action and position CES as the right place for eyelid surgery. The consultant should appear natural and confident, not performing for the camera.',
+    shotList: [
+      'Consultant arriving and preparing for the day',
+      'Consultation in progress (with patient consent or simulated): consultant examining eyelids, using a slit lamp, explaining findings',
+      'A brief corridor or workspace moment between consultations, natural and unscripted',
+      'Consultant to camera: a short direct statement about the oculoplastic work (can be drawn from interview script if filmed on the same day)',
+      'Leonna to camera: a brief framing statement at the start or end',
+    ],
+    scriptGuidanceLeonna: 'Opening frame: "From the first consultation of the day to the operating list, this is a morning with our oculoplastic consultant at our Tunbridge Wells clinic. The work goes well beyond eyelids. But eyelids are where most patients first meet us."',
+    scriptGuidanceConsultant: 'Draw from interview script Q5 and Q7 (Kopsachilis). A short natural statement on what the oculoplastic morning involves and what patients can expect at their first consultation.',
+    caption: 'From the first consultation of the day to the operating list, a behind-the-scenes morning with our oculoplastic consultant. The work goes well beyond eyelids but eyelids are where most patients first meet us.',
+    cta: 'cespatientinformation.co.uk',
+  },
+  {
+    id: 'L06', post: 'P40', date: '17 July',
+    title: 'Behind the scenes — Leonna filming at the Pantiles',
+    format: 'Reel · 60 seconds', platforms: 'IG, X', location: 'Tunbridge Wells',
+    concept: 'Late-campaign reflection piece. Leonna reflects on what the content series has produced, what questions came in from the audience and how patient questions shaped what got made. Community-building content that rewards the audience for following along.',
+    shotList: [
+      'Leonna at the Pantiles, natural setting, with filming equipment visible',
+      'Looking back at content on a screen or tablet',
+      'Direct to camera piece',
+    ],
+    scriptGuidanceLeonna: 'Honest and reflective. No corporate language.\n\n"We started this series because we thought there were questions patients had that nobody was answering properly. What we did not expect was how many of you would send us questions we had not thought of. That is what we make next. Keep them coming."',
+    caption: 'A short look at how we put our patient education content together. Leonna walks through what we film, what we cut and why the questions you ask us shape what we make next.',
+    cta: 'Send us a question (DM)',
+  },
+  {
+    id: 'L07', post: 'P45 & P47', date: '28 & 30 July',
+    title: 'Three months in — what is next for CES Medical',
+    format: 'Video · 90 seconds each', platforms: 'LI, IG (P45) · IG, FB, LI (P47)', location: 'Chatham',
+    concept: 'Two separate edits from the same filming session. P45 is Leonna and the team reflecting on the campaign. P47 is Elion\'s closing message to camera. Film both on the same day at Chatham.',
+    shotList: [
+      'P45 — The team at Chatham, natural group moment',
+      'P45 — Leonna to camera reflecting on three months of content',
+      'P45 — Individual team members if comfortable on camera, brief and natural',
+      'P47 — Elion to camera, business attire, Chatham setting',
+      'P47 — Can draw from interview script Q5 and Q4',
+    ],
+    scriptGuidanceLeonna: 'P45: "Across three months we put out a lot. And you sent us a lot back. Questions about cataracts, lenses, eyelids, things you were not sure were normal. What we learned is that people want honest answers. Not brochures. We will keep doing that."',
+    scriptGuidanceConsultant: 'P47 — Elion: Draw from his interview script. Cover gratitude to the audience and team, what three months of open content has meant, and a clear forward-looking statement about what CES is building next. End on the CES mission: specialist eye care, close to home, for everyone who needs it.',
+    caption: 'Three months in — what we learned from your messages (P45) · A thank you from the team and what is next for CES Medical (P47)',
+    cta: 'P45: Keep the questions coming (DM) · P47: Follow what\'s next (save)',
+  },
+]
+
+// ─── Patient stories ──────────────────────────────────────────────────────────
+
+export const PATIENT_STORIES: PatientStory[] = [
+  {
+    id: 'PS01', post: 'P13', date: '29 May',
+    patient: 'Susan (placeholder)', condition: 'Cataract surgery, monofocal lens',
+    location: 'Chatham', platforms: 'IG, FB, LI, YT',
+    whyMatters: 'Susan represents the most common CES patient: someone who delayed for years, finally acted, and was surprised by how manageable the experience was. Her story directly addresses the two biggest barriers to cataract enquiry: fear of surgery on the eye and uncertainty about whether the time is right.',
+    promptQuestions: [
+      'How long had your vision been getting worse before you did anything about it?',
+      'What was it that finally made you pick up the phone?',
+      'What were you most worried about before the day of surgery?',
+      'What actually surprised you about the experience?',
+      'What can you do now that you were struggling with before?',
+    ],
+    whatWeNeed: 'The moment of recognition that she had put it off too long. The specific thing that finally made her act. An honest account of what the day was like, including any anxiety. A concrete before and after. Not a glowing endorsement. A real account.',
+    caption: 'Susan delayed her cataract surgery for years. In her own words, she shares why she decided it was time, what surprised her about the day itself and how she felt the morning after.',
+    cta: 'cesmedical.co.uk',
+  },
+  {
+    id: 'PS02', post: 'P27', date: '23 June',
+    patient: 'James (placeholder)', condition: 'Acute eye condition, urgent referral',
+    location: 'Chatham', platforms: 'IG, FB, YT',
+    whyMatters: 'James is a different patient profile. He did not delay. He was referred urgently and was frightened. His story speaks to patients who are anxious about being seen quickly and who need reassurance that CES handles urgent cases with care, not just routine ones.',
+    promptQuestions: [
+      'What were you experiencing when you were first referred to CES?',
+      'How quickly were you seen?',
+      'What was going through your mind when you arrived?',
+      'How did the team handle the fact that you were anxious and in pain?',
+      'What was the experience of being treated quickly like compared to what you expected?',
+      'What would you say to someone in a similar position who was worried about coming forward?',
+    ],
+    whatWeNeed: 'The fear before arrival. The speed of being seen and what that felt like. An honest account of how the clinical team treated him as a person, not just a patient. A clear message to other people who are putting off an urgent concern.',
+    caption: 'James was referred to us with an acute eye condition and was nervous and in pain. He shares the journey from first call to recovery and what surprised him about how quickly he was seen.',
+    cta: 'cesmedical.co.uk',
+  },
+  {
+    id: 'PS03', post: 'P38', date: '12 July',
+    patient: 'Anna (placeholder)', condition: 'Eyelid surgery, functional ptosis',
+    location: 'Tunbridge Wells', platforms: 'IG, FB, YT',
+    isCommercialPriority: true,
+    whyMatters: 'Commercial priority post. Anna\'s story directly supports the oculoplastic commercial strand. It addresses the most common patient journey for functional eyelid surgery: years of peripheral vision being affected, not knowing whether it was serious enough to seek help, and the decision to finally come forward.',
+    promptQuestions: [
+      'How long had your eyelids been affecting your vision before you came to us?',
+      'Did you think it was something that needed medical attention or did you see it as cosmetic?',
+      'What made you decide to look into it properly?',
+      'Were you nervous about surgery near your eye?',
+      'What was the procedure itself like?',
+      'What is different about how you see the world now?',
+    ],
+    whatWeNeed: 'The years of living with it. The realisation that it was a medical issue not a cosmetic one. An honest account of the procedure. A specific, concrete description of what is different now. This story will speak directly to patients in the same position Anna was in before she came to CES.',
+    caption: 'Anna\'s drooping upper eyelids had been affecting her peripheral vision for years before she sought help. She shares why she finally booked a consultation, what the procedure was like and how she sees the world now.',
+    cta: 'cespatientinformation.co.uk',
+  },
+  {
+    id: 'PS04', post: 'P46', date: '29 July',
+    patient: 'Unnamed (first name only, patient\'s choice)', condition: 'Glaucoma, early detection through routine screening',
+    location: 'Chatham', platforms: 'IG, FB, LI, YT',
+    whyMatters: 'Glaucoma is the silent condition. No symptoms in the early stages. This patient\'s story is the most powerful argument CES can make for regular eye examinations. It is also the most clinically responsible story in the campaign because it directly encourages a behaviour (regular screening) that prevents sight loss.',
+    promptQuestions: [
+      'How did you find out you had glaucoma?',
+      'Were you having any symptoms at all before your diagnosis?',
+      'What was your reaction when you were told?',
+      'What has the past two years of management involved?',
+      'What would you say to someone who keeps putting off their eye test?',
+    ],
+    whatWeNeed: 'The ordinariness of the moment of diagnosis — a routine check, no symptoms, a complete surprise. The emotional adjustment to a long-term condition. An honest account of what management involves. A direct message to the audience about why the annual check matters. This is the most important public health message in the entire campaign.',
+    caption: 'A patient shares how a routine eye test picked up early-stage glaucoma and what the past two years of treatment have meant for their vision and their daily life. The case for regular checks, in human terms.',
+    cta: 'cesmedical.co.uk',
+  },
+]
+
+export const PATIENT_STORY_FRAMEWORK = {
+  before: 'What was life like before they came to CES? How long had the problem been present? What stopped them from seeking help earlier?',
+  during: 'What was the experience actually like? What surprised them? What were they most anxious about and was that anxiety justified?',
+  after: 'What is different now? Be specific. Not "I can see better." What can they do now that they could not do before?',
+  filmingGuidance: [
+    'Patient sits comfortably in a consulting room or quiet waiting area. Not a theatre.',
+    'Natural light supplemented where needed. Warm not clinical.',
+    'No presenter on screen. Off-camera prompts from Leonna are fine.',
+    'Film 10–15 minutes of natural conversation. Edit to 2–3 minutes for the main video.',
+    'Export a 30–45 second snippet for Instagram and Facebook reels.',
+    'Patient wears their own clothes. Nothing staged or posed.',
+    'Consent: written consent signed before filming. Patient confirms they are happy to be identified by first name and condition on social media.',
+    'Location: same clinic where they were treated where possible.',
+  ],
+  recruitmentNote: 'Susan, James, Anna and the glaucoma patient are placeholder names. Real patients must be identified, approached and consented a minimum of four weeks before their scheduled filming date. The patient coordinator at each clinic is the right person to identify suitable candidates.\n\n⚠️ Susan filming deadline is 22 May — patient recruitment must begin this week.',
+}
+
+// ─── Team photography ──────────────────────────────────────────────────────────
+
+export const TEAM_ASSETS: TeamAsset[] = [
+  {
+    id: 'T01', post: 'P04', date: '8 May',
+    subject: 'Consultant introduction — cataract',
+    format: 'Single image', location: 'Chatham', platforms: 'IG, FB, LI',
+    whatToCapture: 'Professional headshot of the lead cataract consultant in a clinical setting at Chatham. Not a studio portrait. The consultant at their slit lamp, at their desk reviewing notes, or walking through the clinic. Natural and confident. Capture on the same day as the consultant interview to avoid an additional filming day.',
+    guidance: 'Warm light. Clinical background that is clean and recognisable as CES. Consultant in clinical attire for this shot. Expression should be approachable and direct, not posed or stiff. Capture five to ten options so the best can be selected without a reshoot.',
+  },
+  {
+    id: 'T02', post: 'P35', date: '7 July',
+    subject: 'Patient coordinator',
+    format: 'Single image', location: 'Chatham', platforms: 'IG, FB, LI',
+    whatToCapture: 'A warm, natural photograph of the patient coordinator at Chatham. She is the first voice patients hear when they call. The image should reflect that: approachable, professional, human. At her desk or in the reception area. Not posed. Natural light if possible.',
+    guidance: 'Do not make this look like a corporate headshot. It should feel like a photograph of someone genuinely doing their job. Capture her in conversation, reviewing notes, or in a moment of natural pause. The patient who sees this image should feel that calling CES is going to be a warm experience.',
+  },
+]
+
+// ─── Production schedule ──────────────────────────────────────────────────────
+
+export const FILMING_DAYS = [
+  {
+    location: 'Chatham', day: 1, label: 'Consultant interviews and premises B-roll',
+    items: ['Morning: consultant interview (Part 1 and Part 2 with clothing change)', 'Afternoon: premises B-roll for L01 (theatre prep, team, reception)', 'Also capture: consultant headshot for T01'],
+  },
+  {
+    location: 'Chatham', day: 2, label: 'Patient stories',
+    items: ['Morning: patient story PS01 (Susan, cataract)', 'Afternoon: patient story PS02 (James, acute)', 'Also capture: theatre sterilisation footage for L02'],
+  },
+  {
+    location: 'Chatham', day: 3, label: 'Campaign close',
+    items: ['Morning: glaucoma patient story PS04', 'Afternoon: Leonna and team wrap for P45, Elion closing message for P47', 'Also capture: patient coordinator photograph for T02'],
+  },
+  {
+    location: 'Headcorn', day: 4, label: 'Location and diagnostics',
+    items: ['Morning: full location walk-through for L03 (P24)', 'Afternoon: consultant on camera at IOLMaster 700 (additional post recommended), diagnostic suite B-roll', 'Also capture: general Headcorn B-roll for future use'],
+  },
+  {
+    location: 'Tunbridge Wells', day: 5, label: 'Oculoplastic morning and behind the scenes',
+    items: ['Morning: oculoplastic consultant morning for L05 (P21) including consultant footage', 'Afternoon: Leonna behind the scenes for L04 (P16)'],
+  },
+  {
+    location: 'Tunbridge Wells', day: 6, label: 'Patient story and Leonna reflection',
+    items: ['Morning: patient story PS03 (Anna, eyelid surgery)', 'Afternoon: Leonna reflection piece for L06 (P40)'],
+  },
+]
+
+export const ASSET_DELIVERY_CHECKLIST = [
+  'Full edit (2–3 minutes for patient stories, 60–90 seconds for Leonna pieces)',
+  'Square crop (1200 × 1200) for Instagram and Facebook feed',
+  'Vertical crop (1080 × 1920) for Stories and Reels',
+  'Landscape crop (1200 × 628) for LinkedIn and YouTube',
+  'Subtitled version (all platforms)',
+  'B-roll package (minimum 3 minutes of clean B-roll per location)',
+  'Thumbnail image extracted for YouTube',
+]
+
+export const SUBTITLE_NOTES = 'Clash Display font. White text. Teal (#008080) background bar. No auto-generated subtitles — all subtitles to be reviewed and corrected before export.'
+export const FILE_NAMING = 'CES-[AssetCode]-[Location]-[Date]-[Version].mp4\nExample: CES-L01-Chatham-May2026-v1.mp4'
+
+export const SCHEDULE_ENTRIES: ScheduleEntry[] = [
+  { post: 'P03 · 5 May',   asset: 'Consultant interview snippet',  type: 'Interview',      location: 'Chatham',          deadline: '28 April' },
+  { post: 'P04 · 8 May',   asset: 'T01 headshot',                 type: 'Photography',    location: 'Chatham',          deadline: '28 April' },
+  { post: 'P07 · 15 May',  asset: 'L01 theatre morning',          type: 'Premises reel',  location: 'Chatham',          deadline: '8 May' },
+  { post: 'P12 · 26 May',  asset: 'L02 theatre sterilisation',    type: 'Premises reel',  location: 'Chatham',          deadline: '19 May' },
+  { post: 'P13 · 29 May',  asset: 'PS01 Susan cataract',          type: 'Patient story',  location: 'Chatham',          deadline: '22 May' },
+  { post: 'P16 · 4 June',  asset: 'L04 Pantiles behind scenes',   type: 'Premises reel',  location: 'Tunbridge Wells',  deadline: '28 May' },
+  { post: 'P21 · 12 June', asset: 'L05 oculoplastic morning',     type: 'Premises reel',  location: 'Tunbridge Wells',  deadline: '5 June' },
+  { post: 'P24 · 18 June', asset: 'L03 Headcorn walk-through',    type: 'Location video', location: 'Headcorn',         deadline: '11 June' },
+  { post: 'P27 · 23 June', asset: 'PS02 James acute',             type: 'Patient story',  location: 'Chatham',          deadline: '16 June' },
+  { post: 'P31 · 30 June', asset: 'Consultant interview snippet',  type: 'Interview',      location: 'Chatham',          deadline: '23 June' },
+  { post: 'P35 · 7 July',  asset: 'T02 coordinator photograph',   type: 'Photography',    location: 'Chatham',          deadline: '30 June' },
+  { post: 'P38 · 12 July', asset: 'PS03 Anna eyelid',             type: 'Patient story',  location: 'Tunbridge Wells',  deadline: '5 July' },
+  { post: 'P40 · 17 July', asset: 'L06 Leonna reflection',        type: 'Premises reel',  location: 'Tunbridge Wells',  deadline: '10 July' },
+  { post: 'P45 · 28 July', asset: 'L07 team wrap',                type: 'Leadership video',location: 'Chatham',         deadline: '21 July' },
+  { post: 'P46 · 29 July', asset: 'PS04 glaucoma patient',        type: 'Patient story',  location: 'Chatham',          deadline: '22 July' },
+  { post: 'P47 · 30 July', asset: 'L07 Elion closing',            type: 'Leadership video',location: 'Chatham',         deadline: '23 July' },
+]

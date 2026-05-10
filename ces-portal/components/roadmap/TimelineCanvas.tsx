@@ -8,7 +8,7 @@ import { PostEditPanel } from './PostEditPanel'
 import { NewPostModal } from './NewPostModal'
 import { StrategyCard } from './StrategyCard'
 import { ViewSwitcher } from './ViewSwitcher'
-import { VideographyStrategyCard, ConsultantInterviewCard } from './VideographyCards'
+import { VideographyStrategyCard, ConsultantInterviewCard, LeonnaProductionCard, PatientStoriesCard, TeamPhotographyCard, ProductionScheduleCard } from './VideographyCards'
 import { CONSULTANT_INTERVIEWS } from '@/lib/videography-content'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
@@ -26,7 +26,7 @@ const CONNECTOR_H = 24
 const PANEL_H     = HEADER_H + CONNECTOR_H + 6 * ROW_H + 80
 const GAL_PAD     = 800
 const WORLD_W     = PANEL_W + GAL_PAD * 2
-const WORLD_H     = PANEL_H + GAL_PAD * 2
+const WORLD_H     = PANEL_H + GAL_PAD * 2 + 1400  // extra for production cards below roadmap
 
 // Strategy card geometry (world-space, left of roadmap panel)
 const STRAT_W     = 300
@@ -39,8 +39,10 @@ const VID_STRAT_X = STRAT_X
 const VID_STRAT_Y = STRAT_Y + 520
 
 // Consultant interview cards — row below the roadmap panel
-const CONSULT_Y   = GAL_PAD + PANEL_H + 100
-const CONSULT_GAP = 40
+const CONSULT_Y      = GAL_PAD + PANEL_H + 100
+const CONSULT_GAP    = 40
+// Production asset cards — row below consultant cards
+const PROD_CARD_Y    = CONSULT_Y + 430
 
 const EPOCH     = new Date('2026-04-27T00:00:00Z')
 const MIN_ZOOM  = 0.03
@@ -512,6 +514,13 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               style={{ position: 'absolute', left: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP), top: CONSULT_Y, zIndex: 5 }}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
+            </div>
+          ))}
+
+          {/* ── Production asset cards — row below consultant cards ───────────── */}
+          {[LeonnaProductionCard, PatientStoriesCard, TeamPhotographyCard, ProductionScheduleCard].map((Card, i) => (
+            <div key={i} style={{ position: 'absolute', left: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP), top: PROD_CARD_Y, zIndex: 5 }}>
+              <Card />
             </div>
           ))}
 

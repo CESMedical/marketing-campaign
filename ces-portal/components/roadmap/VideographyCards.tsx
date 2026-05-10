@@ -3,7 +3,13 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Video, X, ChevronDown, ChevronRight } from 'lucide-react'
-import { VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, DEFAULT_PRODUCTION_NOTES, type ConsultantInterview, type InterviewQuestion, type ProductionNotes } from '@/lib/videography-content'
+import {
+  VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, DEFAULT_PRODUCTION_NOTES,
+  LEONNA_VIDEOS, PATIENT_STORIES, PATIENT_STORY_FRAMEWORK, TEAM_ASSETS,
+  FILMING_DAYS, ASSET_DELIVERY_CHECKLIST, SUBTITLE_NOTES, FILE_NAMING, SCHEDULE_ENTRIES,
+  type ConsultantInterview, type InterviewQuestion, type ProductionNotes,
+  type LeonnaVideo, type PatientStory, type TeamAsset,
+} from '@/lib/videography-content'
 
 const PILLAR_COLOR       = '#003845'
 const CONSULTANT_COLORS  = ['#7c3aed', '#2563eb', '#16a34a', '#008080']
@@ -405,6 +411,441 @@ export function VideographyStrategyCard() {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Shared production asset modal shell ─────────────────────────────────────
+
+function ProductionModal({
+  title, subtitle, accent, tabs, activeTab, onTabChange, postsFed, onClose, children,
+}: {
+  title: string; subtitle: string; accent: string
+  tabs: string[]; activeTab: string; onTabChange: (t: string) => void
+  postsFed: string[]; onClose: () => void; children: React.ReactNode
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  return createPortal(
+    <div
+      style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      onPointerDown={e => e.stopPropagation()}
+      onClick={e => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div style={{ background: '#fff', borderRadius: 20, width: 720, maxHeight: '92vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.22)' }}>
+        <div style={{ background: accent, padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 3 }}>Production Asset</div>
+            <div style={{ fontSize: 17, fontWeight: 800, color: '#fff' }}>{title}</div>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', marginTop: 2 }}>{subtitle}</div>
+          </div>
+          <button type="button" onClick={onClose}
+            style={{ background: 'rgba(255,255,255,0.15)', border: 'none', borderRadius: 10, padding: 8, cursor: 'pointer', color: '#fff', display: 'flex', alignItems: 'center' }}>
+            <X size={16} />
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(0,56,69,0.1)', flexShrink: 0 }}>
+          {tabs.map(t => (
+            <button key={t} type="button" onClick={() => onTabChange(t)} style={{
+              flex: 1, padding: '9px 0', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 700,
+              borderBottom: `3px solid ${activeTab === t ? accent : 'transparent'}`,
+              background: activeTab === t ? accent + '10' : 'transparent',
+              color: activeTab === t ? accent : 'rgba(0,56,69,0.45)', transition: 'all 0.15s',
+            }}>{t}</button>
+          ))}
+        </div>
+
+        {postsFed.length > 0 && (
+          <div style={{ padding: '10px 24px', borderBottom: '1px solid rgba(0,56,69,0.08)', background: '#f9fafb', flexShrink: 0 }}>
+            <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>Posts fed</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+              {postsFed.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 6, background: accent + '18', color: accent }}>{p}</span>)}
+            </div>
+          </div>
+        )}
+
+        <div style={{ flex: 1, overflowY: 'auto' }}>{children}</div>
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
+function EditableNotes({ storageKey, accent }: { storageKey: string; accent: string }) {
+  const [notes, setNotes] = useState(() => {
+    if (typeof window === 'undefined') return ''
+    try { return localStorage.getItem(storageKey) ?? '' } catch { return '' }
+  })
+  return (
+    <div style={{ padding: '20px 24px' }}>
+      <label style={labelStyle}>Production team notes</label>
+      <textarea
+        value={notes}
+        rows={12}
+        onChange={e => {
+          setNotes(e.target.value)
+          try { localStorage.setItem(storageKey, e.target.value) } catch {}
+        }}
+        placeholder="Add notes, reminders, logistics, status updates for the production team…"
+        style={{ ...fieldStyle, resize: 'vertical' }}
+      />
+    </div>
+  )
+}
+
+// ─── Leonna card ──────────────────────────────────────────────────────────────
+
+function LeonnaVideoRow({ v, accent }: { v: LeonnaVideo; accent: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
+      <button type="button" onClick={() => setOpen(o => !o)}
+        style={{ width: '100%', textAlign: 'left', padding: '10px 0', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+        <span style={{ color: accent, marginTop: 2, flexShrink: 0 }}>{open ? <ChevronDown size={13} /> : <ChevronRight size={13} />}</span>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+            <span style={{ fontSize: 11, fontWeight: 800, color: accent }}>{v.id}</span>
+            <span style={{ fontSize: 10, color: 'rgba(0,56,69,0.4)' }}>→ {v.post} · {v.date}</span>
+            {v.isCommercialPriority && <span style={{ fontSize: 9, fontWeight: 700, background: '#d97706', color: '#fff', padding: '1px 6px', borderRadius: 4 }}>★ Priority</span>}
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#003845', lineHeight: 1.4, marginTop: 2 }}>{v.title}</div>
+          <div style={{ fontSize: 11, color: 'rgba(0,56,69,0.4)', marginTop: 2 }}>{v.format} · {v.platforms} · {v.location}</div>
+        </div>
+      </button>
+      {open && (
+        <div style={{ paddingLeft: 21, paddingBottom: 16 }}>
+          <label style={labelStyle}>Concept</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{v.concept}</p>
+          <label style={labelStyle}>Shot list</label>
+          <ul style={{ margin: '0 0 12px', paddingLeft: 16 }}>
+            {v.shotList.map((s, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 4 }}>{s}</li>)}
+          </ul>
+          <label style={labelStyle}>Script guidance — Leonna</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, whiteSpace: 'pre-wrap', marginBottom: 12 }}>{v.scriptGuidanceLeonna}</p>
+          {v.scriptGuidanceConsultant && <>
+            <label style={labelStyle}>Script guidance — Consultant</label>
+            <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{v.scriptGuidanceConsultant}</p>
+          </>}
+          <label style={labelStyle}>Caption</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 8 }}>{v.caption}</p>
+          <label style={labelStyle}>CTA</label>
+          <p style={{ fontSize: 12, color: accent }}>{v.cta}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function LeonnaProductionCard() {
+  const [show, setShow] = useState(false)
+  const [tab, setTab]   = useState('Videos')
+  const accent = '#d97706'
+
+  return (
+    <>
+      <ProductionAssetCard
+        title="Leonna: Premises & Behind the Scenes"
+        type="Production Asset" pillar="Premises" status="Draft" accent={accent}
+        postsFed={['P07','P12','P16','P21','P24','P40','P45','P47']}
+        meta={['6 videos', 'Chatham (3d) · Headcorn (1d) · TW (2d)']}
+        description="Six location-led videos produced by Leonna across the three primary filming locations. Theatre morning, sterilisation, Headcorn walk-through, Pantiles BTS, oculoplastic morning and campaign wrap."
+        onOpen={() => setShow(true)}
+      />
+      {show && (
+        <ProductionModal
+          title="Leonna: Premises & Behind the Scenes" subtitle="6 videos · 8 posts · 3 locations"
+          accent={accent} tabs={['Videos','Production Notes']} activeTab={tab} onTabChange={setTab}
+          postsFed={['P07','P12','P16','P21','P24','P40','P45','P47']} onClose={() => setShow(false)}
+        >
+          {tab === 'Videos' ? (
+            <div style={{ padding: '0 24px 24px' }}>
+              {LEONNA_VIDEOS.map(v => <LeonnaVideoRow key={v.id} v={v} accent={accent} />)}
+            </div>
+          ) : <EditableNotes storageKey="ces-prod-leonna-notes" accent={accent} />}
+        </ProductionModal>
+      )}
+    </>
+  )
+}
+
+// ─── Patient stories card ─────────────────────────────────────────────────────
+
+function StoryRow({ s, accent }: { s: PatientStory; accent: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
+      <button type="button" onClick={() => setOpen(o => !o)}
+        style={{ width: '100%', textAlign: 'left', padding: '10px 0', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+        <span style={{ color: accent, marginTop: 2, flexShrink: 0 }}>{open ? <ChevronDown size={13} /> : <ChevronRight size={13} />}</span>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+            <span style={{ fontSize: 11, fontWeight: 800, color: accent }}>{s.id}</span>
+            <span style={{ fontSize: 10, color: 'rgba(0,56,69,0.4)' }}>→ {s.post} · {s.date}</span>
+            {s.isCommercialPriority && <span style={{ fontSize: 9, fontWeight: 700, background: '#d97706', color: '#fff', padding: '1px 6px', borderRadius: 4 }}>★ Priority</span>}
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#003845', marginTop: 2 }}>{s.patient}</div>
+          <div style={{ fontSize: 11, color: 'rgba(0,56,69,0.4)', marginTop: 1 }}>{s.condition} · {s.location}</div>
+        </div>
+      </button>
+      {open && (
+        <div style={{ paddingLeft: 21, paddingBottom: 16 }}>
+          <label style={labelStyle}>Why this story matters</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{s.whyMatters}</p>
+          <label style={labelStyle}>Suggested prompt questions</label>
+          <ul style={{ margin: '0 0 12px', paddingLeft: 16 }}>
+            {s.promptQuestions.map((q, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 4 }}>{q}</li>)}
+          </ul>
+          <label style={labelStyle}>What we need</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{s.whatWeNeed}</p>
+          <label style={labelStyle}>Caption</label>
+          <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 8 }}>{s.caption}</p>
+          <label style={labelStyle}>CTA</label>
+          <p style={{ fontSize: 12, color: accent }}>{s.cta}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function PatientStoriesCard() {
+  const [show, setShow] = useState(false)
+  const [tab, setTab]   = useState('Stories')
+  const accent = '#16a34a'
+
+  return (
+    <>
+      <ProductionAssetCard
+        title="Patient Stories" type="Production Asset" pillar="Employee / Patient Story" status="Draft" accent={accent}
+        postsFed={['P13','P27','P38','P46']}
+        meta={['4 patient interviews', 'Chatham (2) · Tunbridge Wells (1) · Chatham (1)']}
+        description="Four patient interview videos following the before/during/after framework. Susan (cataract), James (acute), Anna (eyelid, ★ priority) and an unnamed glaucoma patient."
+        warning="Patient names are placeholders. Recruit and consent patients min. 4 weeks before filming. Susan deadline: 22 May — begin recruitment this week."
+        onOpen={() => setShow(true)}
+      />
+      {show && (
+        <ProductionModal
+          title="Patient Stories" subtitle="4 interviews · 4 posts · before/during/after framework"
+          accent={accent} tabs={['Stories','Framework','Production Notes']} activeTab={tab} onTabChange={setTab}
+          postsFed={['P13','P27','P38','P46']} onClose={() => setShow(false)}
+        >
+          {tab === 'Stories' ? (
+            <div style={{ padding: '0 24px 24px' }}>
+              {PATIENT_STORIES.map(s => <StoryRow key={s.id} s={s} accent={accent} />)}
+            </div>
+          ) : tab === 'Framework' ? (
+            <div style={{ padding: '20px 24px' }}>
+              {[
+                { label: 'Before', text: PATIENT_STORY_FRAMEWORK.before },
+                { label: 'During', text: PATIENT_STORY_FRAMEWORK.during },
+                { label: 'After',  text: PATIENT_STORY_FRAMEWORK.after },
+              ].map(({ label, text }) => (
+                <div key={label} style={{ marginBottom: 18 }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: accent, display: 'block', marginBottom: 6 }}>{label}</span>
+                  <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55 }}>{text}</p>
+                </div>
+              ))}
+              <div style={{ borderTop: '1px solid rgba(0,56,69,0.1)', paddingTop: 16, marginTop: 8 }}>
+                <label style={labelStyle}>Filming guidance</label>
+                <ul style={{ margin: '0 0 16px', paddingLeft: 16 }}>
+                  {PATIENT_STORY_FRAMEWORK.filmingGuidance.map((g, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.6, marginBottom: 4 }}>{g}</li>)}
+                </ul>
+                <div style={{ background: '#fef3c7', border: '1px solid #d97706', borderRadius: 10, padding: '12px 16px' }}>
+                  <p style={{ fontSize: 12, fontWeight: 600, color: '#92400e', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>{PATIENT_STORY_FRAMEWORK.recruitmentNote}</p>
+                </div>
+              </div>
+            </div>
+          ) : <EditableNotes storageKey="ces-prod-patient-notes" accent={accent} />}
+        </ProductionModal>
+      )}
+    </>
+  )
+}
+
+// ─── Team photography card ────────────────────────────────────────────────────
+
+export function TeamPhotographyCard() {
+  const [show, setShow] = useState(false)
+  const [tab, setTab]   = useState('Assets')
+  const accent = '#2563eb'
+
+  return (
+    <>
+      <ProductionAssetCard
+        title="Team Photography" type="Production Asset" pillar="Employee" status="Draft" accent={accent}
+        postsFed={['P04','P35']}
+        meta={['2 photography assets', 'Chatham']}
+        description="Consultant headshot (P04) captured on the same day as the consultant interview to avoid an additional filming day. Patient coordinator photograph (P35) in natural working environment."
+        onOpen={() => setShow(true)}
+      />
+      {show && (
+        <ProductionModal
+          title="Team Photography" subtitle="2 assets · same day as consultant interviews"
+          accent={accent} tabs={['Assets','Production Notes']} activeTab={tab} onTabChange={setTab}
+          postsFed={['P04','P35']} onClose={() => setShow(false)}
+        >
+          {tab === 'Assets' ? (
+            <div style={{ padding: '20px 24px' }}>
+              {TEAM_ASSETS.map((a: TeamAsset) => (
+                <div key={a.id} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: '1px solid rgba(0,56,69,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                    <span style={{ fontSize: 12, fontWeight: 800, color: accent }}>{a.id}</span>
+                    <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.45)' }}>→ {a.post} · {a.date} · {a.location}</span>
+                  </div>
+                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#003845', marginBottom: 10 }}>{a.subject}</h4>
+                  <label style={labelStyle}>What to capture</label>
+                  <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 12 }}>{a.whatToCapture}</p>
+                  <label style={labelStyle}>Guidance</label>
+                  <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55 }}>{a.guidance}</p>
+                </div>
+              ))}
+            </div>
+          ) : <EditableNotes storageKey="ces-prod-team-notes" accent={accent} />}
+        </ProductionModal>
+      )}
+    </>
+  )
+}
+
+// ─── Production schedule card ─────────────────────────────────────────────────
+
+export function ProductionScheduleCard() {
+  const [show, setShow] = useState(false)
+  const [tab, setTab]   = useState('Schedule')
+  const accent = '#003845'
+
+  return (
+    <>
+      <ProductionAssetCard
+        title="Production Schedule & Asset Delivery"
+        type="Production Asset" pillar="Leadership" status="Draft" accent={accent}
+        postsFed={[]}
+        meta={['6 filming days', '16 posts · all deadlines mapped']}
+        description="Full filming day schedule across 6 days, asset delivery checklist, file naming convention and post-to-asset deadline mapping for all Leonna-led and patient story posts."
+        onOpen={() => setShow(true)}
+      />
+      {show && (
+        <ProductionModal
+          title="Production Schedule & Asset Delivery" subtitle="6 filming days · 3 locations · 16 posts"
+          accent={accent} tabs={['Schedule','Asset Delivery','Post Mapping']} activeTab={tab} onTabChange={setTab}
+          postsFed={[]} onClose={() => setShow(false)}
+        >
+          {tab === 'Schedule' ? (
+            <div style={{ padding: '20px 24px' }}>
+              {['Chatham','Headcorn','Tunbridge Wells'].map(loc => (
+                <div key={loc} style={{ marginBottom: 24 }}>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: accent, borderBottom: `2px solid ${accent}`, paddingBottom: 6, marginBottom: 12 }}>{loc}</div>
+                  {FILMING_DAYS.filter(d => d.location === loc).map(d => (
+                    <div key={d.day} style={{ marginBottom: 14 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(0,56,69,0.6)', marginBottom: 6 }}>Day {d.day} — {d.label}</div>
+                      <ul style={{ margin: 0, paddingLeft: 16 }}>
+                        {d.items.map((item, i) => <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.6, marginBottom: 3 }}>{item}</li>)}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          ) : tab === 'Asset Delivery' ? (
+            <div style={{ padding: '20px 24px' }}>
+              <label style={labelStyle}>Required versions per asset</label>
+              <ul style={{ margin: '0 0 20px', paddingLeft: 16 }}>
+                {ASSET_DELIVERY_CHECKLIST.map((item, i) => (
+                  <li key={i} style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.6, marginBottom: 6 }}>
+                    <input type="checkbox" style={{ marginRight: 8 }} readOnly /> {item}
+                  </li>
+                ))}
+              </ul>
+              <label style={labelStyle}>Subtitle style</label>
+              <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.7)', lineHeight: 1.55, marginBottom: 16 }}>{SUBTITLE_NOTES}</p>
+              <label style={labelStyle}>File naming convention</label>
+              <pre style={{ fontSize: 11, background: 'rgba(0,56,69,0.04)', borderRadius: 8, padding: '10px 14px', color: '#003845', whiteSpace: 'pre-wrap', fontFamily: 'monospace' }}>{FILE_NAMING}</pre>
+            </div>
+          ) : (
+            <div style={{ padding: '20px 24px', overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr>
+                    {['Post', 'Asset', 'Type', 'Location', 'Deadline'].map(h => (
+                      <th key={h} style={{ textAlign: 'left', padding: '8px 10px', background: 'rgba(0,56,69,0.05)', color: 'rgba(0,56,69,0.5)', fontWeight: 700, fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '2px solid rgba(0,56,69,0.1)' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {SCHEDULE_ENTRIES.map((e, i) => (
+                    <tr key={i} style={{ borderBottom: '1px solid rgba(0,56,69,0.06)' }}>
+                      <td style={{ padding: '8px 10px', fontWeight: 700, color: '#003845' }}>{e.post}</td>
+                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.7)' }}>{e.asset}</td>
+                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.5)' }}>{e.type}</td>
+                      <td style={{ padding: '8px 10px', color: 'rgba(0,56,69,0.5)' }}>{e.location}</td>
+                      <td style={{ padding: '8px 10px', fontWeight: 700, color: accent }}>{e.deadline}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </ProductionModal>
+      )}
+    </>
+  )
+}
+
+// ─── Generic production asset card shell ─────────────────────────────────────
+
+function ProductionAssetCard({
+  title, type, pillar, status, accent, postsFed, meta, description, warning, onOpen,
+}: {
+  title: string; type: string; pillar: string; status: string; accent: string
+  postsFed: string[]; meta: string[]; description: string; warning?: string; onOpen: () => void
+}) {
+  return (
+    <div
+      onPointerDown={e => e.stopPropagation()}
+      style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${accent}`, overflow: 'hidden', userSelect: 'none' }}
+    >
+      <div style={{ background: accent, padding: '14px 18px' }}>
+        <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 5 }}>{type}</div>
+        <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', lineHeight: 1.3, marginBottom: 8 }}>{title}</div>
+        <div style={{ display: 'flex', gap: 5 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.8)' }}>{status}</span>
+          <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.8)' }}>{pillar}</span>
+        </div>
+      </div>
+
+      <div style={{ padding: '14px 18px' }}>
+        {postsFed.length > 0 && (
+          <>
+            <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.38)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>Posts fed</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 12 }}>
+              {postsFed.map(p => <span key={p} style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5, background: accent + '18', color: accent }}>{p}</span>)}
+            </div>
+          </>
+        )}
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
+          {meta.map(m => (
+            <span key={m} style={{ fontSize: 10, fontWeight: 600, padding: '3px 10px', borderRadius: 8, background: 'rgba(0,56,69,0.05)', color: 'rgba(0,56,69,0.55)' }}>{m}</span>
+          ))}
+        </div>
+
+        <p style={{ fontSize: 12, color: 'rgba(0,56,69,0.55)', lineHeight: 1.55, marginBottom: warning ? 10 : 14 }}>{description}</p>
+
+        {warning && (
+          <div style={{ background: '#fef3c7', border: '1px solid #d97706', borderRadius: 8, padding: '8px 12px', marginBottom: 14 }}>
+            <p style={{ fontSize: 11, color: '#92400e', lineHeight: 1.5 }}>⚠️ {warning}</p>
+          </div>
+        )}
+
+        <button type="button" onClick={onOpen}
+          style={{ width: '100%', padding: '9px 0', borderRadius: 12, background: accent, border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7 }}>
+          <Video size={13} /> View details
+        </button>
       </div>
     </div>
   )
