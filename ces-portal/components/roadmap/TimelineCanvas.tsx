@@ -152,6 +152,96 @@ const WEEKS  = buildWeeks()
 
 // ─── Draggable world-space card wrapper ───────────────────────────────────────
 // Wraps any card so it can be repositioned freely on the canvas.
+interface Connector { id: string; from: string; to: string; waypoint?: { x: number; y: number } }
+
+function ConnectorLine({ conn, from, to, zoomRef, connectMode, onDelete, onWaypointChange }: {
+  conn: Connector
+  from: { x: number; y: number }; to: { x: number; y: number }
+  zoomRef: React.MutableRefObject<number>
+  connectMode: boolean
+  onDelete: () => void
+  onWaypointChange: (pos: { x: number; y: number }) => void
+}) {
+  const CARD_W_PX = 300, HDR = 30
+  const fx = from.x + CARD_W_PX / 2, fy = from.y + HDR
+  const tx = to.x   + CARD_W_PX / 2, ty = to.y   + HDR
+
+  const [localWp, setLocalWp] = useState<{ x: number; y: number } | null>(null)
+  const [draggingWp, setDraggingWp] = useState(false)
+  const wpRef = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
+
+  const savedWp  = conn.waypoint
+  const defaultWp = { x: (fx + tx) / 2, y: (fy + ty) / 2 }
+  const wp = localWp ?? savedWp ?? defaultWp
+  const curved = !!(localWp ?? savedWp)
+
+  const minX = Math.min(fx, tx, wp.x) - 20
+  const minY = Math.min(fy, ty, wp.y) - 20
+  const maxX = Math.max(fx, tx, wp.x) + 20
+  const maxY = Math.max(fy, ty, wp.y) + 20
+  const svgW = maxX - minX, svgH = maxY - minY
+
+  const sfx = fx - minX, sfy = fy - minY
+  const stx = tx - minX, sty = ty - minY
+  const swx = wp.x - minX, swy = wp.y - minY
+
+  const pathD = curved
+    ? `M ${sfx} ${sfy} Q ${swx} ${swy} ${stx} ${sty}`
+    : `M ${sfx} ${sfy} L ${stx} ${sty}`
+
+  const stroke = { fill: 'none', stroke: 'rgba(0,56,69,0.22)', strokeWidth: 2, strokeDasharray: '8 5', strokeLinecap: 'round' as const }
+
+  function onWpDown(e: React.PointerEvent) {
+    e.stopPropagation()
+    e.currentTarget.setPointerCapture(e.pointerId)
+    wpRef.current = { sx: e.clientX, sy: e.clientY, wx: wp.x, wy: wp.y }
+    setDraggingWp(true)
+  }
+  function onWpMove(e: React.PointerEvent) {
+    const d = wpRef.current; if (!d) return
+    const zoom = zoomRef.current
+    setLocalWp({ x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom })
+  }
+  function onWpUp(e: React.PointerEvent) {
+    e.currentTarget.releasePointerCapture(e.pointerId)
+    const d = wpRef.current
+    if (d) {
+      const zoom = zoomRef.current
+      const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
+      setLocalWp(final)
+      onWaypointChange(final)
+    }
+    wpRef.current = null
+    setDraggingWp(false)
+  }
+
+  return (
+    <>
+      <svg style={{ position: 'absolute', left: minX, top: minY, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
+        <path d={pathD} {...stroke} />
+        <circle cx={sfx} cy={sfy} r={5} fill="rgba(0,56,69,0.25)" />
+        <circle cx={stx} cy={sty} r={5} fill="rgba(0,56,69,0.25)" />
+      </svg>
+      {/* Draggable waypoint handle — always visible so user can bend the line */}
+      {connectMode ? (
+        <button
+          onPointerDown={e => e.stopPropagation()}
+          onClick={() => onDelete()}
+          style={{ position: 'absolute', left: wp.x - 11, top: wp.y - 11, width: 22, height: 22, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 13, fontWeight: 900, zIndex: 25, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
+        >×</button>
+      ) : (
+        <div
+          style={{ position: 'absolute', left: wp.x - 7, top: wp.y - 7, width: 14, height: 14, borderRadius: '50%', background: draggingWp ? 'rgba(0,56,69,0.45)' : 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.3)', cursor: draggingWp ? 'grabbing' : 'grab', zIndex: 15 }}
+          onPointerDown={onWpDown}
+          onPointerMove={onWpMove}
+          onPointerUp={onWpUp}
+          onPointerCancel={onWpUp}
+        />
+      )}
+    </>
+  )
+}
+
 // Position is persisted to localStorage by storageKey.
 function DraggableWorldCard({
   initialX, initialY, storageKey, zoomRef, children,
@@ -277,7 +367,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [connectMode, setConnectMode]   = useState(false)
   const [pendingFrom, setPendingFrom]   = useState<string | null>(null)
   const [cardPositions, setCardPositions] = useState<Record<string, { x: number; y: number }>>({})
-  const [connectors, setConnectors] = useState<{ id: string; from: string; to: string }[]>([])
+  const [connectors, setConnectors] = useState<Connector[]>([])
 
   useEffect(() => {
     try {
@@ -318,6 +408,12 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   function deleteConnector(id: string) {
     const updated = connectors.filter(c => c.id !== id)
+    setConnectors(updated)
+    try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
+  }
+
+  function handleWaypointChange(id: string, pos: { x: number; y: number }) {
+    const updated = connectors.map(c => c.id === id ? { ...c, waypoint: pos } : c)
     setConnectors(updated)
     try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
   }
@@ -712,31 +808,17 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             const from = cardPositions[conn.from]
             const to   = cardPositions[conn.to]
             if (!from || !to) return null
-            const CARD_W_PX = 300
-            const fx = from.x + CARD_W_PX / 2, fy = from.y + 30
-            const tx = to.x   + CARD_W_PX / 2, ty = to.y   + 30
-            const minX = Math.min(fx, tx), minY = Math.min(fy, ty)
-            const svgW = Math.abs(tx - fx) + 20, svgH = Math.abs(ty - fy) + 20
-            const midX = (fx + tx) / 2, midY = (fy + ty) / 2
             return (
-              <Fragment key={conn.id}>
-                <svg style={{ position: 'absolute', left: minX - 10, top: minY - 10, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
-                  <line
-                    x1={fx - minX + 10} y1={fy - minY + 10}
-                    x2={tx - minX + 10} y2={ty - minY + 10}
-                    stroke="rgba(14,165,233,0.7)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round"
-                  />
-                  <circle cx={fx - minX + 10} cy={fy - minY + 10} r={5} fill="rgba(14,165,233,0.5)" />
-                  <circle cx={tx - minX + 10} cy={ty - minY + 10} r={5} fill="rgba(14,165,233,0.5)" />
-                </svg>
-                {connectMode && (
-                  <button
-                    onPointerDown={e => e.stopPropagation()}
-                    onClick={() => deleteConnector(conn.id)}
-                    style={{ position: 'absolute', left: midX - 11, top: midY - 11, width: 22, height: 22, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 13, fontWeight: 900, zIndex: 25, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
-                  >×</button>
-                )}
-              </Fragment>
+              <ConnectorLine
+                key={conn.id}
+                conn={conn}
+                from={from}
+                to={to}
+                zoomRef={zoomRef}
+                connectMode={connectMode}
+                onDelete={() => deleteConnector(conn.id)}
+                onWaypointChange={(pos) => handleWaypointChange(conn.id, pos)}
+              />
             )
           })}
 
