@@ -152,68 +152,115 @@ const WEEKS  = buildWeeks()
 
 // ─── Draggable world-space card wrapper ───────────────────────────────────────
 // Wraps any card so it can be repositioned freely on the canvas.
-interface Connector { id: string; from: string; to: string; waypoint?: { x: number; y: number } }
+// Connector: all positions are free world-space coordinates, not anchored to any card.
+interface Connector {
+  id: string
+  from: { x: number; y: number }
+  to:   { x: number; y: number }
+  waypoint?: { x: number; y: number }
+}
 
-function ConnectorLine({ conn, from, to, zoomRef, connectMode, onDelete, onWaypointChange }: {
+// Returns the built-in connectors to seed localStorage on first load.
+function defaultConnectors(): Connector[] {
+  const vidBotX = VID_STRAT_X + 150
+  const vidBotY = VID_STRAT_Y + 480
+  const jY      = CONSULT_Y - 50
+  const centers = [0, 1, 2, 3].map(i => GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + 150)
+  return [
+    // Strategy card → Videography card (vertical)
+    { id: 'init-strat-vid',
+      from: { x: STRAT_X + 150, y: STRAT_Y + 370 },
+      to:   { x: VID_STRAT_X + 150, y: VID_STRAT_Y } },
+    // Videography card → each consultant (fan-out with waypoint)
+    ...centers.map((cx, i) => ({
+      id: `init-vid-c${i + 1}`,
+      from: { x: vidBotX, y: vidBotY },
+      to:   { x: cx, y: CONSULT_Y },
+      waypoint: { x: cx, y: jY },
+    })),
+    // Strategy card → Roadmap timeline bar (L-shape via bezier)
+    { id: 'init-strat-roadmap',
+      from:     { x: STRAT_X + STRAT_W,          y: STRAT_Y },
+      to:       { x: GAL_PAD,                     y: GAL_PAD + HEADER_H },
+      waypoint: { x: STRAT_X + STRAT_W,           y: GAL_PAD + HEADER_H } },
+  ]
+}
+
+// Factory: returns pointer-event handlers for a draggable world-space handle.
+function makeDragHandlers(
+  ref: React.MutableRefObject<{ sx: number; sy: number; wx: number; wy: number } | null>,
+  getPos: () => { x: number; y: number },
+  setLocal: (p: { x: number; y: number }) => void,
+  onCommit: (p: { x: number; y: number }) => void,
+  zoomRef: React.MutableRefObject<number>
+) {
+  return {
+    onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+      e.stopPropagation()
+      e.currentTarget.setPointerCapture(e.pointerId)
+      const p = getPos()
+      ref.current = { sx: e.clientX, sy: e.clientY, wx: p.x, wy: p.y }
+    },
+    onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+      const d = ref.current; if (!d) return
+      const z = zoomRef.current
+      setLocal({ x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z })
+    },
+    onPointerUp(e: React.PointerEvent<HTMLDivElement>) {
+      e.currentTarget.releasePointerCapture(e.pointerId)
+      const d = ref.current
+      if (d) {
+        const z = zoomRef.current
+        const final = { x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z }
+        setLocal(final)
+        onCommit(final)
+      }
+      ref.current = null
+    },
+  }
+}
+
+function ConnectorLine({ conn, zoomRef, connectMode, onDelete, onUpdate }: {
   conn: Connector
-  from: { x: number; y: number }; to: { x: number; y: number }
   zoomRef: React.MutableRefObject<number>
   connectMode: boolean
   onDelete: () => void
-  onWaypointChange: (pos: { x: number; y: number }) => void
+  onUpdate: (updates: Partial<Pick<Connector, 'from' | 'to' | 'waypoint'>>) => void
 }) {
-  const CARD_W_PX = 300, HDR = 30
-  const fx = from.x + CARD_W_PX / 2, fy = from.y + HDR
-  const tx = to.x   + CARD_W_PX / 2, ty = to.y   + HDR
+  const [lFrom, setLFrom] = useState<{ x: number; y: number } | null>(null)
+  const [lTo,   setLTo]   = useState<{ x: number; y: number } | null>(null)
+  const [lWp,   setLWp]   = useState<{ x: number; y: number } | null>(null)
 
-  const [localWp, setLocalWp] = useState<{ x: number; y: number } | null>(null)
-  const [draggingWp, setDraggingWp] = useState(false)
-  const wpRef = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
+  const fromRef = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
+  const toRef   = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
+  const wpRef   = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
 
-  const savedWp  = conn.waypoint
+  const from = lFrom ?? conn.from
+  const to   = lTo   ?? conn.to
+  const fx = from.x, fy = from.y
+  const tx = to.x,   ty = to.y
   const defaultWp = { x: (fx + tx) / 2, y: (fy + ty) / 2 }
-  const wp = localWp ?? savedWp ?? defaultWp
-  const curved = !!(localWp ?? savedWp)
+  const wp     = lWp ?? conn.waypoint ?? defaultWp
+  const curved = !!(lWp ?? conn.waypoint)
 
   const minX = Math.min(fx, tx, wp.x) - 20
   const minY = Math.min(fy, ty, wp.y) - 20
   const maxX = Math.max(fx, tx, wp.x) + 20
   const maxY = Math.max(fy, ty, wp.y) + 20
   const svgW = maxX - minX, svgH = maxY - minY
-
   const sfx = fx - minX, sfy = fy - minY
   const stx = tx - minX, sty = ty - minY
   const swx = wp.x - minX, swy = wp.y - minY
-
   const pathD = curved
     ? `M ${sfx} ${sfy} Q ${swx} ${swy} ${stx} ${sty}`
     : `M ${sfx} ${sfy} L ${stx} ${sty}`
-
   const stroke = { fill: 'none', stroke: 'rgba(0,56,69,0.22)', strokeWidth: 2, strokeDasharray: '8 5', strokeLinecap: 'round' as const }
 
-  function onWpDown(e: React.PointerEvent) {
-    e.stopPropagation()
-    e.currentTarget.setPointerCapture(e.pointerId)
-    wpRef.current = { sx: e.clientX, sy: e.clientY, wx: wp.x, wy: wp.y }
-    setDraggingWp(true)
-  }
-  function onWpMove(e: React.PointerEvent) {
-    const d = wpRef.current; if (!d) return
-    const zoom = zoomRef.current
-    setLocalWp({ x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom })
-  }
-  function onWpUp(e: React.PointerEvent) {
-    e.currentTarget.releasePointerCapture(e.pointerId)
-    const d = wpRef.current
-    if (d) {
-      const zoom = zoomRef.current
-      const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
-      setLocalWp(final)
-      onWaypointChange(final)
-    }
-    wpRef.current = null
-    setDraggingWp(false)
-  }
+  const fromH = makeDragHandlers(fromRef, () => from, setLFrom, p => onUpdate({ from: p }), zoomRef)
+  const toH   = makeDragHandlers(toRef,   () => to,   setLTo,   p => onUpdate({ to: p }),   zoomRef)
+  const wpH   = makeDragHandlers(wpRef,   () => wp,   setLWp,   p => onUpdate({ waypoint: p }), zoomRef)
+
+  const handleStyle: React.CSSProperties = { position: 'absolute', width: 14, height: 14, borderRadius: '50%', background: 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.35)', cursor: 'grab', zIndex: 15 }
 
   return (
     <>
@@ -222,15 +269,16 @@ function ConnectorLine({ conn, from, to, zoomRef, connectMode, onDelete, onWaypo
         <circle cx={sfx} cy={sfy} r={5} fill="rgba(0,56,69,0.25)" />
         <circle cx={stx} cy={sty} r={5} fill="rgba(0,56,69,0.25)" />
       </svg>
-      {/* Draggable waypoint handle — always shown for bending the line */}
-      <div
-        style={{ position: 'absolute', left: wp.x - 7, top: wp.y - 7, width: 14, height: 14, borderRadius: '50%', background: draggingWp ? 'rgba(0,56,69,0.45)' : 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.3)', cursor: draggingWp ? 'grabbing' : 'grab', zIndex: 15 }}
-        onPointerDown={onWpDown}
-        onPointerMove={onWpMove}
-        onPointerUp={onWpUp}
-        onPointerCancel={onWpUp}
-      />
-      {/* Delete button — shown in connect mode, offset so it doesn't cover the drag handle */}
+      {/* FROM endpoint handle */}
+      <div style={{ ...handleStyle, left: fx - 7, top: fy - 7 }}
+        {...fromH} onPointerCancel={fromH.onPointerUp} />
+      {/* TO endpoint handle */}
+      <div style={{ ...handleStyle, left: tx - 7, top: ty - 7 }}
+        {...toH} onPointerCancel={toH.onPointerUp} />
+      {/* WAYPOINT handle (bend point) */}
+      <div style={{ ...handleStyle, left: wp.x - 7, top: wp.y - 7 }}
+        {...wpH} onPointerCancel={wpH.onPointerUp} />
+      {/* Delete button in connect mode */}
       {connectMode && (
         <button
           onPointerDown={e => e.stopPropagation()}
@@ -245,11 +293,10 @@ function ConnectorLine({ conn, from, to, zoomRef, connectMode, onDelete, onWaypo
 // Position is persisted to localStorage by storageKey.
 function DraggableWorldCard({
   initialX, initialY, storageKey, zoomRef, children,
-  onPositionChange, connectMode, pendingFrom, onConnectClick,
+  connectMode, pendingFrom, onConnectClick,
 }: {
   initialX: number; initialY: number; storageKey: string
   zoomRef: React.MutableRefObject<number>; children: React.ReactNode
-  onPositionChange?: (key: string, pos: { x: number; y: number }) => void
   connectMode?: boolean
   pendingFrom?: string | null
   onConnectClick?: (key: string) => void
@@ -259,12 +306,8 @@ function DraggableWorldCard({
   useEffect(() => {
     try {
       const saved = localStorage.getItem(`card-pos-${storageKey}`)
-      const p = saved ? JSON.parse(saved) : { x: initialX, y: initialY }
-      setPos(p)
-      onPositionChange?.(storageKey, p)
-    } catch {
-      onPositionChange?.(storageKey, { x: initialX, y: initialY })
-    }
+      if (saved) setPos(JSON.parse(saved))
+    } catch {}
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey])
 
@@ -295,7 +338,6 @@ function DraggableWorldCard({
       const zoom = zoomRef.current
       const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
       setPos(final)
-      onPositionChange?.(storageKey, final)
       try { localStorage.setItem(`card-pos-${storageKey}`, JSON.stringify(final)) } catch {}
       setJustSaved(true)
       setTimeout(() => setJustSaved(false), 2000)
@@ -364,15 +406,15 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [shifting, setShifting]       = useState(false)
 
   // ── Connector creation ────────────────────────────────────────────────────
-  const [connectMode, setConnectMode]   = useState(false)
-  const [pendingFrom, setPendingFrom]   = useState<string | null>(null)
-  const [cardPositions, setCardPositions] = useState<Record<string, { x: number; y: number }>>({})
-  const [connectors, setConnectors] = useState<Connector[]>([])
+  const [connectMode, setConnectMode] = useState(false)
+  const [pendingFrom, setPendingFrom] = useState<string | null>(null)
+  const [connectors, setConnectors]   = useState<Connector[]>([])
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('canvas-connectors')
-      if (saved) setConnectors(JSON.parse(saved))
+      const saved = localStorage.getItem('canvas-connectors-v2')
+      setConnectors(saved ? JSON.parse(saved) : defaultConnectors())
+      if (!saved) localStorage.setItem('canvas-connectors-v2', JSON.stringify(defaultConnectors()))
     } catch {}
   }, [])
 
@@ -385,8 +427,25 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     return () => window.removeEventListener('keydown', onKey)
   }, [connectMode])
 
-  function handlePositionChange(key: string, pos: { x: number; y: number }) {
-    setCardPositions(prev => ({ ...prev, [key]: pos }))
+  function saveConnectors(list: Connector[]) {
+    setConnectors(list)
+    try { localStorage.setItem('canvas-connectors-v2', JSON.stringify(list)) } catch {}
+  }
+
+  function getCardAnchor(storageKey: string): { x: number; y: number } {
+    try {
+      const saved = localStorage.getItem(`card-pos-${storageKey}`)
+      if (saved) { const { x, y } = JSON.parse(saved); return { x: x + 150, y: y + 30 } }
+    } catch {}
+    if (storageKey === 'vid-strategy') return { x: VID_STRAT_X + 150, y: VID_STRAT_Y + 30 }
+    if (storageKey.startsWith('consultant-')) {
+      const i = parseInt(storageKey.replace('consultant-', '')) - 1
+      return { x: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + 150, y: CONSULT_Y + 30 }
+    }
+    const prodKeys = ['prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
+    const pi = prodKeys.indexOf(storageKey)
+    if (pi >= 0) return { x: GAL_PAD + pi * (VID_CARD_W + CONSULT_GAP) + 150, y: PROD_CARD_Y + 30 }
+    return { x: 0, y: 0 }
   }
 
   function handleConnectClick(key: string) {
@@ -395,27 +454,19 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     } else if (pendingFrom === key) {
       setPendingFrom(null)
     } else {
-      const already = connectors.some(c => (c.from === pendingFrom && c.to === key) || (c.from === key && c.to === pendingFrom))
-      if (!already) {
-        const updated = [...connectors, { id: `${pendingFrom}-${key}-${Date.now()}`, from: pendingFrom, to: key }]
-        setConnectors(updated)
-        try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
-      }
+      const newConn: Connector = { id: `conn-${Date.now()}`, from: getCardAnchor(pendingFrom), to: getCardAnchor(key) }
+      saveConnectors([...connectors, newConn])
       setPendingFrom(null)
       setConnectMode(false)
     }
   }
 
   function deleteConnector(id: string) {
-    const updated = connectors.filter(c => c.id !== id)
-    setConnectors(updated)
-    try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
+    saveConnectors(connectors.filter(c => c.id !== id))
   }
 
-  function handleWaypointChange(id: string, pos: { x: number; y: number }) {
-    const updated = connectors.map(c => c.id === id ? { ...c, waypoint: pos } : c)
-    setConnectors(updated)
-    try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
+  function handleConnectorUpdate(id: string, updates: Partial<Pick<Connector, 'from' | 'to' | 'waypoint'>>) {
+    saveConnectors(connectors.map(c => c.id === id ? { ...c, ...updates } : c))
   }
 
   // Sync when roadmap changes (key prop handles full remount, this covers partial updates)
@@ -735,38 +786,10 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             <StrategyCard roadmapId={roadmapId} />
           </div>
 
-          {/* ── Dotted connector: continues from the Strategy dot down to Videography card ── */}
-          {(() => {
-            // x = right edge of both cards, exactly where the L-connector's Strategy dot sits
-            const x   = STRAT_X + STRAT_W           // 640
-            const top = STRAT_Y                      // 1438 — shares the existing Strategy dot
-            const bot = VID_STRAT_Y                  // 1958 — top of videography card
-            const h   = bot - top                    // 520
-
-            // Label in the gap between the two cards.
-            // Strategy card is ~370 px tall → bottom at top+370 = 1808.
-            // Gap: 1808–1958. Mid of gap in SVG coords ≈ 430.
-            const labelY = 430
-
-            return (
-              <svg style={{ position: 'absolute', left: x - 6, top, width: 130, height: h + 6, overflow: 'visible', pointerEvents: 'none', zIndex: 6 }}>
-                <line x1={6} y1={0} x2={6} y2={h}
-                  stroke="rgba(0,56,69,0.22)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round" />
-                {/* Bottom dot at videography card top */}
-                <circle cx={6} cy={h} r={5} fill="rgba(0,56,69,0.25)" />
-                {/* Label in the visible gap between the two cards */}
-                <text x={16} y={labelY}
-                  fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.35)"
-                  style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  Videography
-                </text>
-              </svg>
-            )
-          })()}
 
           {/* ── Videography strategy card — draggable ──────────────────────── */}
           <DraggableWorldCard initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}
-            onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}>
+            connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}>
             <VideographyStrategyCard />
           </DraggableWorldCard>
 
@@ -778,7 +801,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={CONSULT_Y}
               storageKey={`consultant-${interview.id}`}
               zoomRef={zoomRef}
-              onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
+              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
             </DraggableWorldCard>
@@ -797,118 +820,23 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={PROD_CARD_Y}
               storageKey={key}
               zoomRef={zoomRef}
-              onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
+              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
             >
               <Card />
             </DraggableWorldCard>
           ))}
 
-          {/* ── User-created connectors ─────────────────────────────────────── */}
-          {connectors.map(conn => {
-            const from = cardPositions[conn.from]
-            const to   = cardPositions[conn.to]
-            if (!from || !to) return null
-            return (
-              <ConnectorLine
-                key={conn.id}
-                conn={conn}
-                from={from}
-                to={to}
-                zoomRef={zoomRef}
-                connectMode={connectMode}
-                onDelete={() => deleteConnector(conn.id)}
-                onWaypointChange={(pos) => handleWaypointChange(conn.id, pos)}
-              />
-            )
-          })}
-
-          {/* ── Videography connector: vid strategy card → 4 consultant cards ── */}
-          {(() => {
-            // Trunk rises from bottom-centre of the videography strategy card
-            const trunkX    = VID_STRAT_X + VID_CARD_W / 2                      // 490 — card centre
-            const trunkTopY = VID_STRAT_Y + 480                                  // approx card bottom
-            const junctionY = CONSULT_Y - 50                                     // horizontal bar, 50 px above cards
-            const rightmostX = GAL_PAD + 3 * (VID_CARD_W + CONSULT_GAP) + VID_CARD_W / 2  // centre of 4th card
-
-            // SVG bounding box in world coordinates
-            const svgL = trunkX - 6
-            const svgT = trunkTopY
-            const svgW = rightmostX - svgL + 10
-            const svgH = CONSULT_Y - trunkTopY + 10
-
-            // X centres of the four consultant cards
-            const centers = [0, 1, 2, 3].map(
-              i => GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + VID_CARD_W / 2
-            )
-
-            const stroke = { fill: 'none', stroke: 'rgba(0,56,69,0.22)', strokeWidth: 2, strokeDasharray: '8 5', strokeLinecap: 'round' as const }
-
-            return (
-              <svg
-                style={{ position: 'absolute', left: svgL, top: svgT, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}
-              >
-                {/* Vertical trunk from vid card bottom to junction bar */}
-                <line x1={trunkX - svgL} y1={0} x2={trunkX - svgL} y2={junctionY - svgT} {...stroke} />
-
-                {/* Horizontal bar spanning all four card centres */}
-                <line x1={trunkX - svgL} y1={junctionY - svgT} x2={rightmostX - svgL} y2={junctionY - svgT} {...stroke} />
-
-                {/* Four vertical branches down to card tops */}
-                {centers.map((cx, i) => (
-                  <line key={i} x1={cx - svgL} y1={junctionY - svgT} x2={cx - svgL} y2={CONSULT_Y - svgT} {...stroke} />
-                ))}
-
-                {/* Connection dots */}
-                <circle cx={trunkX - svgL} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
-                {centers.map((cx, i) => (
-                  <circle key={i} cx={cx - svgL} cy={CONSULT_Y - svgT} r={5} fill="rgba(0,56,69,0.25)" />
-                ))}
-
-                {/* Label */}
-                <text
-                  x={trunkX - svgL + 10}
-                  y={(junctionY - svgT) / 2}
-                  fontSize={10} fontWeight={700}
-                  fill="rgba(0,56,69,0.30)"
-                  style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
-                >
-                  Videography
-                </text>
-              </svg>
-            )
-          })()}
-
-          {/* L-connector: up from strategy card top-right → right to roadmap timeline bar */}
-          {(() => {
-            const connX  = STRAT_X + STRAT_W          // 640 — strategy card right edge
-            const connY1 = GAL_PAD + HEADER_H          // 896 — roadmap timeline bar (fixed anchor)
-            const connY2 = STRAT_Y                     // 1438 — strategy card top edge
-            const connW  = GAL_PAD - connX             // 160
-            const connH  = connY2 - connY1             // 542
-            return (
-              <svg
-                style={{ position: 'absolute', left: connX, top: connY1, width: connW, height: connH, overflow: 'visible', pointerEvents: 'none' }}
-              >
-                {/* L-shape: start at card top-right, go up, go right to roadmap */}
-                <path
-                  d={`M 0 ${connH} L 0 0 L ${connW} 0`}
-                  fill="none"
-                  stroke="rgba(0,56,69,0.2)"
-                  strokeWidth="2"
-                  strokeDasharray="8 5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                {/* Dot at roadmap anchor */}
-                <circle cx={connW} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
-                {/* Dot at strategy card */}
-                <circle cx={0} cy={connH} r={5} fill="rgba(0,56,69,0.25)" />
-                {/* Labels */}
-                <text x={8} y={connH - 10} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.28)" style={{ textTransform: 'uppercase', letterSpacing: '0.08em' }}>Strategy</text>
-                <text x={connW - 75} y={-8} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.28)" style={{ textTransform: 'uppercase', letterSpacing: '0.08em' }}>Roadmap</text>
-              </svg>
-            )
-          })()}
+          {/* ── All connectors (default layout + user-created, all freely editable) ── */}
+          {connectors.map(conn => (
+            <ConnectorLine
+              key={conn.id}
+              conn={conn}
+              zoomRef={zoomRef}
+              connectMode={connectMode}
+              onDelete={() => deleteConnector(conn.id)}
+              onUpdate={(updates) => handleConnectorUpdate(conn.id, updates)}
+            />
+          ))}
 
           <div style={{ position: 'absolute', left: GAL_PAD, top: GAL_PAD, width: PANEL_W, height: PANEL_H }}>
 
