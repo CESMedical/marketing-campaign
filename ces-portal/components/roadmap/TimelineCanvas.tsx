@@ -471,6 +471,26 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             <StrategyCard roadmapId={roadmapId} />
           </div>
 
+          {/* ── Dotted connector: Strategy card → Videography Strategy card ── */}
+          {(() => {
+            const cx      = STRAT_X + STRAT_W / 2   // shared centre x = 490
+            const lineTop = STRAT_Y + 390            // approx bottom of strategy card
+            const lineBot = VID_STRAT_Y              // top of videography card
+            const h       = lineBot - lineTop
+            return (
+              <svg style={{ position: 'absolute', left: cx - 6, top: lineTop, width: 120, height: h, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
+                <line x1={6} y1={0} x2={6} y2={h}
+                  stroke="rgba(0,56,69,0.22)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round" />
+                <circle cx={6} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
+                <circle cx={6} cy={h} r={5} fill="rgba(0,56,69,0.25)" />
+                <text x={16} y={h + 4} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.30)"
+                  style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  Videography
+                </text>
+              </svg>
+            )
+          })()}
+
           {/* ── Videography strategy card — below strategy card ───────────── */}
           <div style={{ position: 'absolute', left: VID_STRAT_X, top: VID_STRAT_Y, zIndex: 5 }}>
             <VideographyStrategyCard />
