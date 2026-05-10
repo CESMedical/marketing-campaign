@@ -419,17 +419,26 @@ export function VideographyStrategyCard() {
 // ─── Shared production asset modal shell ─────────────────────────────────────
 
 function ProductionModal({
-  title, subtitle, accent, tabs, activeTab, onTabChange, postsFed, onClose, children,
+  title, subtitle, accent, tabs, activeTab, onTabChange, postsFed, onClose, onSave, children,
 }: {
   title: string; subtitle: string; accent: string
   tabs: string[]; activeTab: string; onTabChange: (t: string) => void
-  postsFed: string[]; onClose: () => void; children: React.ReactNode
+  postsFed: string[]; onClose: () => void; onSave?: () => void; children: React.ReactNode
 }) {
+  const [savedAt, setSavedAt] = useState<number | null>(null)
+  const justSaved = savedAt !== null && Date.now() - savedAt < 3000
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  function handleSave() {
+    onSave?.()
+    setSavedAt(Date.now())
+    setTimeout(() => setSavedAt(s => s), 3000)
+  }
 
   return createPortal(
     <div
@@ -438,6 +447,7 @@ function ProductionModal({
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div style={{ background: '#fff', borderRadius: 20, width: 720, maxHeight: '92vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.22)' }}>
+        {/* Header */}
         <div style={{ background: accent, padding: '18px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 3 }}>Production Asset</div>
@@ -450,6 +460,7 @@ function ProductionModal({
           </button>
         </div>
 
+        {/* Tabs */}
         <div style={{ display: 'flex', borderBottom: '1px solid rgba(0,56,69,0.1)', flexShrink: 0 }}>
           {tabs.map(t => (
             <button key={t} type="button" onClick={() => onTabChange(t)} style={{
@@ -461,6 +472,7 @@ function ProductionModal({
           ))}
         </div>
 
+        {/* Posts fed */}
         {postsFed.length > 0 && (
           <div style={{ padding: '10px 24px', borderBottom: '1px solid rgba(0,56,69,0.08)', background: '#f9fafb', flexShrink: 0 }}>
             <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>Posts fed</p>
@@ -470,7 +482,24 @@ function ProductionModal({
           </div>
         )}
 
+        {/* Scrollable content */}
         <div style={{ flex: 1, overflowY: 'auto' }}>{children}</div>
+
+        {/* Sticky save footer */}
+        <div style={{ borderTop: '1px solid rgba(0,56,69,0.1)', padding: '12px 24px', flexShrink: 0 }}>
+          <button
+            type="button"
+            onClick={handleSave}
+            style={{
+              width: '100%', padding: '11px 0', borderRadius: 12, border: 'none', cursor: 'pointer',
+              fontSize: 13, fontWeight: 700, color: '#fff', transition: 'background 0.2s',
+              background: justSaved ? '#22c55e' : accent,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+            }}
+          >
+            {justSaved ? '✓ Saved' : 'Save changes'}
+          </button>
+        </div>
       </div>
     </div>,
     document.body,
