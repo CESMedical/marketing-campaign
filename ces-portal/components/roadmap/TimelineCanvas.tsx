@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X } from 'lucide-react'
+import { useState, useRef, useEffect, Fragment } from 'react'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2 } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
@@ -155,25 +155,35 @@ const WEEKS  = buildWeeks()
 // Position is persisted to localStorage by storageKey.
 function DraggableWorldCard({
   initialX, initialY, storageKey, zoomRef, children,
+  onPositionChange, connectMode, pendingFrom, onConnectClick,
 }: {
   initialX: number; initialY: number; storageKey: string
   zoomRef: React.MutableRefObject<number>; children: React.ReactNode
+  onPositionChange?: (key: string, pos: { x: number; y: number }) => void
+  connectMode?: boolean
+  pendingFrom?: string | null
+  onConnectClick?: (key: string) => void
 }) {
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: initialX, y: initialY })
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(`card-pos-${storageKey}`)
-      if (saved) setPos(JSON.parse(saved))
-    } catch {}
+      const p = saved ? JSON.parse(saved) : { x: initialX, y: initialY }
+      setPos(p)
+      onPositionChange?.(storageKey, p)
+    } catch {
+      onPositionChange?.(storageKey, { x: initialX, y: initialY })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey])
+
   const [dragging, setDragging]   = useState(false)
   const [justSaved, setJustSaved] = useState(false)
   const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
 
   function onPointerDown(e: React.PointerEvent) {
     e.stopPropagation()
-    // Don't drag when the user clicks an interactive element inside the card
     if ((e.target as HTMLElement).closest('button,input,textarea,a,select')) return
     e.currentTarget.setPointerCapture(e.pointerId)
     dragRef.current = { sx: e.clientX, sy: e.clientY, wx: pos.x, wy: pos.y, moved: false }
@@ -195,17 +205,29 @@ function DraggableWorldCard({
       const zoom = zoomRef.current
       const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
       setPos(final)
+      onPositionChange?.(storageKey, final)
       try { localStorage.setItem(`card-pos-${storageKey}`, JSON.stringify(final)) } catch {}
       setJustSaved(true)
       setTimeout(() => setJustSaved(false), 2000)
+    } else if (d && connectMode) {
+      onConnectClick?.(storageKey)
     }
     dragRef.current = null
     setDragging(false)
   }
 
+  const isSelected = connectMode && pendingFrom === storageKey
+
   return (
     <div
-      style={{ position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5, cursor: dragging ? 'grabbing' : undefined }}
+      style={{
+        position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5,
+        cursor: dragging ? 'grabbing' : connectMode ? 'crosshair' : undefined,
+        outline: isSelected ? '3px solid #0ea5e9' : connectMode ? '2px dashed rgba(14,165,233,0.4)' : undefined,
+        outlineOffset: isSelected ? 6 : 4,
+        borderRadius: 22,
+        transition: 'outline 0.1s',
+      }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -250,6 +272,55 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [showShift, setShowShift]     = useState(false)
   const [shiftAmt, setShiftAmt]       = useState(7)
   const [shifting, setShifting]       = useState(false)
+
+  // ── Connector creation ────────────────────────────────────────────────────
+  const [connectMode, setConnectMode]   = useState(false)
+  const [pendingFrom, setPendingFrom]   = useState<string | null>(null)
+  const [cardPositions, setCardPositions] = useState<Record<string, { x: number; y: number }>>({})
+  const [connectors, setConnectors] = useState<{ id: string; from: string; to: string }[]>([])
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('canvas-connectors')
+      if (saved) setConnectors(JSON.parse(saved))
+    } catch {}
+  }, [])
+
+  useEffect(() => {
+    if (!connectMode) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') { setConnectMode(false); setPendingFrom(null) }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [connectMode])
+
+  function handlePositionChange(key: string, pos: { x: number; y: number }) {
+    setCardPositions(prev => ({ ...prev, [key]: pos }))
+  }
+
+  function handleConnectClick(key: string) {
+    if (!pendingFrom) {
+      setPendingFrom(key)
+    } else if (pendingFrom === key) {
+      setPendingFrom(null)
+    } else {
+      const already = connectors.some(c => (c.from === pendingFrom && c.to === key) || (c.from === key && c.to === pendingFrom))
+      if (!already) {
+        const updated = [...connectors, { id: `${pendingFrom}-${key}-${Date.now()}`, from: pendingFrom, to: key }]
+        setConnectors(updated)
+        try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
+      }
+      setPendingFrom(null)
+      setConnectMode(false)
+    }
+  }
+
+  function deleteConnector(id: string) {
+    const updated = connectors.filter(c => c.id !== id)
+    setConnectors(updated)
+    try { localStorage.setItem('canvas-connectors', JSON.stringify(updated)) } catch {}
+  }
 
   // Sync when roadmap changes (key prop handles full remount, this covers partial updates)
   useEffect(() => { setPosts(init) }, [init])
@@ -485,6 +556,14 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           <div className="w-7 h-px bg-brand-deep/10" />
           <SideBtn onClick={() => setShowShift(true)} title="Shift all posts in time"><ChevronsRight size={15} /></SideBtn>
         </>}
+        <div className="w-7 h-px bg-brand-deep/10" />
+        <button
+          onClick={() => { setConnectMode(m => !m); setPendingFrom(null) }}
+          title="Connect cards with a dotted line"
+          className={`flex items-center justify-center w-9 h-9 rounded-xl border transition-all ${connectMode ? 'bg-sky-500 border-sky-500 text-white' : 'border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft'}`}
+        >
+          <Link2 size={14} />
+        </button>
       </div>
 
       {/* Canvas overlays: roadmap switcher top-left, view switcher top-right */}
@@ -510,6 +589,16 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         onPointerUp={onContainerPointerUp}
         onPointerCancel={onContainerPointerUp}
       >
+        {/* Connect mode banner */}
+        {connectMode && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+            <div className="flex items-center gap-3 bg-sky-500 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
+              <Link2 size={14} />
+              {pendingFrom ? 'Now click a second card to connect · ESC to cancel' : 'Click a card to start a connector · ESC to cancel'}
+            </div>
+          </div>
+        )}
+
         {/* Drag tooltip: date + position within column */}
         {dragVisual && (() => {
           const colCount = layout.filter(l => l.off === dragVisual.curOff).length
@@ -580,7 +669,8 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           })()}
 
           {/* ── Videography strategy card — draggable ──────────────────────── */}
-          <DraggableWorldCard initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}>
+          <DraggableWorldCard initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}
+            onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}>
             <VideographyStrategyCard />
           </DraggableWorldCard>
 
@@ -592,6 +682,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={CONSULT_Y}
               storageKey={`consultant-${interview.id}`}
               zoomRef={zoomRef}
+              onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
             </DraggableWorldCard>
@@ -610,10 +701,44 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={PROD_CARD_Y}
               storageKey={key}
               zoomRef={zoomRef}
+              onPositionChange={handlePositionChange} connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
             >
               <Card />
             </DraggableWorldCard>
           ))}
+
+          {/* ── User-created connectors ─────────────────────────────────────── */}
+          {connectors.map(conn => {
+            const from = cardPositions[conn.from]
+            const to   = cardPositions[conn.to]
+            if (!from || !to) return null
+            const CARD_W_PX = 300
+            const fx = from.x + CARD_W_PX / 2, fy = from.y + 30
+            const tx = to.x   + CARD_W_PX / 2, ty = to.y   + 30
+            const minX = Math.min(fx, tx), minY = Math.min(fy, ty)
+            const svgW = Math.abs(tx - fx) + 20, svgH = Math.abs(ty - fy) + 20
+            const midX = (fx + tx) / 2, midY = (fy + ty) / 2
+            return (
+              <Fragment key={conn.id}>
+                <svg style={{ position: 'absolute', left: minX - 10, top: minY - 10, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
+                  <line
+                    x1={fx - minX + 10} y1={fy - minY + 10}
+                    x2={tx - minX + 10} y2={ty - minY + 10}
+                    stroke="rgba(14,165,233,0.7)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round"
+                  />
+                  <circle cx={fx - minX + 10} cy={fy - minY + 10} r={5} fill="rgba(14,165,233,0.5)" />
+                  <circle cx={tx - minX + 10} cy={ty - minY + 10} r={5} fill="rgba(14,165,233,0.5)" />
+                </svg>
+                {connectMode && (
+                  <button
+                    onPointerDown={e => e.stopPropagation()}
+                    onClick={() => deleteConnector(conn.id)}
+                    style={{ position: 'absolute', left: midX - 11, top: midY - 11, width: 22, height: 22, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 13, fontWeight: 900, zIndex: 25, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
+                  >×</button>
+                )}
+              </Fragment>
+            )
+          })}
 
           {/* ── Videography connector: vid strategy card → 4 consultant cards ── */}
           {(() => {
