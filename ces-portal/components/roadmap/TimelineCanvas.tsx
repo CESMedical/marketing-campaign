@@ -471,19 +471,28 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             <StrategyCard roadmapId={roadmapId} />
           </div>
 
-          {/* ── Dotted connector: Strategy card → Videography Strategy card ── */}
+          {/* ── Dotted connector: continues from the Strategy dot down to Videography card ── */}
           {(() => {
-            const cx      = STRAT_X + STRAT_W / 2   // shared centre x = 490
-            const lineTop = STRAT_Y + 390            // approx bottom of strategy card
-            const lineBot = VID_STRAT_Y              // top of videography card
-            const h       = lineBot - lineTop
+            // x = right edge of both cards, exactly where the L-connector's Strategy dot sits
+            const x   = STRAT_X + STRAT_W           // 640
+            const top = STRAT_Y                      // 1438 — shares the existing Strategy dot
+            const bot = VID_STRAT_Y                  // 1958 — top of videography card
+            const h   = bot - top                    // 520
+
+            // Label in the gap between the two cards.
+            // Strategy card is ~370 px tall → bottom at top+370 = 1808.
+            // Gap: 1808–1958. Mid of gap in SVG coords ≈ 430.
+            const labelY = 430
+
             return (
-              <svg style={{ position: 'absolute', left: cx - 6, top: lineTop, width: 120, height: h, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
+              <svg style={{ position: 'absolute', left: x - 6, top, width: 130, height: h + 6, overflow: 'visible', pointerEvents: 'none', zIndex: 6 }}>
                 <line x1={6} y1={0} x2={6} y2={h}
                   stroke="rgba(0,56,69,0.22)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round" />
-                <circle cx={6} cy={0} r={5} fill="rgba(0,56,69,0.25)" />
+                {/* Bottom dot at videography card top */}
                 <circle cx={6} cy={h} r={5} fill="rgba(0,56,69,0.25)" />
-                <text x={16} y={h + 4} fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.30)"
+                {/* Label in the visible gap between the two cards */}
+                <text x={16} y={labelY}
+                  fontSize={10} fontWeight={700} fill="rgba(0,56,69,0.35)"
                   style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                   Videography
                 </text>
