@@ -222,21 +222,21 @@ function ConnectorLine({ conn, from, to, zoomRef, connectMode, onDelete, onWaypo
         <circle cx={sfx} cy={sfy} r={5} fill="rgba(0,56,69,0.25)" />
         <circle cx={stx} cy={sty} r={5} fill="rgba(0,56,69,0.25)" />
       </svg>
-      {/* Draggable waypoint handle — always visible so user can bend the line */}
-      {connectMode ? (
+      {/* Draggable waypoint handle — always shown for bending the line */}
+      <div
+        style={{ position: 'absolute', left: wp.x - 7, top: wp.y - 7, width: 14, height: 14, borderRadius: '50%', background: draggingWp ? 'rgba(0,56,69,0.45)' : 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.3)', cursor: draggingWp ? 'grabbing' : 'grab', zIndex: 15 }}
+        onPointerDown={onWpDown}
+        onPointerMove={onWpMove}
+        onPointerUp={onWpUp}
+        onPointerCancel={onWpUp}
+      />
+      {/* Delete button — shown in connect mode, offset so it doesn't cover the drag handle */}
+      {connectMode && (
         <button
           onPointerDown={e => e.stopPropagation()}
           onClick={() => onDelete()}
-          style={{ position: 'absolute', left: wp.x - 11, top: wp.y - 11, width: 22, height: 22, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 13, fontWeight: 900, zIndex: 25, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
+          style={{ position: 'absolute', left: wp.x + 4, top: wp.y - 19, width: 20, height: 20, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 12, fontWeight: 900, zIndex: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
         >×</button>
-      ) : (
-        <div
-          style={{ position: 'absolute', left: wp.x - 7, top: wp.y - 7, width: 14, height: 14, borderRadius: '50%', background: draggingWp ? 'rgba(0,56,69,0.45)' : 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.3)', cursor: draggingWp ? 'grabbing' : 'grab', zIndex: 15 }}
-          onPointerDown={onWpDown}
-          onPointerMove={onWpMove}
-          onPointerUp={onWpUp}
-          onPointerCancel={onWpUp}
-        />
       )}
     </>
   )
