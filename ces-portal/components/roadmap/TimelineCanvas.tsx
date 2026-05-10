@@ -159,13 +159,14 @@ function DraggableWorldCard({
   initialX: number; initialY: number; storageKey: string
   zoomRef: React.MutableRefObject<number>; children: React.ReactNode
 }) {
-  const [pos, setPos] = useState<{ x: number; y: number }>(() => {
-    if (typeof window === 'undefined') return { x: initialX, y: initialY }
+  const [pos, setPos] = useState<{ x: number; y: number }>({ x: initialX, y: initialY })
+
+  useEffect(() => {
     try {
       const saved = localStorage.getItem(`card-pos-${storageKey}`)
-      return saved ? JSON.parse(saved) : { x: initialX, y: initialY }
-    } catch { return { x: initialX, y: initialY } }
-  })
+      if (saved) setPos(JSON.parse(saved))
+    } catch {}
+  }, [storageKey])
   const [dragging, setDragging]   = useState(false)
   const [justSaved, setJustSaved] = useState(false)
   const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
@@ -204,7 +205,7 @@ function DraggableWorldCard({
 
   return (
     <div
-      style={{ position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5, cursor: dragging ? 'grabbing' : 'grab' }}
+      style={{ position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5, cursor: dragging ? 'grabbing' : undefined }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
