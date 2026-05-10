@@ -306,10 +306,7 @@ export function ConsultantInterviewCard({ interview, index }: { interview: Consu
 
   return (
     <>
-      <div
-        onPointerDown={e => e.stopPropagation()}
-        style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${accent}`, overflow: 'hidden', userSelect: 'none' }}
-      >
+      <div style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${accent}`, overflow: 'hidden', userSelect: 'none' }}>
         <div style={{ background: accent, padding: '16px 18px' }}>
           <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>Interview {interview.id}</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: '#fff', lineHeight: 1.3 }}>{interview.name}</div>
@@ -368,10 +365,7 @@ export function VideographyStrategyCard() {
   const preview = lines.slice(0, 2).join('\n\n')
 
   return (
-    <div
-      onPointerDown={e => e.stopPropagation()}
-      style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${PILLAR_COLOR}`, overflow: 'hidden', userSelect: 'none' }}
-    >
+    <div style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${PILLAR_COLOR}`, overflow: 'hidden', userSelect: 'none' }}>
       <div style={{ background: PILLAR_COLOR, padding: '18px 20px' }}>
         <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 8 }}>Production Asset</div>
         <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', lineHeight: 1.35 }}>{VIDEOGRAPHY_STRATEGY.title}</div>
@@ -899,10 +893,7 @@ function ProductionAssetCard({
   postsFed: string[]; meta: string[]; description: string; warning?: string; onOpen: () => void
 }) {
   return (
-    <div
-      onPointerDown={e => e.stopPropagation()}
-      style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${accent}`, overflow: 'hidden', userSelect: 'none' }}
-    >
+    <div style={{ width: 300, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(0,56,69,0.13)', border: '1.5px solid rgba(0,56,69,0.1)', borderLeft: `6px solid ${accent}`, overflow: 'hidden', userSelect: 'none' }}>
       <div style={{ background: accent, padding: '14px 18px' }}>
         <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 5 }}>{type}</div>
         <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', lineHeight: 1.3, marginBottom: 8 }}>{title}</div>

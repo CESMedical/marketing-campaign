@@ -150,6 +150,68 @@ interface PanDrag { startX: number; startY: number; startPanX: number; startPanY
 const MONTHS = buildMonths()
 const WEEKS  = buildWeeks()
 
+// ─── Draggable world-space card wrapper ───────────────────────────────────────
+// Wraps any card so it can be repositioned freely on the canvas.
+// Position is persisted to localStorage by storageKey.
+function DraggableWorldCard({
+  initialX, initialY, storageKey, zoomRef, children,
+}: {
+  initialX: number; initialY: number; storageKey: string
+  zoomRef: React.MutableRefObject<number>; children: React.ReactNode
+}) {
+  const [pos, setPos] = useState<{ x: number; y: number }>(() => {
+    if (typeof window === 'undefined') return { x: initialX, y: initialY }
+    try {
+      const saved = localStorage.getItem(`card-pos-${storageKey}`)
+      return saved ? JSON.parse(saved) : { x: initialX, y: initialY }
+    } catch { return { x: initialX, y: initialY } }
+  })
+  const [dragging, setDragging] = useState(false)
+  const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
+
+  function onPointerDown(e: React.PointerEvent) {
+    e.stopPropagation()
+    // Don't drag when the user clicks an interactive element inside the card
+    if ((e.target as HTMLElement).closest('button,input,textarea,a,select')) return
+    e.currentTarget.setPointerCapture(e.pointerId)
+    dragRef.current = { sx: e.clientX, sy: e.clientY, wx: pos.x, wy: pos.y, moved: false }
+  }
+
+  function onPointerMove(e: React.PointerEvent) {
+    const d = dragRef.current; if (!d) return
+    const zoom = zoomRef.current
+    const dx = (e.clientX - d.sx) / zoom
+    const dy = (e.clientY - d.sy) / zoom
+    if (!d.moved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) { d.moved = true; setDragging(true) }
+    if (d.moved) setPos({ x: d.wx + dx, y: d.wy + dy })
+  }
+
+  function onPointerUp(e: React.PointerEvent) {
+    e.currentTarget.releasePointerCapture(e.pointerId)
+    const d = dragRef.current
+    if (d?.moved) {
+      const zoom = zoomRef.current
+      const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
+      setPos(final)
+      try { localStorage.setItem(`card-pos-${storageKey}`, JSON.stringify(final)) } catch {}
+    }
+    dragRef.current = null
+    setDragging(false)
+  }
+
+  return (
+    <div
+      style={{ position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5, cursor: dragging ? 'grabbing' : 'grab' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+    >
+      {children}
+    </div>
+  )
+}
+
 function SideBtn({ onClick, title, children }: { onClick: () => void; title: string; children: React.ReactNode }) {
   return (
     <button onClick={onClick} title={title}
@@ -502,26 +564,40 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             )
           })()}
 
-          {/* ── Videography strategy card — below strategy card ───────────── */}
-          <div style={{ position: 'absolute', left: VID_STRAT_X, top: VID_STRAT_Y, zIndex: 5 }}>
+          {/* ── Videography strategy card — draggable ──────────────────────── */}
+          <DraggableWorldCard initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}>
             <VideographyStrategyCard />
-          </div>
+          </DraggableWorldCard>
 
-          {/* ── Consultant interview cards — row below roadmap ────────────── */}
+          {/* ── Consultant interview cards — draggable ─────────────────────── */}
           {CONSULTANT_INTERVIEWS.map((interview, i) => (
-            <div
+            <DraggableWorldCard
               key={interview.id}
-              style={{ position: 'absolute', left: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP), top: CONSULT_Y, zIndex: 5 }}
+              initialX={GAL_PAD + i * (VID_CARD_W + CONSULT_GAP)}
+              initialY={CONSULT_Y}
+              storageKey={`consultant-${interview.id}`}
+              zoomRef={zoomRef}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
-            </div>
+            </DraggableWorldCard>
           ))}
 
-          {/* ── Production asset cards — row below consultant cards ───────────── */}
-          {[LeonnaProductionCard, PatientStoriesCard, TeamPhotographyCard, ProductionScheduleCard].map((Card, i) => (
-            <div key={i} style={{ position: 'absolute', left: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP), top: PROD_CARD_Y, zIndex: 5 }}>
+          {/* ── Production asset cards — draggable ─────────────────────────── */}
+          {([
+            { Card: LeonnaProductionCard,       key: 'prod-leonna'   },
+            { Card: PatientStoriesCard,         key: 'prod-patient'  },
+            { Card: TeamPhotographyCard,        key: 'prod-team'     },
+            { Card: ProductionScheduleCard,     key: 'prod-schedule' },
+          ] as const).map(({ Card, key }, i) => (
+            <DraggableWorldCard
+              key={key}
+              initialX={GAL_PAD + i * (VID_CARD_W + CONSULT_GAP)}
+              initialY={PROD_CARD_Y}
+              storageKey={key}
+              zoomRef={zoomRef}
+            >
               <Card />
-            </div>
+            </DraggableWorldCard>
           ))}
 
           {/* ── Videography connector: vid strategy card → 4 consultant cards ── */}
