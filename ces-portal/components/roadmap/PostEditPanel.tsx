@@ -182,7 +182,16 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
             </span>
             {badge && <span className="text-[10px] font-bold text-brand-teal uppercase tracking-wide">{badge}</span>}
           </div>
-          <h2 className="text-sm font-semibold text-brand-deep leading-snug line-clamp-2">{post.title}</h2>
+          {canEdit ? (
+            <input
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              className="w-full text-sm font-semibold text-brand-deep leading-snug bg-transparent border-0 border-b-2 border-transparent focus:border-brand-teal focus:outline-none transition-colors py-0.5"
+              placeholder="Post title…"
+            />
+          ) : (
+            <h2 className="text-sm font-semibold text-brand-deep leading-snug line-clamp-2">{post.title}</h2>
+          )}
         </div>
         <button onClick={onClose} className="shrink-0 p-1.5 rounded-lg text-brand-deep/40 hover:text-brand-deep hover:bg-brand-bg-soft transition-colors">
           <X size={17} />
@@ -240,13 +249,6 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
 
           {canEdit ? (
             <>
-              {/* Title */}
-              <div>
-                <p className="label-xs mb-2">Title</p>
-                <input value={title} onChange={e => setTitle(e.target.value)}
-                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep font-semibold focus:outline-none focus:ring-2 focus:ring-brand-teal" />
-              </div>
-
               {/* Date */}
               <div>
                 <p className="label-xs mb-2">Scheduled date</p>
