@@ -413,8 +413,9 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [connectors, setConnectors]   = useState<Connector[]>([])
   const [layoutVersion, setLayoutVersion] = useState(0) // bump to remount cards after server load
 
-  const connectorsRef  = useRef<Connector[]>([])
-  const syncTimerRef   = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const connectorsRef     = useRef<Connector[]>([])
+  const syncTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const lastLocalChangeRef = useRef<number>(0) // timestamp of last local edit — poll skips if too recent
   const CARD_KEYS = ['vid-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
 
   // Keep ref in sync so scheduleSync can read latest connectors without stale closure
@@ -429,25 +430,50 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     } catch {}
   }, [])
 
-  // Load shared canvas layout from server — overrides local state so all users see the same layout
+  // Shared helper: apply a canvas layout payload from the server
+  function applyServerLayout(data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] }) {
+    let didChange = false
+    if (data.cardPositions) {
+      for (const [key, pos] of Object.entries(data.cardPositions)) {
+        localStorage.setItem(`card-pos-${key}`, JSON.stringify(pos))
+        didChange = true
+      }
+    }
+    if (data.connectors?.length) {
+      localStorage.setItem('canvas-connectors-v2', JSON.stringify(data.connectors))
+      setConnectors(data.connectors)
+      didChange = true
+    }
+    if (didChange) setLayoutVersion(v => v + 1)
+  }
+
+  // Initial load from server
   useEffect(() => {
     if (!roadmapId) return
     fetch(`/api/roadmaps/${roadmapId}/canvas`)
       .then(r => r.ok ? r.json() : null)
       .then((data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] } | null) => {
-        if (!data) return
-        if (data.cardPositions) {
-          for (const [key, pos] of Object.entries(data.cardPositions)) {
-            localStorage.setItem(`card-pos-${key}`, JSON.stringify(pos))
-          }
-        }
-        if (data.connectors?.length) {
-          localStorage.setItem('canvas-connectors-v2', JSON.stringify(data.connectors))
-          setConnectors(data.connectors)
-        }
-        setLayoutVersion(v => v + 1) // remount cards so they pick up the server positions
+        if (data) applyServerLayout(data)
       })
       .catch(() => {})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roadmapId])
+
+  // Poll every 20 seconds so active users see each other's changes without refreshing.
+  // Skips the update if this user made a local change in the last 10 seconds (their
+  // sync is in-flight and we don't want to overwrite their work-in-progress).
+  useEffect(() => {
+    if (!roadmapId) return
+    const interval = setInterval(() => {
+      if (Date.now() - lastLocalChangeRef.current < 10_000) return
+      fetch(`/api/roadmaps/${roadmapId}/canvas`)
+        .then(r => r.ok ? r.json() : null)
+        .then((data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] } | null) => {
+          if (data) applyServerLayout(data)
+        })
+        .catch(() => {})
+    }, 20_000)
+    return () => clearInterval(interval)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmapId])
 
@@ -462,6 +488,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   function scheduleSync() {
     if (!roadmapId) return
+    lastLocalChangeRef.current = Date.now()
     if (syncTimerRef.current) clearTimeout(syncTimerRef.current)
     syncTimerRef.current = setTimeout(() => {
       const cardPositions: Record<string, { x: number; y: number }> = {}
