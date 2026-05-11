@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, Fragment } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2 } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
@@ -152,138 +152,138 @@ const WEEKS  = buildWeeks()
 
 // ─── Draggable world-space card wrapper ───────────────────────────────────────
 // Wraps any card so it can be repositioned freely on the canvas.
-// Connector: all positions are free world-space coordinates, not anchored to any card.
-interface Connector {
-  id: string
-  from: { x: number; y: number }
-  to:   { x: number; y: number }
-  waypoint?: { x: number; y: number }
-}
+// ── Node / edge connector system ─────────────────────────────────────────────
+interface CanvasNode { id: string; x: number; y: number }
+interface CanvasEdge { id: string; from: string; to: string }
 
-// Returns the built-in connectors to seed localStorage on first load.
-function defaultConnectors(): Connector[] {
-  const vidBotX = VID_STRAT_X + 150
-  const vidBotY = VID_STRAT_Y + 480
-  const jY      = CONSULT_Y - 50
-  const centers = [0, 1, 2, 3].map(i => GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + 150)
-  return [
-    // Strategy card → Videography card (vertical)
-    { id: 'init-strat-vid',
-      from: { x: STRAT_X + 150, y: STRAT_Y + 370 },
-      to:   { x: VID_STRAT_X + 150, y: VID_STRAT_Y } },
-    // Videography card → each consultant (fan-out with waypoint)
-    ...centers.map((cx, i) => ({
-      id: `init-vid-c${i + 1}`,
-      from: { x: vidBotX, y: vidBotY },
-      to:   { x: cx, y: CONSULT_Y },
-      waypoint: { x: cx, y: jY },
-    })),
-    // Strategy card → Roadmap timeline bar (L-shape via bezier)
-    { id: 'init-strat-roadmap',
-      from:     { x: STRAT_X + STRAT_W,          y: STRAT_Y },
-      to:       { x: GAL_PAD,                     y: GAL_PAD + HEADER_H },
-      waypoint: { x: STRAT_X + STRAT_W,           y: GAL_PAD + HEADER_H } },
-  ]
-}
+function defaultNodesEdges(): { nodes: CanvasNode[]; edges: CanvasEdge[] } {
+  let n = 0
+  const uid = () => `init-${n++}`
+  const nodes: CanvasNode[] = []
+  const edges: CanvasEdge[] = []
 
-// Factory: returns pointer-event handlers for a draggable world-space handle.
-function makeDragHandlers(
-  ref: React.MutableRefObject<{ sx: number; sy: number; wx: number; wy: number } | null>,
-  getPos: () => { x: number; y: number },
-  setLocal: (p: { x: number; y: number }) => void,
-  onCommit: (p: { x: number; y: number }) => void,
-  zoomRef: React.MutableRefObject<number>
-) {
-  return {
-    onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
-      e.stopPropagation()
-      e.currentTarget.setPointerCapture(e.pointerId)
-      const p = getPos()
-      ref.current = { sx: e.clientX, sy: e.clientY, wx: p.x, wy: p.y }
-    },
-    onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
-      const d = ref.current; if (!d) return
-      const z = zoomRef.current
-      setLocal({ x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z })
-    },
-    onPointerUp(e: React.PointerEvent<HTMLDivElement>) {
-      e.currentTarget.releasePointerCapture(e.pointerId)
-      const d = ref.current
-      if (d) {
-        const z = zoomRef.current
-        const final = { x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z }
-        setLocal(final)
-        onCommit(final)
-      }
-      ref.current = null
-    },
+  function line(ax: number, ay: number, bx: number, by: number) {
+    const a = { id: uid(), x: ax, y: ay }
+    const b = { id: uid(), x: bx, y: by }
+    nodes.push(a, b)
+    edges.push({ id: uid(), from: a.id, to: b.id })
   }
+
+  // Strategy → Videography card (straight vertical)
+  line(STRAT_X + 150, STRAT_Y + 370, VID_STRAT_X + 150, VID_STRAT_Y)
+
+  // Videography → 4 consultant cards: shared trunk node + junction + 4 branches
+  const vidBot  = { id: uid(), x: VID_STRAT_X + 150, y: VID_STRAT_Y + 480 }
+  const junction = { id: uid(), x: VID_STRAT_X + 150, y: CONSULT_Y - 50 }
+  nodes.push(vidBot, junction)
+  edges.push({ id: uid(), from: vidBot.id, to: junction.id })
+  for (let i = 0; i < 4; i++) {
+    const cx  = GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + 150
+    const jBr = { id: uid(), x: cx, y: CONSULT_Y - 50 }
+    const cTop = { id: uid(), x: cx, y: CONSULT_Y }
+    nodes.push(jBr, cTop)
+    edges.push({ id: uid(), from: junction.id, to: jBr.id })
+    edges.push({ id: uid(), from: jBr.id,      to: cTop.id })
+  }
+
+  // Strategy → Roadmap: L-shape via 3 nodes (start → corner → roadmap)
+  const sRight  = { id: uid(), x: STRAT_X + STRAT_W, y: STRAT_Y }
+  const corner  = { id: uid(), x: STRAT_X + STRAT_W, y: GAL_PAD + HEADER_H }
+  const roadmap = { id: uid(), x: GAL_PAD,            y: GAL_PAD + HEADER_H }
+  nodes.push(sRight, corner, roadmap)
+  edges.push({ id: uid(), from: sRight.id, to: corner.id })
+  edges.push({ id: uid(), from: corner.id, to: roadmap.id })
+
+  return { nodes, edges }
 }
 
-function ConnectorLine({ conn, zoomRef, connectMode, onDelete, onUpdate }: {
-  conn: Connector
+// A draggable bullet-point node. Click (no drag) in connect mode selects/connects.
+function NodeDot({ node, zoomRef, connectMode, isPending, onDragEnd, onConnectClick, onDelete }: {
+  node: CanvasNode
   zoomRef: React.MutableRefObject<number>
   connectMode: boolean
-  onDelete: () => void
-  onUpdate: (updates: Partial<Pick<Connector, 'from' | 'to' | 'waypoint'>>) => void
+  isPending: boolean
+  onDragEnd: (id: string, pos: { x: number; y: number }) => void
+  onConnectClick: (id: string) => void
+  onDelete: (id: string) => void
 }) {
-  const [lFrom, setLFrom] = useState<{ x: number; y: number } | null>(null)
-  const [lTo,   setLTo]   = useState<{ x: number; y: number } | null>(null)
-  const [lWp,   setLWp]   = useState<{ x: number; y: number } | null>(null)
+  const [pos, setPos] = useState({ x: node.x, y: node.y })
+  const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
+  useEffect(() => { setPos({ x: node.x, y: node.y }) }, [node.x, node.y])
 
-  const fromRef = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
-  const toRef   = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
-  const wpRef   = useRef<{ sx: number; sy: number; wx: number; wy: number } | null>(null)
+  function onPointerDown(e: React.PointerEvent) {
+    e.stopPropagation()
+    e.currentTarget.setPointerCapture(e.pointerId)
+    dragRef.current = { sx: e.clientX, sy: e.clientY, wx: pos.x, wy: pos.y, moved: false }
+  }
+  function onPointerMove(e: React.PointerEvent) {
+    const d = dragRef.current; if (!d) return
+    const z = zoomRef.current
+    const dx = (e.clientX - d.sx) / z, dy = (e.clientY - d.sy) / z
+    if (!d.moved && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) d.moved = true
+    if (d.moved) setPos({ x: d.wx + dx, y: d.wy + dy })
+  }
+  function onPointerUp(e: React.PointerEvent) {
+    e.currentTarget.releasePointerCapture(e.pointerId)
+    const d = dragRef.current
+    if (d?.moved) {
+      const z = zoomRef.current
+      const final = { x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z }
+      setPos(final)
+      onDragEnd(node.id, final)
+    } else if (d && connectMode) {
+      onConnectClick(node.id)
+    }
+    dragRef.current = null
+  }
 
-  const from = lFrom ?? conn.from
-  const to   = lTo   ?? conn.to
-  const fx = from.x, fy = from.y
-  const tx = to.x,   ty = to.y
-  const defaultWp = { x: (fx + tx) / 2, y: (fy + ty) / 2 }
-  const wp     = lWp ?? conn.waypoint ?? defaultWp
-  const curved = !!(lWp ?? conn.waypoint)
+  return (
+    <div style={{ position: 'absolute', left: pos.x - 7, top: pos.y - 7, width: 14, height: 14, zIndex: 20 }}>
+      <div
+        style={{
+          width: 14, height: 14, borderRadius: '50%', boxSizing: 'border-box',
+          background: isPending ? '#0ea5e9' : 'rgba(0,56,69,0.25)',
+          border: `${isPending ? 2 : 1.5}px solid ${isPending ? '#0ea5e9' : 'rgba(0,56,69,0.38)'}`,
+          cursor: connectMode ? 'pointer' : 'grab',
+          outline: isPending ? '3px solid rgba(14,165,233,0.3)' : 'none', outlineOffset: 3,
+          boxShadow: isPending ? '0 0 0 5px rgba(14,165,233,0.15)' : 'none',
+        }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      />
+      {connectMode && !isPending && (
+        <button
+          onPointerDown={e => e.stopPropagation()}
+          onClick={() => onDelete(node.id)}
+          style={{ position: 'absolute', left: 8, bottom: 8, width: 13, height: 13, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '1.5px solid #fff', cursor: 'pointer', fontSize: 9, fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, zIndex: 21, boxShadow: '0 1px 4px rgba(0,0,0,0.25)' }}
+        >×</button>
+      )}
+    </div>
+  )
+}
 
-  const minX = Math.min(fx, tx, wp.x) - 20
-  const minY = Math.min(fy, ty, wp.y) - 20
-  const maxX = Math.max(fx, tx, wp.x) + 20
-  const maxY = Math.max(fy, ty, wp.y) + 20
-  const svgW = maxX - minX, svgH = maxY - minY
-  const sfx = fx - minX, sfy = fy - minY
-  const stx = tx - minX, sty = ty - minY
-  const swx = wp.x - minX, swy = wp.y - minY
-  const pathD = curved
-    ? `M ${sfx} ${sfy} Q ${swx} ${swy} ${stx} ${sty}`
-    : `M ${sfx} ${sfy} L ${stx} ${sty}`
-  const stroke = { fill: 'none', stroke: 'rgba(0,56,69,0.22)', strokeWidth: 2, strokeDasharray: '8 5', strokeLinecap: 'round' as const }
-
-  const fromH = makeDragHandlers(fromRef, () => from, setLFrom, p => onUpdate({ from: p }), zoomRef)
-  const toH   = makeDragHandlers(toRef,   () => to,   setLTo,   p => onUpdate({ to: p }),   zoomRef)
-  const wpH   = makeDragHandlers(wpRef,   () => wp,   setLWp,   p => onUpdate({ waypoint: p }), zoomRef)
-
-  const handleStyle: React.CSSProperties = { position: 'absolute', width: 14, height: 14, borderRadius: '50%', background: 'rgba(0,56,69,0.18)', border: '1.5px solid rgba(0,56,69,0.35)', cursor: 'grab', zIndex: 15 }
-
+// A rigid straight dotted line between two nodes.
+function EdgeLine({ fromNode, toNode, connectMode, onDelete }: {
+  fromNode: CanvasNode; toNode: CanvasNode
+  connectMode: boolean; onDelete: () => void
+}) {
+  const fx = fromNode.x, fy = fromNode.y, tx = toNode.x, ty = toNode.y
+  const minX = Math.min(fx, tx) - 10, minY = Math.min(fy, ty) - 10
+  const svgW = Math.abs(tx - fx) + 20,  svgH = Math.abs(ty - fy) + 20
+  const midX = (fx + tx) / 2,           midY = (fy + ty) / 2
   return (
     <>
       <svg style={{ position: 'absolute', left: minX, top: minY, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
-        <path d={pathD} {...stroke} />
-        <circle cx={sfx} cy={sfy} r={5} fill="rgba(0,56,69,0.25)" />
-        <circle cx={stx} cy={sty} r={5} fill="rgba(0,56,69,0.25)" />
+        <line x1={fx - minX} y1={fy - minY} x2={tx - minX} y2={ty - minY}
+          stroke="rgba(0,56,69,0.22)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round" />
       </svg>
-      {/* FROM endpoint handle */}
-      <div style={{ ...handleStyle, left: fx - 7, top: fy - 7 }}
-        {...fromH} onPointerCancel={fromH.onPointerUp} />
-      {/* TO endpoint handle */}
-      <div style={{ ...handleStyle, left: tx - 7, top: ty - 7 }}
-        {...toH} onPointerCancel={toH.onPointerUp} />
-      {/* WAYPOINT handle (bend point) */}
-      <div style={{ ...handleStyle, left: wp.x - 7, top: wp.y - 7 }}
-        {...wpH} onPointerCancel={wpH.onPointerUp} />
-      {/* Delete button in connect mode */}
       {connectMode && (
         <button
           onPointerDown={e => e.stopPropagation()}
           onClick={() => onDelete()}
-          style={{ position: 'absolute', left: wp.x + 4, top: wp.y - 19, width: 20, height: 20, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 12, fontWeight: 900, zIndex: 26, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 6px rgba(0,0,0,0.2)' }}
+          style={{ position: 'absolute', left: midX - 9, top: midY - 9, width: 18, height: 18, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 10, fontWeight: 900, zIndex: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
         >×</button>
       )}
     </>
@@ -292,14 +292,10 @@ function ConnectorLine({ conn, zoomRef, connectMode, onDelete, onUpdate }: {
 
 // Position is persisted to localStorage by storageKey.
 function DraggableWorldCard({
-  initialX, initialY, storageKey, zoomRef, children,
-  connectMode, pendingFrom, onConnectClick, onSaved,
+  initialX, initialY, storageKey, zoomRef, children, onSaved,
 }: {
   initialX: number; initialY: number; storageKey: string
   zoomRef: React.MutableRefObject<number>; children: React.ReactNode
-  connectMode?: boolean
-  pendingFrom?: string | null
-  onConnectClick?: (key: string) => void
   onSaved?: () => void
 }) {
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: initialX, y: initialY })
@@ -322,16 +318,13 @@ function DraggableWorldCard({
     e.currentTarget.setPointerCapture(e.pointerId)
     dragRef.current = { sx: e.clientX, sy: e.clientY, wx: pos.x, wy: pos.y, moved: false }
   }
-
   function onPointerMove(e: React.PointerEvent) {
     const d = dragRef.current; if (!d) return
     const zoom = zoomRef.current
-    const dx = (e.clientX - d.sx) / zoom
-    const dy = (e.clientY - d.sy) / zoom
+    const dx = (e.clientX - d.sx) / zoom, dy = (e.clientY - d.sy) / zoom
     if (!d.moved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) { d.moved = true; setDragging(true) }
     if (d.moved) setPos({ x: d.wx + dx, y: d.wy + dy })
   }
-
   function onPointerUp(e: React.PointerEvent) {
     e.currentTarget.releasePointerCapture(e.pointerId)
     const d = dragRef.current
@@ -343,38 +336,19 @@ function DraggableWorldCard({
       onSaved?.()
       setJustSaved(true)
       setTimeout(() => setJustSaved(false), 2000)
-    } else if (d && connectMode) {
-      onConnectClick?.(storageKey)
     }
     dragRef.current = null
     setDragging(false)
   }
 
-  const isSelected = connectMode && pendingFrom === storageKey
-
   return (
     <div
-      style={{
-        position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5,
-        cursor: dragging ? 'grabbing' : connectMode ? 'crosshair' : undefined,
-        outline: isSelected ? '3px solid #0ea5e9' : connectMode ? '2px dashed rgba(14,165,233,0.4)' : undefined,
-        outlineOffset: isSelected ? 6 : 4,
-        borderRadius: 22,
-        transition: 'outline 0.1s',
-      }}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerUp}
+      style={{ position: 'absolute', left: pos.x, top: pos.y, zIndex: dragging ? 30 : 5, cursor: dragging ? 'grabbing' : undefined }}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp} onPointerCancel={onPointerUp}
     >
       {justSaved && (
-        <div style={{
-          position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)',
-          marginBottom: 8, background: '#22c55e', color: '#fff',
-          fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 8,
-          pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 100,
-          boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-        }}>
+        <div style={{ position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: 8, background: '#22c55e', color: '#fff', fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 8, pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
           ✓ Position saved
         </div>
       )}
@@ -407,73 +381,72 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [shiftAmt, setShiftAmt]       = useState(7)
   const [shifting, setShifting]       = useState(false)
 
-  // ── Connector creation ────────────────────────────────────────────────────
+  // ── Node / edge connector system ─────────────────────────────────────────
   const [connectMode, setConnectMode] = useState(false)
-  const [pendingFrom, setPendingFrom] = useState<string | null>(null)
-  const [connectors, setConnectors]   = useState<Connector[]>([])
-  const [layoutVersion, setLayoutVersion] = useState(0) // bump to remount cards after server load
+  const [pendingFrom, setPendingFrom] = useState<string | null>(null) // node id
+  const [nodes, setNodes] = useState<CanvasNode[]>([])
+  const [edges, setEdges] = useState<CanvasEdge[]>([])
+  const [layoutVersion, setLayoutVersion] = useState(0)
 
-  const connectorsRef     = useRef<Connector[]>([])
+  const nodesRef          = useRef<CanvasNode[]>([])
+  const edgesRef          = useRef<CanvasEdge[]>([])
   const syncTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const lastLocalChangeRef = useRef<number>(0) // timestamp of last local edit — poll skips if too recent
+  const lastLocalChangeRef = useRef<number>(0)
   const CARD_KEYS = ['vid-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
 
-  // Keep ref in sync so scheduleSync can read latest connectors without stale closure
-  useEffect(() => { connectorsRef.current = connectors }, [connectors])
+  useEffect(() => { nodesRef.current = nodes }, [nodes])
+  useEffect(() => { edgesRef.current = edges }, [edges])
 
-  // Seed local state from localStorage on first mount
+  // Seed from localStorage on first mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('canvas-connectors-v2')
-      setConnectors(saved ? JSON.parse(saved) : defaultConnectors())
-      if (!saved) localStorage.setItem('canvas-connectors-v2', JSON.stringify(defaultConnectors()))
+      const saved = localStorage.getItem('canvas-nodes-edges-v1')
+      if (saved) {
+        const { nodes: n, edges: e } = JSON.parse(saved)
+        setNodes(n); setEdges(e)
+      } else {
+        const def = defaultNodesEdges()
+        setNodes(def.nodes); setEdges(def.edges)
+        localStorage.setItem('canvas-nodes-edges-v1', JSON.stringify(def))
+      }
     } catch {}
   }, [])
 
-  // Shared helper: apply a canvas layout payload from the server
-  function applyServerLayout(data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] }) {
-    let didChange = false
+  type LayoutPayload = { cardPositions?: Record<string, { x: number; y: number }>; nodes?: CanvasNode[]; edges?: CanvasEdge[] }
+
+  function applyServerLayout(data: LayoutPayload) {
+    let changed = false
     if (data.cardPositions) {
       for (const [key, pos] of Object.entries(data.cardPositions)) {
-        localStorage.setItem(`card-pos-${key}`, JSON.stringify(pos))
-        didChange = true
+        localStorage.setItem(`card-pos-${key}`, JSON.stringify(pos)); changed = true
       }
     }
-    if (data.connectors?.length) {
-      localStorage.setItem('canvas-connectors-v2', JSON.stringify(data.connectors))
-      setConnectors(data.connectors)
-      didChange = true
+    if (data.nodes?.length) {
+      localStorage.setItem('canvas-nodes-edges-v1', JSON.stringify({ nodes: data.nodes, edges: data.edges ?? [] }))
+      setNodes(data.nodes); setEdges(data.edges ?? []); changed = true
     }
-    if (didChange) setLayoutVersion(v => v + 1)
+    if (changed) setLayoutVersion(v => v + 1)
   }
 
-  // Initial load from server
   useEffect(() => {
     if (!roadmapId) return
     fetch(`/api/roadmaps/${roadmapId}/canvas`)
       .then(r => r.ok ? r.json() : null)
-      .then((data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] } | null) => {
-        if (data) applyServerLayout(data)
-      })
+      .then((data: LayoutPayload | null) => { if (data) applyServerLayout(data) })
       .catch(() => {})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmapId])
 
-  // Poll every 20 seconds so active users see each other's changes without refreshing.
-  // Skips the update if this user made a local change in the last 10 seconds (their
-  // sync is in-flight and we don't want to overwrite their work-in-progress).
   useEffect(() => {
     if (!roadmapId) return
-    const interval = setInterval(() => {
+    const id = setInterval(() => {
       if (Date.now() - lastLocalChangeRef.current < 10_000) return
       fetch(`/api/roadmaps/${roadmapId}/canvas`)
         .then(r => r.ok ? r.json() : null)
-        .then((data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] } | null) => {
-          if (data) applyServerLayout(data)
-        })
+        .then((data: LayoutPayload | null) => { if (data) applyServerLayout(data) })
         .catch(() => {})
     }, 20_000)
-    return () => clearInterval(interval)
+    return () => clearInterval(id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmapId])
 
@@ -501,52 +474,54 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
       fetch(`/api/roadmaps/${roadmapId}/canvas`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cardPositions, connectors: connectorsRef.current }),
+        body: JSON.stringify({ cardPositions, nodes: nodesRef.current, edges: edgesRef.current }),
       }).catch(() => {})
     }, 2000)
   }
 
-  function saveConnectors(list: Connector[]) {
-    setConnectors(list)
-    try { localStorage.setItem('canvas-connectors-v2', JSON.stringify(list)) } catch {}
+  function saveGraph(n: CanvasNode[], e: CanvasEdge[]) {
+    setNodes(n); setEdges(e)
+    try { localStorage.setItem('canvas-nodes-edges-v1', JSON.stringify({ nodes: n, edges: e })) } catch {}
     scheduleSync()
   }
 
-  function getCardAnchor(storageKey: string): { x: number; y: number } {
-    try {
-      const saved = localStorage.getItem(`card-pos-${storageKey}`)
-      if (saved) { const { x, y } = JSON.parse(saved); return { x: x + 150, y: y + 30 } }
-    } catch {}
-    if (storageKey === 'vid-strategy') return { x: VID_STRAT_X + 150, y: VID_STRAT_Y + 30 }
-    if (storageKey.startsWith('consultant-')) {
-      const i = parseInt(storageKey.replace('consultant-', '')) - 1
-      return { x: GAL_PAD + i * (VID_CARD_W + CONSULT_GAP) + 150, y: CONSULT_Y + 30 }
+  // Place a new node at world coords; if pendingFrom is set, also create an edge.
+  function placeNode(wx: number, wy: number) {
+    const newNode: CanvasNode = { id: `node-${Date.now()}`, x: wx, y: wy }
+    if (pendingFrom) {
+      const newEdge: CanvasEdge = { id: `edge-${Date.now()}`, from: pendingFrom, to: newNode.id }
+      saveGraph([...nodes, newNode], [...edges, newEdge])
+      setPendingFrom(newNode.id) // continue the chain
+    } else {
+      saveGraph([...nodes, newNode], edges)
+      setPendingFrom(newNode.id)
     }
-    const prodKeys = ['prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
-    const pi = prodKeys.indexOf(storageKey)
-    if (pi >= 0) return { x: GAL_PAD + pi * (VID_CARD_W + CONSULT_GAP) + 150, y: PROD_CARD_Y + 30 }
-    return { x: 0, y: 0 }
   }
 
-  function handleConnectClick(key: string) {
+  function handleNodeConnectClick(nodeId: string) {
     if (!pendingFrom) {
-      setPendingFrom(key)
-    } else if (pendingFrom === key) {
+      setPendingFrom(nodeId)
+    } else if (pendingFrom === nodeId) {
       setPendingFrom(null)
     } else {
-      const newConn: Connector = { id: `conn-${Date.now()}`, from: getCardAnchor(pendingFrom), to: getCardAnchor(key) }
-      saveConnectors([...connectors, newConn])
+      const newEdge: CanvasEdge = { id: `edge-${Date.now()}`, from: pendingFrom, to: nodeId }
+      saveGraph(nodes, [...edges, newEdge])
       setPendingFrom(null)
       setConnectMode(false)
     }
   }
 
-  function deleteConnector(id: string) {
-    saveConnectors(connectors.filter(c => c.id !== id))
+  function handleNodeDragEnd(id: string, pos: { x: number; y: number }) {
+    saveGraph(nodes.map(n => n.id === id ? { ...n, ...pos } : n), edges)
   }
 
-  function handleConnectorUpdate(id: string, updates: Partial<Pick<Connector, 'from' | 'to' | 'waypoint'>>) {
-    saveConnectors(connectors.map(c => c.id === id ? { ...c, ...updates } : c))
+  function deleteNode(id: string) {
+    saveGraph(nodes.filter(n => n.id !== id), edges.filter(e => e.from !== id && e.to !== id))
+    if (pendingFrom === id) setPendingFrom(null)
+  }
+
+  function deleteEdge(id: string) {
+    saveGraph(nodes, edges.filter(e => e.id !== id))
   }
 
   // Sync when roadmap changes (key prop handles full remount, this covers partial updates)
@@ -616,6 +591,14 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   function onContainerPointerDown(e: React.PointerEvent<HTMLDivElement>) {
     const cardEl = (e.target as HTMLElement).closest('[data-card]') as HTMLElement | null
+    if (connectMode) {
+      // Place a new node at the clicked world position (card/node clicks stop propagation so won't reach here)
+      const rect = containerRef.current!.getBoundingClientRect()
+      const wx = (e.clientX - rect.left - panXRef.current) / zoomRef.current
+      const wy = (e.clientY - rect.top  - panYRef.current) / zoomRef.current
+      placeNode(wx, wy)
+      return
+    }
     if (cardEl) {
       const slug = cardEl.dataset.slug!
       const post = posts.find(p => p.slug === slug)
@@ -821,7 +804,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="flex items-center gap-3 bg-sky-500 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
               <Link2 size={14} />
-              {pendingFrom ? 'Now click a second card to connect · ESC to cancel' : 'Click a card to start a connector · ESC to cancel'}
+              {pendingFrom ? 'Click another node or canvas to connect · ESC to cancel' : 'Click canvas to place a node · Click a node to start a line · ESC to cancel'}
             </div>
           </div>
         )}
@@ -868,8 +851,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
 
           {/* ── Videography strategy card — draggable ──────────────────────── */}
-          <DraggableWorldCard key={`vid-strategy-${layoutVersion}`} initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}
-            connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}>
+          <DraggableWorldCard key={`vid-strategy-${layoutVersion}`} initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
             <VideographyStrategyCard />
           </DraggableWorldCard>
 
@@ -881,7 +863,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={CONSULT_Y}
               storageKey={`consultant-${interview.id}`}
               zoomRef={zoomRef}
-              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}
+              onSaved={scheduleSync}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
             </DraggableWorldCard>
@@ -900,21 +882,31 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               initialY={PROD_CARD_Y}
               storageKey={key}
               zoomRef={zoomRef}
-              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}
+              onSaved={scheduleSync}
             >
               <Card />
             </DraggableWorldCard>
           ))}
 
-          {/* ── All connectors (default layout + user-created, all freely editable) ── */}
-          {connectors.map(conn => (
-            <ConnectorLine
-              key={conn.id}
-              conn={conn}
+          {/* ── Edges (straight dotted lines) ──────────────────────────────── */}
+          {edges.map(edge => {
+            const fn = nodes.find(n => n.id === edge.from)
+            const tn = nodes.find(n => n.id === edge.to)
+            if (!fn || !tn) return null
+            return <EdgeLine key={edge.id} fromNode={fn} toNode={tn} connectMode={connectMode} onDelete={() => deleteEdge(edge.id)} />
+          })}
+
+          {/* ── Nodes (bullet points) ──────────────────────────────────────── */}
+          {nodes.map(node => (
+            <NodeDot
+              key={node.id}
+              node={node}
               zoomRef={zoomRef}
               connectMode={connectMode}
-              onDelete={() => deleteConnector(conn.id)}
-              onUpdate={(updates) => handleConnectorUpdate(conn.id, updates)}
+              isPending={pendingFrom === node.id}
+              onDragEnd={handleNodeDragEnd}
+              onConnectClick={handleNodeConnectClick}
+              onDelete={deleteNode}
             />
           ))}
 
