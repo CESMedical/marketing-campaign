@@ -293,13 +293,14 @@ function ConnectorLine({ conn, zoomRef, connectMode, onDelete, onUpdate }: {
 // Position is persisted to localStorage by storageKey.
 function DraggableWorldCard({
   initialX, initialY, storageKey, zoomRef, children,
-  connectMode, pendingFrom, onConnectClick,
+  connectMode, pendingFrom, onConnectClick, onSaved,
 }: {
   initialX: number; initialY: number; storageKey: string
   zoomRef: React.MutableRefObject<number>; children: React.ReactNode
   connectMode?: boolean
   pendingFrom?: string | null
   onConnectClick?: (key: string) => void
+  onSaved?: () => void
 }) {
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: initialX, y: initialY })
 
@@ -339,6 +340,7 @@ function DraggableWorldCard({
       const final = { x: d.wx + (e.clientX - d.sx) / zoom, y: d.wy + (e.clientY - d.sy) / zoom }
       setPos(final)
       try { localStorage.setItem(`card-pos-${storageKey}`, JSON.stringify(final)) } catch {}
+      onSaved?.()
       setJustSaved(true)
       setTimeout(() => setJustSaved(false), 2000)
     } else if (d && connectMode) {
@@ -409,7 +411,16 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [connectMode, setConnectMode] = useState(false)
   const [pendingFrom, setPendingFrom] = useState<string | null>(null)
   const [connectors, setConnectors]   = useState<Connector[]>([])
+  const [layoutVersion, setLayoutVersion] = useState(0) // bump to remount cards after server load
 
+  const connectorsRef  = useRef<Connector[]>([])
+  const syncTimerRef   = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const CARD_KEYS = ['vid-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
+
+  // Keep ref in sync so scheduleSync can read latest connectors without stale closure
+  useEffect(() => { connectorsRef.current = connectors }, [connectors])
+
+  // Seed local state from localStorage on first mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem('canvas-connectors-v2')
@@ -417,6 +428,28 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
       if (!saved) localStorage.setItem('canvas-connectors-v2', JSON.stringify(defaultConnectors()))
     } catch {}
   }, [])
+
+  // Load shared canvas layout from server — overrides local state so all users see the same layout
+  useEffect(() => {
+    if (!roadmapId) return
+    fetch(`/api/roadmaps/${roadmapId}/canvas`)
+      .then(r => r.ok ? r.json() : null)
+      .then((data: { cardPositions?: Record<string, { x: number; y: number }>; connectors?: Connector[] } | null) => {
+        if (!data) return
+        if (data.cardPositions) {
+          for (const [key, pos] of Object.entries(data.cardPositions)) {
+            localStorage.setItem(`card-pos-${key}`, JSON.stringify(pos))
+          }
+        }
+        if (data.connectors?.length) {
+          localStorage.setItem('canvas-connectors-v2', JSON.stringify(data.connectors))
+          setConnectors(data.connectors)
+        }
+        setLayoutVersion(v => v + 1) // remount cards so they pick up the server positions
+      })
+      .catch(() => {})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roadmapId])
 
   useEffect(() => {
     if (!connectMode) return
@@ -427,9 +460,29 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     return () => window.removeEventListener('keydown', onKey)
   }, [connectMode])
 
+  function scheduleSync() {
+    if (!roadmapId) return
+    if (syncTimerRef.current) clearTimeout(syncTimerRef.current)
+    syncTimerRef.current = setTimeout(() => {
+      const cardPositions: Record<string, { x: number; y: number }> = {}
+      for (const key of CARD_KEYS) {
+        try {
+          const saved = localStorage.getItem(`card-pos-${key}`)
+          if (saved) cardPositions[key] = JSON.parse(saved)
+        } catch {}
+      }
+      fetch(`/api/roadmaps/${roadmapId}/canvas`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardPositions, connectors: connectorsRef.current }),
+      }).catch(() => {})
+    }, 2000)
+  }
+
   function saveConnectors(list: Connector[]) {
     setConnectors(list)
     try { localStorage.setItem('canvas-connectors-v2', JSON.stringify(list)) } catch {}
+    scheduleSync()
   }
 
   function getCardAnchor(storageKey: string): { x: number; y: number } {
@@ -788,20 +841,20 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
 
           {/* ── Videography strategy card — draggable ──────────────────────── */}
-          <DraggableWorldCard initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}
-            connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}>
+          <DraggableWorldCard key={`vid-strategy-${layoutVersion}`} initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef}
+            connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}>
             <VideographyStrategyCard />
           </DraggableWorldCard>
 
           {/* ── Consultant interview cards — draggable ─────────────────────── */}
           {CONSULTANT_INTERVIEWS.map((interview, i) => (
             <DraggableWorldCard
-              key={interview.id}
+              key={`${interview.id}-${layoutVersion}`}
               initialX={GAL_PAD + i * (VID_CARD_W + CONSULT_GAP)}
               initialY={CONSULT_Y}
               storageKey={`consultant-${interview.id}`}
               zoomRef={zoomRef}
-              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
+              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}
             >
               <ConsultantInterviewCard interview={interview} index={i} />
             </DraggableWorldCard>
@@ -815,12 +868,12 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             { Card: ProductionScheduleCard,     key: 'prod-schedule' },
           ] as const).map(({ Card, key }, i) => (
             <DraggableWorldCard
-              key={key}
+              key={`${key}-${layoutVersion}`}
               initialX={GAL_PAD + i * (VID_CARD_W + CONSULT_GAP)}
               initialY={PROD_CARD_Y}
               storageKey={key}
               zoomRef={zoomRef}
-              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick}
+              connectMode={connectMode} pendingFrom={pendingFrom} onConnectClick={handleConnectClick} onSaved={scheduleSync}
             >
               <Card />
             </DraggableWorldCard>

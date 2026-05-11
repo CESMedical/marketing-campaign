@@ -51,6 +51,7 @@ model Roadmap {
   strategyFileName     String?
   strategyUploadedBy   String?
   strategyUploadedAt   DateTime?
+  canvasLayout         Json?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
   posts                Post[]
