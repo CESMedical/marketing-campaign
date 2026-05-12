@@ -33,8 +33,7 @@ export async function syncPostContent() {
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
-        scheduledDate:        post.scheduledDate,   // ONE-TIME: sync +14 day shift — remove after deploy
-        weekNumber:           post.weekNumber,       // ONE-TIME: sync +14 day shift — remove after deploy
+        // scheduledDate and weekNumber excluded — user-managed via canvas drag
         isCommercialPriority: post.isCommercialPriority,
         format:               post.format,
         service:              post.service              ?? null,
