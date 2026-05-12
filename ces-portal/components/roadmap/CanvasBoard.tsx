@@ -14,7 +14,7 @@ function groupByWeek(posts: Post[]) {
 }
 
 function weekDateRange(weekNum: number): string {
-  const start = new Date('2026-05-01')
+  const start = new Date('2026-05-15')
   start.setDate(start.getDate() + (weekNum - 1) * 7)
   const end = new Date(start)
   end.setDate(end.getDate() + 6)

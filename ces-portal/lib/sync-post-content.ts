@@ -33,9 +33,8 @@ export async function syncPostContent() {
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
-        // scheduledDate and weekNumber intentionally excluded —
-        // users set these via drag-and-drop on the canvas and
-        // syncing from posts.json would overwrite their changes.
+        scheduledDate:        post.scheduledDate,   // ONE-TIME: sync +14 day shift — remove after deploy
+        weekNumber:           post.weekNumber,       // ONE-TIME: sync +14 day shift — remove after deploy
         isCommercialPriority: post.isCommercialPriority,
         format:               post.format,
         service:              post.service              ?? null,
