@@ -54,8 +54,12 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
     const allowedPrefixes = [
       '/uploads/',
       'https://res.cloudinary.com/',
-      '/api/onedrive-image?',          // our own proxy
-      'https://',                       // direct SharePoint / OneDrive URLs
+      'https://s3.',                    // S3 virtual-hosted URLs
+      'https://s3-',                    // S3 path-style legacy URLs
+      `https://${process.env.AWS_S3_BUCKET ?? '_'}.s3.`,
+      process.env.AWS_S3_CDN_URL ?? '_cdn_', // CloudFront / custom CDN
+      '/api/onedrive-image?',
+      'https://',                       // SharePoint / OneDrive direct URLs
     ]
     if (input.imageUrl && !allowedPrefixes.some(p => (input.imageUrl as string).startsWith(p))) return null
     updates.imageUrl = input.imageUrl

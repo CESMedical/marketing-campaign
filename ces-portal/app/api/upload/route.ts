@@ -29,11 +29,57 @@ function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
   return false
 }
 
+// ── S3 ────────────────────────────────────────────────────────────────────────
+
+function hasS3() {
+  return Boolean(
+    process.env.AWS_ACCESS_KEY_ID &&
+    process.env.AWS_SECRET_ACCESS_KEY &&
+    process.env.AWS_S3_BUCKET
+  )
+}
+
+async function uploadToS3(buffer: Buffer, mimeType: string): Promise<string> {
+  const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3')
+
+  const region = process.env.AWS_REGION ?? 'eu-west-2'
+  const bucket = process.env.AWS_S3_BUCKET!
+  const ext    = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const key    = `ces-portal/images/${randomUUID()}.${ext}`
+
+  const client = new S3Client({
+    region,
+    credentials: {
+      accessKeyId:     process.env.AWS_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    },
+  })
+
+  await client.send(new PutObjectCommand({
+    Bucket:      bucket,
+    Key:         key,
+    Body:        buffer,
+    ContentType: mimeType,
+    // ACL is set at bucket level via bucket policy — don't pass 'public-read'
+    // unless the bucket is configured for ACLs (Object Ownership = ACL enabled).
+  }))
+
+  // If a CDN / CloudFront URL is configured, use that. Otherwise fall back to the
+  // standard S3 virtual-hosted URL.
+  const base = process.env.AWS_S3_CDN_URL
+    ? process.env.AWS_S3_CDN_URL.replace(/\/$/, '')
+    : `https://${bucket}.s3.${region}.amazonaws.com`
+
+  return `${base}/${key}`
+}
+
+// ── Cloudinary ────────────────────────────────────────────────────────────────
+
 function hasCloudinary() {
   return Boolean(
     process.env.CLOUDINARY_CLOUD_NAME &&
-      process.env.CLOUDINARY_API_KEY &&
-      process.env.CLOUDINARY_API_SECRET,
+    process.env.CLOUDINARY_API_KEY &&
+    process.env.CLOUDINARY_API_SECRET
   )
 }
 
@@ -41,7 +87,7 @@ async function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<str
   const { v2: cloudinary } = await import('cloudinary')
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
+    api_key:    process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
   })
 
@@ -64,16 +110,20 @@ async function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<str
   })
 }
 
+// ── Local fallback ────────────────────────────────────────────────────────────
+
 async function uploadToLocal(buffer: Buffer, mimeType: string): Promise<string> {
   const { writeFileSync, mkdirSync } = await import('fs')
   const { join } = await import('path')
-  const ext = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const ext      = mimeType.split('/')[1].replace('jpeg', 'jpg')
   const filename = `${randomUUID()}.${ext}`
-  const dir = join(process.cwd(), 'public', 'uploads')
+  const dir      = join(process.cwd(), 'public', 'uploads')
   mkdirSync(dir, { recursive: true })
   writeFileSync(join(dir, filename), buffer)
   return `/uploads/${filename}`
 }
+
+// ── Handler ───────────────────────────────────────────────────────────────────
 
 export async function POST(request: NextRequest) {
   const session = await auth()
@@ -100,9 +150,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const url = hasCloudinary()
-      ? await uploadToCloudinary(buffer, file.type)
-      : await uploadToLocal(buffer, file.type)
+    let url: string
+    if (hasS3())          url = await uploadToS3(buffer, file.type)
+    else if (hasCloudinary()) url = await uploadToCloudinary(buffer, file.type)
+    else                  url = await uploadToLocal(buffer, file.type)
     return NextResponse.json({ url })
   } catch {
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
