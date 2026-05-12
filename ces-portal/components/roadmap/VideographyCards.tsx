@@ -315,7 +315,7 @@ export function ConsultantInterviewCard({ interview, index }: { interview: Consu
             <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{interview.role}</span>
             {interview.isBoardMember && (
               <span style={{ fontSize: 9, fontWeight: 800, color: accent, background: '#fff', borderRadius: 4, padding: '1px 6px', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-                Board Member
+                {interview.boardTitle ?? 'Board Member'}
               </span>
             )}
           </div>

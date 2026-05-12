@@ -41,6 +41,7 @@ export interface ConsultantInterview {
   qualifications: string
   role: string
   isBoardMember: boolean
+  boardTitle?: string
   locations: string
   specialty: string
   postsFed: string[]
@@ -398,6 +399,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     qualifications: 'BSc (Hons), MCOptom, DipTp (IP), PGDipl (Clinical Optometry), PGDipl (A.C.Neuroscience), Prof. Cert. (Glaucoma)',
     role: 'Consultant Clinical Optometrist',
     isBoardMember: true,
+    boardTitle: 'Board Member & Founder',
     locations: 'Chatham, Southborough, Headcorn, Pantiles',
     specialty: 'Founder and CEO',
     postsFed: ['P01', 'P04', 'P06', 'P17', 'P32', 'P42', 'P45', 'P47', 'P48'],
