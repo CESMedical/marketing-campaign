@@ -474,6 +474,18 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roadmapId])
 
+  // Poll for post changes (dates, status, sortOrder) made by other users.
+  useEffect(() => {
+    if (!roadmapId) return
+    const id = setInterval(() => {
+      fetch(`/api/posts?r=${roadmapId}`)
+        .then(r => r.ok ? r.json() : null)
+        .then((fresh: Post[] | null) => { if (fresh?.length) setPosts(fresh) })
+        .catch(() => {})
+    }, 30_000)
+    return () => clearInterval(id)
+  }, [roadmapId])
+
   useEffect(() => {
     if (!connectMode) return
     function onKey(e: KeyboardEvent) {

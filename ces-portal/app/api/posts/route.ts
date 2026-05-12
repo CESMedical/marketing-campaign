@@ -2,9 +2,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { canEditPost } from '@/lib/roles'
 import { rateLimit } from '@/lib/rate-limit'
-import { createPostData } from '@/lib/post-data'
+import { createPostData, loadPostsData } from '@/lib/post-data'
 import { loadCampaign } from '@/lib/posts'
 import { Pillar, Platform, Format } from '@/types/post'
+
+export async function GET(request: NextRequest) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const roadmapId = request.nextUrl.searchParams.get('r') ?? undefined
+  const posts = await loadPostsData({ roadmapId })
+  return NextResponse.json(posts)
+}
 
 const ALLOWED_PILLARS: Pillar[] = ['educational', 'business', 'premises', 'employee', 'leadership', 'events', 'tech']
 const ALLOWED_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']

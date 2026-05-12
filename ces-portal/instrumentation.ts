@@ -7,7 +7,17 @@ export async function register() {
     const { syncPostContent } = await import('./lib/sync-post-content')
     await syncPostContent()
   } catch (err) {
-    // Never crash the server over a sync failure — log and move on.
     console.error('[instrumentation] post content sync failed:', err)
+  }
+
+  try {
+    const { prisma } = await import('./lib/prisma')
+    const count = await prisma.roadmap.count()
+    if (count === 0) {
+      await prisma.roadmap.create({ data: { title: 'CES May–Aug 2026' } })
+      console.log('[instrumentation] created default roadmap')
+    }
+  } catch (err) {
+    console.error('[instrumentation] roadmap seed failed:', err)
   }
 }
