@@ -45,7 +45,7 @@ const CONSULT_GAP    = 40
 const PROD_CARD_Y    = CONSULT_Y + 430
 
 const EPOCH     = new Date('2026-04-27T00:00:00Z')
-const MIN_ZOOM  = 0.03
+const MIN_ZOOM  = 0.15
 const MAX_ZOOM  = 3.0
 const INIT_ZOOM = 0.55
 
@@ -749,7 +749,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const tOff = todayOff()
 
   return (
-    <div className="flex fixed inset-0 z-10" style={{ paddingTop: '64px' }}>
+    <div className="flex fixed inset-0 z-10" style={{ paddingTop: '64px', background: '#eef2f4' }}>
 
       {/* Sidebar */}
       <div className="flex flex-col items-center gap-2 px-2 py-3 bg-white border-r border-brand-deep/10 shrink-0 z-40">
