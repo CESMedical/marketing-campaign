@@ -83,7 +83,20 @@ async function seedDatabase() {
         notes: post.notes ?? null,
         tags: post.tags ?? undefined,
       },
-      update: {},
+      update: {
+        title:               post.title,
+        caption:             post.caption,
+        cta:                 post.cta as object,
+        scheduledDate:       post.scheduledDate,
+        weekNumber:          post.weekNumber,
+        pillar:              post.pillar,
+        platforms:           post.platforms,
+        format:              post.format,
+        isCommercialPriority: post.isCommercialPriority,
+        service:             post.service ?? null,
+        productionLocation:  post.productionLocation ?? null,
+        productionLead:      post.productionLead ?? null,
+      },
     })
   }
 }
@@ -121,6 +134,9 @@ export async function updatePostData(slug: string, updates: Partial<Post>): Prom
       caption: updates.caption,
       imageUrl: updates.imageUrl,
       notes: updates.notes,
+      clinicalReviewer: updates.clinicalReviewer,
+      brandReviewer: updates.brandReviewer,
+      approvedAt: updates.approvedAt,
       sortOrder: updates.sortOrder,
     },
   })
