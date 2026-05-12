@@ -29,51 +29,40 @@ function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
   return false
 }
 
-// ── S3 ────────────────────────────────────────────────────────────────────────
+// ── Azure Blob Storage ────────────────────────────────────────────────────────
 
-function hasS3() {
+function hasAzure() {
   return Boolean(
-    process.env.AWS_ACCESS_KEY_ID &&
-    process.env.AWS_SECRET_ACCESS_KEY &&
-    process.env.AWS_S3_BUCKET
+    process.env.AZURE_STORAGE_CONNECTION_STRING &&
+    process.env.AZURE_STORAGE_CONTAINER
   )
 }
 
-async function uploadToS3(buffer: Buffer, mimeType: string): Promise<string> {
-  const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3')
+async function uploadToAzure(buffer: Buffer, mimeType: string): Promise<string> {
+  const { BlobServiceClient } = await import('@azure/storage-blob')
 
-  const region = process.env.AWS_REGION ?? 'eu-west-2'
-  const bucket = process.env.AWS_S3_BUCKET!
-  const ext    = mimeType.split('/')[1].replace('jpeg', 'jpg')
-  const key    = `ces-portal/images/${randomUUID()}.${ext}`
+  const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING!
+  const container        = process.env.AZURE_STORAGE_CONTAINER!
+  const ext              = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const blobName         = `ces-portal/images/${randomUUID()}.${ext}`
 
-  const client = new S3Client({
-    region,
-    credentials: {
-      accessKeyId:     process.env.AWS_ACCESS_KEY_ID!,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-    },
+  const client = BlobServiceClient.fromConnectionString(connectionString)
+  const containerClient = client.getContainerClient(container)
+  const blockBlob = containerClient.getBlockBlobClient(blobName)
+
+  await blockBlob.upload(buffer, buffer.byteLength, {
+    blobHTTPHeaders: { blobContentType: mimeType },
   })
 
-  await client.send(new PutObjectCommand({
-    Bucket:      bucket,
-    Key:         key,
-    Body:        buffer,
-    ContentType: mimeType,
-    // ACL is set at bucket level via bucket policy — don't pass 'public-read'
-    // unless the bucket is configured for ACLs (Object Ownership = ACL enabled).
-  }))
+  // Use custom CDN domain if configured, otherwise the standard blob URL.
+  const base = process.env.AZURE_STORAGE_CDN_URL
+    ? process.env.AZURE_STORAGE_CDN_URL.replace(/\/$/, '')
+    : blockBlob.url.split('?')[0] // strip any SAS tokens from the URL
 
-  // If a CDN / CloudFront URL is configured, use that. Otherwise fall back to the
-  // standard S3 virtual-hosted URL.
-  const base = process.env.AWS_S3_CDN_URL
-    ? process.env.AWS_S3_CDN_URL.replace(/\/$/, '')
-    : `https://${bucket}.s3.${region}.amazonaws.com`
-
-  return `${base}/${key}`
+  return process.env.AZURE_STORAGE_CDN_URL ? `${base}/${blobName}` : blockBlob.url.split('?')[0]
 }
 
-// ── Cloudinary ────────────────────────────────────────────────────────────────
+// ── Cloudinary (fallback) ─────────────────────────────────────────────────────
 
 function hasCloudinary() {
   return Boolean(
@@ -110,7 +99,7 @@ async function uploadToCloudinary(buffer: Buffer, mimeType: string): Promise<str
   })
 }
 
-// ── Local fallback ────────────────────────────────────────────────────────────
+// ── Local fallback (dev only) ─────────────────────────────────────────────────
 
 async function uploadToLocal(buffer: Buffer, mimeType: string): Promise<string> {
   const { writeFileSync, mkdirSync } = await import('fs')
@@ -151,9 +140,9 @@ export async function POST(request: NextRequest) {
 
   try {
     let url: string
-    if (hasS3())          url = await uploadToS3(buffer, file.type)
+    if (hasAzure())          url = await uploadToAzure(buffer, file.type)
     else if (hasCloudinary()) url = await uploadToCloudinary(buffer, file.type)
-    else                  url = await uploadToLocal(buffer, file.type)
+    else                     url = await uploadToLocal(buffer, file.type)
     return NextResponse.json({ url })
   } catch {
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 })

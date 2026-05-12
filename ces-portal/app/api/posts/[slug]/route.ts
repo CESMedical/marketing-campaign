@@ -51,13 +51,13 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
 
   if ('imageUrl' in input) {
     if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 2000) return null
+    const azureAccount = process.env.AZURE_STORAGE_CONNECTION_STRING
+      ?.match(/AccountName=([^;]+)/)?.[1] ?? ''
     const allowedPrefixes = [
       '/uploads/',
       'https://res.cloudinary.com/',
-      'https://s3.',                    // S3 virtual-hosted URLs
-      'https://s3-',                    // S3 path-style legacy URLs
-      `https://${process.env.AWS_S3_BUCKET ?? '_'}.s3.`,
-      process.env.AWS_S3_CDN_URL ?? '_cdn_', // CloudFront / custom CDN
+      azureAccount ? `https://${azureAccount}.blob.core.windows.net/` : '_azure_',
+      process.env.AZURE_STORAGE_CDN_URL ?? '_azure_cdn_', // Azure CDN endpoint
       '/api/onedrive-image?',
       'https://',                       // SharePoint / OneDrive direct URLs
     ]
