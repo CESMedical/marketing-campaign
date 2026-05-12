@@ -310,7 +310,9 @@ export function ConsultantInterviewCard({ interview, index }: { interview: Consu
         <div style={{ background: accent, padding: '16px 18px', cursor: 'grab' }}>
           <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>Interview {interview.id}</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: '#fff', lineHeight: 1.3 }}>{interview.name}</div>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 3 }}>{interview.specialty}</div>
+          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)', marginTop: 2, fontStyle: 'italic' }}>{interview.qualifications}</div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{interview.role}</div>
+          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{interview.locations}</div>
         </div>
 
         <div style={{ padding: '16px 18px' }}>
