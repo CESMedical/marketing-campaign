@@ -50,12 +50,14 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   }
 
   if ('imageUrl' in input) {
-    if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 1000) return null
-    if (
-      input.imageUrl &&
-      !input.imageUrl.startsWith('/uploads/') &&
-      !input.imageUrl.startsWith('https://res.cloudinary.com/')
-    ) return null
+    if (typeof input.imageUrl !== 'string' || input.imageUrl.length > 2000) return null
+    const allowedPrefixes = [
+      '/uploads/',
+      'https://res.cloudinary.com/',
+      '/api/onedrive-image?',          // our own proxy
+      'https://',                       // direct SharePoint / OneDrive URLs
+    ]
+    if (input.imageUrl && !allowedPrefixes.some(p => (input.imageUrl as string).startsWith(p))) return null
     updates.imageUrl = input.imageUrl
   }
 
