@@ -40,6 +40,7 @@ export interface ConsultantInterview {
   name: string
   qualifications: string
   role: string
+  isBoardMember: boolean
   locations: string
   specialty: string
   postsFed: string[]
@@ -82,6 +83,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     name: 'Mr Nick Kopsachilis',
     qualifications: 'MD PhD PGDip CRS',
     role: 'Consultant Ophthalmic Surgeon',
+    isBoardMember: true,
     locations: 'Headcorn, Pantiles, Chatham, Southborough',
     specialty: 'Corneal and Cataract Specialist',
     postsFed: ['P05', 'P08', 'P09', 'P10', 'P11', 'P17', 'P18', 'P21', 'P22', 'P23', 'P25', 'P28', 'P31', 'P38', 'P41', 'P43', 'P44'],
@@ -199,6 +201,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     name: 'Mr Kashif Qureshi',
     qualifications: 'BSc MBBS FRCOphth',
     role: 'Consultant Ophthalmic Surgeon',
+    isBoardMember: true,
     locations: 'Chatham, Southborough, Headcorn, Pantiles',
     specialty: 'Medical Retina and Cataract Specialist',
     postsFed: ['P03', 'P05', 'P08', 'P09', 'P15', 'P20', 'P25', 'P29', 'P30', 'P31', 'P33', 'P36', 'P39', 'P41', 'P43'],
@@ -300,6 +303,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     name: 'Mr Syed Shahid',
     qualifications: 'MBChB BSc MSc FRCOphth',
     role: 'Consultant Ophthalmologist and VR Surgeon',
+    isBoardMember: true,
     locations: 'Southborough',
     specialty: 'Cataract and Vitreoretinal Surgeon',
     postsFed: ['P03', 'P05', 'P13', 'P22', 'P27', 'P30', 'P33', 'P36', 'P39', 'P41', 'P46'],
@@ -393,6 +397,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     name: 'Mr Elion Hyseni',
     qualifications: 'BSc (Hons), MCOptom, DipTp (IP), PGDipl (Clinical Optometry), PGDipl (A.C.Neuroscience), Prof. Cert. (Glaucoma)',
     role: 'Consultant Clinical Optometrist',
+    isBoardMember: true,
     locations: 'Chatham, Southborough, Headcorn, Pantiles',
     specialty: 'Founder and CEO',
     postsFed: ['P01', 'P04', 'P06', 'P17', 'P32', 'P42', 'P45', 'P47', 'P48'],

@@ -311,7 +311,14 @@ export function ConsultantInterviewCard({ interview, index }: { interview: Consu
           <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 6 }}>Interview {interview.id}</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: '#fff', lineHeight: 1.3 }}>{interview.name}</div>
           <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)', marginTop: 2, fontStyle: 'italic' }}>{interview.qualifications}</div>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>{interview.role}</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 2, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{interview.role}</span>
+            {interview.isBoardMember && (
+              <span style={{ fontSize: 9, fontWeight: 800, color: accent, background: '#fff', borderRadius: 4, padding: '1px 6px', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                Board Member
+              </span>
+            )}
+          </div>
           <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{interview.locations}</div>
         </div>
 
