@@ -29,37 +29,44 @@ function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
   return false
 }
 
-// ── Azure Blob Storage ────────────────────────────────────────────────────────
+// ── Cloudflare R2 (S3-compatible, zero egress fees) ──────────────────────────
 
-function hasAzure() {
+function hasR2() {
   return Boolean(
-    process.env.AZURE_STORAGE_CONNECTION_STRING &&
-    process.env.AZURE_STORAGE_CONTAINER
+    process.env.R2_ACCOUNT_ID &&
+    process.env.R2_ACCESS_KEY_ID &&
+    process.env.R2_SECRET_ACCESS_KEY &&
+    process.env.R2_BUCKET
   )
 }
 
-async function uploadToAzure(buffer: Buffer, mimeType: string): Promise<string> {
-  const { BlobServiceClient } = await import('@azure/storage-blob')
+async function uploadToR2(buffer: Buffer, mimeType: string): Promise<string> {
+  const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3')
 
-  const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING!
-  const container        = process.env.AZURE_STORAGE_CONTAINER!
-  const ext              = mimeType.split('/')[1].replace('jpeg', 'jpg')
-  const blobName         = `ces-portal/images/${randomUUID()}.${ext}`
+  const accountId = process.env.R2_ACCOUNT_ID!
+  const bucket    = process.env.R2_BUCKET!
+  const ext       = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const key       = `images/${randomUUID()}.${ext}`
 
-  const client = BlobServiceClient.fromConnectionString(connectionString)
-  const containerClient = client.getContainerClient(container)
-  const blockBlob = containerClient.getBlockBlobClient(blobName)
-
-  await blockBlob.upload(buffer, buffer.byteLength, {
-    blobHTTPHeaders: { blobContentType: mimeType },
+  const client = new S3Client({
+    region: 'auto',
+    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId:     process.env.R2_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+    },
   })
 
-  // Use custom CDN domain if configured, otherwise the standard blob URL.
-  const base = process.env.AZURE_STORAGE_CDN_URL
-    ? process.env.AZURE_STORAGE_CDN_URL.replace(/\/$/, '')
-    : blockBlob.url.split('?')[0] // strip any SAS tokens from the URL
+  await client.send(new PutObjectCommand({
+    Bucket:      bucket,
+    Key:         key,
+    Body:        buffer,
+    ContentType: mimeType,
+  }))
 
-  return process.env.AZURE_STORAGE_CDN_URL ? `${base}/${blobName}` : blockBlob.url.split('?')[0]
+  // R2_PUBLIC_URL is the custom domain or r2.dev public URL set on the bucket.
+  const base = process.env.R2_PUBLIC_URL!.replace(/\/$/, '')
+  return `${base}/${key}`
 }
 
 // ── Cloudinary (fallback) ─────────────────────────────────────────────────────
@@ -140,7 +147,7 @@ export async function POST(request: NextRequest) {
 
   try {
     let url: string
-    if (hasAzure())          url = await uploadToAzure(buffer, file.type)
+    if (hasR2())             url = await uploadToR2(buffer, file.type)
     else if (hasCloudinary()) url = await uploadToCloudinary(buffer, file.type)
     else                     url = await uploadToLocal(buffer, file.type)
     return NextResponse.json({ url })
