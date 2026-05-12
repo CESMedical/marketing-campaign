@@ -21,7 +21,6 @@ const csp = [
 ].join('; ');
 
 const nextConfig = {
-  experimental: { instrumentationHook: true },
   trailingSlash: true,
   turbopack: {
     root: projectRoot,
