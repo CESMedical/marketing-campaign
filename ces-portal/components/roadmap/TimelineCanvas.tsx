@@ -197,22 +197,29 @@ function defaultNodesEdges(): { nodes: CanvasNode[]; edges: CanvasEdge[] } {
   return { nodes, edges }
 }
 
-// A draggable bullet-point node. Click (no drag) in connect mode selects/connects.
-function NodeDot({ node, zoomRef, connectMode, isPending, onDragEnd, onConnectClick, onDelete }: {
+type SubMode = 'place' | 'connect' | 'delete'
+
+// A draggable bullet-point node.
+function NodeDot({ node, zoomRef, subMode, isPending, onDragEnd, onConnectClick, onDelete }: {
   node: CanvasNode
   zoomRef: React.MutableRefObject<number>
-  connectMode: boolean
+  subMode: SubMode
   isPending: boolean
   onDragEnd: (id: string, pos: { x: number; y: number }) => void
   onConnectClick: (id: string) => void
   onDelete: (id: string) => void
 }) {
   const [pos, setPos] = useState({ x: node.x, y: node.y })
+  const [hovered, setHovered] = useState(false)
   const dragRef = useRef<{ sx: number; sy: number; wx: number; wy: number; moved: boolean } | null>(null)
   useEffect(() => { setPos({ x: node.x, y: node.y }) }, [node.x, node.y])
 
+  const isDelete = subMode === 'delete'
+  const isConnect = subMode === 'connect'
+
   function onPointerDown(e: React.PointerEvent) {
     e.stopPropagation()
+    if (isDelete) { onDelete(node.id); return }
     e.currentTarget.setPointerCapture(e.pointerId)
     dragRef.current = { sx: e.clientX, sy: e.clientY, wx: pos.x, wy: pos.y, moved: false }
   }
@@ -229,62 +236,78 @@ function NodeDot({ node, zoomRef, connectMode, isPending, onDragEnd, onConnectCl
     if (d?.moved) {
       const z = zoomRef.current
       const final = { x: d.wx + (e.clientX - d.sx) / z, y: d.wy + (e.clientY - d.sy) / z }
-      setPos(final)
-      onDragEnd(node.id, final)
-    } else if (d && connectMode) {
+      setPos(final); onDragEnd(node.id, final)
+    } else if (d && isConnect) {
       onConnectClick(node.id)
     }
     dragRef.current = null
   }
 
+  const bg = isDelete && hovered ? '#ef4444'
+    : isPending ? '#0ea5e9'
+    : 'rgba(0,56,69,0.25)'
+  const border = isDelete && hovered ? '#ef4444'
+    : isPending ? '#0ea5e9'
+    : 'rgba(0,56,69,0.38)'
+  const cursor = isDelete ? 'pointer' : isConnect ? 'crosshair' : 'grab'
+
   return (
-    <div style={{ position: 'absolute', left: pos.x - 7, top: pos.y - 7, width: 14, height: 14, zIndex: 20 }}>
-      <div
-        style={{
-          width: 14, height: 14, borderRadius: '50%', boxSizing: 'border-box',
-          background: isPending ? '#0ea5e9' : 'rgba(0,56,69,0.25)',
-          border: `${isPending ? 2 : 1.5}px solid ${isPending ? '#0ea5e9' : 'rgba(0,56,69,0.38)'}`,
-          cursor: connectMode ? 'pointer' : 'grab',
-          outline: isPending ? '3px solid rgba(14,165,233,0.3)' : 'none', outlineOffset: 3,
-          boxShadow: isPending ? '0 0 0 5px rgba(14,165,233,0.15)' : 'none',
-        }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-      />
-      {connectMode && !isPending && (
-        <button
-          onPointerDown={e => e.stopPropagation()}
-          onClick={() => onDelete(node.id)}
-          style={{ position: 'absolute', left: 8, bottom: 8, width: 13, height: 13, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '1.5px solid #fff', cursor: 'pointer', fontSize: 9, fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, zIndex: 21, boxShadow: '0 1px 4px rgba(0,0,0,0.25)' }}
-        >×</button>
-      )}
+    <div
+      style={{ position: 'absolute', left: pos.x - 8, top: pos.y - 8, width: 16, height: 16, zIndex: 20 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+    >
+      <div style={{
+        width: 16, height: 16, borderRadius: '50%', boxSizing: 'border-box',
+        background: bg,
+        border: `${isPending ? 2 : 1.5}px solid ${border}`,
+        cursor,
+        outline: isPending ? '3px solid rgba(14,165,233,0.3)' : 'none', outlineOffset: 3,
+        boxShadow: isPending ? '0 0 0 5px rgba(14,165,233,0.15)' : 'none',
+        transition: 'background 0.1s, border-color 0.1s',
+      }} />
     </div>
   )
 }
 
 // A rigid straight dotted line between two nodes.
-function EdgeLine({ fromNode, toNode, connectMode, onDelete }: {
+function EdgeLine({ fromNode, toNode, subMode, onDelete }: {
   fromNode: CanvasNode; toNode: CanvasNode
-  connectMode: boolean; onDelete: () => void
+  subMode: SubMode; onDelete: () => void
 }) {
+  const [hovered, setHovered] = useState(false)
   const fx = fromNode.x, fy = fromNode.y, tx = toNode.x, ty = toNode.y
   const minX = Math.min(fx, tx) - 10, minY = Math.min(fy, ty) - 10
   const svgW = Math.abs(tx - fx) + 20,  svgH = Math.abs(ty - fy) + 20
   const midX = (fx + tx) / 2,           midY = (fy + ty) / 2
+  const isDelete = subMode === 'delete'
+  const stroke = isDelete && hovered ? 'rgba(239,68,68,0.6)' : 'rgba(0,56,69,0.22)'
   return (
     <>
-      <svg style={{ position: 'absolute', left: minX, top: minY, width: svgW, height: svgH, overflow: 'visible', pointerEvents: 'none', zIndex: 4 }}>
+      <svg
+        style={{ position: 'absolute', left: minX, top: minY, width: svgW, height: svgH, overflow: 'visible', pointerEvents: isDelete ? 'all' : 'none', zIndex: 4, cursor: isDelete ? 'pointer' : 'default' }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={isDelete ? (e) => { e.stopPropagation(); onDelete() } : undefined}
+      >
+        {/* fat invisible hit area */}
         <line x1={fx - minX} y1={fy - minY} x2={tx - minX} y2={ty - minY}
-          stroke="rgba(0,56,69,0.22)" strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round" />
+          stroke="transparent" strokeWidth={12} />
+        <line x1={fx - minX} y1={fy - minY} x2={tx - minX} y2={ty - minY}
+          stroke={stroke} strokeWidth={2} strokeDasharray="8 5" strokeLinecap="round"
+          style={{ transition: 'stroke 0.1s' }} />
       </svg>
-      {connectMode && (
-        <button
+      {/* delete × shown on midpoint when in delete mode and hovered */}
+      {isDelete && hovered && (
+        <div
           onPointerDown={e => e.stopPropagation()}
           onClick={() => onDelete()}
-          style={{ position: 'absolute', left: midX - 9, top: midY - 9, width: 18, height: 18, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 10, fontWeight: 900, zIndex: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
-        >×</button>
+          style={{ position: 'absolute', left: midX - 9, top: midY - 9, width: 18, height: 18, borderRadius: '50%', background: '#ef4444', color: '#fff', border: '2px solid #fff', cursor: 'pointer', fontSize: 10, fontWeight: 900, zIndex: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1, boxShadow: '0 1px 4px rgba(0,0,0,0.2)', pointerEvents: 'none' }}
+        >×</div>
       )}
     </>
   )
@@ -383,6 +406,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   // ── Node / edge connector system ─────────────────────────────────────────
   const [connectMode, setConnectMode] = useState(false)
+  const [subMode, setSubMode]         = useState<SubMode>('place')
   const [pendingFrom, setPendingFrom] = useState<string | null>(null) // node id
   const [nodes, setNodes] = useState<CanvasNode[]>([])
   const [edges, setEdges] = useState<CanvasEdge[]>([])
@@ -453,7 +477,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   useEffect(() => {
     if (!connectMode) return
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') { setConnectMode(false); setPendingFrom(null) }
+      if (e.key === 'Escape') { setConnectMode(false); setPendingFrom(null); setSubMode('place') }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -499,6 +523,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   }
 
   function handleNodeConnectClick(nodeId: string) {
+    if (subMode !== 'connect') return
     if (!pendingFrom) {
       setPendingFrom(nodeId)
     } else if (pendingFrom === nodeId) {
@@ -507,7 +532,6 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
       const newEdge: CanvasEdge = { id: `edge-${Date.now()}`, from: pendingFrom, to: nodeId }
       saveGraph(nodes, [...edges, newEdge])
       setPendingFrom(null)
-      setConnectMode(false)
     }
   }
 
@@ -591,12 +615,16 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   function onContainerPointerDown(e: React.PointerEvent<HTMLDivElement>) {
     const cardEl = (e.target as HTMLElement).closest('[data-card]') as HTMLElement | null
-    if (connectMode) {
+    if (connectMode && subMode === 'place') {
       // Place a new node at the clicked world position (card/node clicks stop propagation so won't reach here)
       const rect = containerRef.current!.getBoundingClientRect()
       const wx = (e.clientX - rect.left - panXRef.current) / zoomRef.current
       const wy = (e.clientY - rect.top  - panYRef.current) / zoomRef.current
       placeNode(wx, wy)
+      return
+    }
+    if (connectMode && (subMode === 'connect' || subMode === 'delete')) {
+      // In connect/delete mode, empty canvas clicks do nothing (only node/edge interactions matter)
       return
     }
     if (cardEl) {
@@ -768,13 +796,70 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         </>}
         <div className="w-7 h-px bg-brand-deep/10" />
         <button
-          onClick={() => { setConnectMode(m => !m); setPendingFrom(null) }}
-          title="Connect cards with a dotted line"
+          onClick={() => { setConnectMode(m => !m); setPendingFrom(null); setSubMode('place') }}
+          title="Connectors"
           className={`flex items-center justify-center w-9 h-9 rounded-xl border transition-all ${connectMode ? 'bg-sky-500 border-sky-500 text-white' : 'border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft'}`}
         >
           <Link2 size={14} />
         </button>
       </div>
+
+      {/* ── Connector control panel — appears to the right of sidebar when active ── */}
+      {connectMode && (
+        <div style={{ position: 'absolute', left: 52, top: 72, zIndex: 50, width: 186, background: '#fff', borderRadius: 14, boxShadow: '0 4px 24px rgba(0,56,69,0.14)', border: '1px solid rgba(0,56,69,0.1)', padding: '12px 10px' }}>
+          <p style={{ fontSize: 9, fontWeight: 800, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Connectors</p>
+
+          {/* Sub-mode buttons */}
+          <div style={{ display: 'flex', gap: 4, marginBottom: 10 }}>
+            {(['place', 'connect', 'delete'] as SubMode[]).map(m => (
+              <button
+                key={m}
+                onClick={() => { setSubMode(m); setPendingFrom(null) }}
+                style={{
+                  flex: 1, padding: '5px 0', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 10, fontWeight: 700,
+                  background: subMode === m ? (m === 'delete' ? '#ef4444' : '#0ea5e9') : 'rgba(0,56,69,0.06)',
+                  color: subMode === m ? '#fff' : 'rgba(0,56,69,0.55)',
+                  transition: 'background 0.15s, color 0.15s',
+                }}
+              >
+                {m === 'place' ? '+ Place' : m === 'connect' ? '— Link' : '× Delete'}
+              </button>
+            ))}
+          </div>
+
+          {/* Instruction hint */}
+          <p style={{ fontSize: 10, color: 'rgba(0,56,69,0.4)', lineHeight: 1.5, marginBottom: 10, minHeight: 30 }}>
+            {subMode === 'place' && (pendingFrom ? 'Click canvas to extend the line, or click a node to finish.' : 'Click anywhere on the canvas to place a node.')}
+            {subMode === 'connect' && (pendingFrom ? 'Now click a second node to draw a line.' : 'Click a node to start a line.')}
+            {subMode === 'delete' && 'Click any node or line to delete it.'}
+          </p>
+
+          <div style={{ height: 1, background: 'rgba(0,56,69,0.08)', margin: '4px 0 10px' }} />
+
+          {/* Stats */}
+          <p style={{ fontSize: 10, color: 'rgba(0,56,69,0.35)', marginBottom: 10 }}>
+            {nodes.length} node{nodes.length !== 1 ? 's' : ''} · {edges.length} line{edges.length !== 1 ? 's' : ''}
+          </p>
+
+          {/* Clear all */}
+          <button
+            onClick={() => { saveGraph([], []); setPendingFrom(null) }}
+            style={{ width: '100%', padding: '6px 0', borderRadius: 8, border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.06)', color: '#ef4444', cursor: 'pointer', fontSize: 11, fontWeight: 700, marginBottom: 6 }}
+          >Clear all</button>
+
+          {/* Reset to defaults */}
+          <button
+            onClick={() => { const d = defaultNodesEdges(); saveGraph(d.nodes, d.edges); setPendingFrom(null) }}
+            style={{ width: '100%', padding: '6px 0', borderRadius: 8, border: '1px solid rgba(0,56,69,0.15)', background: 'rgba(0,56,69,0.04)', color: 'rgba(0,56,69,0.55)', cursor: 'pointer', fontSize: 11, fontWeight: 700, marginBottom: 6 }}
+          >Reset to default</button>
+
+          {/* Done */}
+          <button
+            onClick={() => { setConnectMode(false); setPendingFrom(null); setSubMode('place') }}
+            style={{ width: '100%', padding: '6px 0', borderRadius: 8, border: 'none', background: '#0ea5e9', color: '#fff', cursor: 'pointer', fontSize: 11, fontWeight: 700 }}
+          >Done</button>
+        </div>
+      )}
 
       {/* Canvas overlays: roadmap switcher top-left, view switcher top-right */}
       {switcher && (
@@ -799,15 +884,6 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         onPointerUp={onContainerPointerUp}
         onPointerCancel={onContainerPointerUp}
       >
-        {/* Connect mode banner */}
-        {connectMode && (
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-            <div className="flex items-center gap-3 bg-sky-500 text-white text-sm font-bold px-4 py-2 rounded-xl shadow-xl">
-              <Link2 size={14} />
-              {pendingFrom ? 'Click another node or canvas to connect · ESC to cancel' : 'Click canvas to place a node · Click a node to start a line · ESC to cancel'}
-            </div>
-          </div>
-        )}
 
         {/* Drag tooltip: date + position within column */}
         {dragVisual && (() => {
@@ -893,7 +969,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             const fn = nodes.find(n => n.id === edge.from)
             const tn = nodes.find(n => n.id === edge.to)
             if (!fn || !tn) return null
-            return <EdgeLine key={edge.id} fromNode={fn} toNode={tn} connectMode={connectMode} onDelete={() => deleteEdge(edge.id)} />
+            return <EdgeLine key={edge.id} fromNode={fn} toNode={tn} subMode={connectMode ? subMode : 'place'} onDelete={() => deleteEdge(edge.id)} />
           })}
 
           {/* ── Nodes (bullet points) ──────────────────────────────────────── */}
@@ -902,7 +978,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
               key={node.id}
               node={node}
               zoomRef={zoomRef}
-              connectMode={connectMode}
+              subMode={connectMode ? subMode : 'place'}
               isPending={pendingFrom === node.id}
               onDragEnd={handleNodeDragEnd}
               onConnectClick={handleNodeConnectClick}
