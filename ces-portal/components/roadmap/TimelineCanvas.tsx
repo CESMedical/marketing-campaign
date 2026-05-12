@@ -403,6 +403,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [showShift, setShowShift]     = useState(false)
   const [shiftAmt, setShiftAmt]       = useState(7)
   const [shifting, setShifting]       = useState(false)
+  const [cursorStyle, setCursorStyle] = useState<'grab' | 'grabbing'>('grab')
 
   // ── Node / edge connector system ─────────────────────────────────────────
   const [connectMode, setConnectMode] = useState(false)
@@ -649,9 +650,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
       cardDragRef.current = { slug, post, startX: e.clientX, startY: e.clientY, startOff, curOff: startOff, startRow, insertIdx: startRow }
       setDragVisual({ slug, curOff: startOff, insertIdx: startRow })
       setSelected(null)
+      setCursorStyle('grabbing')
     } else {
       e.currentTarget.setPointerCapture(e.pointerId)
       panDrag.current = { startX: e.clientX, startY: e.clientY, startPanX: panXRef.current, startPanY: panYRef.current }
+      setCursorStyle('grabbing')
     }
   }
 
@@ -734,7 +737,9 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         setTimeout(() => setSavedSlug(s => s === cd.slug ? null : s), 2500)
       }
     }
-    panDrag.current = null
+    panDrag.current  = null
+    cardDragRef.current = null
+    setCursorStyle('grab')
   }
 
   function addDays(dateStr: string, delta: number): string {
@@ -889,7 +894,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           backgroundColor: '#eef2f4',
           backgroundImage: 'radial-gradient(circle, rgba(0,56,69,0.18) 1.5px, transparent 1.5px)',
           backgroundSize: '26px 26px',
-          cursor: panDrag.current || cardDragRef.current ? 'grabbing' : 'grab',
+          cursor: cursorStyle,
         }}
         onPointerDown={onContainerPointerDown}
         onPointerMove={onContainerPointerMove}
