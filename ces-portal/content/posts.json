@@ -2,7 +2,7 @@
   {
     "id": "P01",
     "slug": "p01-campaign-launch---meet-the-ces-team",
-    "title": "Campaign launch — meet the CES team",
+    "title": "Meet the CES Medical team",
     "pillar": "leadership",
     "platforms": [
       "instagram",
@@ -15,7 +15,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "carousel",
-    "caption": "We're starting a new chapter with you. Over the next three months, we'll share what happens behind the doors at CES Medical — from consultant insights to the procedures we offer, and the small moments that make our clinics feel like the local fixtures they are. Welcome along.",
+    "caption": "Cataracts. Eyelid surgery. Glaucoma. Dry eye.\n\nBehind every condition is a question someone has been sitting on for too long.\n\nWe are here to answer them. In Kent, close to home, with the same consultants and the same standards whether you come to us through the NHS or privately.",
     "cta": {
       "label": "Follow our journey",
       "type": "save"
@@ -26,7 +26,7 @@
   {
     "id": "P02",
     "slug": "p02-myth-vs-fact---cataracts-only-affect-older-people",
-    "title": "Myth vs Fact — cataracts only affect older people",
+    "title": "Do cataracts only affect older people?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -38,7 +38,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "carousel",
-    "caption": "Cataracts are most common after 60, but they can develop earlier — sometimes from injury, certain medications, or other health conditions. If your vision feels cloudy, foggy, or like you're looking through a smudged lens, it's worth a check.",
+    "caption": "Cataracts are most common after 60, but they can develop at any age, triggered by injury, certain medications or underlying health conditions.\n\nIf your vision feels cloudy or like you are looking through a smudged lens, it is worth getting checked. Whatever your age.",
     "cta": {
       "label": "Find your nearest clinic",
       "type": "web",
@@ -51,7 +51,7 @@
   {
     "id": "P03",
     "slug": "p03-what-is-a-cataract---explained-in-60-seconds",
-    "title": "What is a cataract — explained in 60 seconds",
+    "title": "What is a cataract?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -64,7 +64,7 @@
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "reel",
-    "caption": "A cataract is a clouding of the eye's natural lens — gradual, painless, and very treatable. In this short video, our consultant walks through what's happening inside the eye and what it feels like for patients in the early stages.",
+    "caption": "That foggy, hazy feeling when your vision is not quite right? It could be a cataract.\n\nIn 60 seconds, we break down exactly what is happening inside your eye, what it feels like and what treating it involves.\n\nVisit cespatientinformation.co.uk to find out more or ask our patient AI any question about your care.",
     "cta": {
       "label": "Learn more about cataract care",
       "type": "web",
@@ -77,7 +77,7 @@
   {
     "id": "P04",
     "slug": "p04-meet-mr-[consultant]-frcophth---cataract-surgeon",
-    "title": "Meet Mr [Consultant], FRCOphth — cataract surgeon",
+    "title": "Meet Mr Nick Kopsachilis",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -90,7 +90,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "Our cataract surgeons operate within both NHS and private pathways, which means the same hands and the same standards regardless of how you come to us. Today we're introducing one of the consultants leading our cataract list at Chatham.",
+    "caption": "Our consultants work across both NHS and private pathways. The same hands. The same standards. Regardless of how you come to us.\n\nMr Nick Kopsachilis is a Consultant Ophthalmic Surgeon specialising in corneal and cataract surgery. He holds an MD, PhD and a Postgraduate Diploma in Cataract and Refractive Surgery, awarded with distinction. He trained in Munich, at Moorfields Eye Hospital and at King's College London before joining CES Medical.\n\nHe sees patients at Headcorn, Pantiles, Chatham and Southborough.",
     "cta": {
       "label": "Meet the team",
       "type": "web",
@@ -103,7 +103,7 @@
   {
     "id": "P05",
     "slug": "p05-monofocal-lenses---what-they-are-and-who-they-suit",
-    "title": "Monofocal lenses — what they are and who they suit",
+    "title": "What is a monofocal lens?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -116,7 +116,7 @@
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "carousel",
-    "caption": "A monofocal lens corrects vision at one distance — most people choose distance vision and use reading glasses for close-up work. Reliable, well-established, and the lens included in standard cataract surgery. Swipe through to see who they suit best.",
+    "caption": "A monofocal lens corrects vision at one distance. Most people choose distance vision and use reading glasses for close-up work.\n\nIt is reliable, well-established and the lens included in standard cataract surgery. Not every patient needs a more complex lens. What matters is that the choice fits your life.\n\nSwipe through to see who monofocal lenses suit best.",
     "cta": {
       "label": "See if a consultation is right for you",
       "type": "web",
@@ -129,7 +129,7 @@
   {
     "id": "P06",
     "slug": "p06-nhs-waiting-list-vs-private---whats-the-actual-difference",
-    "title": "NHS waiting list vs private — what's the actual difference?",
+    "title": "NHS vs private cataract surgery — what actually changes?",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -141,7 +141,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "NHS cataract waiting times have stretched in many regions. Going private with CES means you can typically be assessed within two weeks and have surgery shortly after — by the same consultants who work in the NHS. We've laid out the practical differences below.",
+    "caption": "NHS cataract waiting times have stretched in many areas of Kent. Going private with CES means you can typically be assessed within two weeks and have surgery shortly after.\n\nThe consultants are the same. The clinical standards are the same. What changes is the timeline, the time at consultation and the range of lens options available to you.\n\nIf you have been on an NHS list and want to understand your options, a conversation costs nothing.",
     "cta": {
       "label": "Speak to our team",
       "type": "phone",
@@ -165,7 +165,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "reel",
-    "caption": "Theatre prep, the team checking the day's list, the first patient through the door. A short walk-through of how a cataract surgery morning starts at our Chatham centre.",
+    "caption": "Theatre prep, the team checking the day list, the first patient through the door.\n\nEvery morning here starts before any patient arrives. We wanted to show you what that looks like.",
     "cta": {
       "label": "Visit Chatham",
       "type": "web",
@@ -178,7 +178,7 @@
   {
     "id": "P08",
     "slug": "p08-multifocal-lenses---freedom-from-glasses-explained-honestly",
-    "title": "Multifocal lenses — freedom from glasses, explained honestly",
+    "title": "Could you be glasses-free after cataract surgery?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -191,7 +191,7 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
-    "caption": "Multifocal lenses can give you vision at multiple distances — meaning many people don't need glasses afterwards. They're not for everyone, and we'll always tell you honestly whether they suit your eyes and lifestyle. This is what to expect.",
+    "caption": "Multifocal lenses can give you vision at multiple distances. Many patients find they no longer need glasses after surgery.\n\nThey are not right for everyone. Some people notice haloes or reduced contrast in low light. We will always tell you honestly whether a multifocal lens suits your eyes and your lifestyle before recommending one.\n\nSwipe through for what to expect.",
     "cta": {
       "label": "Book a lens consultation",
       "type": "web",
@@ -204,7 +204,7 @@
   {
     "id": "P09",
     "slug": "p09-which-cataract-lens-is-right-for-you---interactive-guide",
-    "title": "Which cataract lens is right for you? — interactive guide",
+    "title": "Which cataract lens is right for you?",
     "pillar": "business",
     "platforms": [
       "instagram",
@@ -217,7 +217,7 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
-    "caption": "Monofocal, multifocal, EDOF, toric — the choice can feel overwhelming. We've broken it down by what matters most: how you use your eyes, your hobbies, your driving, and whether you're comfortable still wearing glasses for some tasks.",
+    "caption": "Monofocal, multifocal, EDOF, toric. The choice can feel overwhelming.\n\nThe honest answer is: the right lens depends on your eyes, your lifestyle, your hobbies and your expectations. Not on what looks best on a comparison chart.\n\nSwipe through our breakdown. Then bring your questions to the consultation.",
     "cta": {
       "label": "Book a lens consultation",
       "type": "web",
@@ -230,7 +230,7 @@
   {
     "id": "P10",
     "slug": "p10-eyelid-surgery---when-is-it-medical-when-is-it-cosmetic",
-    "title": "Eyelid surgery — when is it medical, when is it cosmetic?",
+    "title": "Is your eyelid problem medical or cosmetic?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -243,7 +243,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "carousel",
-    "caption": "Drooping upper eyelids that affect your vision (ptosis) are a medical issue, not a cosmetic one — and that distinction matters for both your eyes and how the procedure is funded. Here's how we tell the difference at consultation.",
+    "caption": "Drooping upper eyelids that cut into your field of vision are a medical issue, not a cosmetic one. That distinction matters for how the procedure is approached and, in many cases, whether your insurance covers it.\n\nHere is how we tell the difference at consultation.",
     "cta": {
       "label": "Read about eyelid surgery",
       "type": "web",
@@ -256,7 +256,7 @@
   {
     "id": "P11",
     "slug": "p11-that-lump-on-your-eyelid---when-to-get-it-checked",
-    "title": "That lump on your eyelid — when to get it checked",
+    "title": "That lump on your eyelid — when should you get it checked?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -268,7 +268,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
-    "caption": "Most lid lesions are harmless, but some need a closer look. If something has appeared, changed shape, bled, or persisted longer than a few weeks, it's worth a specialist assessment. Our oculoplastic team can usually see you within a week.",
+    "caption": "Most eyelid lesions are harmless. But some need a closer look.\n\nIf something has appeared, changed shape, bled or persisted for more than a few weeks, it is worth a specialist assessment. Our oculoplastic team can usually see you within a week.\n\nThe first step is always a conversation.",
     "cta": {
       "label": "Request an assessment",
       "type": "web",
@@ -281,7 +281,7 @@
   {
     "id": "P12",
     "slug": "p12-behind-the-scenes---sterilising-the-theatre-between-cases",
-    "title": "Behind the scenes — sterilising the theatre between cases",
+    "title": "What happens between cases in our theatre?",
     "pillar": "premises",
     "platforms": [
       "instagram",
@@ -293,7 +293,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "reel",
-    "caption": "Every patient goes into a theatre that's been fully reset and sterilised. It's invisible to most people — but it's one of the most important things we do, and we wanted to show you how it works.",
+    "caption": "Every patient goes into a theatre that has been fully reset and sterilised.\n\nIt is invisible to most people. But it is one of the most important things we do, and we wanted to show you how it works.",
     "cta": {
       "label": "Learn more about our standards",
       "type": "web",
@@ -306,7 +306,7 @@
   {
     "id": "P13",
     "slug": "p13-patient-story---susans-cataract-journey",
-    "title": "Patient story — Susan's cataract journey",
+    "title": "Susan's cataract story",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -320,7 +320,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "video",
-    "caption": "Susan delayed her cataract surgery for years. In her own words, she shares why she decided it was time, what surprised her about the day itself, and how she felt the morning after.",
+    "caption": "Susan delayed her cataract surgery for years. In her own words, she shares why she finally decided it was time, what surprised her about the day itself and how she felt the morning after.",
     "cta": {
       "label": "Read more patient stories",
       "type": "web",
@@ -333,7 +333,7 @@
   {
     "id": "P14",
     "slug": "p14-five-myths-about-laser-eye-surgery",
-    "title": "Five myths about laser eye surgery",
+    "title": "Five things people get wrong about laser eye surgery",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -346,7 +346,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "carousel",
-    "caption": "\"Laser eye surgery is risky.\" \"It's painful.\" \"You'll need it redone in ten years.\" We've heard them all. Here are the five most common myths and what the evidence actually says.",
+    "caption": "\"It is risky.\" \"It is painful.\" \"You will need it redone in ten years.\"\n\nThese are the five most common things people tell us before a conversation about laser vision correction. Here is what the evidence actually says.",
     "cta": {
       "label": "Save for later",
       "type": "save"
@@ -357,7 +357,7 @@
   {
     "id": "P15",
     "slug": "p15-toric-lenses-for-astigmatism---a-quick-explainer",
-    "title": "Toric lenses for astigmatism — a quick explainer",
+    "title": "Do you have astigmatism as well as cataracts?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -369,7 +369,7 @@
     "isCommercialPriority": false,
     "service": "cataract-toric",
     "format": "single-image",
-    "caption": "If you have astigmatism alongside cataracts, a toric lens can correct both at once — meaning you may no longer need distance glasses afterwards. Worth raising at your consultation if it applies to you.",
+    "caption": "If you have astigmatism alongside a cataract, a toric lens can correct both at the same time. Many patients find they no longer need distance glasses afterwards.\n\nIt is worth raising at your consultation if it applies to you. The difference in outcome can be significant.",
     "cta": {
       "label": "Book a consultation",
       "type": "web",
@@ -382,7 +382,7 @@
   {
     "id": "P16",
     "slug": "p16-the-pantiles---filming-an-eyelid-surgery-explainer-with-leon",
-    "title": "The Pantiles — filming an eyelid surgery explainer with Leonna",
+    "title": "Behind the scenes at our Pantiles clinic",
     "pillar": "premises",
     "platforms": [
       "instagram",
@@ -394,7 +394,7 @@
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "reel",
-    "caption": "A behind-the-scenes look at our Pantiles location, where we're filming a series of explainers on oculoplastic procedures. Leonna walks through how we choose what to show — and what we leave to the consultation.",
+    "caption": "We film a lot here at the Pantiles. People always ask what we choose to show and what we hold back.\n\nThe honest answer: we show you everything that helps you feel ready. The things that are better explained face to face, we leave for the consultation.",
     "cta": {
       "label": "Follow the series",
       "type": "save"
@@ -405,7 +405,7 @@
   {
     "id": "P17",
     "slug": "p17-what-does-frcophth-mean---and-why-it-matters",
-    "title": "What does FRCOphth mean — and why it matters",
+    "title": "What does FRCOphth mean for you as a patient?",
     "pillar": "leadership",
     "platforms": [
       "linkedin",
@@ -417,7 +417,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "You'll see FRCOphth after our consultants' names. It stands for Fellow of the Royal College of Ophthalmologists — the highest professional qualification for eye surgeons in the UK. Here's what it represents in practical terms for your care.",
+    "caption": "You will see FRCOphth after the names of our consultant surgeons. It stands for Fellow of the Royal College of Ophthalmologists — the highest professional qualification for eye surgeons in the UK.\n\nIt is not honorary. It requires years of supervised surgical training, written and practical examinations, and ongoing revalidation. Our lead consultants hold it. Here is what that means in practical terms for your care.",
     "cta": {
       "label": "Meet our consultants",
       "type": "web",
@@ -430,7 +430,7 @@
   {
     "id": "P18",
     "slug": "p18-recovery-after-eyelid-surgery---day-by-day",
-    "title": "Recovery after eyelid surgery — day by day",
+    "title": "What does recovery from eyelid surgery actually look like?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -442,7 +442,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "carousel",
-    "caption": "Day 1: bruising and swelling are normal. Day 7: stitches usually come out. Week 2: most people are back to normal activities. Week 6: final result settles. Here's what to expect honestly, with no hidden surprises.",
+    "caption": "Day one: bruising and swelling are normal and expected.\nDay seven: stitches typically come out.\nWeek two: most people are back to everyday activities.\nWeek six: the final result settles.\n\nHere is what to expect honestly, including the things that vary between patients.",
     "cta": {
       "label": "Read the full guide",
       "type": "web",
@@ -455,7 +455,7 @@
   {
     "id": "P19",
     "slug": "p19-did-you-know-your-insurance-may-cover-this",
-    "title": "Did you know your insurance may cover this?",
+    "title": "Your insurance may cover more than you think",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -467,7 +467,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "Bupa, AXA, Vitality, WPA — many UK private medical insurance policies cover cataract and oculoplastic surgery. Our team can check your cover before you commit to anything, with no obligation.",
+    "caption": "Bupa, AXA Health, Vitality, WPA — many UK private medical insurance policies cover cataract surgery and functional eyelid procedures.\n\nOur team can check your cover before you commit to anything. No obligation, no pressure. We handle most of the pre-authorisation paperwork once you are ready to proceed.",
     "cta": {
       "label": "Check your cover",
       "type": "phone",
@@ -479,7 +479,7 @@
   {
     "id": "P20",
     "slug": "p20-glaucoma-awareness---silent-and-slow",
-    "title": "Glaucoma awareness — silent and slow",
+    "title": "Glaucoma rarely gives any warning",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -492,7 +492,7 @@
     "isCommercialPriority": false,
     "service": "glaucoma",
     "format": "carousel",
-    "caption": "Glaucoma rarely has symptoms in its early stages, which is what makes regular eye exams so important — especially after 40. We diagnose and manage glaucoma at all our centres, including laser treatments where appropriate.",
+    "caption": "Glaucoma rarely has symptoms in its early stages. It damages the optic nerve gradually and, without regular monitoring, the first sign is often vision that cannot be restored.\n\nThat is what makes regular eye examinations so important, particularly after 40. We diagnose and manage glaucoma at all our centres, including laser treatment where appropriate.",
     "cta": {
       "label": "Find your nearest clinic",
       "type": "web",
@@ -517,7 +517,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "reel",
-    "caption": "From the first consultation of the day to the operating list, a behind-the-scenes morning with our oculoplastic consultant. The work goes well beyond eyelids — but eyelids are where most patients first meet us.",
+    "caption": "From the first consultation of the day to the operating list, a behind-the-scenes morning with our oculoplastic consultant at our Tunbridge Wells clinic.\n\nThe work goes well beyond eyelids. But eyelids are where most patients first meet us.",
     "cta": {
       "label": "Book an oculoplastic consultation",
       "type": "web",
@@ -530,7 +530,7 @@
   {
     "id": "P22",
     "slug": "p22-why-both-eyes-matter---the-case-for-second-eye-surgery",
-    "title": "Why both eyes matter — the case for second-eye surgery",
+    "title": "Why does the second eye matter as much as the first?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -542,7 +542,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "carousel",
-    "caption": "Many people have one cataract treated and then put off the second. But depth perception, balance, and night driving all rely on both eyes working together. Here's why the second eye usually matters more than people expect.",
+    "caption": "Many people have one cataract treated and then put off the second. It is understandable. But depth perception, balance and night driving all rely on both eyes working together.\n\nHere is why the second eye usually matters more than people expect.",
     "cta": {
       "label": "Discuss your options",
       "type": "phone",
@@ -554,7 +554,7 @@
   {
     "id": "P23",
     "slug": "p23-dry-eye---more-than-just-discomfort",
-    "title": "Dry eye — more than just discomfort",
+    "title": "Is your dry eye affecting your daily life?",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -567,7 +567,7 @@
     "isCommercialPriority": false,
     "service": "dry-eye",
     "format": "single-image",
-    "caption": "Persistent dry eye can affect your reading, your screen work, and even your driving. We offer IPL (Intense Pulsed Light) treatment alongside conventional management for patients whose dry eye isn't responding to drops alone.",
+    "caption": "Persistent dry eye can affect your reading, your screen work and your driving. For many patients, drops alone are not enough.\n\nWe offer IPL (Intense Pulsed Light) treatment alongside conventional management for patients whose dry eye is not responding to standard care. It is worth asking about if you have been managing symptoms for a while.",
     "cta": {
       "label": "Book a dry eye assessment",
       "type": "web",
@@ -580,7 +580,7 @@
   {
     "id": "P24",
     "slug": "p24-tour-our-headcorn-diagnostic-and-surgical-centre",
-    "title": "Tour our Headcorn diagnostic and surgical centre",
+    "title": "A walk-through of our Headcorn centre",
     "pillar": "premises",
     "platforms": [
       "instagram",
@@ -594,7 +594,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "video",
-    "caption": "A short walk-through of our Headcorn site — diagnostics, consulting rooms, theatres, and the team that makes it all run. If you're considering a procedure with us, this is the place you'll likely visit.",
+    "caption": "A short walk-through of our Headcorn site — diagnostics, consulting rooms, theatres and the team that makes it all run.\n\nIf you have an appointment coming up at Headcorn and are not sure what to expect, this is it.",
     "cta": {
       "label": "Book at Headcorn",
       "type": "web",
@@ -607,7 +607,7 @@
   {
     "id": "P25",
     "slug": "p25-multifocal-vs-varifocal---theyre-not-the-same-thing",
-    "title": "Multifocal vs varifocal — they're not the same thing",
+    "title": "Multifocal lenses and varifocal glasses are not the same thing",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -620,7 +620,7 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
-    "caption": "Varifocals are glasses. Multifocal lenses are implants placed inside your eye during cataract surgery. The confusion is common — and important to clear up before your consultation. Swipe through for the difference.",
+    "caption": "Varifocals are glasses. Multifocal lenses are implants placed inside your eye during cataract surgery.\n\nThe confusion is common and important to clear up before your consultation. Swipe through for the difference.",
     "cta": {
       "label": "Book a lens consultation",
       "type": "web",
@@ -633,7 +633,7 @@
   {
     "id": "P26",
     "slug": "p26-self-referral---you-dont-always-need-to-see-your-gp",
-    "title": "Self-referral — you don't always need to see your GP",
+    "title": "Did you know you can refer yourself to CES Medical?",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -645,7 +645,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "single-image",
-    "caption": "For private appointments at CES Medical, you can refer yourself directly — no GP letter needed. Our team will guide you through what we need from your optician and book you in with the right consultant.",
+    "caption": "For private appointments at CES Medical, you can refer yourself directly. No GP letter needed.\n\nOur team will guide you through what we need from your optician and book you in with the right consultant for your condition.",
     "cta": {
       "label": "Self-refer today",
       "type": "phone",
@@ -657,7 +657,7 @@
   {
     "id": "P27",
     "slug": "p27-patient-story---jamess-urgent-eye-condition",
-    "title": "Patient story — James's urgent eye condition",
+    "title": "James's story — seen urgently at CES Medical",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -670,7 +670,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "video",
-    "caption": "James was referred to us with an acute eye condition and was nervous and in pain. He shares the journey from first call to recovery — and what surprised him about how quickly he was seen.",
+    "caption": "James was referred to us with an acute eye condition. He was nervous and in pain.\n\nHe shares the journey from his first call to recovery and what surprised him about how quickly he was seen.",
     "cta": {
       "label": "Read more patient stories",
       "type": "web",
@@ -683,7 +683,7 @@
   {
     "id": "P28",
     "slug": "p28-eyelid-surgery---why-an-ophthalmologist-not-a-cosmetic-surge",
-    "title": "Eyelid surgery — why an ophthalmologist, not a cosmetic surgeon",
+    "title": "Why does eyelid surgery need an ophthalmologist?",
     "pillar": "business",
     "platforms": [
       "instagram",
@@ -695,7 +695,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "carousel",
-    "caption": "Your eyelids protect your eyes. Surgery on them sits closer to ophthalmology than to aesthetics — which is why an oculoplastic surgeon (an ophthalmologist with extra training) is the right specialist for both functional and cosmetic eyelid work.",
+    "caption": "Your eyelids protect your eyes. Surgery on them sits closer to ophthalmology than to aesthetics.\n\nAn oculoplastic surgeon is an ophthalmologist with additional subspecialty training. They understand the anatomy of the eye, the tear film and the risk to vision in a way a cosmetic surgeon does not. That distinction matters for both functional and cosmetic eyelid work.",
     "cta": {
       "label": "Book a consultation",
       "type": "web",
@@ -708,7 +708,7 @@
   {
     "id": "P29",
     "slug": "p29-tech-we-use---the-zeiss-iolmaster-700",
-    "title": "Tech we use — the Zeiss IOLMaster 700",
+    "title": "Why precise measurement matters in cataract surgery",
     "pillar": "tech",
     "platforms": [
       "instagram",
@@ -720,7 +720,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "Precise lens selection starts with precise measurement. The Zeiss IOLMaster 700 is one of the standards of care for cataract surgery planning — and it's part of why our outcomes are so consistent.",
+    "caption": "Precise lens selection starts with precise measurement.\n\nThe Zeiss IOLMaster 700 gives us highly accurate biometry data before surgery. The reason that matters is straightforward: if the measurement is slightly wrong, the lens power will be slightly wrong, and your vision after surgery will be less predictable.\n\nWe use it because precision at the planning stage directly affects the outcome.",
     "cta": {
       "label": "Learn about our technology",
       "type": "web",
@@ -733,7 +733,7 @@
   {
     "id": "P30",
     "slug": "p30-whats-actually-included-in-our-cataract-package",
-    "title": "What's actually included in our cataract package?",
+    "title": "What is actually included in a CES cataract package?",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -746,7 +746,7 @@
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "carousel",
-    "caption": "A clear breakdown — pre-op assessment, the surgery itself, the lens, follow-up appointments, and any additional services if needed. No hidden fees, no surprises after the fact. Swipe through for the full list.",
+    "caption": "Pre-op assessment. The surgery itself. The lens. Follow-up appointments. And our 24-hour post-operative helpline if you need it.\n\nA clear breakdown with no hidden charges and no surprises after the fact. Swipe through for the full list.",
     "cta": {
       "label": "Speak to our team",
       "type": "phone",
@@ -758,7 +758,7 @@
   {
     "id": "P31",
     "slug": "p31-qanda---your-questions-on-multifocal-lenses",
-    "title": "Q&A — your questions on multifocal lenses",
+    "title": "Your questions on multifocal lenses, answered",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -771,7 +771,7 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "video",
-    "caption": "You sent us your questions about multifocal lenses. We sat down with one of our consultants to work through the most common ones honestly — including the trade-offs nobody talks about.",
+    "caption": "You sent us your questions about multifocal lenses. We sat down with one of our consultants to work through the most common ones honestly — including the trade-offs that do not always get mentioned.",
     "cta": {
       "label": "Ask your own question",
       "type": "dm"
@@ -782,7 +782,7 @@
   {
     "id": "P32",
     "slug": "p32-founder-message-from-elion-hyseni",
-    "title": "Founder message from Elion Hyseni",
+    "title": "A message from our founder",
     "pillar": "leadership",
     "platforms": [
       "linkedin",
@@ -794,7 +794,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "\"We started CES Medical with one idea — that world-class eye care should be available locally, without compromise. Six years on, that's still what every decision comes back to.\" — Elion Hyseni, CEO and Consultant Clinical Optometrist.",
+    "caption": "\"We started CES Medical with one idea — that specialist eye care should be available locally, without compromise. Six years on, that is still what every decision comes back to.\" — Elion Hyseni, CEO and Consultant Clinical Optometrist.",
     "cta": {
       "label": "About CES Medical",
       "type": "web",
@@ -807,7 +807,7 @@
   {
     "id": "P33",
     "slug": "p33-after-your-cataract-surgery---what-to-expect-in-week-one",
-    "title": "After your cataract surgery — what to expect in week one",
+    "title": "What to expect in the week after cataract surgery",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -819,7 +819,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "carousel",
-    "caption": "Most people are back to gentle daily activities the day after cataract surgery. Here's a realistic week-one timeline — what's normal, what's worth a phone call, and what we expect at your follow-up appointment.",
+    "caption": "Most people are back to gentle daily activities the day after cataract surgery.\n\nHere is a realistic week-one timeline — what is normal, what is worth a phone call and what we expect to see at your follow-up appointment.",
     "cta": {
       "label": "Read the full recovery guide",
       "type": "web",
@@ -832,7 +832,7 @@
   {
     "id": "P34",
     "slug": "p34-funded-by-your-insurance---the-actual-process",
-    "title": "Funded by your insurance — the actual process",
+    "title": "How does insurance funding for eyelid surgery actually work?",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -844,7 +844,7 @@
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
-    "caption": "Step one: pre-authorisation from your insurer. Step two: consultation. Step three: confirmation of cover. Step four: surgery. We handle most of the paperwork — here's what you'd actually need to do.",
+    "caption": "Step one: pre-authorisation from your insurer.\nStep two: consultation.\nStep three: confirmation of cover.\nStep four: surgery.\n\nWe handle most of the paperwork. Here is what you would actually need to do.",
     "cta": {
       "label": "Check your cover",
       "type": "phone",
@@ -856,7 +856,7 @@
   {
     "id": "P35",
     "slug": "p35-meet-our-patient-coordinator",
-    "title": "Meet our patient coordinator",
+    "title": "Before you meet a consultant, you will meet our patient coordinator",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -869,7 +869,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "Before you ever meet a consultant, you'll likely speak to our patient coordinator. She's the first voice you'll hear when you call — and she'll be the one helping you navigate appointments, paperwork, and any questions along the way.",
+    "caption": "Before you ever meet a consultant, you will likely speak to our patient coordinator.\n\nShe is the first voice you will hear when you call. She will help you navigate appointments, paperwork and any questions along the way. She is very good at what she does.",
     "cta": {
       "label": "Get in touch",
       "type": "phone",
@@ -881,7 +881,7 @@
   {
     "id": "P36",
     "slug": "p36-diabetes-and-your-eyes---what-to-watch-for",
-    "title": "Diabetes and your eyes — what to watch for",
+    "title": "If you have diabetes, your eyes need regular attention",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -894,7 +894,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "carousel",
-    "caption": "Diabetes can affect the small blood vessels in your retina — sometimes years before you notice anything. Annual diabetic eye screening matters. We diagnose and manage diabetic retinopathy alongside our wider retina services.",
+    "caption": "Diabetes can affect the small blood vessels in your retina — sometimes years before you notice anything.\n\nAnnual diabetic eye screening is not optional maintenance. It is how sight loss is prevented. We diagnose and manage diabetic retinopathy alongside our wider retina services.",
     "cta": {
       "label": "Book a retinal assessment",
       "type": "web",
@@ -907,7 +907,7 @@
   {
     "id": "P37",
     "slug": "p37-cataract-package---limited-summer-consultation-slots",
-    "title": "Cataract package — limited summer consultation slots",
+    "title": "Cataract consultations available at Chatham and Headcorn this July",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -919,7 +919,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "We've opened additional cataract consultation slots through July at Chatham and Headcorn. If you've been waiting on the NHS list and want to know your options, this is a useful moment to have an initial conversation.",
+    "caption": "We have opened additional cataract consultation slots through July at Chatham and Headcorn.\n\nIf you have been waiting on an NHS list and want to understand your private options, this is a useful time to have an initial conversation. No obligation, no pressure.",
     "cta": {
       "label": "Book a consultation",
       "type": "phone",
@@ -931,7 +931,7 @@
   {
     "id": "P38",
     "slug": "p38-patient-story---annas-eyelid-surgery",
-    "title": "Patient story — Anna's eyelid surgery",
+    "title": "Anna's story — eyelid surgery at CES Medical",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -944,7 +944,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "video",
-    "caption": "Anna's drooping upper eyelids had been affecting her peripheral vision for years before she sought help. She shares why she finally booked a consultation, what the procedure was like, and how she sees the world now.",
+    "caption": "Anna's drooping upper eyelids had been affecting her peripheral vision for years before she sought help.\n\nShe shares why she finally booked a consultation, what the procedure was like and how she sees the world now.",
     "cta": {
       "label": "Book a consultation",
       "type": "web",
@@ -957,7 +957,7 @@
   {
     "id": "P39",
     "slug": "p39-yag-laser-capsulotomy---when-cataract-surgery-isnt-quite-fin",
-    "title": "YAG laser capsulotomy — when cataract surgery isn't quite finished",
+    "title": "Has your cataract come back? It almost certainly has not.",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -969,7 +969,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "single-image",
-    "caption": "Some patients develop cloudy vision months or years after successful cataract surgery — usually because the lens capsule has thickened. A short YAG laser procedure clears it, often in under ten minutes. We do this routinely.",
+    "caption": "Some patients develop cloudy vision months or years after successful cataract surgery. It is usually because the lens capsule has gradually thickened — not because the cataract has returned.\n\nA short YAG laser procedure clears it, often in under ten minutes. No incision. Outpatient. The improvement in vision is usually immediate.",
     "cta": {
       "label": "Book a YAG appointment",
       "type": "web",
@@ -982,7 +982,7 @@
   {
     "id": "P40",
     "slug": "p40-behind-the-scenes---leonna-filming-at-the-pantiles",
-    "title": "Behind the scenes — Leonna filming at the Pantiles",
+    "title": "How we decide what to film",
     "pillar": "premises",
     "platforms": [
       "instagram",
@@ -994,7 +994,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "reel",
-    "caption": "A short look at how we put our patient education content together. Leonna walks through what we film, what we cut, and why the questions you ask us shape what we make next.",
+    "caption": "We film a lot here at the Pantiles. People always ask what we choose to show and what we hold back.\n\nHonestly: we show you everything that helps you feel ready. What is better explained face to face, we leave for the consultation. That is not us being cagey. That is us being honest about what a two-minute video can and cannot do.\n\nKeep the questions coming.",
     "cta": {
       "label": "Send us a question",
       "type": "dm"
@@ -1005,7 +1005,7 @@
   {
     "id": "P41",
     "slug": "p41-five-questions-to-ask-at-your-cataract-consultation",
-    "title": "Five questions to ask at your cataract consultation",
+    "title": "Save this for your cataract consultation",
     "pillar": "educational",
     "platforms": [
       "instagram",
@@ -1018,7 +1018,7 @@
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
     "format": "carousel",
-    "caption": "Save this for your appointment. Five questions worth asking any cataract surgeon — at CES or elsewhere — about lens choice, the surgeon's volume, what's included in the package, recovery, and what happens if something doesn't go to plan.",
+    "caption": "Five questions worth asking any cataract surgeon — at CES or elsewhere — about lens choice, surgical volume, what is included, recovery and what happens if something does not go to plan.\n\nA surgeon who is comfortable with all five of these is a good sign.",
     "cta": {
       "label": "Save for later",
       "type": "save"
@@ -1029,7 +1029,7 @@
   {
     "id": "P42",
     "slug": "p42-local-roots---serving-tunbridge-wells-maidstone-medway-and-b",
-    "title": "Local roots — serving Tunbridge Wells, Maidstone, Medway and beyond",
+    "title": "Specialist eye care in Kent. Close to home.",
     "pillar": "leadership",
     "platforms": [
       "facebook",
@@ -1041,7 +1041,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "Our centres aren't far. Pantiles, Chatham, Headcorn, Northfleet — we built CES around the idea that specialist eye care shouldn't mean a trip into London. If you're in Kent, you're already close to us.",
+    "caption": "Our centres are not far. Pantiles, Chatham, Headcorn, Northfleet.\n\nWe built CES Medical around the belief that specialist eye care should not mean a trip into London. If you are in Kent, you are already close to us.",
     "cta": {
       "label": "Find your nearest centre",
       "type": "web",
@@ -1054,7 +1054,7 @@
   {
     "id": "P43",
     "slug": "p43-final-week---book-your-free-15-minute-lens-chat",
-    "title": "Final week — book your free 15-minute lens chat",
+    "title": "A free 15-minute lens conversation — no obligation",
     "pillar": "business",
     "platforms": [
       "instagram",
@@ -1067,7 +1067,7 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "single-image",
-    "caption": "To close out this campaign, we're offering a free 15-minute phone consultation with our team — no obligation, no pressure. If you've been thinking about cataract surgery and want to know your lens options before you commit to a full consultation, this is for you.",
+    "caption": "To close out this campaign, we are offering a free 15-minute phone consultation with our team. No obligation, no pressure.\n\nIf you have been thinking about cataract surgery and want to understand your lens options before committing to a full consultation, this is for you.",
     "cta": {
       "label": "Book your free chat",
       "type": "phone",
@@ -1079,7 +1079,7 @@
   {
     "id": "P44",
     "slug": "p44-eyelid-surgery---final-consultations-of-the-summer",
-    "title": "Eyelid surgery — final consultations of the summer",
+    "title": "Considering eyelid surgery? Now is a good time to have the conversation",
     "pillar": "business",
     "platforms": [
       "instagram",
@@ -1091,7 +1091,7 @@
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
-    "caption": "Surgery dates through autumn are filling. If you've been considering eyelid surgery — functional or cosmetic — booking your consultation now means you'll have time to weigh things up before committing.",
+    "caption": "Surgery dates through autumn are filling.\n\nIf you have been considering eyelid surgery — functional or cosmetic — booking your consultation now gives you time to weigh things up before committing. There is no pressure to decide on the day.",
     "cta": {
       "label": "Book a consultation",
       "type": "web",
@@ -1104,7 +1104,7 @@
   {
     "id": "P45",
     "slug": "p45-three-months-in---what-weve-learned-from-your-messages",
-    "title": "Three months in — what we've learned from your messages",
+    "title": "Three months in — what your questions taught us",
     "pillar": "leadership",
     "platforms": [
       "linkedin",
@@ -1116,7 +1116,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "carousel",
-    "caption": "Across three months, you've sent us hundreds of questions — about cataracts, about lenses, about eyelids, about whether something is normal. We've grouped the most common ones and what we've learned from sharing this much, this openly.",
+    "caption": "Across three months you sent us questions about cataracts, lenses, eyelids and things you were not sure were normal.\n\nWhat we learned is that people want honest answers. Not brochures. We will keep doing that.",
     "cta": {
       "label": "Keep the questions coming",
       "type": "dm"
@@ -1127,7 +1127,7 @@
   {
     "id": "P46",
     "slug": "p46-patient-story---a-glaucoma-diagnosis-that-changed-everything",
-    "title": "Patient story — a glaucoma diagnosis that changed everything",
+    "title": "How a routine eye test changed everything",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -1141,7 +1141,7 @@
     "isCommercialPriority": false,
     "service": "glaucoma",
     "format": "video",
-    "caption": "A patient shares how a routine eye test picked up early-stage glaucoma — and what the past two years of treatment have meant for their vision and their daily life. The case for regular checks, in human terms.",
+    "caption": "A patient shares how a routine eye test picked up early-stage glaucoma and what the past two years of treatment have meant for their vision and their daily life.\n\nThe case for regular checks, in human terms.",
     "cta": {
       "label": "Book an eye check",
       "type": "web",
@@ -1154,7 +1154,7 @@
   {
     "id": "P47",
     "slug": "p47-thank-you---whats-next-for-ces-medical",
-    "title": "Thank you — what's next for CES Medical",
+    "title": "Thank you — and what comes next",
     "pillar": "leadership",
     "platforms": [
       "instagram",
@@ -1167,7 +1167,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "video",
-    "caption": "A thank you from the team. Three months, dozens of conversations, and a lot of new faces in our clinics because of what we shared here. A short message from Elion on what's coming next, and how to stay close.",
+    "caption": "A thank you from the team. Three months, dozens of conversations and a lot of new faces in our clinics because of what we shared here.\n\nA short message from Elion on what is coming next, and how to stay close.",
     "cta": {
       "label": "Follow what's next",
       "type": "save"
@@ -1178,7 +1178,7 @@
   {
     "id": "P48",
     "slug": "p48-book-a-consultation---your-next-step",
-    "title": "Book a consultation — your next step",
+    "title": "If something here has stayed with you",
     "pillar": "business",
     "platforms": [
       "instagram",
@@ -1191,7 +1191,7 @@
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
     "format": "single-image",
-    "caption": "If something here has stayed with you — if you've been putting off a question about your eyes, your vision, or your options — this is your nudge. Our team is on the phone, in the inbox, and at our centres. The first step is always a conversation.",
+    "caption": "If something here has stayed with you — if you have been putting off a question about your eyes, your vision or your options — this is your nudge.\n\nOur team is on the phone, in the inbox and at our centres. The first step is always a conversation.",
     "cta": {
       "label": "Book a consultation",
       "type": "phone",
