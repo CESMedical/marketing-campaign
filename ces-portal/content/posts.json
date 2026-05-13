@@ -94,7 +94,7 @@
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
-    "format": "single-image",
+    "format": "reel",
     "caption": "Our consultants work across both NHS and private pathways. The same hands. The same standards. Regardless of how you come to us.\n\nMr Nick Kopsachilis is a Consultant Ophthalmic Surgeon specialising in corneal and cataract surgery. He holds an MD, PhD and a Postgraduate Diploma in Cataract and Refractive Surgery, awarded with distinction. He trained in Munich, at Moorfields Eye Hospital and at King's College London before joining CES Medical.\n\nHe sees patients at Headcorn, Pantiles, Chatham and Southborough.",
     "cta": {
       "label": "Meet the team",
@@ -104,7 +104,7 @@
     },
     "productionLocation": "chatham",
     "productionLead": "leonna",
-    "videoRelationship": "informed-by-interview",
+    "videoRelationship": "direct-snippet",
     "videoReference": "NK headshot, NK-B1, NK-B2"
   },
   {
@@ -1305,7 +1305,7 @@
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "medical-retina",
-    "format": "single-image",
+    "format": "reel",
     "caption": "Mr Kashif Qureshi is a Consultant Ophthalmic Surgeon with over 25 years of experience in cataract surgery and medical retina.\n\nHe trained at Guy's and St Thomas's Hospitals in London, with subspecialty fellowships in Medical Retina at Manchester Royal Eye Hospital and Moorfields Eye Hospital. For four years he served as UK Lead for Revalidation for all ophthalmologists, overseeing the professional standards every eye surgeon in the country is held to.\n\nHe is one of a very small number of surgeons in the UK offering YAG laser vitreolysis for vitreous floaters and 2RT nanopulse laser treatment for dry AMD.\n\nHe sees patients at Pantiles and Headcorn.",
     "cta": {
       "label": "Meet the team",
@@ -1315,7 +1315,7 @@
     },
     "productionLocation": "pantiles",
     "productionLead": "leonna",
-    "videoRelationship": "informed-by-interview",
+    "videoRelationship": "direct-snippet",
     "videoReference": "KQ headshot, KQ-B1, KQ-B2",
     "sortOrder": 1
   },
@@ -1334,7 +1334,7 @@
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
-    "format": "single-image",
+    "format": "reel",
     "caption": "Mr Syed Shahid is a Consultant Ophthalmologist and Vitreoretinal Surgeon, and one of the very few vitreoretinal surgeons serving patients in Kent.\n\nHe trained at Moorfields Eye Hospital, where he completed an 18-month vitreoretinal surgery fellowship. He is the Clinical Lead for the Kent and Medway Diabetic Eye Screening Programme, overseeing diabetic eye care across the region.\n\nHis specialist work covers retinal detachment, macular hole, epiretinal membrane, complex cataract surgery and premium lens implants. He is rated 4.93 on Doctify from 127 verified patient reviews.\n\nHe sees patients at Southborough.",
     "cta": {
       "label": "Meet the team",
@@ -1344,7 +1344,7 @@
     },
     "productionLocation": "southborough",
     "productionLead": "leonna",
-    "videoRelationship": "informed-by-interview",
+    "videoRelationship": "direct-snippet",
     "videoReference": "SS headshot, SS-B1, SS-B2",
     "sortOrder": 1
   },
@@ -1362,7 +1362,7 @@
     "scheduledDate": "2026-07-03",
     "weekNumber": 8,
     "isCommercialPriority": false,
-    "format": "single-image",
+    "format": "reel",
     "caption": "Elion Hyseni founded CES Medical in 2018 with one idea: that specialist eye care should be available locally, without compromise.\n\nHe is a Consultant Clinical Optometrist with advanced qualifications in clinical optometry, clinical neuroscience and healthcare management. He holds a professional certificate in glaucoma and an independent prescribing qualification. Before CES Medical, he spent years watching patients in Kent travel to London for specialist care that could and should have been available closer to home.\n\nHe now leads a team of over 25 consultants and clinicians across four primary locations, serving both NHS and private patients across Kent.",
     "cta": {
       "label": "About CES Medical",
@@ -1372,7 +1372,7 @@
     },
     "productionLocation": "chatham",
     "productionLead": "leonna",
-    "videoRelationship": "informed-by-interview",
+    "videoRelationship": "direct-snippet",
     "videoReference": "EH headshot, EH-B1, EH-B2",
     "sortOrder": 1
   },

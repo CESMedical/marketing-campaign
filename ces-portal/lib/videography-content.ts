@@ -87,7 +87,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     isBoardMember: true,
     locations: 'Headcorn, Pantiles, Chatham, Southborough',
     specialty: 'Corneal and Cataract Specialist',
-    postsFed: ['P01', 'P04', 'P05', 'P06', 'P08', 'P09', 'P10', 'P11', 'P17', 'P18', 'P19', 'P21', 'P25', 'P28', 'P30', 'P31', 'P34', 'P41', 'P43', 'P44', 'P53'],
+    postsFed: ['P04', 'P21', 'P31', 'P53'],
     part1: {
       attire: 'Business',
       title: 'The CES Perspective',
@@ -213,7 +213,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     isBoardMember: true,
     locations: 'Chatham, Southborough, Headcorn, Pantiles',
     specialty: 'Medical Retina and Cataract Specialist',
-    postsFed: ['P05', 'P09', 'P15', 'P17', 'P25', 'P29', 'P30', 'P36', 'P39', 'P43', 'P49', 'P52'],
+    postsFed: ['P49', 'P52'],
     part1: {
       attire: 'Business',
       title: 'The CES Perspective',
@@ -315,7 +315,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     isBoardMember: true,
     locations: 'Southborough',
     specialty: 'Cataract and Vitreoretinal Surgeon',
-    postsFed: ['P22', 'P33', 'P36', 'P50', 'P54'],
+    postsFed: ['P50', 'P54'],
     part1: {
       attire: 'Business',
       title: 'The CES Perspective',
@@ -410,7 +410,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     boardTitle: 'Board Member & Founder',
     locations: 'Chatham, Southborough, Headcorn, Pantiles',
     specialty: 'Founder and CEO',
-    postsFed: ['P01', 'P32', 'P42', 'P47', 'P48', 'P51', 'P55'],
+    postsFed: ['P47', 'P51', 'P55'],
     part1: {
       attire: 'Business',
       title: 'The Founder Perspective',
