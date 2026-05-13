@@ -149,6 +149,9 @@ export async function POST(request: NextRequest) {
     let url: string
     if (hasR2())             url = await uploadToR2(buffer, file.type)
     else if (hasCloudinary()) url = await uploadToCloudinary(buffer, file.type)
+    else if (process.env.NODE_ENV === 'production') {
+      return NextResponse.json({ error: 'Image storage is not configured' }, { status: 500 })
+    }
     else                     url = await uploadToLocal(buffer, file.type)
     return NextResponse.json({ url })
   } catch {

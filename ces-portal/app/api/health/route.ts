@@ -8,8 +8,7 @@ export async function GET() {
   try {
     await prisma.$queryRaw`SELECT 1`
     return NextResponse.json({ ok: true, database: 'connected' })
-  } catch (err) {
-    const message = err instanceof Error ? err.message : 'unknown error'
-    return NextResponse.json({ ok: false, database: 'error', detail: message }, { status: 503 })
+  } catch {
+    return NextResponse.json({ ok: false, database: 'error' }, { status: 503 })
   }
 }

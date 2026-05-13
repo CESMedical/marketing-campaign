@@ -1,8 +1,8 @@
 # CES Medical — Campaign Roadmap Portal
 
-Internal roadmap portal for CES Medical's May–July 2026 social campaign. 48 posts, three views (Timeline / Board / Priority), filterable by pillar, platform, status, service, location, and lead.
+Internal roadmap portal for CES Medical's May–July 2026 social campaign. It provides authenticated access to campaign roadmaps, mutable post data, comments, strategy documents, asset uploads, and weekly digest emails.
 
-Built with Next.js 15 (static export), Tailwind 3, and TypeScript. Deploys to Cloudflare Pages.
+Built with Next.js, TypeScript, Tailwind CSS, NextAuth, Prisma, and MySQL. The current deployment target is Railway using the Dockerfile and `railway.json`.
 
 ---
 
@@ -21,7 +21,7 @@ Open http://localhost:3000.
 npm run build
 ```
 
-Static output is written to `out/`. That's the directory Cloudflare Pages serves.
+The production build runs as a Next.js server, not a static export.
 
 ## Database
 
@@ -35,18 +35,13 @@ npm run db:seed
 
 `db:seed` imports the current JSON posts/comments only when rows do not already exist, so it is safe to run again without overwriting live edits.
 
-## Deploy to Cloudflare Pages
+## Deploy to Railway
 
 1. Push this repo to GitHub.
-2. In Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
-3. Select the repo. Set:
-   - **Framework preset:** Next.js (Static HTML Export)
-   - **Build command:** `npm run build`
-   - **Build output directory:** `out`
-   - **Node version:** 20 (set as env var `NODE_VERSION=20` if needed)
-4. Deploy.
-
-To password-protect: in the Pages project → Settings → Access policy → Add Cloudflare Access. Free up to 50 users.
+2. Create a Railway project with a MySQL service.
+3. Deploy from the Dockerfile.
+4. Set the required environment variables from `.env.example`.
+5. Railway runs migrations and seed scripts from `railway.json` before deploy.
 
 ## Editing content
 
@@ -57,20 +52,16 @@ Campaign metadata lives in `content/campaign.json`.
 ## Brand notes
 
 - Display font is currently **Fraunces** (Google Fonts) as a placeholder. When the **PP Telegraph** licence is confirmed, swap `--font-display` in `app/globals.css` to load it.
-- The brand guideline PDF in `docs/` lists the secondary teal as `#00080` — that's a typo. The correct value (used in this build) is `#008080`. Worth flagging back to the brand source.
 
 ## Project structure
 
 ```
-app/                      Next.js routes
-  page.tsx                Landing
-  roadmap/page.tsx        Roadmap with view switcher
-  post/[slug]/page.tsx    Post detail
-  about/page.tsx          Campaign brief
+app/                      Next.js routes and API handlers
+  (protected)/            Authenticated portal pages
+  api/                    Auth, posts, comments, uploads, roadmaps
 components/               UI in feature folders
 content/                  posts.json, campaign.json (single source of truth)
 lib/                      Data loading, filtering, formatting
 types/                    TypeScript types
 public/brand/             Logo SVG
-docs/                     Reference PDFs (brand guideline, social planner)
 ```

@@ -3,6 +3,21 @@ import { auth } from '@/auth'
 import { canEditPost } from '@/lib/roles'
 import { getRoadmapData, updateStrategyData } from '@/lib/roadmap-data'
 
+function isAllowedStrategyFileUrl(value: string): boolean {
+  if (process.env.NODE_ENV !== 'production' && value.startsWith('/uploads/docs/')) return true
+
+  try {
+    const url = new URL(value)
+    return (
+      url.protocol === 'https:' &&
+      url.hostname === 'res.cloudinary.com' &&
+      url.pathname.includes('/raw/authenticated/')
+    )
+  } catch {
+    return false
+  }
+}
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -34,7 +49,12 @@ export async function PATCH(
 
   const data: Parameters<typeof updateStrategyData>[1] = {}
   if (typeof body.strategyTitle === 'string') data.strategyTitle = body.strategyTitle.trim()
-  if (typeof body.strategyFileUrl === 'string') data.strategyFileUrl = body.strategyFileUrl
+  if (typeof body.strategyFileUrl === 'string') {
+    if (!isAllowedStrategyFileUrl(body.strategyFileUrl)) {
+      return NextResponse.json({ error: 'Invalid strategy file URL' }, { status: 400 })
+    }
+    data.strategyFileUrl = body.strategyFileUrl
+  }
   if (typeof body.strategyFileName === 'string') data.strategyFileName = body.strategyFileName
   data.strategyUploadedBy = session.user.email ?? undefined
 

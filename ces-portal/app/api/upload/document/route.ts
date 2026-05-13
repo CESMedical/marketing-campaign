@@ -14,6 +14,8 @@ const ALLOWED_TYPES: Record<string, string> = {
   'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'pptx',
 }
 const MAX_BYTES = 50 * 1024 * 1024 // 50 MB
+const ZIP_SIGNATURE = Buffer.from([0x50, 0x4b, 0x03, 0x04])
+const OLE_SIGNATURE = Buffer.from([0xd0, 0xcf, 0x11, 0xe0])
 
 function hasCloudinary() {
   return Boolean(process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET)
@@ -32,8 +34,8 @@ async function uploadToCloudinary(buffer: Buffer, originalName: string): Promise
       {
         folder: 'ces-portal/strategy',
         resource_type: 'raw',
-        type: 'upload',           // public delivery (not private/authenticated)
-        access_mode: 'public',    // explicitly allow unsigned URL access
+        type: 'authenticated',
+        access_mode: 'authenticated',
         public_id: `${Date.now()}-${safeName}`,
         use_filename: false,
       },
@@ -56,6 +58,26 @@ async function uploadToLocal(buffer: Buffer, originalName: string, ext: string):
   return `/uploads/docs/${filename}`
 }
 
+function isAllowedDocument(buffer: Buffer, mimeType: string): boolean {
+  if (mimeType === 'application/pdf') {
+    return buffer.subarray(0, 5).toString('ascii') === '%PDF-'
+  }
+
+  if (mimeType.includes('openxmlformats-officedocument')) {
+    return buffer.subarray(0, 4).equals(ZIP_SIGNATURE)
+  }
+
+  if (
+    mimeType === 'application/msword' ||
+    mimeType === 'application/vnd.ms-excel' ||
+    mimeType === 'application/vnd.ms-powerpoint'
+  ) {
+    return buffer.subarray(0, 4).equals(OLE_SIGNATURE)
+  }
+
+  return false
+}
+
 export async function POST(request: NextRequest) {
   const session = await auth()
   if (!session || !canEditPost(session.user.role)) {
@@ -74,6 +96,12 @@ export async function POST(request: NextRequest) {
 
   const buffer = Buffer.from(await file.arrayBuffer())
   if (buffer.byteLength > MAX_BYTES) return NextResponse.json({ error: 'File too large (max 50 MB)' }, { status: 400 })
+  if (!isAllowedDocument(buffer, file.type)) {
+    return NextResponse.json({ error: 'Invalid document file' }, { status: 400 })
+  }
+  if (!hasCloudinary() && process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Document storage is not configured' }, { status: 500 })
+  }
 
   try {
     const url = hasCloudinary()

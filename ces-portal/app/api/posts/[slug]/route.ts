@@ -4,7 +4,7 @@ import { Format, Platform, Post, Status } from '@/types/post'
 import { loadCampaign } from '@/lib/posts'
 import { rateLimit } from '@/lib/rate-limit'
 import { updatePostData, getPostBySlugData, deletePostData } from '@/lib/post-data'
-import { canEditPost } from '@/lib/roles'
+import { canEditPost, canTransitionStatus } from '@/lib/roles'
 import { notifyStatusChange, notifyScheduledThisWeek, isThisWeek } from '@/lib/notify'
 
 const ALLOWED_STATUSES: Status[] = [
@@ -54,12 +54,26 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
     const allowedPrefixes = [
       '/uploads/',
       'https://res.cloudinary.com/',
-      process.env.R2_PUBLIC_URL ?? '_r2_', // Cloudflare R2 public bucket URL
       '/api/onedrive-image?',
-      'https://',                           // SharePoint / OneDrive direct URLs
-    ]
+      process.env.R2_PUBLIC_URL ? `${process.env.R2_PUBLIC_URL.replace(/\/$/, '')}/` : undefined,
+    ].filter((prefix): prefix is string => Boolean(prefix))
     if (input.imageUrl && !allowedPrefixes.some(p => (input.imageUrl as string).startsWith(p))) return null
     updates.imageUrl = input.imageUrl
+  }
+
+  if ('images' in input) {
+    if (!Array.isArray(input.images) || input.images.length > 10) return null
+    const allowedPrefixes = [
+      '/uploads/',
+      'https://res.cloudinary.com/',
+      '/api/onedrive-image?',
+      process.env.R2_PUBLIC_URL ? `${process.env.R2_PUBLIC_URL.replace(/\/$/, '')}/` : undefined,
+    ].filter((p): p is string => Boolean(p))
+    const valid = (input.images as unknown[]).every(
+      u => typeof u === 'string' && u.length <= 2000 && (!u || allowedPrefixes.some(p => u.startsWith(p)))
+    )
+    if (!valid) return null
+    updates.images = input.images as string[]
   }
 
   if ('scheduledDate' in input) {
@@ -104,6 +118,33 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   return updates
 }
 
+function reviewerName(session: { user: { email?: string | null; displayName?: string } }): string {
+  return session?.user.email ?? session?.user.displayName ?? 'Unknown'
+}
+
+function applyWorkflowAudit(
+  updates: Partial<Post>,
+  before: Post,
+  session: { user: { email?: string | null; displayName?: string } },
+): Partial<Post> {
+  if (!updates.status || updates.status === before.status) return updates
+
+  if (updates.status === 'brand-review') {
+    updates.clinicalReviewer = reviewerName(session)
+  }
+
+  if (updates.status === 'approved') {
+    updates.brandReviewer = reviewerName(session)
+    updates.approvedAt = new Date().toISOString()
+  }
+
+  if (updates.status === 'draft' || updates.status === 'clinical-review' || updates.status === 'brand-review') {
+    updates.approvedAt = undefined
+  }
+
+  return updates
+}
+
 export async function DELETE(
   _request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
@@ -124,7 +165,6 @@ export async function PATCH(
 ) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  if (!canEditPost(session.user.role)) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   if (!rateLimit({ key: `post:${session.user.email ?? 'unknown'}`, limit: 60, windowMs: 60_000 })) {
     return NextResponse.json({ error: 'Too many updates' }, { status: 429 })
   }
@@ -132,10 +172,25 @@ export async function PATCH(
   const { slug } = await params
   const updates = pickPostUpdates(await request.json())
   if (!updates) return NextResponse.json({ error: 'Invalid update' }, { status: 400 })
+  if (Object.keys(updates).length === 0) return NextResponse.json({ error: 'No update supplied' }, { status: 400 })
 
   try {
     const before = await getPostBySlugData(slug)
-    const updated = await updatePostData(slug, updates)
+    if (!before) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+    const changedFields = Object.keys(updates)
+    const contentFields = changedFields.filter((field) => field !== 'status')
+    if (contentFields.length > 0 && !canEditPost(session.user.role)) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+    if (
+      updates.status &&
+      !canTransitionStatus(session.user.role, before.status, updates.status)
+    ) {
+      return NextResponse.json({ error: 'Forbidden status transition' }, { status: 403 })
+    }
+
+    const updated = await updatePostData(slug, applyWorkflowAudit(updates, before, session))
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
     if (before && updates.status && before.status !== updates.status) {

@@ -3,8 +3,8 @@ import { auth } from '@/auth'
 import { getRoadmapData } from '@/lib/roadmap-data'
 
 function extractPublicId(cloudinaryUrl: string): string {
-  // https://res.cloudinary.com/{cloud}/raw/upload/v{ver}/{public_id}
-  const match = cloudinaryUrl.match(/\/raw\/upload\/(?:v\d+\/)?(.+)$/)
+  // https://res.cloudinary.com/{cloud}/raw/authenticated/v{ver}/{public_id}
+  const match = cloudinaryUrl.match(/\/raw\/authenticated\/(?:v\d+\/)?(.+)$/)
   return match?.[1] ?? ''
 }
 
@@ -32,15 +32,36 @@ export async function GET(
     return NextResponse.json({ error: 'No strategy document' }, { status: 404 })
   }
 
-  // Local dev files — redirect directly
-  if (!roadmap.strategyFileUrl.includes('res.cloudinary.com')) {
+  if (mode !== 'view' && mode !== 'download') {
+    return NextResponse.json({ error: 'Invalid mode' }, { status: 400 })
+  }
+
+  // Local dev files only. Production documents should be authenticated Cloudinary assets.
+  if (process.env.NODE_ENV !== 'production' && roadmap.strategyFileUrl.startsWith('/uploads/docs/')) {
     return NextResponse.redirect(roadmap.strategyFileUrl)
+  }
+
+  let strategyUrl: URL
+  try {
+    strategyUrl = new URL(roadmap.strategyFileUrl)
+  } catch {
+    return NextResponse.json({ error: 'Invalid strategy document URL' }, { status: 400 })
+  }
+  if (
+    strategyUrl.protocol !== 'https:' ||
+    strategyUrl.hostname !== 'res.cloudinary.com' ||
+    !strategyUrl.pathname.includes('/raw/authenticated/')
+  ) {
+    return NextResponse.json({ error: 'Strategy document is not stored privately' }, { status: 403 })
   }
 
   const { v2: cloudinary } = await import('cloudinary')
   configureCloudinary(cloudinary)
 
   const publicId  = extractPublicId(roadmap.strategyFileUrl)
+  if (!publicId) {
+    return NextResponse.json({ error: 'Invalid strategy document' }, { status: 400 })
+  }
   const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60
 
   // Build download URL using the admin-API signature method (private_download_url)
@@ -51,7 +72,7 @@ export async function GET(
     private_download_url: (id: string, fmt: string, opts: object) => string
   }).private_download_url(publicId, '', {
     resource_type: 'raw',
-    type:          'upload',
+    type:          'authenticated',
     expires_at:    expiresAt,
     attachment:    mode === 'download',
   })
@@ -62,12 +83,7 @@ export async function GET(
     if (!upstream.ok) {
       const body = await upstream.text().catch(() => '')
       console.error('[strategy/file] Cloudinary error', upstream.status, body.slice(0, 400))
-      // Return diagnostic info in non-prod or fall through to the generic error
-      return NextResponse.json({
-        error:            'Failed to fetch document',
-        cloudinaryStatus: upstream.status,
-        hint:             body.slice(0, 300),
-      }, { status: 502 })
+      return NextResponse.json({ error: 'Failed to fetch document' }, { status: 502 })
     }
 
     const contentType = upstream.headers.get('Content-Type') ?? 'application/octet-stream'
@@ -75,6 +91,7 @@ export async function GET(
 
     const headers = new Headers()
     headers.set('Content-Type', contentType)
+    headers.set('X-Content-Type-Options', 'nosniff')
     headers.set(
       'Content-Disposition',
       mode === 'download'

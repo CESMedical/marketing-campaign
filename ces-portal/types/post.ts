@@ -80,6 +80,7 @@ export interface Post {
   approvedAt?: string;
 
   imageUrl?: string;
+  images?: string[];
   notes?: string;
   tags?: string[];
   sortOrder?: number;

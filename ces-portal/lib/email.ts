@@ -3,6 +3,15 @@ import { Resend } from 'resend'
 const FROM = 'CES Medical <marketing@cesmedical.co.uk>'
 const PORTAL = process.env.AUTH_URL ?? 'https://marketing.cesmedical.co.uk'
 
+function escapeHtml(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function client(): Resend | null {
   const key = process.env.RESEND_API_KEY
   return key ? new Resend(key) : null
@@ -11,6 +20,8 @@ function client(): Resend | null {
 export async function sendWelcomeEmail(to: string, firstName: string): Promise<void> {
   const resend = client()
   if (!resend) return
+  const safeFirstName = escapeHtml(firstName)
+  const portalUrl = escapeHtml(PORTAL)
   await resend.emails.send({
     from: FROM,
     to,
@@ -27,14 +38,14 @@ export async function sendWelcomeEmail(to: string, firstName: string): Promise<v
           <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:2px;">Campaign Portal</div>
         </td></tr>
         <tr><td style="padding:40px;">
-          <p style="margin:0 0 16px;font-size:22px;font-weight:700;color:#003845;">Hi ${firstName},</p>
+          <p style="margin:0 0 16px;font-size:22px;font-weight:700;color:#003845;">Hi ${safeFirstName},</p>
           <p style="margin:0 0 16px;font-size:15px;color:#445;line-height:1.6;">
             You've been granted access to the CES Medical Campaign Roadmap Portal — your central view of the social media campaign across cataract, oculoplastic and brand pillars.
           </p>
           <p style="margin:0 0 32px;font-size:15px;color:#445;line-height:1.6;">
             You can view posts, leave comments, and tag colleagues using @mentions.
           </p>
-          <a href="${PORTAL}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">Open the portal →</a>
+          <a href="${portalUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">Open the portal →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
           <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · marketing@cesmedical.co.uk — please do not reply</p>
@@ -57,8 +68,12 @@ export async function sendStatusChangeEmail(opts: {
 }): Promise<void> {
   const resend = client()
   if (!resend) return
-  const postUrl = `${PORTAL}/post/${opts.postSlug}/`
+  const postUrl = escapeHtml(`${PORTAL}/post/${encodeURIComponent(opts.postSlug)}/`)
   const statusLabel = opts.newStatus.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+  const safeStatusLabel = escapeHtml(statusLabel)
+  const safeFirstName = escapeHtml(opts.toFirstName)
+  const safeChangedBy = escapeHtml(opts.changedBy)
+  const safePostTitle = escapeHtml(opts.postTitle)
   await resend.emails.send({
     from: FROM,
     to: opts.to,
@@ -73,9 +88,9 @@ export async function sendStatusChangeEmail(opts: {
           <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:2px;">Campaign Portal</div>
         </td></tr>
         <tr><td style="padding:40px;">
-          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${opts.toFirstName},</p>
-          <p style="margin:0 0 8px;font-size:15px;color:#445;"><strong>${opts.changedBy}</strong> moved a post to <strong style="color:#008080;">${statusLabel}</strong> — your review may be required.</p>
-          <p style="margin:0 0 32px;font-size:18px;font-weight:700;color:#003845;">${opts.postTitle}</p>
+          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${safeFirstName},</p>
+          <p style="margin:0 0 8px;font-size:15px;color:#445;"><strong>${safeChangedBy}</strong> moved a post to <strong style="color:#008080;">${safeStatusLabel}</strong> — your review may be required.</p>
+          <p style="margin:0 0 32px;font-size:18px;font-weight:700;color:#003845;">${safePostTitle}</p>
           <a href="${postUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">View the post →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
@@ -98,7 +113,11 @@ export async function sendNewCommentEmail(opts: {
 }): Promise<void> {
   const resend = client()
   if (!resend) return
-  const postUrl = `${PORTAL}/post/${opts.postSlug}/`
+  const postUrl = escapeHtml(`${PORTAL}/post/${encodeURIComponent(opts.postSlug)}/`)
+  const safeFirstName = escapeHtml(opts.toFirstName)
+  const safeAuthor = escapeHtml(opts.commentAuthor)
+  const safePostTitle = escapeHtml(opts.postTitle)
+  const safeCommentText = escapeHtml(opts.commentText)
   await resend.emails.send({
     from: FROM,
     to: opts.to,
@@ -113,11 +132,11 @@ export async function sendNewCommentEmail(opts: {
           <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:2px;">Campaign Portal</div>
         </td></tr>
         <tr><td style="padding:40px;">
-          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${opts.toFirstName},</p>
-          <p style="margin:0 0 8px;font-size:15px;color:#445;"><strong>${opts.commentAuthor}</strong> left a comment on:</p>
-          <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#003845;">${opts.postTitle}</p>
+          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${safeFirstName},</p>
+          <p style="margin:0 0 8px;font-size:15px;color:#445;"><strong>${safeAuthor}</strong> left a comment on:</p>
+          <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#003845;">${safePostTitle}</p>
           <div style="background:#F4F7F8;border-left:4px solid #008080;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:32px;">
-            <p style="margin:0;font-size:14px;color:#445;line-height:1.6;white-space:pre-wrap;">${opts.commentText}</p>
+            <p style="margin:0;font-size:14px;color:#445;line-height:1.6;white-space:pre-wrap;">${safeCommentText}</p>
           </div>
           <a href="${postUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">View the post →</a>
         </td></tr>
@@ -147,13 +166,18 @@ export async function sendWeeklyDigestEmail(opts: {
     const sc = statusColor[p.status] ?? '#9ca3af'
     const label = p.status.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
     const date = new Date(p.scheduledDate + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })
-    const url = `${PORTAL}/post/${p.slug}/`
+    const url = escapeHtml(`${PORTAL}/post/${encodeURIComponent(p.slug)}/`)
+    const safeTitle = escapeHtml(p.title)
+    const safeLabel = escapeHtml(label)
     return `<tr>
-      <td style="padding:10px 12px;font-size:13px;color:#003845;font-weight:600;border-bottom:1px solid #eef2f4;"><a href="${url}" style="color:#003845;text-decoration:none;">${p.title}</a></td>
+      <td style="padding:10px 12px;font-size:13px;color:#003845;font-weight:600;border-bottom:1px solid #eef2f4;"><a href="${url}" style="color:#003845;text-decoration:none;">${safeTitle}</a></td>
       <td style="padding:10px 12px;font-size:12px;color:#667;border-bottom:1px solid #eef2f4;white-space:nowrap;">${date}</td>
-      <td style="padding:10px 12px;border-bottom:1px solid #eef2f4;"><span style="font-size:11px;font-weight:700;color:#fff;background:${sc};padding:2px 8px;border-radius:20px;">${label}</span></td>
+      <td style="padding:10px 12px;border-bottom:1px solid #eef2f4;"><span style="font-size:11px;font-weight:700;color:#fff;background:${sc};padding:2px 8px;border-radius:20px;">${safeLabel}</span></td>
     </tr>`
   }).join('')
+  const safeFirstName = escapeHtml(opts.toFirstName)
+  const safeWeekLabel = escapeHtml(opts.weekLabel)
+  const roadmapUrl = escapeHtml(`${PORTAL}/roadmap/`)
 
   await resend.emails.send({
     from: FROM,
@@ -169,8 +193,8 @@ export async function sendWeeklyDigestEmail(opts: {
           <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:2px;">Weekly campaign digest</div>
         </td></tr>
         <tr><td style="padding:40px 40px 0;">
-          <p style="margin:0 0 4px;font-size:15px;color:#445;">Hi ${opts.toFirstName},</p>
-          <p style="margin:0 0 24px;font-size:15px;color:#445;">Here are the <strong>${opts.posts.length} post${opts.posts.length !== 1 ? 's' : ''}</strong> scheduled for <strong>${opts.weekLabel}</strong>.</p>
+          <p style="margin:0 0 4px;font-size:15px;color:#445;">Hi ${safeFirstName},</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#445;">Here are the <strong>${opts.posts.length} post${opts.posts.length !== 1 ? 's' : ''}</strong> scheduled for <strong>${safeWeekLabel}</strong>.</p>
         </td></tr>
         <tr><td style="padding:0 40px 32px;">
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #eef2f4;border-radius:10px;overflow:hidden;">
@@ -183,7 +207,7 @@ export async function sendWeeklyDigestEmail(opts: {
           </table>
         </td></tr>
         <tr><td style="padding:0 40px 40px;">
-          <a href="${PORTAL}/roadmap/" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">Open roadmap →</a>
+          <a href="${roadmapUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">Open roadmap →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
           <p style="margin:0;font-size:12px;color:#aaa;">Sent by CES Medical · marketing@cesmedical.co.uk — please do not reply</p>
@@ -206,7 +230,11 @@ export async function sendScheduledThisWeekEmail(opts: {
 }): Promise<void> {
   const resend = client()
   if (!resend) return
-  const postUrl = `${PORTAL}/post/${opts.postSlug}/`
+  const postUrl = escapeHtml(`${PORTAL}/post/${encodeURIComponent(opts.postSlug)}/`)
+  const safeFirstName = escapeHtml(opts.toFirstName)
+  const safeMovedBy = escapeHtml(opts.movedBy.split('@')[0])
+  const safeDateLabel = escapeHtml(opts.dateLabel)
+  const safePostTitle = escapeHtml(opts.postTitle)
   await resend.emails.send({
     from: FROM,
     to: opts.to,
@@ -221,11 +249,11 @@ export async function sendScheduledThisWeekEmail(opts: {
           <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:2px;">Campaign Portal</div>
         </td></tr>
         <tr><td style="padding:40px;">
-          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${opts.toFirstName},</p>
+          <p style="margin:0 0 8px;font-size:15px;color:#445;">Hi ${safeFirstName},</p>
           <p style="margin:0 0 8px;font-size:15px;color:#445;">
-            <strong>${opts.movedBy.split('@')[0]}</strong> just scheduled a post for <strong style="color:#008080;">${opts.dateLabel}</strong> — this week.
+            <strong>${safeMovedBy}</strong> just scheduled a post for <strong style="color:#008080;">${safeDateLabel}</strong> — this week.
           </p>
-          <p style="margin:0 0 32px;font-size:18px;font-weight:700;color:#003845;">${opts.postTitle}</p>
+          <p style="margin:0 0 32px;font-size:18px;font-weight:700;color:#003845;">${safePostTitle}</p>
           <a href="${postUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">View the post →</a>
         </td></tr>
         <tr><td style="padding:24px 40px;border-top:1px solid #eef2f4;">
@@ -248,7 +276,10 @@ export async function sendMentionEmail(opts: {
 }): Promise<void> {
   const resend = client()
   if (!resend) return
-  const postUrl = `${PORTAL}/post/${opts.postSlug}/`
+  const postUrl = escapeHtml(`${PORTAL}/post/${encodeURIComponent(opts.postSlug)}/`)
+  const safeByFirstName = escapeHtml(opts.byFirstName)
+  const safePostTitle = escapeHtml(opts.postTitle)
+  const safeCommentText = escapeHtml(opts.commentText)
   await resend.emails.send({
     from: FROM,
     to: opts.to,
@@ -266,11 +297,11 @@ export async function sendMentionEmail(opts: {
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 8px;font-size:15px;color:#445;">
-            <strong>${opts.byFirstName}</strong> mentioned you in a comment on:
+            <strong>${safeByFirstName}</strong> mentioned you in a comment on:
           </p>
-          <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#003845;">${opts.postTitle}</p>
+          <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#003845;">${safePostTitle}</p>
           <div style="background:#F4F7F8;border-left:4px solid #008080;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:32px;">
-            <p style="margin:0;font-size:14px;color:#445;line-height:1.6;white-space:pre-wrap;">${opts.commentText}</p>
+            <p style="margin:0;font-size:14px;color:#445;line-height:1.6;white-space:pre-wrap;">${safeCommentText}</p>
           </div>
           <a href="${postUrl}" style="display:inline-block;background:#008080;color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;">View the post →</a>
         </td></tr>

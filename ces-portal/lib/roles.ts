@@ -1,6 +1,15 @@
 import type { Role } from './permissions'
 export type { Role }
-export { canEditPost, canUploadAsset, canApproveClinical, canApproveBrand, canComment, roleLabel } from './permissions'
+export {
+  canEditPost,
+  canUploadAsset,
+  canApproveClinical,
+  canApproveBrand,
+  canTransitionStatus,
+  canUpdateCanvas,
+  canComment,
+  roleLabel,
+} from './permissions'
 
 function splitEmails(env: string | undefined): string[] {
   return (env ?? '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean)

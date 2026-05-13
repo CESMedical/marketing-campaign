@@ -28,6 +28,7 @@ model Post {
   brandReviewer        String?
   approvedAt           String?
   imageUrl             String?
+  images               Json?
   notes                String?   @db.Text
   tags                 Json?
   sortOrder            Int       @default(0)

@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2, AlertTriangle } from 'lucide-react'
+import { X, Save, Send, ImagePlus, Loader2, Calendar, Layout, Trash2, AlertTriangle, ZoomIn, Plus } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Post, Status, Platform, Format, STATUS_LABELS, PLATFORM_LABELS, PILLAR_LABELS } from '@/types/post'
 import { canEditPost, roleLabel } from '@/lib/permissions'
+import { ImageLightbox } from '@/components/ui/ImageLightbox'
 
 const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
 const FORMAT_LABELS: Record<Format, string> = {
@@ -24,7 +25,7 @@ const PILLAR_COLOR: Record<string, string> = {
 }
 
 interface Comment { id: string; authorName: string; text: string; createdAt: string; canDelete: boolean }
-interface PortalUser { firstName: string; email: string }
+interface PortalUser { id: string; firstName: string }
 
 function avatarColor(name: string) {
   const colors = ['#008080','#2563eb','#7c3aed','#ea580c','#16a34a','#d97706','#003845','#ec4899']
@@ -38,6 +39,13 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   const { data: session } = useSession()
   const role = session?.user?.role
   const canEdit = canEditPost(role)
+  const reviewStatuses: Status[] =
+    role === 'clinical_reviewer' && post.status === 'clinical-review'
+      ? ['draft', 'brand-review']
+      : role === 'brand_reviewer' && post.status === 'brand-review'
+        ? ['clinical-review', 'approved']
+        : []
+  const canReview = reviewStatuses.length > 0
   const badge = roleLabel(role)
   const serverName = (session?.user?.name ?? session?.user?.email ?? '').split(/[\s@]/)[0]
 
@@ -49,7 +57,10 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   const [scheduledDate, setScheduledDate] = useState(post.scheduledDate.slice(0, 10))
   const [notes, setNotes]         = useState(post.notes ?? '')
   const [imageUrl, setImageUrl]   = useState(post.imageUrl ?? '')
+  const [images, setImages]       = useState<string[]>(post.images ?? (post.imageUrl ? [post.imageUrl] : []))
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [uploading, setUploading] = useState(false)
+  const [uploadingSlide, setUploadingSlide] = useState(false)
   const [showOneDrive, setShowOneDrive] = useState(false)
   const [oneDriveInput, setOneDriveInput] = useState('')
   const [oneDriveError, setOneDriveError] = useState('')
@@ -65,6 +76,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   const [mentionQuery, setMentionQuery] = useState<string | null>(null)
   const [mentionSel, setMentionSel]     = useState(0)
   const fileRef        = useRef<HTMLInputElement>(null)
+  const slideRef       = useRef<HTMLInputElement>(null)
   const commentsEndRef = useRef<HTMLDivElement>(null)
   const textareaRef    = useRef<HTMLTextAreaElement>(null)
 
@@ -73,6 +85,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     setFormat(post.format); setPlatforms(post.platforms)
     setScheduledDate(post.scheduledDate.slice(0, 10))
     setNotes(post.notes ?? ''); setImageUrl(post.imageUrl ?? '')
+    setImages(post.images ?? (post.imageUrl ? [post.imageUrl] : []))
     fetch(`/api/posts/${post.slug}/comments`).then(r => r.json()).then(setComments).catch(() => {})
     fetch('/api/users').then(r => r.json()).then(setPortalUsers).catch(() => {})
   }, [post.slug]) // eslint-disable-line
@@ -92,9 +105,12 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   async function handleSave() {
     setSaving(true)
     try {
+      const payload = canEdit
+        ? { title, caption, status, format, platforms, scheduledDate, notes, imageUrl, images }
+        : { status }
       const res = await fetch(`/api/posts/${post.slug}`, {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, caption, status, format, platforms, scheduledDate, notes, imageUrl }),
+        body: JSON.stringify(payload),
       })
       if (res.ok) { onSave(await res.json()); setSavedAt(Date.now()) }
     } finally { setSaving(false) }
@@ -106,8 +122,37 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     try {
       const form = new FormData(); form.append('file', file)
       const res = await fetch('/api/upload', { method: 'POST', body: form })
-      if (res.ok) setImageUrl((await res.json()).url)
-    } finally { setUploading(false) }
+      if (res.ok) {
+        const { url } = await res.json()
+        setImageUrl(url)
+        setImages([url])
+      }
+    } finally { setUploading(false); if (e.target) e.target.value = '' }
+  }
+
+  async function handleAddSlide(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]; if (!file) return
+    setUploadingSlide(true)
+    try {
+      const form = new FormData(); form.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: form })
+      if (res.ok) {
+        const { url } = await res.json()
+        setImages(prev => {
+          const next = [...prev, url]
+          if (!imageUrl) setImageUrl(next[0])
+          return next
+        })
+      }
+    } finally { setUploadingSlide(false); if (e.target) e.target.value = '' }
+  }
+
+  function removeSlide(idx: number) {
+    setImages(prev => {
+      const next = prev.filter((_, i) => i !== idx)
+      setImageUrl(next[0] ?? '')
+      return next
+    })
   }
 
   async function handleOneDriveLink() {
@@ -150,7 +195,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   }
 
   const filteredUsers = mentionQuery !== null
-    ? portalUsers.filter(u => u.firstName.toLowerCase().startsWith(mentionQuery.toLowerCase()) && u.email !== session?.user?.email)
+    ? portalUsers.filter(u => u.firstName.toLowerCase().startsWith(mentionQuery.toLowerCase()))
     : []
 
   const handleCommentChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -226,83 +271,147 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
 
         {/* Image zone */}
         <div className="relative border-b border-brand-deep/8">
-          {imageUrl ? (
-            <div className="relative group">
-              <img
-                src={imageUrl} alt="Post image" className="w-full object-cover" style={{ maxHeight: 200 }}
-                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
-              />
-              {canEdit && (
-                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
-                    onClick={() => fileRef.current?.click()}
-                    className="flex items-center gap-1 bg-brand-deep/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg"
-                  >
-                    <ImagePlus size={11} /> Upload
-                  </button>
-                  <button
-                    onClick={() => setShowOneDrive(s => !s)}
-                    className="flex items-center gap-1 bg-brand-deep/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg"
-                  >
-                    OneDrive
-                  </button>
-                  <button
-                    onClick={() => { setImageUrl(''); setShowOneDrive(false) }}
-                    className="flex items-center gap-1 bg-red-500/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg"
-                  >
-                    Remove
-                  </button>
+          {format === 'carousel' ? (
+            /* ── Carousel: multi-slide grid ─────────────────────────────── */
+            <div className="p-3 space-y-2">
+              {images.length > 0 && (
+                <div className="grid grid-cols-3 gap-1.5">
+                  {images.map((src, idx) => (
+                    <div key={src + idx} className="relative group aspect-square rounded-lg overflow-hidden bg-brand-bg-soft border border-brand-deep/10">
+                      <img
+                        src={src} alt={`Slide ${idx + 1}`}
+                        className="w-full h-full object-cover cursor-pointer"
+                        onClick={() => setLightboxIndex(idx)}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center gap-1 pointer-events-none group-hover:pointer-events-auto">
+                        <button onClick={() => setLightboxIndex(idx)} className="p-1 rounded-full bg-white/80 text-brand-deep hover:bg-white">
+                          <ZoomIn size={12} />
+                        </button>
+                        {canEdit && (
+                          <button onClick={() => removeSlide(idx)} className="p-1 rounded-full bg-red-500/90 text-white hover:bg-red-500">
+                            <X size={12} />
+                          </button>
+                        )}
+                      </div>
+                      <span className="absolute bottom-1 left-1 text-[9px] font-bold text-white bg-black/50 px-1 rounded">
+                        {idx + 1}
+                      </span>
+                    </div>
+                  ))}
+                  {canEdit && images.length < 10 && (
+                    <button
+                      onClick={() => slideRef.current?.click()}
+                      className="aspect-square rounded-lg border-2 border-dashed border-brand-deep/20 flex flex-col items-center justify-center gap-1 text-brand-deep/40 hover:text-brand-teal hover:border-brand-teal transition-colors"
+                    >
+                      {uploadingSlide ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />}
+                      <span className="text-[9px] font-semibold">{uploadingSlide ? '…' : 'Add slide'}</span>
+                    </button>
+                  )}
                 </div>
               )}
+              {canEdit && images.length === 0 && (
+                <button
+                  onClick={() => slideRef.current?.click()}
+                  className="flex w-full flex-col items-center justify-center gap-2 py-6 text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft transition-colors rounded-lg border border-dashed border-brand-deep/15"
+                >
+                  {uploadingSlide ? <Loader2 size={18} className="animate-spin" /> : <ImagePlus size={18} />}
+                  <span className="text-xs font-medium">{uploadingSlide ? 'Uploading…' : 'Upload first slide'}</span>
+                </button>
+              )}
+              {images.length > 0 && (
+                <p className="text-[10px] text-brand-deep/40 text-center">{images.length} / 10 slides · click any to expand</p>
+              )}
             </div>
-          ) : canEdit ? (
-            <div className="flex flex-col">
-              <div className="flex">
-                <button
-                  onClick={() => { fileRef.current?.click(); setShowOneDrive(false) }}
-                  className="flex flex-1 flex-col items-center justify-center gap-2 py-6 text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft transition-colors border-r border-brand-deep/8"
-                >
-                  {uploading ? <Loader2 size={18} className="animate-spin" /> : <ImagePlus size={18} />}
-                  <span className="text-xs font-medium">{uploading ? 'Uploading…' : 'Upload file'}</span>
-                </button>
-                <button
-                  onClick={() => setShowOneDrive(s => !s)}
-                  className={`flex flex-1 flex-col items-center justify-center gap-2 py-6 text-xs font-medium transition-colors ${showOneDrive ? 'text-brand-teal bg-brand-bg-soft' : 'text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft'}`}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 1 0-2-9.5A5.5 5.5 0 0 0 3 15Z"/>
-                  </svg>
-                  OneDrive link
-                </button>
-              </div>
-              {showOneDrive && (
-                <div className="px-4 pb-4 pt-2 border-t border-brand-deep/8 bg-brand-bg-soft">
-                  <p className="text-[10px] text-brand-deep/50 mb-2 leading-relaxed">
-                    Paste a OneDrive or SharePoint file URL. Right-click the file → Share → Copy link, or use the direct file URL from your browser.
-                  </p>
-                  <div className="flex gap-2">
-                    <input
-                      value={oneDriveInput}
-                      onChange={e => setOneDriveInput(e.target.value)}
-                      onKeyDown={e => e.key === 'Enter' && handleOneDriveLink()}
-                      placeholder="https://alastralabs.sharepoint.com/..."
-                      className="flex-1 text-xs border border-brand-deep/20 rounded-lg px-3 py-2 outline-none focus:border-brand-teal"
-                    />
+          ) : (
+            /* ── Single image / other formats ───────────────────────────── */
+            <>
+              {imageUrl ? (
+                <div className="relative group">
+                  <img
+                    src={imageUrl} alt="Post image"
+                    className="w-full object-cover cursor-pointer"
+                    style={{ maxHeight: 200 }}
+                    onClick={() => setLightboxIndex(0)}
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
+                    <ZoomIn size={22} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                  </div>
+                  {canEdit && (
+                    <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1 bg-brand-deep/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg">
+                        <ImagePlus size={11} /> Replace
+                      </button>
+                      <button onClick={() => setShowOneDrive(s => !s)} className="flex items-center gap-1 bg-brand-deep/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg">
+                        OneDrive
+                      </button>
+                      <button onClick={() => { setImageUrl(''); setImages([]); setShowOneDrive(false) }} className="flex items-center gap-1 bg-red-500/80 text-white text-[10px] font-semibold px-2 py-1 rounded-lg">
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : canEdit ? (
+                <div className="flex flex-col">
+                  <div className="flex">
                     <button
-                      onClick={handleOneDriveLink}
-                      disabled={oneDriveLoading || !oneDriveInput.trim()}
-                      className="text-xs font-semibold px-3 py-2 rounded-lg bg-brand-teal text-white disabled:opacity-50"
+                      onClick={() => { fileRef.current?.click(); setShowOneDrive(false) }}
+                      className="flex flex-1 flex-col items-center justify-center gap-2 py-6 text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft transition-colors border-r border-brand-deep/8"
                     >
-                      {oneDriveLoading ? '…' : 'Use'}
+                      {uploading ? <Loader2 size={18} className="animate-spin" /> : <ImagePlus size={18} />}
+                      <span className="text-xs font-medium">{uploading ? 'Uploading…' : 'Upload file'}</span>
+                    </button>
+                    <button
+                      onClick={() => setShowOneDrive(s => !s)}
+                      className={`flex flex-1 flex-col items-center justify-center gap-2 py-6 text-xs font-medium transition-colors ${showOneDrive ? 'text-brand-teal bg-brand-bg-soft' : 'text-brand-deep/40 hover:text-brand-teal hover:bg-brand-bg-soft'}`}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 15a4 4 0 0 0 4 4h9a5 5 0 1 0-2-9.5A5.5 5.5 0 0 0 3 15Z"/>
+                      </svg>
+                      OneDrive link
                     </button>
                   </div>
-                  {oneDriveError && <p className="text-[10px] text-red-500 mt-1">{oneDriveError}</p>}
+                  {showOneDrive && (
+                    <div className="px-4 pb-4 pt-2 border-t border-brand-deep/8 bg-brand-bg-soft">
+                      <p className="text-[10px] text-brand-deep/50 mb-2 leading-relaxed">
+                        Paste a OneDrive or SharePoint file URL. Right-click the file → Share → Copy link, or use the direct file URL from your browser.
+                      </p>
+                      <div className="flex gap-2">
+                        <input
+                          value={oneDriveInput}
+                          onChange={e => setOneDriveInput(e.target.value)}
+                          onKeyDown={e => e.key === 'Enter' && handleOneDriveLink()}
+                          placeholder="https://alastralabs.sharepoint.com/..."
+                          className="flex-1 text-xs border border-brand-deep/20 rounded-lg px-3 py-2 outline-none focus:border-brand-teal"
+                        />
+                        <button
+                          onClick={handleOneDriveLink}
+                          disabled={oneDriveLoading || !oneDriveInput.trim()}
+                          className="text-xs font-semibold px-3 py-2 rounded-lg bg-brand-teal text-white disabled:opacity-50"
+                        >
+                          {oneDriveLoading ? '…' : 'Use'}
+                        </button>
+                      </div>
+                      {oneDriveError && <p className="text-[10px] text-red-500 mt-1">{oneDriveError}</p>}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ) : null}
+              ) : null}
+            </>
+          )}
           <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+          <input ref={slideRef} type="file" accept="image/*" className="hidden" onChange={handleAddSlide} />
         </div>
+
+        {/* Lightbox */}
+        {lightboxIndex !== null && (
+          <ImageLightbox
+            images={format === 'carousel' ? images : (imageUrl ? [imageUrl] : [])}
+            startIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
 
         <div className="p-5 space-y-5">
           {/* Meta row */}
@@ -403,6 +512,20 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
             <div>
               <p className="label-xs mb-2">Caption</p>
               <p className="text-sm text-brand-deep leading-relaxed whitespace-pre-wrap">{post.caption}</p>
+              {canReview && (
+                <div className="mt-5">
+                  <p className="label-xs mb-2">Review status</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {reviewStatuses.map(s => (
+                      <button key={s} onClick={() => setStatus(s)}
+                        className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                        style={status === s ? { background: STATUS_COLOR[s], borderColor: STATUS_COLOR[s], color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                        {STATUS_LABELS[s]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -460,7 +583,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
                   <div className="absolute bottom-full left-0 mb-1 z-50 bg-white border border-brand-deep/15 rounded-xl shadow-xl overflow-hidden min-w-[160px]">
                     {filteredUsers.map((u, i) => (
                       <button
-                        key={u.email}
+                        key={u.id}
                         onMouseDown={e => { e.preventDefault(); insertMention(u.firstName) }}
                         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); insertMention(u.firstName) } }}
                         className="flex items-center gap-2 w-full px-3 py-2 text-left hover:bg-brand-bg-soft transition-colors"
@@ -503,7 +626,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
       </div>
 
       {/* ── Footer ───────────────────────────────────────────────────────────── */}
-      {canEdit && (
+      {(canEdit || canReview) && (
         <div className="border-t border-brand-deep/10 px-5 py-4 shrink-0 space-y-2">
           {/* Delete confirmation */}
           {confirmDelete ? (
