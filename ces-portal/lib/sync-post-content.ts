@@ -4,6 +4,13 @@ import type { Post } from '@/types/post'
 
 export async function syncPostContent() {
   const posts = postsData as Post[]
+
+  // Ensure all posts are associated with the default roadmap.
+  // New posts created by the sync must have a roadmapId or they will be
+  // invisible when the canvas queries with ?r=<id>.
+  const defaultRoadmap = await prisma.roadmap.findFirst({ orderBy: { createdAt: 'asc' } })
+  const defaultRoadmapId = defaultRoadmap?.id ?? null
+
   let n = 0
 
   for (const post of posts) {
@@ -28,6 +35,7 @@ export async function syncPostContent() {
         videoRelationship:    post.videoRelationship     ?? null,
         videoReference:       post.videoReference        ?? null,
         sortOrder:            post.sortOrder             ?? 0,
+        roadmapId:            defaultRoadmapId,
       },
       update: {
         title:                post.title,
@@ -46,6 +54,14 @@ export async function syncPostContent() {
       },
     })
     n++
+  }
+
+  // Backfill any existing posts that somehow have no roadmapId.
+  if (defaultRoadmapId) {
+    await prisma.post.updateMany({
+      where: { roadmapId: null },
+      data:  { roadmapId: defaultRoadmapId },
+    })
   }
 
   console.log(`[sync-post-content] ${n} posts synced from posts.json`)
