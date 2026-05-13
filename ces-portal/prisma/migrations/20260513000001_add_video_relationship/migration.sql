@@ -1,0 +1,2 @@
+ALTER TABLE `Post` ADD COLUMN `videoRelationship` VARCHAR(191) NULL;
+ALTER TABLE `Post` ADD COLUMN `videoReference` VARCHAR(500) NULL;

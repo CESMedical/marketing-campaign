@@ -21,7 +21,9 @@
       "type": "save"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "EH-B1, NK-B1"
   },
   {
     "id": "P02",
@@ -46,7 +48,8 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P02"
     },
     "productionLocation": "stock",
-    "productionLead": "stock"
+    "productionLead": "stock",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P03",
@@ -72,7 +75,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P03"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "motion-design",
+    "videoReference": "Cataract_Script_v2"
   },
   {
     "id": "P04",
@@ -98,7 +103,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P04"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK headshot, NK-B1, NK-B2"
   },
   {
     "id": "P05",
@@ -124,7 +131,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P05"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C9, KQ-C8, SS-C8"
   },
   {
     "id": "P06",
@@ -148,7 +157,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-B3"
   },
   {
     "id": "P07",
@@ -173,7 +184,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P07"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L01"
   },
   {
     "id": "P08",
@@ -199,7 +212,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P08"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C9, NK-C10"
   },
   {
     "id": "P09",
@@ -225,7 +240,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P09"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C9, NK-C10, KQ-C8"
   },
   {
     "id": "P10",
@@ -251,7 +268,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P10"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C5, NK-C6"
   },
   {
     "id": "P11",
@@ -276,7 +295,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P11"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C7, NK-B4"
   },
   {
     "id": "P12",
@@ -301,7 +322,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P12"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L02"
   },
   {
     "id": "P13",
@@ -328,7 +351,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P13"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "patient-story",
+    "videoReference": "PS01 Susan"
   },
   {
     "id": "P14",
@@ -352,7 +377,8 @@
       "type": "save"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P15",
@@ -377,7 +403,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P15"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ-C8"
   },
   {
     "id": "P16",
@@ -400,7 +428,9 @@
       "type": "save"
     },
     "productionLocation": "pantiles",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L04"
   },
   {
     "id": "P17",
@@ -425,7 +455,9 @@
       "utm": "utm_source=social&utm_medium=linkedin&utm_campaign=may-jul-2026&utm_content=P17"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ-B2, NK-B1"
   },
   {
     "id": "P18",
@@ -450,7 +482,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P18"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C8"
   },
   {
     "id": "P19",
@@ -474,7 +508,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-B3"
   },
   {
     "id": "P20",
@@ -500,7 +536,8 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P20"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P21",
@@ -525,7 +562,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P21"
     },
     "productionLocation": "pantiles",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L05"
   },
   {
     "id": "P22",
@@ -549,7 +588,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "SS-C7"
   },
   {
     "id": "P23",
@@ -575,7 +616,8 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P23"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P24",
@@ -602,7 +644,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P24"
     },
     "productionLocation": "headcorn",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L03"
   },
   {
     "id": "P25",
@@ -628,7 +672,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P25"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C9, KQ-C8"
   },
   {
     "id": "P26",
@@ -652,7 +698,8 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P27",
@@ -678,7 +725,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P27"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "patient-story",
+    "videoReference": "PS02 James"
   },
   {
     "id": "P28",
@@ -703,7 +752,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P28"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C5"
   },
   {
     "id": "P29",
@@ -728,7 +779,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P29"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ-C5"
   },
   {
     "id": "P30",
@@ -753,7 +806,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C12, KQ-C5"
   },
   {
     "id": "P31",
@@ -777,7 +832,9 @@
       "type": "dm"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "NK-C9, NK-C10"
   },
   {
     "id": "P32",
@@ -802,7 +859,9 @@
       "utm": "utm_source=social&utm_medium=linkedin&utm_campaign=may-jul-2026&utm_content=P32"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "EH-B1"
   },
   {
     "id": "P33",
@@ -827,7 +886,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P33"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "SS-C6"
   },
   {
     "id": "P34",
@@ -851,7 +912,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-B3"
   },
   {
     "id": "P35",
@@ -876,7 +939,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "team-photography",
+    "videoReference": "T02"
   },
   {
     "id": "P36",
@@ -902,7 +967,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P36"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ-C9, SS-B3, SS-C9"
   },
   {
     "id": "P37",
@@ -926,7 +993,8 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "no-video"
   },
   {
     "id": "P38",
@@ -952,7 +1020,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P38"
     },
     "productionLocation": "pantiles",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "patient-story",
+    "videoReference": "PS03 Anna"
   },
   {
     "id": "P39",
@@ -977,7 +1047,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P39"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ-C10"
   },
   {
     "id": "P40",
@@ -1000,7 +1072,9 @@
       "type": "dm"
     },
     "productionLocation": "pantiles",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L06"
   },
   {
     "id": "P41",
@@ -1024,7 +1098,9 @@
       "type": "save"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C12"
   },
   {
     "id": "P42",
@@ -1049,7 +1125,9 @@
       "utm": "utm_source=social&utm_medium=facebook&utm_campaign=may-jul-2026&utm_content=P42"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "EH-B2"
   },
   {
     "id": "P43",
@@ -1074,7 +1152,9 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-C9, KQ-C8"
   },
   {
     "id": "P44",
@@ -1099,7 +1179,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P44"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "NK-B4, NK-C5"
   },
   {
     "id": "P45",
@@ -1122,7 +1204,9 @@
       "type": "dm"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L07 P45 edit"
   },
   {
     "id": "P46",
@@ -1149,7 +1233,9 @@
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P46"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "patient-story",
+    "videoReference": "PS04 glaucoma"
   },
   {
     "id": "P47",
@@ -1173,7 +1259,9 @@
       "type": "save"
     },
     "productionLocation": "chatham",
-    "productionLead": "leonna"
+    "productionLead": "leonna",
+    "videoRelationship": "leonna-premises",
+    "videoReference": "L07 P47 edit"
   },
   {
     "id": "P48",
@@ -1198,6 +1286,210 @@
       "target": "tel:01732757771"
     },
     "productionLocation": "stock",
-    "productionLead": "external"
+    "productionLead": "external",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "EH-C7"
+  },
+  {
+    "id": "P49",
+    "slug": "p49-meet-mr-kashif-qureshi",
+    "title": "Meet Mr Kashif Qureshi",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-05",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "service": "medical-retina",
+    "format": "single-image",
+    "caption": "Mr Kashif Qureshi is a Consultant Ophthalmic Surgeon with over 25 years of experience in cataract surgery and medical retina.\n\nHe trained at Guy's and St Thomas's Hospitals in London, with subspecialty fellowships in Medical Retina at Manchester Royal Eye Hospital and Moorfields Eye Hospital. For four years he served as UK Lead for Revalidation for all ophthalmologists, overseeing the professional standards every eye surgeon in the country is held to.\n\nHe is one of a very small number of surgeons in the UK offering YAG laser vitreolysis for vitreous floaters and 2RT nanopulse laser treatment for dry AMD.\n\nHe sees patients at Pantiles and Headcorn.",
+    "cta": {
+      "label": "Meet the team",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P49"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "KQ headshot, KQ-B1, KQ-B2",
+    "sortOrder": 1
+  },
+  {
+    "id": "P50",
+    "slug": "p50-meet-mr-syed-shahid",
+    "title": "Meet Mr Syed Shahid",
+    "pillar": "employee",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-19",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "service": "vitreoretinal",
+    "format": "single-image",
+    "caption": "Mr Syed Shahid is a Consultant Ophthalmologist and Vitreoretinal Surgeon, and one of the very few vitreoretinal surgeons serving patients in Kent.\n\nHe trained at Moorfields Eye Hospital, where he completed an 18-month vitreoretinal surgery fellowship. He is the Clinical Lead for the Kent and Medway Diabetic Eye Screening Programme, overseeing diabetic eye care across the region.\n\nHis specialist work covers retinal detachment, macular hole, epiretinal membrane, complex cataract surgery and premium lens implants. He is rated 4.93 on Doctify from 127 verified patient reviews.\n\nHe sees patients at Southborough.",
+    "cta": {
+      "label": "Meet the team",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P50"
+    },
+    "productionLocation": "southborough",
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "SS headshot, SS-B1, SS-B2",
+    "sortOrder": 1
+  },
+  {
+    "id": "P51",
+    "slug": "p51-meet-elion-hyseni-founder-and-ceo",
+    "title": "Meet Elion Hyseni, Founder and CEO",
+    "pillar": "leadership",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-03",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "format": "single-image",
+    "caption": "Elion Hyseni founded CES Medical in 2018 with one idea: that specialist eye care should be available locally, without compromise.\n\nHe is a Consultant Clinical Optometrist with advanced qualifications in clinical optometry, clinical neuroscience and healthcare management. He holds a professional certificate in glaucoma and an independent prescribing qualification. Before CES Medical, he spent years watching patients in Kent travel to London for specialist care that could and should have been available closer to home.\n\nHe now leads a team of over 25 consultants and clinicians across four primary locations, serving both NHS and private patients across Kent.",
+    "cta": {
+      "label": "About CES Medical",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P51"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna",
+    "videoRelationship": "informed-by-interview",
+    "videoReference": "EH headshot, EH-B1, EH-B2",
+    "sortOrder": 1
+  },
+  {
+    "id": "P52",
+    "slug": "p52-mr-qureshi-on-cataract-surgery",
+    "title": "Mr Qureshi on cataract surgery",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-12",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "service": "cataract-monofocal",
+    "format": "reel",
+    "caption": "Most people do not notice how much their vision has changed. It builds so gradually that the decline becomes normal.\n\nMr Kashif Qureshi, Consultant Ophthalmic Surgeon and Medical Retina Specialist, explains in his own words what a cataract is, when surgery is the right step and how the lens choice is made.",
+    "cta": {
+      "label": "Learn about cataract surgery",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P52"
+    },
+    "productionLocation": "pantiles",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "KQ-C4, KQ-C8",
+    "sortOrder": 1
+  },
+  {
+    "id": "P53",
+    "slug": "p53-mr-kopsachilis-on-corneal-transplantation",
+    "title": "Mr Kopsachilis on corneal transplantation",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "linkedin",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-28",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "service": "corneal",
+    "format": "reel",
+    "caption": "Most patients have never heard of a corneal transplant until they need one.\n\nMr Nick Kopsachilis, Consultant Ophthalmic Surgeon and corneal specialist, explains what corneal transplantation involves, who it is for and why his PhD research directly informs how he approaches the most complex cases.",
+    "cta": {
+      "label": "Learn more",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P53"
+    },
+    "productionLocation": "headcorn",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "NK-C11 + corneal transplantation addition (see production notes)",
+    "notes": "Additional interview question required: 'What is a corneal transplant and who needs one?' Answer guidance: the cornea is the clear window at the front of the eye. When it becomes scarred, swollen or misshapen, vision is significantly affected. A corneal transplant replaces the damaged tissue with donor tissue. Types include DMEK and DSEK for Fuchs' dystrophy. Mr Kopsachilis performs all types and his doctoral research into corneal cell behaviour directly informs how he plans each procedure.",
+    "sortOrder": 1
+  },
+  {
+    "id": "P54",
+    "slug": "p54-mr-shahid-on-vitreoretinal-surgery",
+    "title": "Mr Shahid on vitreoretinal surgery",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "youtube"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-17",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "service": "vitreoretinal",
+    "format": "reel",
+    "caption": "Retinal detachment. Macular hole. Epiretinal membrane.\n\nThese conditions sound frightening. Mr Syed Shahid, one of the very few vitreoretinal surgeons in Kent, explains what they are, what the warning signs look like and why getting the right surgeon involved quickly makes a significant difference to outcomes.",
+    "cta": {
+      "label": "Learn more",
+      "type": "web",
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P54"
+    },
+    "productionLocation": "southborough",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "SS-C4, SS-C5",
+    "sortOrder": 1
+  },
+  {
+    "id": "P55",
+    "slug": "p55-what-does-consultant-led-care-actually-mean",
+    "title": "What does consultant-led care actually mean?",
+    "pillar": "leadership",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-02",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "reel",
+    "caption": "It means the person who assesses you is the person who treats you.\n\nElion Hyseni, Founder and CEO of CES Medical and Consultant Clinical Optometrist, explains what consultant-led care means in practice and why it matters for patients choosing between providers.",
+    "cta": {
+      "label": "About CES Medical",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-aug-2026&utm_content=P55"
+    },
+    "productionLocation": "chatham",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "EH-B3, EH-C6",
+    "sortOrder": 1
   }
 ]

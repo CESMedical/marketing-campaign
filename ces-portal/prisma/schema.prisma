@@ -29,6 +29,8 @@ model Post {
   approvedAt           String?
   imageUrl             String?
   images               Json?
+  videoRelationship    String?
+  videoReference       String?
   notes                String?   @db.Text
   tags                 Json?
   sortOrder            Int       @default(0)

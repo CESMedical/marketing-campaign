@@ -500,6 +500,32 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
                   className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none" />
               </div>
 
+              {/* Video relationship */}
+              {(post.videoRelationship || post.videoReference) && (
+                <div className="rounded-xl border border-brand-deep/10 bg-brand-bg-soft px-3.5 py-3 space-y-1">
+                  {post.videoRelationship && (
+                    <div className="flex items-start gap-2">
+                      <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Video</span>
+                      <span className="text-xs text-brand-deep font-medium">
+                        {post.videoRelationship === 'informed-by-interview' && 'Informed by interview'}
+                        {post.videoRelationship === 'direct-snippet' && 'Videography snippet (direct video use)'}
+                        {post.videoRelationship === 'leonna-premises' && 'Leonna premises video'}
+                        {post.videoRelationship === 'patient-story' && 'Patient story'}
+                        {post.videoRelationship === 'no-video' && 'No video'}
+                        {post.videoRelationship === 'motion-design' && 'Motion design'}
+                        {post.videoRelationship === 'team-photography' && 'Team photography'}
+                      </span>
+                    </div>
+                  )}
+                  {post.videoReference && (
+                    <div className="flex items-start gap-2">
+                      <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Reference</span>
+                      <span className="text-xs text-brand-deep/70 font-mono">{post.videoReference}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Notes */}
               <div>
                 <p className="label-xs mb-2">Production notes</p>

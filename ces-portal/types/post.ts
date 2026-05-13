@@ -25,19 +25,33 @@ export type Service =
   | 'oculoplastic-eyelid'
   | 'glaucoma'
   | 'dry-eye'
+  | 'medical-retina'
+  | 'vitreoretinal'
+  | 'corneal'
   | 'general'
   | 'brand';
 
 export type Location =
   | 'chatham'
   | 'tunbridge-wells'
-  | 'headcorn';
+  | 'headcorn'
+  | 'southborough'
+  | 'pantiles';
 
 export type Format = 'single-image' | 'carousel' | 'reel' | 'story' | 'video' | 'text';
 
 export type CtaType = 'phone' | 'web' | 'dm' | 'save' | 'share';
 
 export type ProductionLead = 'leonna' | 'external' | 'stock';
+
+export type VideoRelationship =
+  | 'informed-by-interview'
+  | 'direct-snippet'
+  | 'leonna-premises'
+  | 'patient-story'
+  | 'no-video'
+  | 'motion-design'
+  | 'team-photography';
 
 export interface PostCta {
   label: string;
@@ -74,6 +88,9 @@ export interface Post {
 
   productionLocation?: Location;
   productionLead?: ProductionLead;
+
+  videoRelationship?: VideoRelationship;
+  videoReference?: string;
 
   clinicalReviewer?: string;
   brandReviewer?: string;
@@ -130,6 +147,9 @@ export const SERVICE_LABELS: Record<Service, string> = {
   'oculoplastic-eyelid': 'Oculoplastic — eyelid surgery',
   glaucoma: 'Glaucoma',
   'dry-eye': 'Dry eye',
+  'medical-retina': 'Medical retina',
+  vitreoretinal: 'Vitreoretinal surgery',
+  corneal: 'Corneal surgery',
   general: 'General ophthalmology',
   brand: 'Brand',
 };
@@ -138,6 +158,18 @@ export const LOCATION_LABELS: Record<Location, string> = {
   chatham: 'Chatham',
   'tunbridge-wells': 'Tunbridge Wells',
   headcorn: 'Headcorn',
+  southborough: 'Southborough',
+  pantiles: 'Pantiles',
+};
+
+export const VIDEO_RELATIONSHIP_LABELS: Record<VideoRelationship, string> = {
+  'informed-by-interview':  'Informed by interview',
+  'direct-snippet':         'Videography snippet (direct video use)',
+  'leonna-premises':        'Leonna premises video',
+  'patient-story':          'Patient story',
+  'no-video':               'No video',
+  'motion-design':          'Motion design',
+  'team-photography':       'Team photography',
 };
 
 export const STATUS_ORDER: Status[] = [

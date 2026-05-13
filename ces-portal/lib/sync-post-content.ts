@@ -25,7 +25,9 @@ export async function syncPostContent() {
         service:              post.service              ?? null,
         productionLocation:   post.productionLocation   ?? null,
         productionLead:       post.productionLead       ?? null,
-        sortOrder:            post.sortOrder            ?? 0,
+        videoRelationship:    post.videoRelationship     ?? null,
+        videoReference:       post.videoReference        ?? null,
+        sortOrder:            post.sortOrder             ?? 0,
       },
       update: {
         title:                post.title,
@@ -39,6 +41,8 @@ export async function syncPostContent() {
         service:              post.service              ?? null,
         productionLocation:   post.productionLocation   ?? null,
         productionLead:       post.productionLead       ?? null,
+        videoRelationship:    post.videoRelationship     ?? null,
+        videoReference:       post.videoReference        ?? null,
       },
     })
     n++
