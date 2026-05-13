@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface Props {
@@ -11,24 +12,29 @@ interface Props {
 
 export function ImageLightbox({ images, startIndex = 0, onClose }: Props) {
   const [index, setIndex] = useState(startIndex)
+  const [mounted, setMounted] = useState(false)
   const total = images.length
 
   const prev = useCallback(() => setIndex(i => (i - 1 + total) % total), [total])
   const next = useCallback(() => setIndex(i => (i + 1) % total), [total])
 
+  useEffect(() => { setMounted(true) }, [])
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape')      onClose()
-      if (e.key === 'ArrowLeft')   prev()
-      if (e.key === 'ArrowRight')  next()
+      if (e.key === 'Escape')     onClose()
+      if (e.key === 'ArrowLeft')  prev()
+      if (e.key === 'ArrowRight') next()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose, prev, next])
 
+  if (!mounted) return null
+
   const src = images[index]
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-sm"
       onClick={onClose}
@@ -85,7 +91,7 @@ export function ImageLightbox({ images, startIndex = 0, onClose }: Props) {
         </button>
       )}
 
-      {/* Dot strip for carousel */}
+      {/* Dot strip */}
       {total > 1 && (
         <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-1.5">
           {images.map((_, i) => (
@@ -98,6 +104,7 @@ export function ImageLightbox({ images, startIndex = 0, onClose }: Props) {
           ))}
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   )
 }
