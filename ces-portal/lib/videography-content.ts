@@ -87,7 +87,7 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
     isBoardMember: true,
     locations: 'Headcorn, Pantiles, Chatham, Southborough',
     specialty: 'Corneal and Cataract Specialist',
-    postsFed: ['P05', 'P08', 'P09', 'P10', 'P11', 'P17', 'P18', 'P21', 'P22', 'P23', 'P25', 'P28', 'P31', 'P38', 'P41', 'P43', 'P44'],
+    postsFed: ['P05', 'P08', 'P09', 'P10', 'P11', 'P17', 'P18', 'P21', 'P22', 'P23', 'P25', 'P28', 'P31', 'P38', 'P41', 'P43', 'P44', 'P53'],
     part1: {
       attire: 'Business',
       title: 'The CES Perspective',
@@ -193,6 +193,14 @@ export const CONSULTANT_INTERVIEWS: ConsultantInterview[] = [
           guidance: 'Ask how many procedures the surgeon performs each year. Ask what lens options are available and why one is being recommended over another. Ask what is included in the package and what is not. Ask what happens if something does not go to plan. A surgeon who is uncomfortable answering any of those questions is worth noting. We are not uncomfortable with any of them.',
           feeds: ['P30', 'P41'],
           targetLength: '45–60 seconds',
+        },
+        {
+          id: 'NK-C11',
+          question: 'What is a corneal transplant and who needs one?',
+          whatWeNeed: 'A clear, patient-centred explanation of corneal transplantation — what it is, when it is needed, and why Mr Kopsachilis\'s research directly informs how he approaches the most complex cases. This is the primary video asset for P53.',
+          guidance: 'The cornea is the clear window at the front of the eye. When it becomes scarred, swollen or misshapen — through conditions like Fuchs\' dystrophy, keratoconus or trauma — vision is significantly affected, and spectacles or contact lenses can no longer compensate. A corneal transplant replaces the damaged tissue with healthy donor tissue. There are different techniques: full-thickness transplants (PKP) for severe scarring, and partial-thickness procedures like DMEK and DSEK for conditions primarily affecting the inner layer, such as Fuchs\' dystrophy. DMEK recovers faster and produces better visual outcomes for the right patients. Mr Kopsachilis performs all types. His doctoral research into corneal endothelial cell biology means he understands exactly how those cells behave under surgical stress — which directly informs how he selects the technique and plans each case. He takes on complex corneal work that many surgeons refer elsewhere.',
+          feeds: ['P53'],
+          targetLength: '75–90 seconds',
         },
       ],
     },
