@@ -68,5 +68,15 @@ export async function syncPostContent() {
     })
   }
 
+  // Remove any DB posts whose slugs no longer exist in posts.json.
+  // This cleans up old IG/FB/LI/YT prefixed records after the P-number unification.
+  const validSlugs = posts.map(p => p.slug)
+  const stale = await prisma.post.deleteMany({
+    where: { slug: { notIn: validSlugs } },
+  })
+  if (stale.count > 0) {
+    console.log(`[sync-post-content] ${stale.count} stale posts removed (slug no longer in posts.json)`)
+  }
+
   console.log(`[sync-post-content] ${n} posts synced from posts.json`)
 }
