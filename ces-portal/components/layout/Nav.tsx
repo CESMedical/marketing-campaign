@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { clsx } from 'clsx';
+import { Clock } from 'lucide-react';
 
 const links = [
   { href: '/',                       label: 'Overview',      exact: true,  view: null },
@@ -16,6 +17,7 @@ function NavLinks() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentView = searchParams.get('view') ?? '';
+  const isActivity = pathname.startsWith('/activity');
 
   return (
     <ul className="flex items-center gap-1 sm:gap-2">
@@ -41,6 +43,23 @@ function NavLinks() {
           </li>
         );
       })}
+
+      {/* Activity feed — last icon */}
+      <li>
+        <Link
+          href="/activity/"
+          title="Recent activity"
+          aria-label="Recent activity"
+          className={clsx(
+            'flex items-center justify-center w-9 h-9 rounded-lg transition-colors',
+            isActivity
+              ? 'text-brand-teal'
+              : 'text-brand-deep/50 hover:text-brand-teal hover:bg-brand-bg-soft',
+          )}
+        >
+          <Clock size={18} />
+        </Link>
+      </li>
     </ul>
   );
 }
@@ -57,6 +76,11 @@ export function Nav() {
               </Link>
             </li>
           ))}
+          <li>
+            <span className="flex items-center justify-center w-9 h-9 rounded-lg text-brand-deep/50">
+              <Clock size={18} />
+            </span>
+          </li>
         </ul>
       }>
         <NavLinks />
