@@ -371,7 +371,7 @@
     "isCommercialPriority": false,
     "service": "general",
     "format": "carousel",
-    "caption": "\"It is risky.\" \"It is painful.\" \"You will need it redone in ten years.\"\n\nThese are the five most common things people tell us before a conversation about laser vision correction. Here is what the evidence actually says.",
+    "caption": "\"It is risky.\" \"It is painful.\" \"It needs redoing in ten years.\"\n\nThese are the five most common things people tell us before a conversation about laser vision correction. Here is what the evidence actually says.",
     "cta": {
       "label": "Save for later",
       "type": "save"
@@ -447,7 +447,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "You will see FRCOphth after the names of our consultant surgeons. It stands for Fellow of the Royal College of Ophthalmologists, the highest professional qualification for eye surgeons in the UK.\n\nIt is not honorary. It requires years of supervised surgical training, written and practical examinations, and ongoing revalidation. Our lead consultants hold it. Here is what that means in practical terms for your care.",
+    "caption": "Our consultant surgeons carry FRCOphth after their names. It stands for Fellow of the Royal College of Ophthalmologists, the highest professional qualification for eye surgeons in the UK.\n\nIt is not honorary. It requires years of supervised surgical training, written and practical examinations and ongoing revalidation. Our lead consultants hold it. Here is what that means in practical terms for your care.",
     "cta": {
       "label": "Meet our consultants",
       "type": "web",
@@ -919,7 +919,7 @@
   {
     "id": "P35",
     "slug": "p35-meet-our-patient-coordinator",
-    "title": "Before you meet a consultant, you will meet our patient coordinator",
+    "title": "Before your first consultation: meet our patient coordinator",
     "pillar": "employee",
     "platforms": [
       "instagram",
@@ -932,7 +932,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
-    "caption": "Before you ever meet a consultant, you will likely speak to our patient coordinator.\n\nShe is the first voice you will hear when you call. She will help you navigate appointments, paperwork and any questions along the way. She is very good at what she does.",
+    "caption": "Before meeting a consultant, patients typically speak to our patient coordinator first.\n\nShe is the first voice patients hear when they call. She helps navigate appointments, paperwork and questions along the way. She is very good at what she does.",
     "cta": {
       "label": "Get in touch",
       "type": "phone",
@@ -1505,7 +1505,7 @@
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Most cataract referrals arrive six months later than they should.\n\nNot because GPs miss the diagnosis. Because patients minimise their symptoms until the visual acuity test at their next routine appointment tells a different story.\n\nHere is what we see at CES Medical when patients finally come through our doors, and what the referral pathway looks like from our end.\n\nSwipe through for the five signs a patient is ready for a cataract conversation, and what to include in the referral to get them seen quickly.\n\nWhat is the most common reason your patients give for not following up a cataract referral? We see the same few answers repeatedly and would be interested to compare notes.",
+    "caption": "Most cataract referrals arrive six months later than they should.\n\nNot because GPs miss the diagnosis. Because patients minimise their symptoms until the visual acuity test at their next routine appointment tells a different story.\n\nHere is what we see at CES Medical when patients finally come through our doors, and what the referral pathway looks like from our end.\n\nSwipe through for the five signs a patient is ready for a cataract conversation and what to include in the referral to get them seen quickly.\n\nWhat is the most common reason your patients give for not following up a cataract referral? We see the same few answers repeatedly and would be interested to compare notes.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1513,7 +1513,7 @@
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
     "linkedInHook": "Most cataract referrals arrive six months later than they should.",
-    "notes": "Slides: (1) Hook. (2) The five signs. (3) Night driving difficulty. (4) Changed reading habits. (5) Colours washed out or lights glary. (6) Glasses prescription changed twice in 18 months. (7) Fall or near miss attributed to clumsiness. (8) What to include in a CES referral. (9) We see 98% within two weeks — self-referral possible. (10) CES Medical logo and cesmedical.co.uk.\n\nPDF document carousel. Deep teal cover. PP Telegraph headlines. Clash Display body. 10 slides. No external link in post body.",
+    "notes": "Slides: (1) Hook. (2) The five signs. (3) Night driving difficulty. (4) Changed reading habits. (5) Colours washed out or lights glary. (6) Glasses prescription changed twice in 18 months. (7) Fall or near miss attributed to clumsiness. (8) What to include in a CES referral. (9) We see 98% within two weeks: self-referral possible. (10) CES Medical logo and cesmedical.co.uk.\n\nPDF document carousel. Deep teal cover. PP Telegraph headlines. Clash Display body. 10 slides. No external link in post body.",
     "sortOrder": 0
   },
   {
@@ -1609,7 +1609,7 @@
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
     "linkedInHook": "We see 98% of patients within two weeks of referral. Here is what happens after that.",
-    "notes": "Slides: (1) From referral to review: the CES Medical private pathway. (2) Step 1: contact — 01732 757771, self-referral available. (3) Step 2: consultation within two weeks. (4) Step 3: discussion and decision, no pressure. (5) Step 4: surgery booked 4 to 6 weeks. (6) Step 5: pre-op with Zeiss IOLMaster 700. (7) Step 6: day-case surgery, same consultant. (8) Step 7: post-op review at 7 days and 4 to 6 weeks, 24-hour helpline 01732 756789. (9) Step 8: discharge with full operative report. (10) CES Medical.\n\nPDF carousel. 10 slides. Dark teal cover.",
+    "notes": "Slides: (1) From referral to review: the CES Medical private pathway. (2) Step 1: contact: 01732 757771, self-referral available. (3) Step 2: consultation within two weeks. (4) Step 3: discussion and decision, no pressure. (5) Step 4: surgery booked 4 to 6 weeks. (6) Step 5: pre-op with Zeiss IOLMaster 700. (7) Step 6: day-case surgery, same consultant. (8) Step 7: post-op review at 7 days and 4 to 6 weeks, 24-hour helpline 01732 756789. (9) Step 8: discharge with full operative report. (10) CES Medical.\n\nPDF carousel. 10 slides. Dark teal cover.",
     "sortOrder": 0
   },
   {
@@ -1633,7 +1633,7 @@
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
     "linkedInHook": "There is a laser procedure for dry AMD that almost no one in the UK knows exists.",
-    "notes": "Slides: (1) There is a laser treatment for dry AMD most patients have never been told about. (2) What AMD is. (3) Wet AMD: established treatments. (4) Dry AMD: historically few options. (5) 2RT: what it is and how it works. (6) Who may be suitable. (7) What the evidence shows (RESTORE trial). (8) What this means in practice. (9) Availability — not widely available in UK. (10) CES Medical medical retina services.\n\nPDF carousel. 10 slides. FLAG: do not schedule until Mr Qureshi has confirmed he is comfortable with brand account publication.",
+    "notes": "Slides: (1) There is a laser treatment for dry AMD most patients have never been told about. (2) What AMD is. (3) Wet AMD: established treatments. (4) Dry AMD: historically few options. (5) 2RT: what it is and how it works. (6) Who may be suitable. (7) What the evidence shows (RESTORE trial). (8) What this means in practice. (9) Availability: not widely available in UK. (10) CES Medical medical retina services.\n\nPDF carousel. 10 slides. FLAG: do not schedule until Mr Qureshi has confirmed he is comfortable with brand account publication.",
     "sortOrder": 0
   },
   {
@@ -1673,7 +1673,7 @@
     "weekNumber": 6,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Vitreous floaters — when to refer and when to reassure. Practical guidance for GPs and optometrists on which presentations need same-day assessment versus routine monitoring.",
+    "caption": "Caption to be written. Topic: Vitreous floaters: when to refer and when to reassure. Practical guidance for GPs and optometrists on which presentations need same-day assessment versus routine monitoring.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1817,7 +1817,7 @@
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Modern corneal transplantation — who needs it, what the procedure involves, different techniques (PKP, DMEK, DSEK), outcomes and what recovery looks like.",
+    "caption": "Caption to be written. Topic: Modern corneal transplantation: who needs it, what the procedure involves, different techniques (PKP, DMEK, DSEK), outcomes and what recovery looks like.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1865,7 +1865,7 @@
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Posterior capsule opacification — what it is, why it happens, how it differs from a recurrent cataract, and how YAG laser capsulotomy treats it quickly and effectively.",
+    "caption": "Caption to be written. Topic: Posterior capsule opacification: what it is, why it happens, how it differs from a recurrent cataract and how YAG laser capsulotomy treats it quickly and effectively.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1889,7 +1889,7 @@
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: What vitreoretinal surgery involves, what conditions require this level of subspecialty training, and why having a vitreoretinal surgeon in Kent matters geographically.",
+    "caption": "Caption to be written. Topic: What vitreoretinal surgery involves, what conditions require this level of subspecialty training and why having a vitreoretinal surgeon in Kent matters geographically.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1961,7 +1961,7 @@
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Keratoconus — what it is, early signs optometrists and GPs can identify, when to refer, what corneal crosslinking involves and who it suits.",
+    "caption": "Caption to be written. Topic: Keratoconus: what it is, early signs optometrists and GPs can identify, when to refer, what corneal crosslinking involves and who it suits.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -1985,7 +1985,7 @@
     "weekNumber": 13,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: What consultant-led care actually means for the referral pathway, for patients, and for insurers. Clinical value of the same consultant from assessment to surgery and post-op review.",
+    "caption": "Caption to be written. Topic: What consultant-led care actually means for the referral pathway, for patients and for insurers. Clinical value of the same consultant from assessment to surgery and post-op review.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -2009,7 +2009,7 @@
     "weekNumber": 13,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Macular hole — what it is, who gets it, what surgery involves, what the face-down positioning period requires, and what visual outcomes look like.",
+    "caption": "Caption to be written. Topic: Macular hole: what it is, who gets it, what surgery involves, what the face-down positioning period requires and what visual outcomes look like.",
     "cta": {
       "label": "See more on cesmedical.co.uk",
       "type": "save"
@@ -2417,7 +2417,7 @@
     "weekNumber": 15,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: Three months of sharing everything — what it produced. Honest reflection on the LinkedIn campaign, what worked, what surprised him, what comes next. Elion to write in his own voice.",
+    "caption": "PLACEHOLDER. Topic: Three months of sharing everything: what it produced. Honest reflection on the LinkedIn campaign, what worked, what surprised him, what comes next. Elion to write in his own voice.",
     "cta": {
       "label": "Follow for more",
       "type": "save"
@@ -2633,7 +2633,7 @@
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "I served as Co-Lead for Revalidation at the Royal College of Ophthalmologists for four years. I want to explain what revalidation actually involves because I think patients and referring clinicians often have a vague sense of it as a box-ticking exercise. It is not.\n\nEvery consultant in the UK undergoes annual appraisal and five-yearly revalidation. To revalidate, a consultant must demonstrate: continuing professional development across the breadth of their practice, clinical outcome data, multi-source feedback from colleagues and patients, a record of significant events and complaints with evidence of reflection and learning, and confirmation that they have no health or conduct issues affecting their practice.\n\nThe appraisal process requires a consultant to sit with an appraiser and work through all of this documentation in detail. It is not a rubber stamp.\n\nWhen I led this process at the Royal College level, I was responsible for ensuring that the standards applied to every ophthalmologist in the country were meaningful. That experience changed how I think about my own practice. You cannot set rigorous standards for others and then hold yourself to a lower bar.\n\nWhen a patient asks me how they know their surgeon is safe to practice, revalidation is part of the answer. Not the whole answer. But a real and important part.\n\nDoes the revalidation process come up in conversations with patients when they are choosing a provider? I am curious whether this is something patients are beginning to ask about directly.",
+    "caption": "I served as Co-Lead for Revalidation at the Royal College of Ophthalmologists for four years. I want to explain what revalidation actually involves because I think patients and referring clinicians often have a vague sense of it as a box-ticking exercise. It is not.\n\nEvery consultant in the UK undergoes annual appraisal and five-yearly revalidation. To revalidate, a consultant must demonstrate: continuing professional development across the breadth of their practice, clinical outcome data, multi-source feedback from colleagues and patients, a record of significant events and complaints with evidence of reflection and learning and confirmation that they have no health or conduct issues affecting their practice.\n\nThe appraisal process requires a consultant to sit with an appraiser and work through all of this documentation in detail. It is not a rubber stamp.\n\nWhen I led this process at the Royal College level, I was responsible for ensuring that the standards applied to every ophthalmologist in the country were meaningful. That experience changed how I think about my own practice. You cannot set rigorous standards for others and then hold yourself to a lower bar.\n\nWhen a patient asks me how they know their surgeon is safe to practice, revalidation is part of the answer. Not the whole answer. But a real and important part.\n\nDoes the revalidation process come up in conversations with patients when they are choosing a provider? I am curious whether this is something patients are beginning to ask about directly.",
     "cta": {
       "label": "Follow for more",
       "type": "save"
@@ -2705,7 +2705,7 @@
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: Keratoconus — early signs optometrists should not miss. When to suspect it, what the refraction pattern looks like, what crosslinking involves, why early intervention matters. Mr Kopsachilis to review before posting.",
+    "caption": "PLACEHOLDER. Topic: Keratoconus: early signs optometrists should not miss. When to suspect it, what the refraction pattern looks like, what crosslinking involves, why early intervention matters. Mr Kopsachilis to review before posting.",
     "cta": {
       "label": "Follow for more",
       "type": "save"
@@ -2729,7 +2729,7 @@
     "weekNumber": 13,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: Vitreous floaters — when reassurance is appropriate and when it is not. Posterior vitreous detachment vs retinal tear. What symptoms change the clinical picture. Mr Qureshi to review before posting.",
+    "caption": "PLACEHOLDER. Topic: Vitreous floaters: when reassurance is appropriate and when it is not. Posterior vitreous detachment vs retinal tear. What symptoms change the clinical picture. Mr Qureshi to review before posting.",
     "cta": {
       "label": "Follow for more",
       "type": "save"
@@ -2745,7 +2745,9 @@
     "slug": "fb01-the-moment-you-realise-your-vision-has-changed",
     "title": "The moment you realise your vision has changed",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-06",
     "weekNumber": 1,
@@ -2767,14 +2769,16 @@
     "slug": "fb02-what-surgery-day-actually-looks-like",
     "title": "What surgery day actually looks like",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-13",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "We hear the same fears every week.\n\n\"Will I be awake?\" Yes, but you will not feel pain. Local anaesthetic drops are used throughout.\n\"Will I see what is happening?\" No. You will see light and movement but not the procedure itself.\n\"What if I move my eye?\" The team is trained for this. It is more common than you think and it does not affect the outcome.\n\"How long does it take?\" Around 15 to 20 minutes per eye.\n\"Can my partner come?\" Yes. They can wait in our reception and be with you immediately after.\n\nSurgery on your eye is frightening to think about. Most patients tell us it was much more manageable than they expected.\n\nIf you have a question that is keeping you from making the first call, ask us.\n\nCall 01732 757771 or comment below and we will come back to you.",
+    "caption": "We hear the same fears every week.\n\n\"Will I be awake?\" Yes, but patients do not feel pain. Local anaesthetic drops are used throughout.\n\"Will I see what is happening?\" No. Patients see light and movement but not the procedure itself.\n\"What if I move my eye?\" The team is trained for this. It is more common than you think and it does not affect the outcome.\n\"How long does it take?\" Around 15 to 20 minutes per eye.\n\"Can my partner come?\" Yes. They can wait in our reception and be with you immediately after.\n\nSurgery on your eye is frightening to think about. Most patients tell us it was much more manageable than they expected.\n\nIf you have a question that is keeping you from making the first call, ask us.\n\nCall 01732 757771 or comment below and we will come back to you.",
     "cta": {
       "label": "Call 01732 757771",
       "type": "phone",
@@ -2789,7 +2793,9 @@
     "slug": "fb03-five-signs-your-parent-might-have-a-cataract",
     "title": "Five signs your parent might have a cataract they have not mentioned",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-20",
     "weekNumber": 3,
@@ -2811,7 +2817,9 @@
     "slug": "fb04-waiting-on-the-nhs-list-for-cataract-surgery",
     "title": "Waiting on the NHS list for cataract surgery",
     "pillar": "business",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-27",
     "weekNumber": 4,
@@ -2833,14 +2841,16 @@
     "slug": "fb05-what-a-cataract-consultation-involves",
     "title": "What a cataract consultation involves",
     "pillar": "business",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-03",
     "weekNumber": 5,
     "isCommercialPriority": true,
     "service": "general",
     "format": "reel",
-    "caption": "Coming to a cataract consultation for the first time?\n\nHere is what actually happens.\n\nYou will be seen by a consultant ophthalmologist. Not a nurse, not a junior doctor. A qualified eye surgeon.\n\nThey will examine your eyes, measure your vision and discuss your options with you.\n\nYou will not be asked to decide anything on the day.\n\nThe first step is finding out where you stand.\n\nCall 01732 757771 or find us at cesmedical.co.uk",
+    "caption": "Coming to a cataract consultation for the first time?\n\nHere is what actually happens.\n\nPatients are seen by a consultant ophthalmologist. Not a nurse, not a junior doctor. A qualified eye surgeon.\n\nThey will examine your eyes, measure your vision and discuss your options with you.\n\nNo decisions are required on the day.\n\nThe first step is finding out where you stand.\n\nCall 01732 757771 or find us at cesmedical.co.uk",
     "cta": {
       "label": "Call 01732 757771",
       "type": "phone",
@@ -2855,7 +2865,9 @@
     "slug": "fb06-drooping-eyelids-and-vision",
     "title": "Drooping eyelids and vision",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-10",
     "weekNumber": 6,
@@ -2877,7 +2889,9 @@
     "slug": "fb07-what-happens-after-cataract-surgery",
     "title": "What happens after cataract surgery",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-17",
     "weekNumber": 7,
@@ -2899,7 +2913,9 @@
     "slug": "fb08-glaucoma-and-family-history",
     "title": "Glaucoma and family history",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-24",
     "weekNumber": 8,
@@ -2919,9 +2935,11 @@
   {
     "id": "FB09",
     "slug": "fb09-patient-story-susan",
-    "title": "Patient story — Susan",
+    "title": "Patient story: Susan",
     "pillar": "employee",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-01",
     "weekNumber": 9,
@@ -2942,9 +2960,11 @@
   {
     "id": "FB10",
     "slug": "fb10-diabetes-and-eyes-the-annual-check-reminder",
-    "title": "Diabetes and eyes — the annual check reminder",
+    "title": "Diabetes and eyes: the annual check reminder",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-08",
     "weekNumber": 10,
@@ -2966,7 +2986,9 @@
     "slug": "fb11-your-questions-about-eyelid-surgery-answered",
     "title": "Your questions about eyelid surgery, answered honestly",
     "pillar": "educational",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-15",
     "weekNumber": 11,
@@ -2988,7 +3010,9 @@
     "slug": "fb12-three-months-of-ces-medical-on-facebook",
     "title": "Three months of CES Medical on Facebook",
     "pillar": "leadership",
-    "platforms": ["facebook"],
+    "platforms": [
+      "facebook"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-22",
     "weekNumber": 12,
@@ -3010,7 +3034,9 @@
     "slug": "ig01-what-your-opticians-referral-letter-actually-means",
     "title": "What your optician's referral letter actually means",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-06",
     "weekNumber": 1,
@@ -3032,7 +3058,9 @@
     "slug": "ig02-what-a-cataract-actually-looks-like-from-the-inside",
     "title": "What a cataract actually looks like from the inside",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-13",
     "weekNumber": 2,
@@ -3051,9 +3079,11 @@
   {
     "id": "IG03",
     "slug": "ig03-lens-options-for-cataract-surgery-the-honest-comparison",
-    "title": "Lens options for cataract surgery — the honest comparison",
+    "title": "Lens options for cataract surgery: the honest comparison",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-20",
     "weekNumber": 3,
@@ -3073,9 +3103,11 @@
   {
     "id": "IG04",
     "slug": "ig04-what-does-eyelid-surgery-actually-look-like",
-    "title": "What does eyelid surgery actually look like? — Leonna behind the scenes",
+    "title": "What does eyelid surgery actually look like? Leonna behind the scenes",
     "pillar": "premises",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-27",
     "weekNumber": 4,
@@ -3097,7 +3129,9 @@
     "slug": "ig05-five-things-to-look-for-in-a-private-ophthalmology-provider",
     "title": "Five things to look for in a private ophthalmology provider",
     "pillar": "business",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-03",
     "weekNumber": 5,
@@ -3117,9 +3151,11 @@
   {
     "id": "IG06",
     "slug": "ig06-patient-story-anna-eyelid-surgery",
-    "title": "Patient story — Anna, eyelid surgery",
+    "title": "Patient story: Anna, eyelid surgery",
     "pillar": "employee",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-10",
     "weekNumber": 6,
@@ -3140,9 +3176,11 @@
   {
     "id": "IG07",
     "slug": "ig07-glaucoma-everything-you-need-to-know-if-just-diagnosed",
-    "title": "Glaucoma — everything you need to know if you have just been diagnosed",
+    "title": "Glaucoma: everything you need to know if you have just been diagnosed",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-17",
     "weekNumber": 7,
@@ -3162,9 +3200,11 @@
   {
     "id": "IG08",
     "slug": "ig08-a-morning-at-chatham-surgical-centre-leonna",
-    "title": "A morning at Chatham surgical centre — Leonna",
+    "title": "A morning at Chatham surgical centre with Leonna",
     "pillar": "premises",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-24",
     "weekNumber": 8,
@@ -3184,9 +3224,11 @@
   {
     "id": "IG09",
     "slug": "ig09-dry-eye-why-it-is-being-under-treated",
-    "title": "Dry eye — why it is being under-treated",
+    "title": "Dry eye: why it is being under-treated",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-01",
     "weekNumber": 9,
@@ -3206,9 +3248,11 @@
   {
     "id": "IG10",
     "slug": "ig10-meet-mr-kopsachilis-on-corneal-transplantation",
-    "title": "Meet Mr Kopsachilis — corneal transplantation explained",
+    "title": "Meet Mr Kopsachilis: corneal transplantation explained",
     "pillar": "leadership",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-08",
     "weekNumber": 10,
@@ -3231,7 +3275,9 @@
     "slug": "ig11-what-does-recovery-from-cataract-surgery-actually-look-like",
     "title": "What does recovery from cataract surgery actually look like?",
     "pillar": "educational",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-15",
     "weekNumber": 11,
@@ -3251,9 +3297,11 @@
   {
     "id": "IG12",
     "slug": "ig12-patient-story-susans-cataract-journey",
-    "title": "Patient story — Susan's cataract journey",
+    "title": "Patient story: Susan's cataract journey",
     "pillar": "employee",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-22",
     "weekNumber": 12,
@@ -3274,9 +3322,11 @@
   {
     "id": "IG13",
     "slug": "ig13-three-months-of-ces-medical-on-instagram",
-    "title": "Three months of CES Medical on Instagram — what you asked us most",
+    "title": "Three months of CES Medical on Instagram: what you asked us most",
     "pillar": "leadership",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-29",
     "weekNumber": 13,
@@ -3296,9 +3346,11 @@
   {
     "id": "IG14",
     "slug": "ig14-stories-daily-behind-the-scenes-and-polls",
-    "title": "Stories — daily behind the scenes and polls (throughout campaign)",
+    "title": "Stories: daily behind the scenes and polls (throughout campaign)",
     "pillar": "premises",
-    "platforms": ["instagram"],
+    "platforms": [
+      "instagram"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-06",
     "weekNumber": 1,
@@ -3319,14 +3371,16 @@
     "slug": "yt-lf01-cataract-surgery-explained",
     "title": "Cataract Surgery Explained | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-15",
     "weekNumber": 3,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "video",
-    "caption": "In this video, our FRCOphth-qualified consultant ophthalmologists explain everything you need to know about cataract surgery at CES Medical in Kent.\n\nWe cover: what a cataract is and when it needs treating, the technology we use to plan your surgery (Zeiss IOLMaster 700), how to choose the right lens (monofocal, multifocal, EDOF or toric), what surgery day looks like at our Chatham centre, and how to recover well in the first week.\n\nCES Medical provides consultant-led cataract surgery across Kent, including Chatham, Headcorn, Tunbridge Wells and Southborough. Most patients are seen within two weeks of their first enquiry.\n\nTo book a private consultation or ask a question: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/cataract-surgery\nFind your nearest clinic: https://cesmedical.co.uk\n\nChapters:\n0:00 What is a cataract?\n2:00 When does it need treating?\n3:30 How is surgery planned?\n5:00 Which lens is right for you?\n7:00 What does surgery day look like?\n8:30 Recovery guide\n10:00 Questions to ask your surgeon\n11:00 Next steps at CES Medical",
+    "caption": "In this video, our FRCOphth-qualified consultant ophthalmologists explain everything you need to know about cataract surgery at CES Medical in Kent.\n\nWe cover: what a cataract is and when it needs treating, the technology we use to plan your surgery (Zeiss IOLMaster 700), how to choose the right lens (monofocal, multifocal, EDOF or toric), what surgery day looks like at our Chatham centre and how to recover well in the first week.\n\nCES Medical provides consultant-led cataract surgery across Kent, including Chatham, Headcorn, Tunbridge Wells and Southborough. Most patients are seen within two weeks of their first enquiry.\n\nTo book a private consultation or ask a question: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/cataract-surgery\nFind your nearest clinic: https://cesmedical.co.uk\n\nChapters:\n0:00 What is a cataract?\n2:00 When does it need treating?\n3:30 How is surgery planned?\n5:00 Which lens is right for you?\n7:00 What does surgery day look like?\n8:30 Recovery guide\n10:00 Questions to ask your surgeon\n11:00 Next steps at CES Medical",
     "cta": {
       "label": "cespatientinformation.co.uk",
       "type": "web",
@@ -3342,14 +3396,16 @@
     "slug": "yt-lf02-eyelid-surgery-explained",
     "title": "Eyelid Surgery Explained | Functional and Cosmetic | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-12",
     "weekNumber": 7,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "video",
-    "caption": "Mr Nick Kopsachilis, consultant oculoplastic surgeon at CES Medical, explains everything you need to know about eyelid surgery, including how to tell whether your condition is functional (medical) or cosmetic, why specialist ophthalmological training matters for this procedure, what the consultation involves, what recovery looks like day by day, and whether your private medical insurance may cover the treatment.\n\nCES Medical offers oculoplastic surgery at Tunbridge Wells and Headcorn. Our consultants hold FRCOphth (Fellow of the Royal College of Ophthalmologists) plus additional subspecialty training.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk\n\nChapters:\n0:00 Functional vs cosmetic eyelids\n2:00 Why an oculoplastic surgeon?\n3:30 What happens at consultation?\n5:00 The procedure\n6:30 Recovery guide\n8:00 Insurance coverage\n9:00 Next steps",
+    "caption": "Mr Nick Kopsachilis, consultant oculoplastic surgeon at CES Medical, explains everything you need to know about eyelid surgery, including how to tell whether your condition is functional (medical) or cosmetic, why specialist ophthalmological training matters for this procedure, what the consultation involves, what recovery looks like day by day and whether your private medical insurance may cover the treatment.\n\nCES Medical offers oculoplastic surgery at Tunbridge Wells and Headcorn. Our consultants hold FRCOphth (Fellow of the Royal College of Ophthalmologists) plus additional subspecialty training.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk\n\nChapters:\n0:00 Functional vs cosmetic eyelids\n2:00 Why an oculoplastic surgeon?\n3:30 What happens at consultation?\n5:00 The procedure\n6:30 Recovery guide\n8:00 Insurance coverage\n9:00 Next steps",
     "cta": {
       "label": "cespatientinformation.co.uk",
       "type": "web",
@@ -3365,14 +3421,16 @@
     "slug": "yt-lf03-glaucoma-explained",
     "title": "Glaucoma Explained | Diagnosis and Treatment | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-26",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "glaucoma",
     "format": "video",
-    "caption": "If you or someone you love has recently been diagnosed with glaucoma, this video is for you. Our team at CES Medical explains what glaucoma is, how it is diagnosed, what the treatment options are (including eye drops, SLT laser and surgery), and what living with managed glaucoma looks like long term.\n\nCES Medical provides glaucoma diagnosis and management across Kent, including Chatham, Headcorn and Southborough.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/glaucoma",
+    "caption": "If you or someone you love has recently been diagnosed with glaucoma, this video is for you. Our team at CES Medical explains what glaucoma is, how it is diagnosed, what the treatment options are (including eye drops, SLT laser and surgery) and what living with managed glaucoma looks like long term.\n\nCES Medical provides glaucoma diagnosis and management across Kent, including Chatham, Headcorn and Southborough.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/glaucoma",
     "cta": {
       "label": "cespatientinformation.co.uk/glaucoma",
       "type": "web",
@@ -3388,7 +3446,9 @@
     "slug": "yt-lf04-vitreoretinal-surgery-retinal-detachment",
     "title": "Retinal Detachment Warning Signs | Vitreoretinal Surgery | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-10",
     "weekNumber": 11,
@@ -3411,7 +3471,9 @@
     "slug": "yt-lf05-corneal-transplantation-explained",
     "title": "Corneal Transplantation Explained | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-17",
     "weekNumber": 12,
@@ -3434,7 +3496,9 @@
     "slug": "yt-lf06-dry-eye-and-ipl-treatment",
     "title": "Dry Eye and IPL Treatment Explained | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-19",
     "weekNumber": 8,
@@ -3456,7 +3520,9 @@
     "slug": "yt-lf07-premium-lens-implants-full-guide",
     "title": "Premium Lens Implants | The Full Guide | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-29",
     "weekNumber": 5,
@@ -3478,14 +3544,16 @@
     "slug": "yt-lf08-diabetic-retinopathy-screening-management",
     "title": "Diabetic Retinopathy | Screening and Management | CES Medical Kent",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-03",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "general",
     "format": "video",
-    "caption": "Mr Syed Shahid explains diabetic retinopathy: what it is, how it is detected through screening, what the stages mean, and what treatment options are available at CES Medical.\n\nIf you have diabetes, this video explains why your annual eye screening appointment matters and what happens if you are referred for specialist care.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
+    "caption": "Mr Syed Shahid explains diabetic retinopathy: what it is, how it is detected through screening, what the stages mean and what treatment options are available at CES Medical.\n\nIf you have diabetes, this video explains why your annual eye screening appointment matters and what happens if you are referred for specialist care.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
       "type": "web",
@@ -3501,14 +3569,16 @@
     "slug": "yt-ci01-mr-nick-kopsachilis-interview",
     "title": "Mr Nick Kopsachilis | Corneal Surgeon | CES Medical Kent",
     "pillar": "leadership",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-22",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "corneal",
     "format": "video",
-    "caption": "In this interview, Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon at CES Medical, discusses his approach to complex corneal surgery, his international training in Munich, Moorfields and King's College London, his research into corneal transplantation, and what patients can expect at their first consultation at CES Medical.\n\nMr Kopsachilis holds an MD, PhD and Postgraduate Diploma in Cataract and Refractive Surgery (awarded with distinction). He leads the corneal and premium lens service at CES Medical across Headcorn, Pantiles, Chatham and Southborough.\n\nChapters:\n0:00 Why CES Medical?\n3:00 What Global Care for Local People means\n6:00 NHS vs private: the honest comparison\n9:00 What does an oculoplastic surgeon do?\n12:00 Corneal transplantation explained\n16:00 Premium lenses and who they suit\n19:00 Questions to ask before surgery",
+    "caption": "In this interview, Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon at CES Medical, discusses his approach to complex corneal surgery, his international training in Munich, Moorfields and King's College London, his research into corneal transplantation and what patients can expect at their first consultation at CES Medical.\n\nMr Kopsachilis holds an MD, PhD and Postgraduate Diploma in Cataract and Refractive Surgery (awarded with distinction). He leads the corneal and premium lens service at CES Medical across Headcorn, Pantiles, Chatham and Southborough.\n\nChapters:\n0:00 Why CES Medical?\n3:00 What Global Care for Local People means\n6:00 NHS vs private: the honest comparison\n9:00 What does an oculoplastic surgeon do?\n12:00 Corneal transplantation explained\n16:00 Premium lenses and who they suit\n19:00 Questions to ask before surgery",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
       "type": "web",
@@ -3524,14 +3594,16 @@
     "slug": "yt-ci02-mr-kashif-qureshi-interview",
     "title": "Mr Kashif Qureshi | Medical Retina | CES Medical Kent",
     "pillar": "leadership",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-29",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "medical-retina",
     "format": "video",
-    "caption": "Mr Kashif Qureshi, Consultant Ophthalmic Surgeon and Medical Retina Specialist at CES Medical, discusses his philosophy on patient-centred eye care, the conditions he treats, and the specialist services he offers at Pantiles and Headcorn.\n\nMr Qureshi trained at Guy's and St Thomas's Hospitals, Manchester Royal Eye Hospital and Moorfields Eye Hospital. He holds BSc MBBS FRCOphth and served as Co-Lead for Revalidation at the Royal College of Ophthalmologists.\n\nTo book: 01732 757771 | cesmedical.co.uk",
+    "caption": "Mr Kashif Qureshi, Consultant Ophthalmic Surgeon and Medical Retina Specialist at CES Medical, discusses his philosophy on patient-centred eye care, the conditions he treats and the specialist services he offers at Pantiles and Headcorn.\n\nMr Qureshi trained at Guy's and St Thomas's Hospitals, Manchester Royal Eye Hospital and Moorfields Eye Hospital. He holds BSc MBBS FRCOphth and served as Co-Lead for Revalidation at the Royal College of Ophthalmologists.\n\nTo book: 01732 757771 | cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
       "type": "web",
@@ -3547,14 +3619,16 @@
     "slug": "yt-ci03-mr-syed-shahid-interview",
     "title": "Mr Syed Shahid | Vitreoretinal Surgeon | CES Medical Kent",
     "pillar": "leadership",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-05",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
     "format": "video",
-    "caption": "Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon at CES Medical, discusses his training at Moorfields Eye Hospital, his specialist work in retinal surgery, and what patients in Kent can expect when referred for vitreoretinal conditions.\n\nTo book: 01732 757771 | cesmedical.co.uk",
+    "caption": "Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon at CES Medical, discusses his training at Moorfields Eye Hospital, his specialist work in retinal surgery and what patients in Kent can expect when referred for vitreoretinal conditions.\n\nTo book: 01732 757771 | cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
       "type": "web",
@@ -3570,7 +3644,9 @@
     "slug": "yt-ci04-elion-hyseni-founder-interview",
     "title": "Elion Hyseni | Founder of CES Medical | Global Care for Local People",
     "pillar": "leadership",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-19",
     "weekNumber": 8,
@@ -3593,7 +3669,9 @@
     "slug": "yt-ps01-susan-cataract-story",
     "title": "Susan's Cataract Journey | Before and After | CES Medical Kent",
     "pillar": "employee",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-29",
     "weekNumber": 5,
@@ -3616,7 +3694,9 @@
     "slug": "yt-ps02-james-urgent-eye-treatment",
     "title": "Urgent Eye Treatment | James's Experience | CES Medical Kent",
     "pillar": "employee",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-26",
     "weekNumber": 9,
@@ -3639,7 +3719,9 @@
     "slug": "yt-ps03-anna-eyelid-surgery-story",
     "title": "Eyelid Surgery Patient Story | Anna's Experience | CES Medical Kent",
     "pillar": "employee",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-17",
     "weekNumber": 12,
@@ -3662,7 +3744,9 @@
     "slug": "yt-ps04-glaucoma-patient-story",
     "title": "Glaucoma Patient Story | Early Diagnosis | CES Medical Kent",
     "pillar": "employee",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-31",
     "weekNumber": 14,
@@ -3685,7 +3769,9 @@
     "slug": "yt-s01-what-does-a-cataract-feel-like-shorts",
     "title": "What does a cataract feel like? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-16",
     "weekNumber": 3,
@@ -3708,7 +3794,9 @@
     "slug": "yt-s02-five-signs-cataract-shorts",
     "title": "Five signs your parent might have a cataract #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-05-30",
     "weekNumber": 5,
@@ -3730,7 +3818,9 @@
     "slug": "yt-s03-what-is-yag-capsulotomy-shorts",
     "title": "What is YAG capsulotomy? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-13",
     "weekNumber": 7,
@@ -3753,7 +3843,9 @@
     "slug": "yt-s04-retinal-detachment-warning-signs-shorts",
     "title": "Warning signs of retinal detachment #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-27",
     "weekNumber": 9,
@@ -3776,7 +3868,9 @@
     "slug": "yt-s05-eyelid-surgery-recovery-shorts",
     "title": "What does eyelid surgery recovery look like? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-11",
     "weekNumber": 11,
@@ -3799,7 +3893,9 @@
     "slug": "yt-s06-what-is-corneal-transplant-shorts",
     "title": "What is a corneal transplant? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-18",
     "weekNumber": 12,
@@ -3822,7 +3918,9 @@
     "slug": "yt-s07-glaucoma-has-no-symptoms-shorts",
     "title": "Glaucoma has no symptoms. Here is why that matters. #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-06",
     "weekNumber": 6,
@@ -3844,7 +3942,9 @@
     "slug": "yt-s08-monofocal-vs-multifocal-lens-shorts",
     "title": "Monofocal vs multifocal lens in 60 seconds #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-06-20",
     "weekNumber": 8,
@@ -3867,7 +3967,9 @@
     "slug": "yt-s09-what-is-cataract-consultation-shorts",
     "title": "What does a cataract consultation involve? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-04",
     "weekNumber": 10,
@@ -3890,7 +3992,9 @@
     "slug": "yt-s10-drooping-eyelid-medical-condition-shorts",
     "title": "Is your drooping eyelid a medical condition? #Shorts",
     "pillar": "educational",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "status": "draft",
     "scheduledDate": "2026-07-25",
     "weekNumber": 13,
