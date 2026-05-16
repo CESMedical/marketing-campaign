@@ -31,6 +31,8 @@ model Post {
   images               Json?
   videoRelationship    String?
   videoReference       String?
+  linkedInAccount      String?
+  linkedInHook         String?   @db.Text
   notes                String?   @db.Text
   tags                 Json?
   sortOrder            Int       @default(0)

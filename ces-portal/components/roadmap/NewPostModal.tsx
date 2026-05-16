@@ -8,7 +8,7 @@ const ALL_PILLARS: Pillar[] = ['educational', 'business', 'premises', 'employee'
 const ALL_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
 const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
 const FORMAT_LABELS: Record<Format, string> = {
-  'single-image': 'Single Image', carousel: 'Carousel', reel: 'Reel',
+  'single-image': 'Single Image', carousel: 'Carousel', 'document-carousel': 'Document Carousel (PDF)', reel: 'Reel',
   story: 'Story', video: 'Video', text: 'Text',
 }
 const PILLAR_COLOR: Record<string, string> = {

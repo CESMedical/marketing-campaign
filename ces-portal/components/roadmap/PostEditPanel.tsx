@@ -8,7 +8,7 @@ import { ImageLightbox } from '@/components/ui/ImageLightbox'
 
 const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
 const FORMAT_LABELS: Record<Format, string> = {
-  'single-image': 'Single Image', carousel: 'Carousel', reel: 'Reel',
+  'single-image': 'Single Image', carousel: 'Carousel', 'document-carousel': 'Document Carousel (PDF)', reel: 'Reel',
   story: 'Story', video: 'Video', text: 'Text',
 }
 

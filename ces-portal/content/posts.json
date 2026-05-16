@@ -1491,5 +1491,1253 @@
     "videoRelationship": "direct-snippet",
     "videoReference": "EH-B3, EH-C6",
     "sortOrder": 1
+  },
+  {
+    "id": "LI-B01",
+    "slug": "li-b01-five-signs-a-patient-is-ready-for-a-cataract-referral",
+    "title": "Five signs a patient is ready for a cataract referral",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-18",
+    "weekNumber": 3,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Most cataract referrals arrive six months later than they should.\n\nNot because GPs miss the diagnosis. Because patients minimise their symptoms until the visual acuity test at their next routine appointment tells a different story.\n\nHere is what we see at CES Medical when patients finally come through our doors, and what the referral pathway looks like from our end.\n\nSwipe through for the five signs a patient is ready for a cataract conversation, and what to include in the referral to get them seen quickly.\n\nWhat is the most common reason your patients give for not following up a cataract referral? We see the same few answers repeatedly and would be interested to compare notes.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Most cataract referrals arrive six months later than they should.",
+    "notes": "Slides: (1) Hook. (2) The five signs. (3) Night driving difficulty. (4) Changed reading habits. (5) Colours washed out or lights glary. (6) Glasses prescription changed twice in 18 months. (7) Fall or near miss attributed to clumsiness. (8) What to include in a CES referral. (9) We see 98% within two weeks — self-referral possible. (10) CES Medical logo and cesmedical.co.uk.\n\nPDF document carousel. Deep teal cover. PP Telegraph headlines. Clash Display body. 10 slides. No external link in post body.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B02",
+    "slug": "li-b02-what-your-pmi-policy-probably-covers-that-you-have-not-claim",
+    "title": "What your PMI policy probably covers that you have not claimed yet",
+    "pillar": "business",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-21",
+    "weekNumber": 3,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Private medical insurers cover more eye procedures than most policyholders realise.\n\nFunctional eyelid surgery. Cataract surgery. Glaucoma management. IVT injections for AMD. In most Bupa, AXA Health, Vitality and WPA policies, these are covered conditions.\n\nThe gap is not in the policy. It is in the patient not knowing to ask.\n\nSwipe through for the procedures we routinely treat under PMI at CES Medical and what the pre-authorisation process looks like from the patient's side.\n\nHow often do your patients or clients discover they had eye cover they had not claimed? We would be interested in whether this is a common experience across the industry.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Private medical insurers cover more eye procedures than most policyholders realise.",
+    "notes": "Slides: (1) What your eye policy probably covers that you have not claimed yet. (2) Cataract surgery. (3) Functional eyelid surgery. (4) Glaucoma management. (5) IVT injections for AMD. (6) Insurers we work with: Bupa, AXA Health, Vitality, WPA. (7) How pre-authorisation works at CES. (8) Self-referral without GP letter. (9) One conversation is usually enough. (10) CES Medical.\n\nPDF carousel. Teal cover. 10 slides.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B03",
+    "slug": "li-b03-functional-or-cosmetic-the-eyelid-question-that-changes-ever",
+    "title": "Functional or cosmetic? The eyelid question that changes everything",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-25",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "The difference between a functional and a cosmetic eyelid procedure is not always obvious. Even to the patient.\n\nWe see this regularly at our Tunbridge Wells and Headcorn clinics. A patient books thinking they want cosmetic blepharoplasty. At consultation, we discover the drooping lid is cutting into their visual field. That changes everything: the pathway, the consent process and in many cases the funding.\n\nSwipe through for how we distinguish between the two and what it means for referral and treatment.\n\nHow often do you see patients who have self-diagnosed a cosmetic issue that turns out to have a functional component? It would be useful to understand how common this is from a GP perspective.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "The difference between a functional and a cosmetic eyelid procedure is not always obvious. Even to the patient.",
+    "notes": "Slides: (1) Functional or cosmetic? The eyelid question that changes everything. (2) Ptosis defined. (3) Functional ptosis repair: medical indication, PMI-coverable. (4) Cosmetic blepharoplasty: elective, self-funded. (5) Same surgeon, same standards, different pathways. (6) What we assess at consultation. (7) For GPs referring with suspected functional ptosis. (8) For patients: peripheral vision affected warrants assessment. (9) Our oculoplastic consultants hold FRCOphth. (10) CES Medical.\n\nPDF carousel. 10 slides.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B04",
+    "slug": "li-b04-glaucoma-has-no-symptoms-in-the-early-stages",
+    "title": "Glaucoma has no symptoms in the early stages",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-28",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Glaucoma has no symptoms in the early stages. That is what makes it dangerous.\n\nBy the time a patient notices a change in their peripheral vision, some damage has already occurred. And unlike a cataract, that damage cannot be reversed. It can only be slowed.\n\nSwipe through for what we look for at a glaucoma assessment at CES Medical and who should be prioritised for screening.\n\nIn your experience, what is the most common barrier to earlier glaucoma detection in your patient population? We are trying to understand where the referral pathway breaks down.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Glaucoma has no symptoms in the early stages. That is what makes it dangerous.",
+    "notes": "Slides: (1) Hook. (2) What glaucoma does. (3) Who is at higher risk. (4) What a CES glaucoma assessment includes. (5) Management: drops and SLT. (6) SLT at CES: five-minute outpatient procedure. (7) The referral threshold. (8) For patients: eye exam over 40. (9) NHS and PMI accepted. (10) CES Medical.\n\nPDF carousel. 10 slides. Teal cover.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B05",
+    "slug": "li-b05-from-referral-to-review-the-ces-medical-private-pathway",
+    "title": "From referral to review: the CES Medical private pathway",
+    "pillar": "business",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-01",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "We see 98% of patients within two weeks of referral. Here is what happens after that.\n\nOne of the most common questions we get from GP colleagues is what the patient experience looks like once they arrive at CES. What is the consultation like, who do they see and how quickly does treatment follow assessment.\n\nSwipe through for the full private pathway from first contact to post-operative review.\n\nWhat is the one piece of information that would make your GP referrals to private providers easier or more confident? We are reviewing our referral documentation and would find direct feedback genuinely useful.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "We see 98% of patients within two weeks of referral. Here is what happens after that.",
+    "notes": "Slides: (1) From referral to review: the CES Medical private pathway. (2) Step 1: contact — 01732 757771, self-referral available. (3) Step 2: consultation within two weeks. (4) Step 3: discussion and decision, no pressure. (5) Step 4: surgery booked 4 to 6 weeks. (6) Step 5: pre-op with Zeiss IOLMaster 700. (7) Step 6: day-case surgery, same consultant. (8) Step 7: post-op review at 7 days and 4 to 6 weeks, 24-hour helpline 01732 756789. (9) Step 8: discharge with full operative report. (10) CES Medical.\n\nPDF carousel. 10 slides. Dark teal cover.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B06",
+    "slug": "li-b06-2rt-nanopulse-laser-for-dry-amd",
+    "title": "2RT nanopulse laser for dry AMD",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-04",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "There is a laser procedure for dry AMD that almost no one in the UK knows exists.\n\nDry age-related macular degeneration affects the central vision. For most patients, the advice has historically been: manage your risk factors and wait. The wet form has treatments. The dry form, until recently, has had very few.\n\nThe 2RT nanopulse laser changes that picture for some patients. One of our consultants at CES Medical is one of a very small number of specialists in the UK with experience using it.\n\nSwipe through for what 2RT is, who it suits and what the evidence currently shows.\n\nHow often do you have conversations with dry AMD patients where the available options feel inadequate? We would be interested to understand whether this is a gap GPs and optometrists encounter regularly.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "There is a laser procedure for dry AMD that almost no one in the UK knows exists.",
+    "notes": "Slides: (1) There is a laser treatment for dry AMD most patients have never been told about. (2) What AMD is. (3) Wet AMD: established treatments. (4) Dry AMD: historically few options. (5) 2RT: what it is and how it works. (6) Who may be suitable. (7) What the evidence shows (RESTORE trial). (8) What this means in practice. (9) Availability — not widely available in UK. (10) CES Medical medical retina services.\n\nPDF carousel. 10 slides. FLAG: do not schedule until Mr Qureshi has confirmed he is comfortable with brand account publication.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B07",
+    "slug": "li-b07-what-happens-at-a-first-cataract-consultation",
+    "title": "What happens at a first cataract consultation",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-08",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What happens at a first cataract consultation at CES Medical. Walk through the full appointment so patients know what to expect before they arrive. Demystify the process. End with a question for patients or GPs.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Most patients do not know what to expect at their first cataract consultation. Here is exactly what happens.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B08",
+    "slug": "li-b08-vitreous-floaters-when-to-refer-and-when-to-reassure",
+    "title": "Vitreous floaters: when to refer and when to reassure",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-11",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Vitreous floaters — when to refer and when to reassure. Practical guidance for GPs and optometrists on which presentations need same-day assessment versus routine monitoring.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Most vitreous floaters are harmless. Some are not. Here is how to tell the difference.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B09",
+    "slug": "li-b09-the-case-for-slt-over-drops-in-newly-diagnosed-glaucoma",
+    "title": "The case for SLT over drops in newly diagnosed glaucoma",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-15",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: SLT (selective laser trabeculoplasty) as a first-line treatment in newly diagnosed glaucoma. Clinical evidence, patient compliance benefits, when it is appropriate. Written for GPs and optometrists.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "For newly diagnosed glaucoma, drops are not always the right first step.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B10",
+    "slug": "li-b10-five-things-patients-get-wrong-about-eyelid-surgery",
+    "title": "Five things patients get wrong about eyelid surgery",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-18",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Five things patients get wrong about eyelid surgery. Common misconceptions about recovery, results, who should perform it and whether insurance covers it.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Eyelid surgery is the most misunderstood procedure we perform.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B11",
+    "slug": "li-b11-diabetic-retinopathy-what-the-screening-result-means-in-prac",
+    "title": "Diabetic retinopathy: what the screening result means in practice",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-22",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What diabetic retinopathy screening results mean in clinical practice. What R1/R2/M1 etc. mean. When to refer. What happens at a CES medical retina assessment.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "A diabetic retinopathy screening result is not a diagnosis. Here is what it actually means.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B12",
+    "slug": "li-b12-dry-eye-when-ipl-is-worth-considering",
+    "title": "Dry eye: when IPL is worth considering",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-25",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: IPL (Intense Pulsed Light) treatment for dry eye. Who it suits, what the evidence shows, when to consider it beyond conventional management.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "For many dry eye patients, drops alone are not enough. Here is what comes next.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B13",
+    "slug": "li-b13-what-frcophth-means-and-why-it-matters-to-your-patient",
+    "title": "What FRCOphth means and why it matters to your patient",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-29",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What the FRCOphth qualification actually means. Training requirements, examination process, ongoing revalidation. Why it matters when choosing a surgeon.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "FRCOphth is not honorary. Here is what it demands.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B14",
+    "slug": "li-b14-corneal-transplantation-who-needs-it-and-what-to-expect",
+    "title": "Corneal transplantation: who needs it and what to expect",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-02",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Modern corneal transplantation — who needs it, what the procedure involves, different techniques (PKP, DMEK, DSEK), outcomes and what recovery looks like.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Corneal transplantation has changed more in the past decade than almost any other ophthalmic procedure.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B15",
+    "slug": "li-b15-nhs-vs-private-the-honest-comparison-for-cataract-patients",
+    "title": "NHS vs private: the honest comparison for cataract patients",
+    "pillar": "business",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-06",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: An honest comparison of NHS and private cataract pathways. Same consultants, same standards. Different access speed, lens options and time at consultation. No false claims.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "The honest answer about NHS and private cataract surgery is not what most people expect.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B16",
+    "slug": "li-b16-posterior-capsule-opacification-the-cataract-that-is-not-a-c",
+    "title": "Posterior capsule opacification: the cataract that is not a cataract",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-09",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Posterior capsule opacification — what it is, why it happens, how it differs from a recurrent cataract, and how YAG laser capsulotomy treats it quickly and effectively.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "If your vision has clouded again months after cataract surgery, the cataract has not come back.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B17",
+    "slug": "li-b17-what-a-vitreoretinal-surgeon-does-that-a-general-ophthalmolo",
+    "title": "What a vitreoretinal surgeon does that a general ophthalmologist cannot",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-13",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What vitreoretinal surgery involves, what conditions require this level of subspecialty training, and why having a vitreoretinal surgeon in Kent matters geographically.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Vitreoretinal surgery is a subspecialty for a reason.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B18",
+    "slug": "li-b18-retinal-detachment-the-signs-that-need-same-day-assessment",
+    "title": "Retinal detachment: the signs that need same-day assessment",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-16",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Warning signs of retinal detachment and why speed matters. The clinical difference between macula-on and macula-off detachments. What GPs should do when a patient presents with these symptoms.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Retinal detachment is a surgical emergency. Most patients do not know that.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B19",
+    "slug": "li-b19-premium-lens-implants-the-questions-patients-should-ask-befo",
+    "title": "Premium lens implants: the questions patients should ask before deciding",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-20",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Five questions patients should ask their surgeon before agreeing to a premium lens implant. Lens selection, trade-offs, driving at night, surgical volume, what is included in the package.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "The lens conversation is the most important part of any cataract consultation.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B20",
+    "slug": "li-b20-keratoconus-early-detection-and-when-to-refer-for-crosslinki",
+    "title": "Keratoconus: early detection and when to refer for crosslinking",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-23",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Keratoconus — what it is, early signs optometrists and GPs can identify, when to refer, what corneal crosslinking involves and who it suits.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Keratoconus is most treatable when caught early. Most patients present late.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B21",
+    "slug": "li-b21-the-consultant-led-model-what-it-means-for-continuity-of-car",
+    "title": "The consultant-led model: what it means for continuity of care",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-27",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What consultant-led care actually means for the referral pathway, for patients, and for insurers. Clinical value of the same consultant from assessment to surgery and post-op review.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Continuity of care is not a differentiator. It should be the standard.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B22",
+    "slug": "li-b22-macular-hole-surgery-outcomes-and-what-patients-can-expect",
+    "title": "Macular hole surgery: outcomes and what patients can expect",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-30",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Macular hole — what it is, who gets it, what surgery involves, what the face-down positioning period requires, and what visual outcomes look like.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Macular hole surgery has one of the highest anatomical success rates in vitreoretinal surgery.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B23",
+    "slug": "li-b23-independent-prescribing-optometrists-what-they-can-and-canno",
+    "title": "Independent prescribing optometrists: what they can and cannot do",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-03",
+    "weekNumber": 14,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: The difference between a community optometrist and an independent prescribing clinical optometrist with specialist qualifications. What the wider scope means for GPs in terms of referral decisions and co-management.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Not all optometrists have the same scope of practice.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B24",
+    "slug": "li-b24-eyelid-surgery-recovery-the-honest-week-by-week-guide",
+    "title": "Eyelid surgery recovery: the honest week-by-week guide",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-06",
+    "weekNumber": 14,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Honest week-by-week guide to eyelid surgery recovery. Bruising timeline, stitch removal, return to activity, when the result settles, what varies between patients.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "The most common question before eyelid surgery is not about the procedure. It is about the recovery.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B25",
+    "slug": "li-b25-three-months-of-ces-medical-on-linkedin-what-you-asked-us-mo",
+    "title": "Three months of CES Medical on LinkedIn: what you asked us most",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-10",
+    "weekNumber": 15,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: Reflection on three months of LinkedIn content. What the most common questions were, what the engagement data showed, what was most useful to referrers and patients, what comes next.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Three months of publishing everything we know about eye care. Here is what you wanted to know.",
+    "notes": "Full copy to be written at end of campaign based on actual engagement data.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-B26",
+    "slug": "li-b26-what-consultant-led-community-eye-care-looks-like-in-practic",
+    "title": "What consultant-led community eye care looks like in practice",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-13",
+    "weekNumber": 15,
+    "isCommercialPriority": false,
+    "format": "document-carousel",
+    "caption": "Caption to be written. Topic: What the CES Medical model looks like as a functioning example of consultant-led community ophthalmology. The referral pathway, the clinical team, the locations, the outcomes. Written for GPs, insurers and referrers as a campaign close.",
+    "cta": {
+      "label": "See more on cesmedical.co.uk",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "ces-brand",
+    "linkedInHook": "Specialist ophthalmology does not have to mean London. Here is what it looks like when it works locally.",
+    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E01",
+    "slug": "li-e01-why-i-started-ces-medical",
+    "title": "Why I started CES Medical",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-19",
+    "weekNumber": 3,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "I started CES Medical in 2018 because I kept watching the same thing happen.\n\nA patient would come in for a routine appointment. I would identify something that needed specialist attention. I would refer them. And then I would hear back, months later, that they were still waiting.\n\nNot because the system did not care. Because the specialist capacity in Kent was not where the patients were.\n\nI had trained in optometry, in clinical neuroscience, in glaucoma management. I understood what good looked like. And I knew that the patients in Chatham and Headcorn and Tunbridge Wells deserved the same access to it as someone who could get themselves to London.\n\nSo we built it here instead.\n\nSix years later, I still think about that gap. Every new clinic, every new consultant, every new service is an answer to the same question: why should where you live determine the quality of your eye care.\n\nIt should not. That is what we are trying to fix.\n\nWhat made you choose the work you are in? I am genuinely curious whether this kind of frustration is what drives most people in healthcare.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "I started CES Medical in 2018 because I kept watching the same thing happen.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice before publishing. Structure, topic and key message provided. Post at 8am Tuesday. Engage with every comment in first 60 minutes.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E02",
+    "slug": "li-e02-what-consultant-led-actually-means",
+    "title": "What consultant-led actually means",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-26",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "Consultant-led is a phrase that gets used a lot in private healthcare. I want to be specific about what it means at CES Medical because it is not a marketing phrase for us.\n\nIt means the consultant who sees you at your first appointment is the consultant who performs your surgery.\n\nThat matters for several reasons. The surgeon knows exactly what they found at assessment. They made the decision to operate based on what they saw personally. They know your specific anatomy before they enter the theatre. There is no handover, no interpretation of another clinician's notes, no adjustment on the day.\n\nIn a non-consultant-led model, assessment and surgery can be performed by different clinicians. That is common. It is not necessarily wrong. But for procedures on something as precise as the human eye, continuity of care has real clinical value.\n\nThis is why we built CES Medical around it. Not because it sounded better. Because it produces better outcomes.\n\nDoes this distinction matter to you in how you refer patients or choose providers? I would be interested in whether GPs and optometrists weigh this when making decisions.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Consultant-led is a phrase that gets used a lot in private healthcare.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E03",
+    "slug": "li-e03-the-real-reason-patients-delay-eye-treatment",
+    "title": "The real reason patients delay eye treatment",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-02",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "People assume patients delay eye treatment because of cost or fear of surgery.\n\nIn my experience, the most common reason is much simpler. They do not know if they are bad enough yet.\n\nThey have adapted to their vision changing gradually. They have stopped driving at night and told themselves it is a preference, not a problem. They have moved to larger print and told themselves they just need stronger glasses. They have quietly accepted a narrowing world and called it ageing.\n\nThey are not avoiding us. They do not know they need us.\n\nThis changes how we communicate. We do not spend much time trying to convince people who are ready to act. We spend most of our time helping people recognise that the question they have been sitting on for two years is worth asking out loud.\n\nThat is why we publish what we publish. Not to sell. To give someone permission to pick up the phone.\n\nDoes this match what you see in your practice? How do you handle the patient who has been managing fine for much longer than they should have been?",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "People assume patients delay eye treatment because of cost or fear of surgery.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E04",
+    "slug": "li-e04-why-ces-treats-both-nhs-and-private-patients",
+    "title": "Why CES treats both NHS and private patients",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-09",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "Some people ask why we treat NHS patients when we are a private group.\n\nThe answer is straightforward. Eye disease does not discriminate by income. Cataracts, glaucoma and diabetic retinopathy affect people across every demographic in Kent. We believe specialist ophthalmology should be available to all of them.\n\nOur NHS patients are seen by the same consultants, in the same facilities, to the same clinical standards as our private patients. The difference is access speed and lens choice for cataract patients. Not the quality of the surgeon or the surgery.\n\nWe made this a founding principle of CES Medical and we have not moved from it. Commercial pressure will always push a private group towards its most profitable patient group. We resist that because we think it is the wrong way to build healthcare.\n\nI am interested in whether this is a common view in the sector or whether most people see NHS and private as necessarily separate.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Some people ask why we treat NHS patients when we are a private group.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E05",
+    "slug": "li-e05-how-i-chose-the-consultants-at-ces-medical",
+    "title": "How I chose the consultants at CES Medical",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-16",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "People assume clinical decisions are made on reputation and referral networks.\n\nFor me it started with a different question: what kind of doctor talks to their patient during surgery.\n\nI have seen enough operative environments to know that technical skill is table stakes at the level we were recruiting. What differentiates surgeons at the top of their field is how they treat the person on the table. Whether they explain what is happening. Whether they notice anxiety and respond to it. Whether the patient feels held as well as treated.\n\nEvery consultant at CES Medical was chosen partly on that basis. Not because it is soft or commercial. Because a patient having surgery on their eye is in one of the most vulnerable positions they will ever be in. The person doing that surgery should know it.\n\nHow do you evaluate clinical culture when you are building a team? I am genuinely curious whether others use similar criteria or whether this is an unusual way to make those decisions.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "People assume clinical decisions are made on reputation and referral networks.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E06",
+    "slug": "li-e06-what-expanding-ces-to-southborough-means",
+    "title": "What expanding CES to Southborough means",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-23",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Elion to write this post from scratch. Topic: the specific reason Southborough was the next location, what patient need it addresses, what it means for the wider Kent pathway. Personal and specific rather than a press release. End with a question about geographic expansion in healthcare. Time to coincide with Southborough launch if there is a specific date.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Elion to write from scratch.",
+    "notes": "PLACEHOLDER. Elion to write from scratch. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E07",
+    "slug": "li-e07-what-a-clinical-optometrist-sees-that-a-standard-eye-test-mi",
+    "title": "What a clinical optometrist sees that a standard eye test misses",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-30",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "A GP once told me he did not know there was a difference between a clinical optometrist and a high street optician until a patient of his came back from a CES assessment with a glaucoma diagnosis that had been missed at three previous routine tests.\n\nThe difference is training and scope. A community optometrist checks your prescription, screens for obvious pathology and refers when something is outside their competence. A specialist clinical optometrist with independent prescribing qualifications can diagnose, initiate treatment, monitor complex conditions and manage the patient longitudinally without a GP or ophthalmologist in the loop for every decision.\n\nI hold a professional certificate in glaucoma and an independent prescribing qualification. That means I can assess a patient presenting with raised IOP, make a clinical decision about whether they need treatment, initiate drops if appropriate and monitor them over time. That is a fundamentally different scope to a standard optometry appointment.\n\nThis matters in a system under pressure. Not every patient with a glaucoma suspect result needs to sit on an ophthalmology waiting list. Some of them can be safely managed in a community optometry setting with the right qualifications. Others need onward referral. The skill is knowing which is which.\n\nDoes this distinction come up in your practice? I am curious how many GPs are aware of the difference in scope between optometrists at different levels.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "A GP once told me he did not know there was a difference between a clinical optometrist and a high street optician.",
+    "notes": "PLACEHOLDER. Elion to rewrite in his own voice. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E08",
+    "slug": "li-e08-the-hardest-part-of-building-ces-medical",
+    "title": "The hardest part of building CES Medical",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-07",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Elion to write this post from scratch. Topic: what was genuinely hard about building CES that he did not anticipate. Honest and specific rather than a success narrative. Name the difficulty without wrapping it in a lesson. End with a genuine question about what others in healthcare building have found unexpectedly hard. This is one of the most important posts in the series.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Elion to write from scratch.",
+    "notes": "PLACEHOLDER. Elion to write from scratch. Post at 8am Tuesday.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E09",
+    "slug": "li-e09-what-13-000-patient-episodes-a-year-teaches-you",
+    "title": "What 13,000 patient episodes a year teaches you",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-14",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: What 13,000 patient episodes a year teaches you. Volume creates pattern recognition that changes how you see individual cases. Elion to write from scratch in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Volume creates pattern recognition that changes how you see individual cases.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E10",
+    "slug": "li-e10-why-we-invested-in-the-zeiss-iolmaster-700",
+    "title": "Why we invested in the Zeiss IOLMaster 700",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-21",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: Why we invested in the Zeiss IOLMaster 700. Precision at the measurement stage directly affects the surgical outcome. Elion to write in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Precision at the measurement stage directly affects the surgical outcome.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E11",
+    "slug": "li-e11-the-patient-who-made-him-reconsider-how-ces-communicates",
+    "title": "The patient who made him reconsider how CES communicates",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-28",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: A specific patient story that changed something about how CES Medical communicates. Elion to write in his own voice. This should be specific and personal, not generalised.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "A specific patient story that changed something about how the practice operates.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E12",
+    "slug": "li-e12-what-global-care-for-local-people-actually-means-day-to-day",
+    "title": "What Global Care for Local People actually means day to day",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-04",
+    "weekNumber": 14,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: What Global Care for Local People actually means operationally day to day. Not the marketing version. The operational reality. Elion to write in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "The tagline is not marketing. Here is what it demands operationally.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E13",
+    "slug": "li-e13-three-months-of-sharing-everything-what-it-produced",
+    "title": "Three months of sharing everything: what it produced",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-08-11",
+    "weekNumber": 15,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: Three months of sharing everything — what it produced. Honest reflection on the LinkedIn campaign, what worked, what surprised him, what comes next. Elion to write in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Honest reflection on the campaign, what worked, what surprised him, what comes next.",
+    "notes": "PLACEHOLDER. Full structure to be written at end of campaign based on actual engagement data.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E14",
+    "slug": "li-e14-what-insurance-companies-do-not-understand-about-ophthalmolo",
+    "title": "What insurance companies do not understand about ophthalmology",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-16",
+    "weekNumber": 7,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: What insurance companies do not understand about ophthalmology. The pre-authorisation process creates delays that have clinical consequences. Elion to write in his own voice. Direct and specific.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "The pre-authorisation process creates delays that have clinical consequences.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E15",
+    "slug": "li-e15-what-a-99-patient-satisfaction-rate-does-and-does-not-tell-y",
+    "title": "What a 99% patient satisfaction rate does and does not tell you",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-02",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: What a 99% patient satisfaction rate does and does not tell you. The number is meaningful but here is what it hides. Elion to write in his own voice. Honest and self-critical.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "The number is meaningful but here is what it hides.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E16",
+    "slug": "li-e16-the-conversation-i-have-with-every-new-consultant-before-the",
+    "title": "The conversation I have with every new consultant before they join CES",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-16",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: The conversation Elion has with every new consultant before they join CES Medical. What he asks and why. Should reveal something specific about CES culture and values. Elion to write in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "What he asks and why.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E17",
+    "slug": "li-e17-what-community-eye-care-looks-like-when-it-works-properly",
+    "title": "What community eye care looks like when it works properly",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-23",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: What community eye care looks like when it works properly. A specific example of the referral pathway and clinical model working as it should. Elion to write in his own voice with specific detail.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "A specific example of the pathway working as it should.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-E18",
+    "slug": "li-e18-the-one-thing-he-would-change-about-the-nhs-ophthalmology-re",
+    "title": "The one thing he would change about the NHS ophthalmology referral pathway",
+    "pillar": "leadership",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-30",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: The one thing Elion would change about the NHS ophthalmology referral pathway. Direct, specific and based on what he sees every week. Should be an opinion, not a diplomatic statement. Elion to write in his own voice.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "elion-hyseni",
+    "linkedInHook": "Direct, specific, based on what he sees every week.",
+    "notes": "PLACEHOLDER. Full structure to be written once E01 to E08 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C01",
+    "slug": "li-c01-why-corneal-transplantation-is-one-of-the-most-technically-d",
+    "title": "Why corneal transplantation is one of the most technically demanding procedures in ophthalmology",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-05-27",
+    "weekNumber": 4,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "Corneal transplantation has changed dramatically in the past decade. We have moved away from full-thickness grafts towards selective lamellar procedures that transplant only the diseased layer of the cornea rather than the entire structure.\n\nDMEK (Descemet Membrane Endothelial Keratoplasty) is the most technically refined of these. The tissue being transplanted is a single cell layer, approximately 10 to 15 microns thick. To put that in context, a human hair is around 70 microns wide. The graft has no structural rigidity. It must be inserted into the eye through a small incision, unfolded without damage and positioned precisely against the recipient cornea using an air bubble.\n\nThe learning curve is steep. Outcomes in experienced hands are significantly better than in lower-volume centres. For patients with Fuchs' endothelial dystrophy or bullous keratopathy, this distinction matters.\n\nI completed my doctoral research on corneal endothelial cell biology before specialising in transplantation. That foundation changes how I think about every operative decision, not just the technical steps but the cellular logic behind them.\n\nIf you are an optometrist or GP seeing patients with progressive corneal oedema or unexplained visual decline that does not respond to refraction, I am happy to discuss cases informally before a formal referral is made.\n\nWhat is your experience of the referral pathway for corneal conditions? I am interested in whether the current system is identifying these patients early enough.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "nick-kopsachilis",
+    "linkedInHook": "Corneal transplantation has changed dramatically in the past decade.",
+    "notes": "Mr Kopsachilis to review and post from his personal account. Engage with comments in first 60 minutes.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C02",
+    "slug": "li-c02-multifocal-lens-implants-what-patients-are-not-always-told-b",
+    "title": "Multifocal lens implants: what patients are not always told before they decide",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-01",
+    "weekNumber": 9,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "Multifocal intraocular lenses are one of the most significant advances in cataract surgery of the past twenty years. For appropriately selected patients, the chance of being completely glasses-free after surgery is real and the outcomes are excellent.\n\nBut I want to be direct about something that does not always get enough weight in patient-facing communications.\n\nMultifocal lenses divide light. They create multiple focal points simultaneously. For most patients, the visual cortex adapts and the brain learns to select the relevant focus for the task. For some patients, it does not. Those patients experience halos, glare and reduced contrast sensitivity, particularly in low light. Night driving can become genuinely difficult.\n\nThe patient who asks me will I need glasses after my cataract surgery is asking the right question. But the question I need to answer first is are you the right patient for a lens that might eliminate glasses but might also change how you see at night.\n\nThat requires an honest conversation about lifestyle, expectations, driving habits, occupational visual demands and the clinical characteristics of their eye. It is not a five-minute decision.\n\nAt CES we take that conversation seriously because recommending a multifocal lens to the wrong patient creates a problem that is very difficult to reverse.\n\nWhat do you observe in patients who have had multifocal lenses fitted elsewhere and are presenting with visual complaints? I am interested in whether this is a pattern others are seeing.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "nick-kopsachilis",
+    "linkedInHook": "Multifocal intraocular lenses are one of the most significant advances in cataract surgery of the past twenty years.",
+    "notes": "Mr Kopsachilis to review and post from his personal account.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C03",
+    "slug": "li-c03-what-dry-amd-patients-are-not-being-told",
+    "title": "What dry AMD patients are not being told",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-03",
+    "weekNumber": 5,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "When a patient receives a dry AMD diagnosis, the standard conversation has historically covered three things: lifestyle modification, AREDS supplementation and monitoring.\n\nThat conversation is not wrong. But I think it has become a ceiling that stops both clinicians and patients from asking the next question.\n\nDry AMD is not a static condition. It progresses. And for patients who are watching their central vision slowly narrow over years, being told there is nothing to treat is a significant burden to carry.\n\nI have spent a considerable part of my career in medical retina, and I am cautious about overclaiming for emerging treatments. The evidence base for some newer approaches is still developing. But I also think patients have a right to know that the picture is more complex than monitor and wait.\n\nIf you have patients with early to intermediate dry AMD who have been told there are no options, a conversation with a medical retina specialist who is familiar with the full range of current approaches is worth having. Not because every patient will be a candidate for something different. But because some will be, and they deserve to know.\n\nI am not making specific treatment claims in a LinkedIn post. What I am saying is that the referral threshold for a specialist opinion on dry AMD should be lower than it currently is in many settings.\n\nHas this come up in your practice? I would be interested in whether GPs and optometrists feel they have enough information to have this conversation with their patients.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "kashif-qureshi",
+    "linkedInHook": "When a patient receives a dry AMD diagnosis, the standard conversation has historically covered three things.",
+    "notes": "Mr Qureshi to review and post from his personal account. This post deliberately avoids naming specific treatments to stay within GMC advertising standards.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C04",
+    "slug": "li-c04-what-the-revalidation-process-for-ophthalmologists-actually-",
+    "title": "What the revalidation process for ophthalmologists actually involves",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-08",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "I served as Co-Lead for Revalidation at the Royal College of Ophthalmologists for four years. I want to explain what revalidation actually involves because I think patients and referring clinicians often have a vague sense of it as a box-ticking exercise. It is not.\n\nEvery consultant in the UK undergoes annual appraisal and five-yearly revalidation. To revalidate, a consultant must demonstrate: continuing professional development across the breadth of their practice, clinical outcome data, multi-source feedback from colleagues and patients, a record of significant events and complaints with evidence of reflection and learning, and confirmation that they have no health or conduct issues affecting their practice.\n\nThe appraisal process requires a consultant to sit with an appraiser and work through all of this documentation in detail. It is not a rubber stamp.\n\nWhen I led this process at the Royal College level, I was responsible for ensuring that the standards applied to every ophthalmologist in the country were meaningful. That experience changed how I think about my own practice. You cannot set rigorous standards for others and then hold yourself to a lower bar.\n\nWhen a patient asks me how they know their surgeon is safe to practice, revalidation is part of the answer. Not the whole answer. But a real and important part.\n\nDoes the revalidation process come up in conversations with patients when they are choosing a provider? I am curious whether this is something patients are beginning to ask about directly.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "kashif-qureshi",
+    "linkedInHook": "I served as Co-Lead for Revalidation at the Royal College of Ophthalmologists for four years.",
+    "notes": "Mr Qureshi to review and post from his personal account.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C05",
+    "slug": "li-c05-retinal-detachment-the-window-that-most-patients-do-not-know",
+    "title": "Retinal detachment: the window that most patients do not know exists",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-10",
+    "weekNumber": 6,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "The visual outcome from retinal detachment surgery is substantially better when the macula is still attached at the time of the operation.\n\nOnce the detachment reaches the macula, the central vision is affected. Surgery can still repair the retina, but the recovery of central vision is less predictable and often incomplete.\n\nThe challenge is that patients experiencing the warning signs of retinal detachment frequently do not understand the urgency. A sudden shower of floaters and flashes is frightening, but it does not feel like an emergency in the way that chest pain does. People wait to see if it settles. They book an appointment with their optician. They look it up online.\n\nThe signs that need same-day assessment: a sudden significant increase in floaters, flashes of light particularly in peripheral vision, or a shadow or curtain moving across the visual field. Any of these, particularly in combination, need to be assessed urgently. Not in a few days. That day.\n\nFor GPs: a patient presenting with these symptoms should be directed to an eye casualty department immediately, not referred in the routine pathway.\n\nI am one of a small number of vitreoretinal surgeons in Kent. I see the outcomes difference that speed makes. It is real and it is significant.\n\nWhat is your experience of patients presenting late with retinal symptoms? I would like to understand where the delay most commonly occurs.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "syed-shahid",
+    "linkedInHook": "The visual outcome from retinal detachment surgery is substantially better when the macula is still attached at the time of the operation.",
+    "notes": "Mr Shahid to review and post from his personal account.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C06",
+    "slug": "li-c06-what-a-vitreoretinal-surgeon-actually-does-and-why-having-on",
+    "title": "What a vitreoretinal surgeon actually does and why having one in Kent matters",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-09",
+    "weekNumber": 10,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "Vitreoretinal surgery covers the back of the eye: the retina, the vitreous gel and the structures that support them.\n\nThe conditions that fall within this subspecialty include retinal detachment, macular hole, epiretinal membrane, vitreous haemorrhage, diabetic vitreoretinal disease and some forms of trauma. These are not common conditions in absolute terms. But when they occur, they are often sight-threatening and time-sensitive.\n\nVitreoretinal surgery requires subspecialty training beyond general ophthalmology. I completed an 18-month fellowship at Moorfields Eye Hospital specifically in this area, where the volume and complexity of cases provides an exposure that is difficult to replicate elsewhere.\n\nThe reason this matters geographically is that vitreoretinal surgeons are not evenly distributed. In many parts of the country, patients needing this surgery travel significant distances or wait for capacity at major centres. For time-sensitive conditions like retinal detachment, that waiting is not always clinically safe.\n\nBeing based in Kent with this subspecialty means that patients in Southborough, Chatham and across the region have access to this level of care closer to home.\n\nIf you have patients you are uncertain about referring, or conditions that you think might benefit from a vitreoretinal opinion, I am happy to discuss informally before a formal referral is made.\n\nWhat is your current pathway for suspected retinal conditions? I would like to understand what the referral experience looks like from a GP or optometrist perspective in Kent.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "syed-shahid",
+    "linkedInHook": "Vitreoretinal surgery covers the back of the eye: the retina, the vitreous gel and the structures that support them.",
+    "notes": "Mr Shahid to review and post from his personal account.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C07",
+    "slug": "li-c07-keratoconus-early-signs-that-optometrists-should-not-miss",
+    "title": "Keratoconus: early signs that optometrists should not miss",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-22",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: Keratoconus — early signs optometrists should not miss. When to suspect it, what the refraction pattern looks like, what crosslinking involves, why early intervention matters. Mr Kopsachilis to review before posting.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "nick-kopsachilis",
+    "linkedInHook": "Keratoconus is treatable. The earlier it is caught, the more options there are.",
+    "notes": "PLACEHOLDER. Full copy to be written once LI-C01 to LI-C06 are approved.",
+    "sortOrder": 0
+  },
+  {
+    "id": "LI-C08",
+    "slug": "li-c08-vitreous-floaters-when-reassurance-is-appropriate-and-when-i",
+    "title": "Vitreous floaters: when reassurance is appropriate and when it is not",
+    "pillar": "educational",
+    "platforms": [
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-29",
+    "weekNumber": 13,
+    "isCommercialPriority": false,
+    "format": "text",
+    "caption": "PLACEHOLDER. Topic: Vitreous floaters — when reassurance is appropriate and when it is not. Posterior vitreous detachment vs retinal tear. What symptoms change the clinical picture. Mr Qureshi to review before posting.",
+    "cta": {
+      "label": "Follow for more",
+      "type": "save"
+    },
+    "videoRelationship": "no-video",
+    "linkedInAccount": "kashif-qureshi",
+    "linkedInHook": "Most vitreous floaters are benign. A small number are not. The difference matters.",
+    "notes": "PLACEHOLDER. Full copy to be written once LI-C01 to LI-C06 are approved.",
+    "sortOrder": 0
   }
 ]

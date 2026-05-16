@@ -34,6 +34,8 @@ export async function syncPostContent() {
         productionLead:       post.productionLead       ?? null,
         videoRelationship:    post.videoRelationship     ?? null,
         videoReference:       post.videoReference        ?? null,
+        linkedInAccount:      post.linkedInAccount       ?? null,
+        linkedInHook:         post.linkedInHook          ?? null,
         sortOrder:            post.sortOrder             ?? 0,
         roadmapId:            defaultRoadmapId,
       },
@@ -51,6 +53,8 @@ export async function syncPostContent() {
         productionLead:       post.productionLead       ?? null,
         videoRelationship:    post.videoRelationship     ?? null,
         videoReference:       post.videoReference        ?? null,
+        linkedInAccount:      post.linkedInAccount       ?? null,
+        linkedInHook:         post.linkedInHook          ?? null,
       },
     })
     n++

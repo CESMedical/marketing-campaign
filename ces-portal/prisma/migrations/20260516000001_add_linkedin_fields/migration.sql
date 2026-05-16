@@ -1,0 +1,2 @@
+ALTER TABLE `Post` ADD COLUMN `linkedInAccount` VARCHAR(191) NULL;
+ALTER TABLE `Post` ADD COLUMN `linkedInHook` TEXT NULL;
