@@ -11,6 +11,7 @@ import { ViewSwitcher } from './ViewSwitcher'
 import { VideographyStrategyCard, ConsultantInterviewCard, LeonnaProductionCard, PatientStoriesCard, TeamPhotographyCard, ProductionScheduleCard } from './VideographyCards'
 import { LinkedInStrategyCard } from './LinkedInStrategyCard'
 import { FacebookStrategyCard } from './FacebookStrategyCard'
+import { InstagramStrategyCard } from './InstagramStrategyCard'
 import { CONSULTANT_INTERVIEWS } from '@/lib/videography-content'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
@@ -45,6 +46,8 @@ const LI_STRAT_X  = STRAT_X
 const LI_STRAT_Y  = VID_STRAT_Y + 540
 const FB_STRAT_X  = STRAT_X
 const FB_STRAT_Y  = LI_STRAT_Y + 840
+const IG_STRAT_X  = STRAT_X
+const IG_STRAT_Y  = FB_STRAT_Y + 860
 
 // Consultant interview cards — row below the roadmap panel
 const CONSULT_Y      = GAL_PAD + PANEL_H + 100
@@ -425,7 +428,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const edgesRef          = useRef<CanvasEdge[]>([])
   const syncTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
   const lastLocalChangeRef = useRef<number>(0)
-  const CARD_KEYS = ['vid-strategy', 'li-strategy', 'fb-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
+  const CARD_KEYS = ['vid-strategy', 'li-strategy', 'fb-strategy', 'ig-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
 
   useEffect(() => { nodesRef.current = nodes }, [nodes])
   useEffect(() => { edgesRef.current = edges }, [edges])
@@ -964,6 +967,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           {/* ── Facebook strategy card — draggable ─────────────────────────── */}
           <DraggableWorldCard key={`fb-strategy-${layoutVersion}`} initialX={FB_STRAT_X} initialY={FB_STRAT_Y} storageKey="fb-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
             <FacebookStrategyCard />
+          </DraggableWorldCard>
+
+          {/* ── Instagram strategy card — draggable ────────────────────────── */}
+          <DraggableWorldCard key={`ig-strategy-${layoutVersion}`} initialX={IG_STRAT_X} initialY={IG_STRAT_Y} storageKey="ig-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
+            <InstagramStrategyCard />
           </DraggableWorldCard>
 
           {/* ── Consultant interview cards — draggable ─────────────────────── */}
