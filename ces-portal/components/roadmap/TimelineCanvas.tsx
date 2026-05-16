@@ -9,6 +9,7 @@ import { NewPostModal } from './NewPostModal'
 import { StrategyCard } from './StrategyCard'
 import { ViewSwitcher } from './ViewSwitcher'
 import { VideographyStrategyCard, ConsultantInterviewCard, LeonnaProductionCard, PatientStoriesCard, TeamPhotographyCard, ProductionScheduleCard } from './VideographyCards'
+import { LinkedInStrategyCard } from './LinkedInStrategyCard'
 import { CONSULTANT_INTERVIEWS } from '@/lib/videography-content'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
@@ -37,6 +38,10 @@ const STRAT_Y     = GAL_PAD + PANEL_H / 2 - 200 // vertically centred
 const VID_CARD_W  = 300
 const VID_STRAT_X = STRAT_X
 const VID_STRAT_Y = STRAT_Y + 520
+
+// Platform strategy cards — below videography strategy card
+const LI_STRAT_X  = STRAT_X
+const LI_STRAT_Y  = VID_STRAT_Y + 540
 
 // Consultant interview cards — row below the roadmap panel
 const CONSULT_Y      = GAL_PAD + PANEL_H + 100
@@ -417,7 +422,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const edgesRef          = useRef<CanvasEdge[]>([])
   const syncTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
   const lastLocalChangeRef = useRef<number>(0)
-  const CARD_KEYS = ['vid-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
+  const CARD_KEYS = ['vid-strategy', 'li-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
 
   useEffect(() => { nodesRef.current = nodes }, [nodes])
   useEffect(() => { edgesRef.current = edges }, [edges])
@@ -946,6 +951,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           {/* ── Videography strategy card — draggable ──────────────────────── */}
           <DraggableWorldCard key={`vid-strategy-${layoutVersion}`} initialX={VID_STRAT_X} initialY={VID_STRAT_Y} storageKey="vid-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
             <VideographyStrategyCard />
+          </DraggableWorldCard>
+
+          {/* ── LinkedIn strategy card — draggable ─────────────────────────── */}
+          <DraggableWorldCard key={`li-strategy-${layoutVersion}`} initialX={LI_STRAT_X} initialY={LI_STRAT_Y} storageKey="li-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
+            <LinkedInStrategyCard />
           </DraggableWorldCard>
 
           {/* ── Consultant interview cards — draggable ─────────────────────── */}
