@@ -764,20 +764,16 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     if (!delta || shifting) return
     setShifting(true)
     try {
-      const results = await Promise.all(
-        posts.map(post =>
-          fetch(`/api/posts/${post.slug}`, {
-            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ scheduledDate: addDays(post.scheduledDate, delta) }),
-          })
-            .then(r => r.ok ? r.json() : null)
-            .catch(() => null)          // one failure must not cancel the rest
-        )
-      )
-      const updMap = new Map(
-        (results as (Post | null)[]).filter(Boolean).map(r => [r!.slug, r!])
-      )
-      setPosts(prev => prev.map(p => updMap.get(p.slug) ?? p))
+      // Single atomic request — shifts every post in the DB (P, LI, FB, IG…)
+      // so posts not currently loaded into the canvas view are also moved.
+      const res = await fetch('/api/posts/bulk-shift', {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ days: delta }),
+      })
+      if (!res.ok) throw new Error('Bulk shift failed')
+
+      // Update local canvas state so the timeline re-renders immediately.
+      setPosts(prev => prev.map(p => ({ ...p, scheduledDate: addDays(p.scheduledDate, delta) })))
       setShowShift(false)
       setSavedSlug('__shift__')
       setTimeout(() => setSavedSlug(s => s === '__shift__' ? null : s), 2500)
@@ -1231,7 +1227,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             </div>
 
             <p style={{ fontSize: 11, color: 'rgba(0,56,69,0.35)', textAlign: 'center', marginTop: 14 }}>
-              Affects all {posts.length} posts · cannot be undone
+              Affects all posts (P, LI, FB, IG…) · cannot be undone
             </p>
           </div>
         </div>
