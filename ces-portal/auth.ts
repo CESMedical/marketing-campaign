@@ -57,6 +57,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const displayName = (profile.name as string) ?? email
       const { syncUserOnSignIn } = await import('@/lib/user-sync')
       syncUserOnSignIn(email, displayName).catch(console.error)
+      const { logAudit } = await import('@/lib/audit')
+      logAudit({ userEmail: email, userName: displayName, action: 'sign_in', detail: { provider: 'microsoft-entra' } })
     },
   },
   pages: {

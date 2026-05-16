@@ -3,6 +3,7 @@ import { auth } from '@/auth'
 import { prisma } from '@/lib/prisma'
 import { canUpdateCanvas } from '@/lib/roles'
 import { rateLimit } from '@/lib/rate-limit'
+import { logAudit, ipFromRequest } from '@/lib/audit'
 
 const MAX_CANVAS_BYTES = 200_000
 
@@ -46,5 +47,17 @@ export async function PATCH(
   }
 
   await prisma.roadmap.update({ where: { id }, data: { canvasLayout: body } })
+  logAudit({
+    userEmail: session.user.email ?? '',
+    userName:  session.user.displayName,
+    action:    'canvas.update',
+    resource:  id,
+    detail: {
+      cards: Object.keys(body.cardPositions ?? {}).length,
+      nodes: (body.nodes ?? []).length,
+      edges: (body.edges ?? []).length,
+    },
+    ipAddress: ipFromRequest(req),
+  })
   return NextResponse.json({ ok: true })
 }

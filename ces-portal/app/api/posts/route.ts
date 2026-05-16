@@ -5,6 +5,7 @@ import { rateLimit } from '@/lib/rate-limit'
 import { createPostData, loadPostsData } from '@/lib/post-data'
 import { loadCampaign } from '@/lib/posts'
 import { Pillar, Platform, Format } from '@/types/post'
+import { logAudit, ipFromRequest } from '@/lib/audit'
 
 export async function GET(request: NextRequest) {
   const session = await auth()
@@ -64,5 +65,6 @@ export async function POST(request: NextRequest) {
   })
 
   if (!post) return NextResponse.json({ error: 'Database unavailable' }, { status: 503 })
+  logAudit({ userEmail: session.user.email ?? '', userName: session.user.displayName, action: 'post.create', resource: post.slug, detail: { title: post.title, scheduledDate }, ipAddress: ipFromRequest(request) })
   return NextResponse.json(post, { status: 201 })
 }

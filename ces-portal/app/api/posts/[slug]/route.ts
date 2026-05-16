@@ -6,6 +6,7 @@ import { rateLimit } from '@/lib/rate-limit'
 import { updatePostData, getPostBySlugData, deletePostData } from '@/lib/post-data'
 import { canEditPost, canTransitionStatus } from '@/lib/roles'
 import { notifyStatusChange, notifyScheduledThisWeek, isThisWeek } from '@/lib/notify'
+import { logAudit, ipFromRequest } from '@/lib/audit'
 
 const ALLOWED_STATUSES: Status[] = [
   'draft',
@@ -156,6 +157,7 @@ export async function DELETE(
   const { slug } = await params
   const deleted = await deletePostData(slug)
   if (!deleted) return NextResponse.json({ error: 'Not found or database unavailable' }, { status: 404 })
+  logAudit({ userEmail: session.user.email ?? '', userName: session.user.displayName, action: 'post.delete', resource: slug, ipAddress: ipFromRequest(_request) })
   return NextResponse.json({ ok: true })
 }
 
@@ -190,8 +192,25 @@ export async function PATCH(
       return NextResponse.json({ error: 'Forbidden status transition' }, { status: 403 })
     }
 
-    const updated = await updatePostData(slug, applyWorkflowAudit(updates, before, session))
+    const finalUpdates = applyWorkflowAudit(updates, before, session)
+    const updated = await updatePostData(slug, finalUpdates)
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+
+    const isStatusChange = updates.status && before.status !== updates.status
+    logAudit({
+      userEmail:  session.user.email ?? '',
+      userName:   session.user.displayName,
+      action:     isStatusChange ? 'post.status_change' : 'post.update',
+      resource:   slug,
+      detail:     {
+        fields:   Object.keys(finalUpdates),
+        ...(isStatusChange ? { from: before.status, to: updates.status } : {}),
+        ...(updates.scheduledDate && updates.scheduledDate !== before.scheduledDate
+          ? { dateMoved: { from: before.scheduledDate, to: updates.scheduledDate } }
+          : {}),
+      },
+      ipAddress:  ipFromRequest(request),
+    })
 
     if (before && updates.status && before.status !== updates.status) {
       notifyStatusChange({

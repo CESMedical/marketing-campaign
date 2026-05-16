@@ -60,6 +60,21 @@ model Roadmap {
   posts                Post[]
 }
 
+model AuditLog {
+  id          String   @id @default(uuid())
+  timestamp   DateTime @default(now())
+  userEmail   String
+  userName    String?
+  action      String
+  resource    String?
+  detail      Json?
+  ipAddress   String?
+
+  @@index([userEmail])
+  @@index([timestamp])
+  @@index([action])
+}
+
 model EmailLog {
   id          String   @id @default(uuid())
   type        String
