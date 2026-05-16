@@ -5,23 +5,27 @@ import { prisma } from '@/lib/prisma'
 export const dynamic = 'force-dynamic'
 
 const ACTION_LABELS: Record<string, string> = {
-  'sign_in':           'Sign in',
-  'post.create':       'Post created',
-  'post.update':       'Post edited',
-  'post.delete':       'Post deleted',
-  'post.status_change':'Status changed',
-  'canvas.update':     'Canvas saved',
-  'user.invite':       'User invited',
+  'sign_in':              'Sign in',
+  'post.create':          'Post created',
+  'post.update':          'Post edited',
+  'post.delete':          'Post deleted',
+  'post.status_change':   'Status changed',
+  'post.comment':         'Comment added',
+  'post.comment_delete':  'Comment deleted',
+  'canvas.update':        'Canvas saved',
+  'user.invite':          'User invited',
 }
 
 const ACTION_COLOR: Record<string, string> = {
-  'sign_in':            'bg-blue-50 text-blue-700',
-  'post.create':        'bg-green-50 text-green-700',
-  'post.update':        'bg-amber-50 text-amber-700',
-  'post.delete':        'bg-red-50 text-red-700',
-  'post.status_change': 'bg-purple-50 text-purple-700',
-  'canvas.update':      'bg-teal-50 text-teal-700',
-  'user.invite':        'bg-indigo-50 text-indigo-700',
+  'sign_in':              'bg-blue-50 text-blue-700',
+  'post.create':          'bg-green-50 text-green-700',
+  'post.update':          'bg-amber-50 text-amber-700',
+  'post.delete':          'bg-red-50 text-red-700',
+  'post.status_change':   'bg-purple-50 text-purple-700',
+  'post.comment':         'bg-sky-50 text-sky-700',
+  'post.comment_delete':  'bg-orange-50 text-orange-700',
+  'canvas.update':        'bg-teal-50 text-teal-700',
+  'user.invite':          'bg-indigo-50 text-indigo-700',
 }
 
 function fmt(ts: Date) {

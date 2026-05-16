@@ -4,6 +4,7 @@ import { postExistsData } from '@/lib/post-data'
 import { prisma } from '@/lib/prisma'
 import { rateLimit } from '@/lib/rate-limit'
 import { canEditPost } from '@/lib/roles'
+import { logAudit, ipFromRequest } from '@/lib/audit'
 
 const MAX_COMMENT_LENGTH = 1000
 
@@ -78,7 +79,7 @@ export async function POST(
   })
 
   const response = publicComment(comment, (session.user.email ?? '').toLowerCase(), canEditPost(session.user.role))
-
+  logAudit({ userEmail: session.user.email ?? '', userName: session.user.displayName, action: 'post.comment', resource: slug, detail: { preview: trimmed.slice(0, 100) }, ipAddress: ipFromRequest(request) })
   return NextResponse.json(response, { status: 201 })
 }
 
@@ -108,5 +109,6 @@ export async function DELETE(
   if (!isAdmin && !isOwner) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
   await prisma.comment.delete({ where: { id: comment.id } })
+  logAudit({ userEmail: session.user.email ?? '', userName: session.user.displayName, action: 'post.comment_delete', resource: slug, detail: { commentId: id, authorEmail: comment.authorEmail }, ipAddress: ipFromRequest(request) })
   return NextResponse.json({ ok: true })
 }

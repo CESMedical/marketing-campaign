@@ -6,6 +6,8 @@ export type AuditAction =
   | 'post.update'
   | 'post.delete'
   | 'post.status_change'
+  | 'post.comment'
+  | 'post.comment_delete'
   | 'canvas.update'
   | 'user.invite'
 
