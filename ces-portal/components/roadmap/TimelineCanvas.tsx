@@ -13,6 +13,7 @@ import { LinkedInStrategyCard } from './LinkedInStrategyCard'
 import { FacebookStrategyCard } from './FacebookStrategyCard'
 import { InstagramStrategyCard } from './InstagramStrategyCard'
 import { YouTubeStrategyCard } from './YouTubeStrategyCard'
+import { ImplementationStrategyCard } from './ImplementationStrategyCard'
 import { CONSULTANT_INTERVIEWS } from '@/lib/videography-content'
 import { useSession } from 'next-auth/react'
 import { canEditPost } from '@/lib/permissions'
@@ -51,6 +52,8 @@ const IG_STRAT_X  = STRAT_X
 const IG_STRAT_Y  = FB_STRAT_Y + 860
 const YT_STRAT_X  = STRAT_X
 const YT_STRAT_Y  = IG_STRAT_Y + 900
+const IMPL_STRAT_X = STRAT_X
+const IMPL_STRAT_Y = YT_STRAT_Y + 900
 
 // Consultant interview cards — row below the roadmap panel
 const CONSULT_Y      = GAL_PAD + PANEL_H + 100
@@ -433,7 +436,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const edgesRef          = useRef<CanvasEdge[]>([])
   const syncTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
   const lastLocalChangeRef = useRef<number>(0)
-  const CARD_KEYS = ['vid-strategy', 'li-strategy', 'fb-strategy', 'ig-strategy', 'yt-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
+  const CARD_KEYS = ['vid-strategy', 'li-strategy', 'fb-strategy', 'ig-strategy', 'yt-strategy', 'impl-strategy', 'consultant-1', 'consultant-2', 'consultant-3', 'consultant-4', 'prod-leonna', 'prod-patient', 'prod-team', 'prod-schedule']
 
   useEffect(() => { nodesRef.current = nodes }, [nodes])
   useEffect(() => { edgesRef.current = edges }, [edges])
@@ -1004,6 +1007,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           {/* ── YouTube strategy card — draggable ──────────────────────────── */}
           <DraggableWorldCard key={`yt-strategy-${layoutVersion}`} initialX={YT_STRAT_X} initialY={YT_STRAT_Y} storageKey="yt-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
             <YouTubeStrategyCard />
+          </DraggableWorldCard>
+
+          {/* ── Implementation strategy card — draggable ────────────────────── */}
+          <DraggableWorldCard key={`impl-strategy-${layoutVersion}`} initialX={IMPL_STRAT_X} initialY={IMPL_STRAT_Y} storageKey="impl-strategy" zoomRef={zoomRef} onSaved={scheduleSync}>
+            <ImplementationStrategyCard />
           </DraggableWorldCard>
 
           {/* ── Consultant interview cards — draggable ─────────────────────── */}
