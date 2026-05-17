@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Video, X, ChevronDown, ChevronRight } from 'lucide-react'
+import { navToPost } from './PostRef'
 import {
   VIDEOGRAPHY_STRATEGY, CONSULTANT_INTERVIEWS, DEFAULT_PRODUCTION_NOTES,
   LEONNA_VIDEOS, PATIENT_STORIES, PATIENT_STORY_FRAMEWORK, TEAM_ASSETS,
@@ -259,7 +260,8 @@ function ScriptModal({
           <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 7 }}>Posts this interview feeds</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
             {data.postsFed.map(p => (
-              <span key={p} style={{ fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: accent + '18', color: accent }}>{p}</span>
+              <span key={p} onClick={() => navToPost(p)} title={`Jump to ${p} on canvas`}
+                style={{ fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: accent + '18', color: accent, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '2px' }}>{p}</span>
             ))}
           </div>
         </div>
@@ -326,7 +328,8 @@ export function ConsultantInterviewCard({ interview, index }: { interview: Consu
           <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.38)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 7 }}>Posts this feeds</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 14 }}>
             {interview.postsFed.map(p => (
-              <span key={p} style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5, background: accent + '18', color: accent }}>{p}</span>
+              <span key={p} onClick={() => navToPost(p)} title={`Jump to ${p} on canvas`}
+                style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5, background: accent + '18', color: accent, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '2px' }}>{p}</span>
             ))}
           </div>
 
@@ -480,7 +483,8 @@ function ProductionModal({
           <div style={{ padding: '10px 24px', borderBottom: '1px solid rgba(0,56,69,0.08)', background: '#f9fafb', flexShrink: 0 }}>
             <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>Posts fed</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-              {postsFed.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 6, background: accent + '18', color: accent }}>{p}</span>)}
+              {postsFed.map(p => <span key={p} onClick={() => navToPost(p)} title={`Jump to ${p} on canvas`}
+                style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 6, background: accent + '18', color: accent, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '2px' }}>{p}</span>)}
             </div>
           </div>
         )}
@@ -917,7 +921,8 @@ function ProductionAssetCard({
           <>
             <p style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,56,69,0.38)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>Posts fed</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 12 }}>
-              {postsFed.map(p => <span key={p} style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5, background: accent + '18', color: accent }}>{p}</span>)}
+              {postsFed.map(p => <span key={p} onClick={() => navToPost(p)} title={`Jump to ${p} on canvas`}
+                style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5, background: accent + '18', color: accent, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '2px' }}>{p}</span>)}
             </div>
           </>
         )}
