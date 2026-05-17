@@ -14,7 +14,8 @@ export function PostRef({
 }) {
   return (
     <span
-      onClick={(e) => { e.stopPropagation(); navToPost(id) }}
+      onPointerDown={(e) => e.stopPropagation()}
+      onPointerUp={(e) => { e.stopPropagation(); navToPost(id) }}
       title={`Jump to ${id} on the canvas`}
       style={{
         cursor: 'pointer',
