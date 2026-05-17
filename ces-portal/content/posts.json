@@ -10,7 +10,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-15",
+    "scheduledDate": "2026-05-01",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "brand",
@@ -40,7 +40,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-17",
+    "scheduledDate": "2026-05-03",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "general",
@@ -71,7 +71,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-19",
+    "scheduledDate": "2026-05-05",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -103,7 +103,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-22",
+    "scheduledDate": "2026-05-08",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -136,7 +136,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-24",
+    "scheduledDate": "2026-05-10",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -168,7 +168,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-26",
+    "scheduledDate": "2026-05-12",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -198,7 +198,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-29",
+    "scheduledDate": "2026-05-15",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "brand",
@@ -230,8 +230,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-31",
-    "weekNumber": 3,
+    "scheduledDate": "2026-05-22",
+    "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
@@ -263,8 +263,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-02",
-    "weekNumber": 3,
+    "scheduledDate": "2026-05-24",
+    "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
@@ -296,7 +296,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-05",
+    "scheduledDate": "2026-05-26",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -328,8 +328,8 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-07",
-    "weekNumber": 4,
+    "scheduledDate": "2026-06-09",
+    "weekNumber": 6,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
@@ -359,7 +359,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-09",
+    "scheduledDate": "2026-05-28",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "brand",
@@ -392,7 +392,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-12",
+    "scheduledDate": "2026-05-29",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -427,7 +427,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-14",
+    "scheduledDate": "2026-06-02",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "general",
@@ -455,8 +455,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-16",
-    "weekNumber": 5,
+    "scheduledDate": "2026-05-28",
+    "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "cataract-toric",
     "format": "single-image",
@@ -486,8 +486,8 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-18",
-    "weekNumber": 5,
+    "scheduledDate": "2026-06-07",
+    "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "reel",
@@ -515,8 +515,8 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-19",
-    "weekNumber": 6,
+    "scheduledDate": "2026-06-12",
+    "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
@@ -546,8 +546,8 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-21",
-    "weekNumber": 6,
+    "scheduledDate": "2026-06-30",
+    "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "carousel",
@@ -577,8 +577,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-23",
-    "weekNumber": 6,
+    "scheduledDate": "2026-07-05",
+    "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
@@ -608,8 +608,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-25",
-    "weekNumber": 6,
+    "scheduledDate": "2026-07-17",
+    "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "glaucoma",
     "format": "carousel",
@@ -639,8 +639,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-26",
-    "weekNumber": 7,
+    "scheduledDate": "2026-06-19",
+    "weekNumber": 8,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "reel",
@@ -670,7 +670,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-28",
+    "scheduledDate": "2026-06-18",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -701,8 +701,8 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-30",
-    "weekNumber": 7,
+    "scheduledDate": "2026-07-21",
+    "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "dry-eye",
     "format": "single-image",
@@ -733,7 +733,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-02",
+    "scheduledDate": "2026-06-16",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "brand",
@@ -767,8 +767,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-03",
-    "weekNumber": 8,
+    "scheduledDate": "2026-06-26",
+    "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
@@ -799,7 +799,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-05",
+    "scheduledDate": "2026-06-24",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "general",
@@ -829,7 +829,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-07",
+    "scheduledDate": "2026-06-23",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "general",
@@ -861,8 +861,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-09",
-    "weekNumber": 8,
+    "scheduledDate": "2026-06-28",
+    "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
     "format": "carousel",
@@ -892,7 +892,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-10",
+    "scheduledDate": "2026-07-02",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -924,8 +924,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-12",
-    "weekNumber": 9,
+    "scheduledDate": "2026-07-03",
+    "weekNumber": 10,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "carousel",
@@ -956,8 +956,8 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-14",
-    "weekNumber": 9,
+    "scheduledDate": "2026-07-23",
+    "weekNumber": 12,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "video",
@@ -986,8 +986,8 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-16",
-    "weekNumber": 9,
+    "scheduledDate": "2026-07-05",
+    "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
@@ -1017,8 +1017,8 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-17",
-    "weekNumber": 10,
+    "scheduledDate": "2026-07-10",
+    "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "carousel",
@@ -1048,8 +1048,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-19",
-    "weekNumber": 10,
+    "scheduledDate": "2026-07-11",
+    "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
@@ -1079,8 +1079,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-21",
-    "weekNumber": 10,
+    "scheduledDate": "2026-07-13",
+    "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
@@ -1111,7 +1111,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-23",
+    "scheduledDate": "2026-07-09",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "general",
@@ -1143,7 +1143,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-24",
+    "scheduledDate": "2026-07-15",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1173,7 +1173,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-26",
+    "scheduledDate": "2026-07-12",
     "weekNumber": 11,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1205,7 +1205,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-28",
+    "scheduledDate": "2026-07-14",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "general",
@@ -1236,7 +1236,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-31",
+    "scheduledDate": "2026-07-20",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1265,8 +1265,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-02",
-    "weekNumber": 12,
+    "scheduledDate": "2026-07-24",
+    "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
     "format": "carousel",
@@ -1295,8 +1295,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-04",
-    "weekNumber": 12,
+    "scheduledDate": "2026-07-25",
+    "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "single-image",
@@ -1327,7 +1327,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-07",
+    "scheduledDate": "2026-07-26",
     "weekNumber": 13,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -1358,7 +1358,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-09",
+    "scheduledDate": "2026-07-27",
     "weekNumber": 13,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1389,8 +1389,8 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-11",
-    "weekNumber": 13,
+    "scheduledDate": "2026-07-31",
+    "weekNumber": 14,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "carousel",
@@ -1420,7 +1420,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-12",
+    "scheduledDate": "2026-07-28",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -1454,7 +1454,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-13",
+    "scheduledDate": "2026-07-29",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1485,7 +1485,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-14",
+    "scheduledDate": "2026-07-30",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
@@ -1517,8 +1517,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-05",
-    "weekNumber": 4,
+    "scheduledDate": "2026-05-17",
+    "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "medical-retina",
     "format": "reel",
@@ -1551,8 +1551,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-19",
-    "weekNumber": 6,
+    "scheduledDate": "2026-05-19",
+    "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
     "format": "reel",
@@ -1585,8 +1585,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-03",
-    "weekNumber": 8,
+    "scheduledDate": "2026-06-05",
+    "weekNumber": 6,
     "isCommercialPriority": false,
     "format": "reel",
     "caption": "Elion Hyseni founded CES Medical in 2018 with one idea: that specialist eye care should be available locally, without compromise.\n\nHe is a Consultant Clinical Optometrist with advanced qualifications in clinical optometry, clinical neuroscience and healthcare management. He holds a professional certificate in glaucoma and an independent prescribing qualification. Before CES Medical, he spent years watching patients in Kent travel to London for specialist care that could and should have been available closer to home.\n\nHe now leads a team of over 25 consultants and clinicians across four primary locations, serving both NHS and private patients across Kent.",
@@ -1618,7 +1618,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-12",
+    "scheduledDate": "2026-05-31",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1652,7 +1652,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-28",
+    "scheduledDate": "2026-06-14",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -1687,7 +1687,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-17",
+    "scheduledDate": "2026-07-07",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -1721,7 +1721,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-02",
+    "scheduledDate": "2026-07-19",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "reel",
@@ -4586,8 +4586,8 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-01",
-    "weekNumber": 9,
+    "scheduledDate": "2026-06-02",
+    "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "brand",
     "format": "video",
@@ -4633,6 +4633,103 @@
     "productionLead": "leonna",
     "videoRelationship": "no-video",
     "notes": "Leonna on camera. Exterior of Pantiles, reception, consulting rooms, diagnostic equipment. Warm and observational. Not procedure-specific. 60 seconds. Capture on the same day as L04 or L05 filming to avoid an extra visit.",
+    "strategyRef": [
+      "ces_instagram_strategy_card",
+      "ces_facebook_strategy_card"
+    ],
+    "sortOrder": 0
+  },
+  {
+    "id": "P162",
+    "slug": "p162-retinal-detachment-warning-signs-you-should-know",
+    "title": "Retinal detachment: warning signs you should know",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-06-21",
+    "weekNumber": 8,
+    "isCommercialPriority": false,
+    "service": "vitreoretinal",
+    "format": "single-image",
+    "caption": "A sudden increase in floaters. Flashes of light at the edge of your vision. A shadow or curtain moving across your sight.\n\nThese are the warning signs of retinal detachment. It is a medical emergency. Do not wait for a routine appointment.\n\nMr Syed Shahid is a Moorfields-trained vitreoretinal surgeon based in Kent, one of very few in the region. If you or someone you know experiences these symptoms, seek urgent eye care the same day.\n\nFor urgent private assessment: 01732 757771",
+    "cta": {
+      "label": "Call 01732 757771",
+      "type": "phone",
+      "target": "tel:01732757771"
+    },
+    "productionLocation": "southborough",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "SS-C5",
+    "notes": "Single image. Clean, calm, serious but not alarming. Dark teal background. White text. Key symptoms listed clearly. Phone number prominent. This post could prevent sight loss. Treat it accordingly.",
+    "strategyRef": [
+      "ces_instagram_strategy_card",
+      "ces_facebook_strategy_card",
+      "ces_linkedin_strategy_card"
+    ],
+    "sortOrder": 0
+  },
+  {
+    "id": "P163",
+    "slug": "p163-keratoconus-what-it-is-and-when-to-seek-help",
+    "title": "Keratoconus: what it is and when to seek help",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "linkedin"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-16",
+    "weekNumber": 11,
+    "isCommercialPriority": false,
+    "service": "corneal",
+    "format": "carousel",
+    "caption": "Keratoconus is a progressive condition where the cornea gradually thins and bulges forward. It typically starts in the teens or twenties and can significantly affect vision if left unmanaged.\n\nThe good news: caught early, it is very treatable. Corneal crosslinking can halt progression. Advanced cases may need a corneal transplant, a procedure Mr Nick Kopsachilis performs at Headcorn.\n\nIf your glasses prescription keeps changing or your vision is distorted even with correction, it is worth a specialist assessment.\n\nVisit cespatientinformation.co.uk",
+    "cta": {
+      "label": "cespatientinformation.co.uk",
+      "type": "web",
+      "target": "https://www.cespatientinformation.co.uk"
+    },
+    "productionLocation": "headcorn",
+    "productionLead": "leonna",
+    "videoRelationship": "direct-snippet",
+    "videoReference": "NK-C11",
+    "notes": "Carousel 6 slides. Slide 1: What is keratoconus? Slide 2: The cornea is the clear window at the front of the eye. In keratoconus it gradually thins and changes shape, distorting vision in a way that glasses and contact lenses cannot fully correct. Slide 3: Who does it affect? Most commonly people in their teens and twenties. Often hereditary. More common in patients who rub their eyes frequently. Slide 4: How is it managed? Corneal crosslinking strengthens the cornea and halts progression. It works best when caught early. Slide 5: When is a corneal transplant needed? In advanced cases where the cornea is significantly misshapen, a transplant may be the right option. Mr Kopsachilis performs DMEK and other transplant procedures at Headcorn. Slide 6: If your vision keeps changing despite updated glasses, ask your optician to check for keratoconus. Early referral makes a significant difference. cespatientinformation.co.uk",
+    "strategyRef": [
+      "ces_instagram_strategy_card",
+      "ces_linkedin_strategy_card"
+    ],
+    "sortOrder": 0
+  },
+  {
+    "id": "P164",
+    "slug": "p164-dry-eye-and-ipl-when-drops-are-not-enough",
+    "title": "Dry eye and IPL: when drops are not enough",
+    "pillar": "educational",
+    "platforms": [
+      "instagram",
+      "facebook"
+    ],
+    "status": "draft",
+    "scheduledDate": "2026-07-22",
+    "weekNumber": 12,
+    "isCommercialPriority": false,
+    "service": "dry-eye",
+    "format": "carousel",
+    "caption": "If you have been using dry eye drops for months without lasting relief, you may not be getting to the cause.\n\nMost persistent dry eye is caused by meibomian gland dysfunction, blocked glands at the eyelid margin that affect the oil layer of your tears. Drops supplement the tears. IPL treats the glands directly.\n\nWe offer Intense Pulsed Light treatment for dry eye at CES Medical. It is non-invasive, takes around 15 minutes per session and most patients need three to four sessions spaced a few weeks apart.\n\nCall 01732 757771 to ask whether IPL is suitable for you.",
+    "cta": {
+      "label": "Call 01732 757771",
+      "type": "phone",
+      "target": "tel:01732757771"
+    },
+    "productionLocation": "stock",
+    "productionLead": "external",
+    "videoRelationship": "no-video",
+    "notes": "Carousel 6 slides. Slide 1: Dry eye and IPL: when drops are not enough. Slide 2: Persistent dry eye is rarely just about tear volume. The most common cause is meibomian gland dysfunction, blocked glands that affect the quality of the oil layer of your tears. Slide 3: What drops do. They supplement the tears and provide temporary relief. They do not address the blocked glands that cause the problem. Slide 4: What IPL does. Intense Pulsed Light targets the meibomian glands directly, improving the oil layer and reducing the cycle of inflammation. Clinically proven. Non-invasive. Slide 5: Who it suits. Patients who have been using drops for months or years without sustained improvement. Patients with confirmed meibomian gland dysfunction. Patients whose dry eye significantly affects screen work, driving or reading. Slide 6: Three to four sessions, spaced a few weeks apart. Most patients notice improvement after the second session. Call 01732 757771 to find out if IPL is right for you.",
     "strategyRef": [
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"

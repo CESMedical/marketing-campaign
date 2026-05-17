@@ -21,6 +21,7 @@ export async function syncPostContent() {
         slug:                 post.slug,
         title:                post.title,
         caption:              post.caption,
+        notes:                (post as unknown as Record<string, unknown>).notes as string ?? null,
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
@@ -45,7 +46,11 @@ export async function syncPostContent() {
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
-        // scheduledDate and weekNumber excluded — user-managed via canvas drag
+        // scheduledDate and weekNumber are authoritative from posts.json.
+        // Canvas drags persist until the next deploy, at which point
+        // the schedule from posts.json takes precedence.
+        scheduledDate:        post.scheduledDate,
+        weekNumber:           post.weekNumber,
         isCommercialPriority: post.isCommercialPriority,
         format:               post.format,
         service:              post.service              ?? null,
