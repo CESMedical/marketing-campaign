@@ -113,3 +113,15 @@
   @apply text-[10px] font-bold uppercase tracking-widest;
   color: rgb(0 56 69 / 0.4);
 }
+
+/* Canvas post-card highlight animation — triggered by reference clicks in strategy cards */
+@keyframes ces-card-ping {
+  0%   { box-shadow: 0 0 0 0px  rgba(0,128,128,0.9),  0 2px 12px rgba(0,56,69,0.07); }
+  30%  { box-shadow: 0 0 0 14px rgba(0,128,128,0.4),  0 2px 12px rgba(0,56,69,0.07); }
+  60%  { box-shadow: 0 0 0 5px  rgba(0,128,128,0.55), 0 2px 12px rgba(0,56,69,0.07); }
+  80%  { box-shadow: 0 0 0 11px rgba(0,128,128,0.2),  0 2px 12px rgba(0,56,69,0.07); }
+  100% { box-shadow: 0 0 0 0px  rgba(0,128,128,0),    0 2px 12px rgba(0,56,69,0.07); }
+}
+.ces-card-ping {
+  animation: ces-card-ping 0.75s ease-out 3;
+}

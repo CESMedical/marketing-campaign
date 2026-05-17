@@ -413,6 +413,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   const [posts, setPosts]       = useState(init)
   const postsRef                = useRef(init)
+  const [highlightId, setHighlightId] = useState<string | null>(null)
   const [selected, setSelected] = useState<Post | null>(null)
   const [showNewPost, setShowNewPost] = useState(false)
   const [showShift, setShowShift]     = useState(false)
@@ -520,6 +521,9 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
       const wx  = GAL_PAD + off * DAY_W + DAY_W / 2
       const wy  = GAL_PAD + PANEL_H / 2
       applyTransform(z, -wx * z + vw / 2, -wy * z + vh / 2)
+      // Pulse the card so it's easy to spot in the week column
+      setHighlightId(id)
+      setTimeout(() => setHighlightId(h => h === id ? null : h), 2400)
     }
     window.addEventListener('ces-navigate-post', handleNavPost)
     return () => window.removeEventListener('ces-navigate-post', handleNavPost)
@@ -1110,29 +1114,33 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
             {/* Cards */}
             {layout.map(({ post, off, row }) => {
-              const isDragging = dragVisual?.slug === post.slug
-              const isSelected = selected?.slug === post.slug
+              const isDragging   = dragVisual?.slug === post.slug
+              const isSelected   = selected?.slug === post.slug
+              const isHighlighted = highlightId === post.id
               const x = off * DAY_W + (DAY_W - CARD_W) / 2
               const y = HEADER_H + CONNECTOR_H + row * ROW_H
               const sc = STATUS_COLOR[post.status] ?? '#9ca3af'
               const pc = PILLAR_COLOR[post.pillar] ?? '#003845'
 
               return (
-                <div key={post.slug} data-card="1" style={{ position: 'absolute', left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : 10 }}>
+                <div key={post.slug} data-card="1" style={{ position: 'absolute', left: x, top: y, width: CARD_W, zIndex: isDragging ? 50 : isHighlighted ? 20 : 10 }}>
                   <div style={{ position: 'absolute', left: CARD_W / 2 - 1, bottom: CARD_H, width: 2, height: CONNECTOR_H, background: 'rgba(0,56,69,0.15)' }} />
                   <div style={{ position: 'absolute', left: CARD_W / 2 - 8, bottom: CARD_H + CONNECTOR_H - 8, width: 16, height: 16, borderRadius: '50%', background: sc, border: '4px solid #eef2f4', boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }} />
                   <div
                     data-card="1"
                     data-slug={post.slug}
+                    className={isHighlighted ? 'ces-card-ping' : undefined}
                     style={{
                       height: CARD_H, touchAction: 'none',
                       borderRadius: 18,
                       background: '#fff',
                       border: `1.5px solid ${isSelected || isDragging ? pc : 'rgba(0,56,69,0.1)'}`,
                       borderLeft: `6px solid ${pc}`,
-                      boxShadow: isSelected || isDragging
-                        ? `0 0 0 3px ${pc}28, 0 12px 32px rgba(0,56,69,0.15)`
-                        : '0 2px 12px rgba(0,56,69,0.07)',
+                      boxShadow: isHighlighted
+                        ? undefined
+                        : isSelected || isDragging
+                          ? `0 0 0 3px ${pc}28, 0 12px 32px rgba(0,56,69,0.15)`
+                          : '0 2px 12px rgba(0,56,69,0.07)',
                       transform: isDragging ? 'scale(1.03)' : 'scale(1)',
                       transition: isDragging ? 'none' : 'box-shadow 0.2s, border-color 0.2s, transform 0.1s',
                       overflow: 'hidden',
