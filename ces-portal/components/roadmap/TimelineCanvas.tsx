@@ -412,6 +412,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const canEdit = canEditPost(session?.user?.role)
 
   const [posts, setPosts]       = useState(init)
+  const postsRef                = useRef(init)
   const [selected, setSelected] = useState<Post | null>(null)
   const [showNewPost, setShowNewPost] = useState(false)
   const [showShift, setShowShift]     = useState(false)
@@ -501,11 +502,16 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     return () => clearInterval(id)
   }, [roadmapId])
 
+  // Keep postsRef current so the nav listener always has the latest posts
+  // without needing to re-register on every state change.
+  useEffect(() => { postsRef.current = posts }, [posts])
+
   // Navigate to a post on the canvas when a strategy card reference is clicked.
+  // Registered once (empty deps) — reads posts through postsRef to avoid stale closure.
   useEffect(() => {
     function handleNavPost(e: Event) {
       const { id } = (e as CustomEvent<{ id: string }>).detail
-      const post = posts.find(p => p.id === id)
+      const post = postsRef.current.find(p => p.id === id)
       if (!post) return
       const vw = containerRef.current?.clientWidth  ?? window.innerWidth
       const vh = containerRef.current?.clientHeight ?? window.innerHeight
@@ -517,7 +523,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     }
     window.addEventListener('ces-navigate-post', handleNavPost)
     return () => window.removeEventListener('ces-navigate-post', handleNavPost)
-  }, [posts]) // eslint-disable-line
+  }, []) // eslint-disable-line
 
   useEffect(() => {
     if (!connectMode) return
