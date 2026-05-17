@@ -67,6 +67,7 @@
     "pillar": "educational",
     "platforms": [
       "instagram",
+      "facebook",
       "youtube",
       "x"
     ],
@@ -89,8 +90,10 @@
     "videoReference": "Cataract_Script_v2",
     "strategyRef": [
       "ces_instagram_strategy_card",
+      "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
-    ]
+    ],
+    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks."
   },
   {
     "id": "P04",
@@ -1615,6 +1618,7 @@
     "platforms": [
       "instagram",
       "facebook",
+      "linkedin",
       "youtube"
     ],
     "status": "draft",
@@ -1638,6 +1642,7 @@
     "strategyRef": [
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card",
+      "ces_linkedin_strategy_card",
       "ces_youtube_strategy_card"
     ]
   },
@@ -1648,6 +1653,7 @@
     "pillar": "educational",
     "platforms": [
       "instagram",
+      "facebook",
       "linkedin",
       "youtube"
     ],
@@ -1672,6 +1678,7 @@
     "sortOrder": 1,
     "strategyRef": [
       "ces_instagram_strategy_card",
+      "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card",
       "ces_youtube_strategy_card"
     ]
@@ -1684,6 +1691,7 @@
     "platforms": [
       "instagram",
       "facebook",
+      "linkedin",
       "youtube"
     ],
     "status": "draft",
@@ -1707,6 +1715,7 @@
     "strategyRef": [
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card",
+      "ces_linkedin_strategy_card",
       "ces_youtube_strategy_card"
     ]
   },
