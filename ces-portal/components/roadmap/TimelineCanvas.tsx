@@ -501,6 +501,24 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     return () => clearInterval(id)
   }, [roadmapId])
 
+  // Navigate to a post on the canvas when a strategy card reference is clicked.
+  useEffect(() => {
+    function handleNavPost(e: Event) {
+      const { id } = (e as CustomEvent<{ id: string }>).detail
+      const post = posts.find(p => p.id === id)
+      if (!post) return
+      const vw = containerRef.current?.clientWidth  ?? window.innerWidth
+      const vh = containerRef.current?.clientHeight ?? window.innerHeight
+      const z   = Math.max(zoomRef.current, 0.55)
+      const off = toOff(post.scheduledDate)
+      const wx  = GAL_PAD + off * DAY_W + DAY_W / 2
+      const wy  = GAL_PAD + PANEL_H / 2
+      applyTransform(z, -wx * z + vw / 2, -wy * z + vh / 2)
+    }
+    window.addEventListener('ces-navigate-post', handleNavPost)
+    return () => window.removeEventListener('ces-navigate-post', handleNavPost)
+  }, [posts]) // eslint-disable-line
+
   useEffect(() => {
     if (!connectMode) return
     function onKey(e: KeyboardEvent) {

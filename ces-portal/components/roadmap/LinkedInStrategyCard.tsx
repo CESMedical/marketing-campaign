@@ -2,18 +2,19 @@
 
 import { useState } from 'react'
 import { Linkedin } from 'lucide-react'
+import { PostRef } from './PostRef'
 
 const LI_BLUE   = '#0A66C2'
 const LI_LIGHT  = '#EBF3FB'
 
-const rule = (text: string) => (
+const rule = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#22c55e', flexShrink: 0, fontSize: 12, marginTop: 1 }}>✓</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
   </div>
 )
 
-const flag = (text: string) => (
+const flag = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#f59e0b', flexShrink: 0, fontSize: 11, marginTop: 1 }}>⚑</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
@@ -122,10 +123,10 @@ export function LinkedInStrategyCard() {
 
         {/* Flags */}
         <Section title="Active flags" defaultOpen>
-          {flag('LI-B06 (2RT AMD): Do not schedule until Mr Qureshi confirms he is comfortable with brand account publication')}
-          {flag('All Elion posts (LI-E01 to LI-E18): placeholder drafts only — Elion must rewrite each in his own voice before publishing')}
-          {flag('All consultant posts (LI-C01 to LI-C08): must be reviewed and approved by the named consultant before publishing')}
-          {flag('LI-E06 (Southborough): time to coincide with actual clinic launch date — confirm with team')}
+          {flag(<><PostRef id="P87" color={LI_BLUE} /> (2RT AMD): Do not schedule until Mr Qureshi confirms he is comfortable with brand account publication</>)}
+          {flag(<>All Elion posts (<PostRef id="P108" color={LI_BLUE} /> to <PostRef id="P125" color={LI_BLUE} />): placeholder drafts only — Elion must rewrite each in his own voice before publishing</>)}
+          {flag(<>All consultant posts (<PostRef id="P126" color={LI_BLUE} /> to <PostRef id="P133" color={LI_BLUE} />): must be reviewed and approved by the named consultant before publishing</>)}
+          {flag(<><PostRef id="P113" color={LI_BLUE} /> (Southborough): time to coincide with actual clinic launch date — confirm with team</>)}
         </Section>
 
         {/* Streams */}
@@ -157,7 +158,7 @@ export function LinkedInStrategyCard() {
             'No ASA red flags',
             'Elion posts rewritten by Elion',
             'Consultant posts approved by consultant',
-            'LI-B06 Qureshi confirmation received',
+            'P87 Qureshi confirmation received',
             'Golden hour cover confirmed',
           ].map(item => (
             <div key={item} style={{ display: 'flex', gap: 8, marginBottom: 5, alignItems: 'flex-start' }}>

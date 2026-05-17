@@ -2,19 +2,20 @@
 
 import { useState } from 'react'
 import { Youtube } from 'lucide-react'
+import { PostRef } from './PostRef'
 
 const YT_RED   = '#FF0000'
 const YT_DARK  = '#CC0000'
 const YT_LIGHT = '#FFF0F0'
 
-const rule = (text: string) => (
+const rule = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#22c55e', flexShrink: 0, fontSize: 12, marginTop: 1 }}>✓</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
   </div>
 )
 
-const flag = (text: string) => (
+const flag = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#f59e0b', flexShrink: 0, fontSize: 11, marginTop: 1 }}>⚑</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
@@ -137,31 +138,31 @@ export function YouTubeStrategyCard() {
 
         {/* Active flags */}
         <Section title="Active flags" defaultOpen>
-          {flag('YT-PS01 (Susan): requires PS01 filming before scheduling — also feeds FB09 and IG12')}
-          {flag('YT-PS02 (James): requires PS02 filming')}
-          {flag('YT-PS03 (Anna): requires PS03 filming — also feeds IG06')}
-          {flag('YT-PS04 (glaucoma patient): requires PS04 filming and patient consent')}
-          {flag('YT-S04 (retinal detachment): SEEK URGENT CARE notice must appear in first frame before publishing')}
-          {flag('YT-LF05, LF06, LF07: topics confirmed, full scripts pending — do not schedule until scripts approved')}
+          {flag(<><PostRef id="P146" color={YT_RED} /> (Susan): requires PS01 filming before scheduling — also feeds <PostRef id="P78" color={YT_RED} /> (Facebook) and <PostRef id="P67" color={YT_RED} /> (Instagram)</>)}
+          {flag(<><PostRef id="P147" color={YT_RED} /> (James): requires PS02 filming</>)}
+          {flag(<><PostRef id="P148" color={YT_RED} /> (Anna): requires PS03 filming — also feeds <PostRef id="P61" color={YT_RED} /> (Instagram)</>)}
+          {flag(<><PostRef id="P149" color={YT_RED} /> (glaucoma patient): requires PS04 filming and patient consent</>)}
+          {flag(<><PostRef id="P153" color={YT_RED} /> (retinal detachment): SEEK URGENT CARE notice must appear in first frame before publishing</>)}
+          {flag(<><PostRef id="P138" color={YT_RED} />, <PostRef id="P139" color={YT_RED} />, <PostRef id="P140" color={YT_RED} />: topics confirmed, full scripts pending — do not schedule until scripts approved</>)}
           {flag('YouTube channel must be set up (handle, playlists, channel art, trailer) before first video upload')}
-          {flag('YT-CI04 (Elion): 90-second cut also serves as YouTube channel trailer — export separately')}
+          {flag(<><PostRef id="P145" color={YT_RED} /> (Elion): 90-second cut also serves as YouTube channel trailer — export separately</>)}
         </Section>
 
         {/* Top SEO keywords */}
         <Section title="Top SEO keywords by video">
           {[
-            { kw: 'Cataract surgery Kent', video: 'YT-LF01' },
-            { kw: 'Drooping eyelid medical or cosmetic', video: 'YT-LF02' },
-            { kw: 'Glaucoma newly diagnosed', video: 'YT-LF03' },
-            { kw: 'Retinal detachment symptoms', video: 'YT-LF04' },
-            { kw: 'Corneal transplant explained', video: 'YT-LF05' },
-            { kw: 'Dry eye IPL treatment', video: 'YT-LF06' },
-            { kw: 'Multifocal lens implant', video: 'YT-LF07' },
-            { kw: 'Diabetic retinopathy treatment', video: 'YT-LF08' },
+            { kw: 'Cataract surgery Kent', video: 'P134' },
+            { kw: 'Drooping eyelid medical or cosmetic', video: 'P135' },
+            { kw: 'Glaucoma newly diagnosed', video: 'P136' },
+            { kw: 'Retinal detachment symptoms', video: 'P137' },
+            { kw: 'Corneal transplant explained', video: 'P138' },
+            { kw: 'Dry eye IPL treatment', video: 'P139' },
+            { kw: 'Multifocal lens implant', video: 'P140' },
+            { kw: 'Diabetic retinopathy treatment', video: 'P141' },
           ].map(row => (
             <div key={row.kw} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
               <span style={{ fontSize: 10.5, color: 'rgba(0,56,69,0.65)', flex: 1, lineHeight: 1.4 }}>{row.kw}</span>
-              <span style={{ fontSize: 10, fontWeight: 700, color: YT_RED, background: YT_LIGHT, padding: '2px 6px', borderRadius: 5, marginLeft: 6, flexShrink: 0 }}>{row.video}</span>
+              <PostRef id={row.video} color={YT_RED} size={10} label={row.video} />
             </div>
           ))}
         </Section>

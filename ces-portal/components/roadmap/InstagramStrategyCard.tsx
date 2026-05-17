@@ -2,18 +2,19 @@
 
 import { useState } from 'react'
 import { Instagram } from 'lucide-react'
+import { PostRef } from './PostRef'
 
 const IG_PINK  = '#E1306C'
 const IG_LIGHT = '#FEE8F2'
 
-const rule = (text: string) => (
+const rule = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#22c55e', flexShrink: 0, fontSize: 12, marginTop: 1 }}>✓</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
   </div>
 )
 
-const flag = (text: string) => (
+const flag = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#f59e0b', flexShrink: 0, fontSize: 11, marginTop: 1 }}>⚑</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
@@ -148,12 +149,12 @@ export function InstagramStrategyCard() {
 
         {/* Active flags */}
         <Section title="Active flags" defaultOpen>
-          {flag('IG04: requires L04 Leonna Pantiles footage before scheduling')}
-          {flag('IG06: requires PS03 Anna patient story footage — written consent needed')}
-          {flag('IG08: requires L01 Leonna Chatham morning footage')}
-          {flag('IG10: requires NK-C11 Kopsachilis interview footage')}
-          {flag('IG12: requires PS01 Susan patient story footage — written consent needed')}
-          {flag('Use Trial Reels feature on IG02, IG06, IG10 and IG12 before full posting to test hooks with cold audiences')}
+          {flag(<><PostRef id="P59" color={IG_PINK} />: requires L04 Leonna Pantiles footage before scheduling</>)}
+          {flag(<><PostRef id="P61" color={IG_PINK} />: requires PS03 Anna patient story footage — written consent needed</>)}
+          {flag(<><PostRef id="P63" color={IG_PINK} />: requires L01 Leonna Chatham morning footage</>)}
+          {flag(<><PostRef id="P65" color={IG_PINK} />: requires NK-C11 Kopsachilis interview footage</>)}
+          {flag(<><PostRef id="P67" color={IG_PINK} />: requires PS01 Susan patient story footage — written consent needed</>)}
+          {flag(<>Use Trial Reels feature on <PostRef id="P57" color={IG_PINK} />, <PostRef id="P61" color={IG_PINK} />, <PostRef id="P65" color={IG_PINK} /> and <PostRef id="P67" color={IG_PINK} /> before full posting to test hooks with cold audiences</>)}
           {flag('Bio link must be updated to match the destination of each major post on publish day')}
         </Section>
 

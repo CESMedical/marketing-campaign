@@ -2,18 +2,19 @@
 
 import { useState } from 'react'
 import { Facebook } from 'lucide-react'
+import { PostRef } from './PostRef'
 
 const FB_BLUE  = '#1877F2'
 const FB_LIGHT = '#E7F0FF'
 
-const rule = (text: string) => (
+const rule = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#22c55e', flexShrink: 0, fontSize: 12, marginTop: 1 }}>✓</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
   </div>
 )
 
-const flag = (text: string) => (
+const flag = (text: React.ReactNode) => (
   <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
     <span style={{ color: '#f59e0b', flexShrink: 0, fontSize: 11, marginTop: 1 }}>⚑</span>
     <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.7)', lineHeight: 1.5 }}>{text}</span>
@@ -131,10 +132,10 @@ export function FacebookStrategyCard() {
 
         {/* Active flags */}
         <Section title="Active flags" defaultOpen>
-          {flag('FB09 (Patient story — Susan): Do not schedule until PS01 footage is filmed and approved')}
+          {flag(<><PostRef id="P78" color={FB_BLUE} /> (Patient story: Susan): Do not schedule until PS01 footage is filmed and approved</>)}
           {flag('All evening posts (7pm): team member must be available to monitor comments until 9pm')}
           {flag('Main campaign posts going to Facebook: replace URL CTA with phone number 01732 757771 on Facebook versions')}
-          {flag('FB05 reel: must be exported without TikTok or Instagram watermark before native upload')}
+          {flag(<><PostRef id="P74" color={FB_BLUE} /> reel: must be exported without TikTok or Instagram watermark before native upload</>)}
         </Section>
 
         {/* Post breakdown */}
