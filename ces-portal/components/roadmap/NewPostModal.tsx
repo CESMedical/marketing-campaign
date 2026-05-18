@@ -6,10 +6,11 @@ import { Post, Pillar, Platform, Format, PILLAR_LABELS, PLATFORM_LABELS } from '
 
 const ALL_PILLARS: Pillar[] = ['educational', 'business', 'premises', 'employee', 'leadership', 'events', 'tech']
 const ALL_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
-const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'text']
+const ALL_FORMATS: Format[] = ['single-image', 'carousel', 'reel', 'story', 'video', 'video-long-form', 'video-interview', 'video-patient-story', 'youtube-short', 'text']
 const FORMAT_LABELS: Record<Format, string> = {
   'single-image': 'Single Image', carousel: 'Carousel', 'document-carousel': 'Document Carousel (PDF)', reel: 'Reel',
-  story: 'Story', video: 'Video', text: 'Text',
+  story: 'Story', video: 'Video', 'video-long-form': 'Video (Long-form)', 'video-interview': 'Video (Interview)',
+  'video-patient-story': 'Video (Patient Story)', 'youtube-short': 'YouTube Short', text: 'Text',
 }
 const PILLAR_COLOR: Record<string, string> = {
   educational: '#008080', business: '#2563eb', premises: '#d97706',

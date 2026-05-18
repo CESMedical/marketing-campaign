@@ -3925,7 +3925,7 @@
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "In this video, our FRCOphth-qualified consultant ophthalmologists explain everything you need to know about cataract surgery at CES Medical in Kent.\n\nWe cover: what a cataract is and when it needs treating, the technology we use to plan your surgery (Zeiss IOLMaster 700), how to choose the right lens (monofocal, multifocal, EDOF or toric), what surgery day looks like at our Chatham centre and how to recover well in the first week.\n\nCES Medical provides consultant-led cataract surgery across Kent, including Chatham, Headcorn, Tunbridge Wells and Southborough. Most patients are seen within two weeks of their first enquiry.\n\nTo book a private consultation or ask a question: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/cataract-surgery\nFind your nearest clinic: https://cesmedical.co.uk\n\nChapters:\n0:00 What is a cataract?\n2:00 When does it need treating?\n3:30 How is surgery planned?\n5:00 Which lens is right for you?\n7:00 What does surgery day look like?\n8:30 Recovery guide\n10:00 Questions to ask your surgeon\n11:00 Next steps at CES Medical",
     "cta": {
       "label": "cespatientinformation.co.uk",
@@ -3953,7 +3953,7 @@
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Mr Nick Kopsachilis, consultant oculoplastic surgeon at CES Medical, explains everything you need to know about eyelid surgery, including how to tell whether your condition is functional (medical) or cosmetic, why specialist ophthalmological training matters for this procedure, what the consultation involves, what recovery looks like day by day and whether your private medical insurance may cover the treatment.\n\nCES Medical offers oculoplastic surgery at Tunbridge Wells and Headcorn. Our consultants hold FRCOphth (Fellow of the Royal College of Ophthalmologists) plus additional subspecialty training.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk\n\nChapters:\n0:00 Functional vs cosmetic eyelids\n2:00 Why an oculoplastic surgeon?\n3:30 What happens at consultation?\n5:00 The procedure\n6:30 Recovery guide\n8:00 Insurance coverage\n9:00 Next steps",
     "cta": {
       "label": "cespatientinformation.co.uk",
@@ -3981,7 +3981,7 @@
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "glaucoma",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "If you or someone you love has recently been diagnosed with glaucoma, this video is for you. Our team at CES Medical explains what glaucoma is, how it is diagnosed, what the treatment options are (including eye drops, SLT laser and surgery) and what living with managed glaucoma looks like long term.\n\nCES Medical provides glaucoma diagnosis and management across Kent, including Chatham, Headcorn and Southborough.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk/glaucoma",
     "cta": {
       "label": "cespatientinformation.co.uk/glaucoma",
@@ -4009,7 +4009,7 @@
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Mr Syed Shahid, one of the very few vitreoretinal surgeons in Kent, explains retinal detachment, macular hole, epiretinal membrane and diabetic vitreoretinal disease. This video covers warning signs, when to seek urgent assessment, what surgery involves and what outcomes look like for patients in Kent.\n\nCES Medical provides vitreoretinal surgical services at Southborough.\n\nIMPORTANT: If you are experiencing sudden floaters, flashes of light or a shadow across your vision, please seek urgent eye care immediately. Do not wait.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
@@ -4037,7 +4037,7 @@
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "corneal",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Mr Nick Kopsachilis, corneal specialist at CES Medical, explains what corneal transplantation involves, who needs it and what patients in Kent can expect.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
@@ -4065,7 +4065,7 @@
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "dry-eye",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Dry eye is one of the most under-treated conditions in ophthalmology. If drops alone have not provided sustained relief, this video explains what else is available, including Intense Pulsed Light (IPL) therapy for meibomian gland dysfunction.\n\nTo book: 01732 757771 | private@cesmedical.co.uk\nPatient information: https://cespatientinformation.co.uk",
     "cta": {
       "label": "cespatientinformation.co.uk",
@@ -4092,7 +4092,7 @@
     "weekNumber": 7,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Mr Nick Kopsachilis explains the full range of premium lens implants available at CES Medical, including multifocal, EDOF and toric lenses. Who is a candidate, how the choice is made and what life looks like after surgery.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
@@ -4119,7 +4119,7 @@
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "general",
-    "format": "video",
+    "format": "video-long-form",
     "caption": "Mr Syed Shahid explains diabetic retinopathy: what it is, how it is detected through screening, what the stages mean and what treatment options are available at CES Medical.\n\nIf you have diabetes, this video explains why your annual eye screening appointment matters and what happens if you are referred for specialist care.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
@@ -4147,7 +4147,7 @@
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "corneal",
-    "format": "video",
+    "format": "video-interview",
     "caption": "In this interview, Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon at CES Medical, discusses his approach to complex corneal surgery, his international training in Munich, Moorfields and King's College London, his research into corneal transplantation and what patients can expect at their first consultation at CES Medical.\n\nMr Kopsachilis holds an MD, PhD and Postgraduate Diploma in Cataract and Refractive Surgery (awarded with distinction). He leads the corneal and premium lens service at CES Medical across Headcorn, Pantiles, Chatham and Southborough.\n\nChapters:\n0:00 Why CES Medical?\n3:00 What Global Care for Local People means\n6:00 NHS vs private: the honest comparison\n9:00 What does an oculoplastic surgeon do?\n12:00 Corneal transplantation explained\n16:00 Premium lenses and who they suit\n19:00 Questions to ask before surgery",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
@@ -4175,7 +4175,7 @@
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "medical-retina",
-    "format": "video",
+    "format": "video-interview",
     "caption": "Mr Kashif Qureshi, Consultant Ophthalmic Surgeon and Medical Retina Specialist at CES Medical, discusses his philosophy on patient-centred eye care, the conditions he treats and the specialist services he offers at Pantiles and Headcorn.\n\nMr Qureshi trained at Guy's and St Thomas's Hospitals, Manchester Royal Eye Hospital and Moorfields Eye Hospital. He holds BSc MBBS FRCOphth and served as Co-Lead for Revalidation at the Royal College of Ophthalmologists.\n\nTo book: 01732 757771 | cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
@@ -4203,7 +4203,7 @@
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
-    "format": "video",
+    "format": "video-interview",
     "caption": "Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon at CES Medical, discusses his training at Moorfields Eye Hospital, his specialist work in retinal surgery and what patients in Kent can expect when referred for vitreoretinal conditions.\n\nTo book: 01732 757771 | cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk/consultants",
@@ -4231,7 +4231,7 @@
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "brand",
-    "format": "video",
+    "format": "video-interview",
     "caption": "Elion Hyseni, Founder, CEO and Consultant Clinical Optometrist at CES Medical, discusses why he built CES Medical, what consultant-led care means in practice, how the NHS and private pathways work at CES, and what is next for eye care in Kent.\n\nTo book: 01732 757771 | cesmedical.co.uk",
     "cta": {
       "label": "cesmedical.co.uk",
@@ -4259,7 +4259,7 @@
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
-    "format": "video",
+    "format": "video-patient-story",
     "caption": "Susan shares her experience of cataract surgery at CES Medical in Chatham, including why she delayed for years, what finally made her book, what surgery day was actually like, and how her vision changed afterwards.\n\nIf you are considering cataract surgery and want to understand what the experience is like from a patient's perspective, this is for you.\n\nTo book a consultation: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "Call 01732 757771",
@@ -4287,7 +4287,7 @@
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "general",
-    "format": "video",
+    "format": "video-patient-story",
     "caption": "James shares his experience of urgent eye treatment at CES Medical in Chatham.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "Call 01732 757771",
@@ -4315,7 +4315,7 @@
     "weekNumber": 3,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
-    "format": "video",
+    "format": "video-patient-story",
     "caption": "Anna shares her experience of eyelid surgery at CES Medical in Tunbridge Wells, including what it was like to be told her drooping eyelid was functional rather than cosmetic, how the procedure went and what changed afterwards.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "Call 01732 757771",
@@ -4343,7 +4343,7 @@
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "glaucoma",
-    "format": "video",
+    "format": "video-patient-story",
     "caption": "A patient shares their experience of being diagnosed with glaucoma through a routine eye test at CES Medical, what the diagnosis process was like, and how their condition is now being managed.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
     "cta": {
       "label": "Call 01732 757771",
@@ -4371,7 +4371,7 @@
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "The foggy window feeling. What a cataract actually does to your vision, in 45 seconds. Full video on our channel. #cataract #eyehealth #visionloss",
     "cta": {
       "label": "Full video on channel",
@@ -4399,7 +4399,7 @@
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "Five signs your mum or dad might have a cataract they have not mentioned. #cataract #eyehealth #familyhealth",
     "cta": {
       "label": "Full video on channel",
@@ -4426,7 +4426,7 @@
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "After cataract surgery, some patients notice their vision clouding again. This is posterior capsule opacification and it is easily treated. #cataract #eyesurgery #YAGlaser",
     "cta": {
       "label": "Full video on channel",
@@ -4454,7 +4454,7 @@
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "Sudden floaters. Flashes of light. A shadow across your vision. These are medical emergencies. Do not wait. Seek urgent eye care the same day. #retinaldetachment #eyehealth #eyeemergency",
     "cta": {
       "label": "Full video on channel",
@@ -4482,7 +4482,7 @@
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "Day one to week two after eyelid surgery. What to expect and what is normal. #eyelidsurgery #blepharoplasty #eyehealth",
     "cta": {
       "label": "Full video on channel",
@@ -4510,7 +4510,7 @@
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "corneal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "When the clear front of the eye is damaged or diseased, a corneal transplant replaces it. Mr Kopsachilis explains who needs one and what it involves. #cornealtransplant #eyesurgery #ophthalmology",
     "cta": {
       "label": "Full video on channel",
@@ -4538,7 +4538,7 @@
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "glaucoma",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "Glaucoma damages your optic nerve silently. By the time most people notice something is wrong, some damage has already occurred. That is why screening matters. #glaucoma #eyehealth #visionloss",
     "cta": {
       "label": "Full video on channel",
@@ -4565,7 +4565,7 @@
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "Not sure which lens to choose for your cataract surgery? Here is the 60-second comparison. #cataract #IOL #eyesurgery",
     "cta": {
       "label": "Full video on channel",
@@ -4593,7 +4593,7 @@
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "First cataract consultation? Here is exactly what happens in the room. #cataract #eyehealth #privatehealthcare",
     "cta": {
       "label": "Full video on channel",
@@ -4621,7 +4621,7 @@
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
-    "format": "reel",
+    "format": "youtube-short",
     "caption": "A drooping upper eyelid is not always cosmetic. If it is cutting into your field of vision, it is a medical condition. Mr Kopsachilis explains the difference in 45 seconds. #eyelidsurgery #ptosis #eyehealth",
     "cta": {
       "label": "Full video on channel",

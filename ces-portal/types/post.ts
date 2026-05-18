@@ -38,7 +38,18 @@ export type Location =
   | 'southborough'
   | 'pantiles';
 
-export type Format = 'single-image' | 'carousel' | 'document-carousel' | 'reel' | 'story' | 'video' | 'text';
+export type Format =
+  | 'single-image'
+  | 'carousel'
+  | 'document-carousel'
+  | 'reel'
+  | 'story'
+  | 'video'
+  | 'video-long-form'
+  | 'video-interview'
+  | 'video-patient-story'
+  | 'youtube-short'
+  | 'text';
 
 export type CtaType = 'phone' | 'web' | 'dm' | 'save' | 'share';
 
