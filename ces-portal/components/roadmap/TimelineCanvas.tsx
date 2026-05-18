@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search } from 'lucide-react'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search, RefreshCw } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
@@ -424,6 +424,27 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [shifting, setShifting]       = useState(false)
   const [showSearch, setShowSearch]   = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [syncing, setSyncing]         = useState(false)
+  const [syncMsg, setSyncMsg]         = useState<'ok' | 'err' | null>(null)
+
+  async function handleSync() {
+    if (syncing) return
+    setSyncing(true); setSyncMsg(null)
+    try {
+      const res = await fetch('/api/admin/sync-posts', { method: 'POST' })
+      setSyncMsg(res.ok ? 'ok' : 'err')
+      if (res.ok) {
+        // Reload posts from server so the canvas reflects synced data
+        const fresh = await fetch(`/api/posts${roadmapId ? `?r=${roadmapId}` : ''}`)
+        const data = await fresh.json()
+        if (Array.isArray(data)) setPosts(data)
+      }
+    } catch { setSyncMsg('err') }
+    finally {
+      setSyncing(false)
+      setTimeout(() => setSyncMsg(null), 3000)
+    }
+  }
   const [cursorStyle, setCursorStyle] = useState<'grab' | 'grabbing'>('grab')
 
   // ── Node / edge connector system ─────────────────────────────────────────
@@ -893,6 +914,21 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         >
           <Search size={14} />
         </button>
+        {canEdit && <>
+          <div className="w-7 h-px bg-brand-deep/10" />
+          <button
+            onClick={handleSync}
+            disabled={syncing}
+            title="Sync posts from source"
+            className={`flex items-center justify-center w-9 h-9 rounded-xl border transition-all ${
+              syncMsg === 'ok'  ? 'bg-green-500 border-green-500 text-white' :
+              syncMsg === 'err' ? 'bg-red-400 border-red-400 text-white' :
+              'border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft'
+            }`}
+          >
+            <RefreshCw size={14} className={syncing ? 'animate-spin' : ''} />
+          </button>
+        </>}
       </div>
 
       {/* ── Connector control panel — appears to the right of sidebar when active ── */}

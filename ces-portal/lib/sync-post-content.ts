@@ -43,6 +43,7 @@ export async function syncPostContent() {
       update: {
         title:                post.title,
         caption:              post.caption,
+        notes:                (post as unknown as Record<string, unknown>).notes as string ?? null,
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
