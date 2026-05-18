@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2 } from 'lucide-react'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
@@ -422,6 +422,8 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [showShift, setShowShift]     = useState(false)
   const [shiftAmt, setShiftAmt]       = useState(7)
   const [shifting, setShifting]       = useState(false)
+  const [showSearch, setShowSearch]   = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const [cursorStyle, setCursorStyle] = useState<'grab' | 'grabbing'>('grab')
 
   // ── Node / edge connector system ─────────────────────────────────────────
@@ -540,6 +542,29 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [connectMode])
+
+  useEffect(() => {
+    if (!showSearch) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') { setShowSearch(false); setSearchQuery('') }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [showSearch])
+
+  function handleSearchSelect(postId: string) {
+    window.dispatchEvent(new CustomEvent('ces-navigate-post', { detail: { id: postId } }))
+    setShowSearch(false)
+    setSearchQuery('')
+  }
+
+  const searchLower = searchQuery.toLowerCase()
+  const searchResults = searchQuery.length >= 1
+    ? posts.filter(p =>
+        p.id.toLowerCase().includes(searchLower) ||
+        p.title.toLowerCase().includes(searchLower)
+      ).slice(0, 10)
+    : []
 
   function scheduleSync() {
     if (!roadmapId) return
@@ -860,6 +885,14 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         >
           <Link2 size={14} />
         </button>
+        <div className="w-7 h-px bg-brand-deep/10" />
+        <button
+          onClick={() => { setShowSearch(s => !s); setSearchQuery('') }}
+          title="Find post"
+          className={`flex items-center justify-center w-9 h-9 rounded-xl border transition-all ${showSearch ? 'bg-brand-deep border-brand-deep text-white' : 'border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft'}`}
+        >
+          <Search size={14} />
+        </button>
       </div>
 
       {/* ── Connector control panel — appears to the right of sidebar when active ── */}
@@ -916,6 +949,77 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             onClick={() => { setConnectMode(false); setPendingFrom(null); setSubMode('place') }}
             style={{ width: '100%', padding: '6px 0', borderRadius: 8, border: 'none', background: '#0ea5e9', color: '#fff', cursor: 'pointer', fontSize: 11, fontWeight: 700 }}
           >Done</button>
+        </div>
+      )}
+
+      {/* ── Post search panel ─────────────────────────────────────────── */}
+      {showSearch && (
+        <div style={{ position: 'absolute', left: 52, top: 72, zIndex: 50, width: 284, background: '#fff', borderRadius: 14, boxShadow: '0 4px 24px rgba(0,56,69,0.14)', border: '1px solid rgba(0,56,69,0.1)', overflow: 'hidden' }}>
+          {/* Input row */}
+          <div style={{ padding: '10px 12px', borderBottom: '1px solid rgba(0,56,69,0.08)', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Search size={13} style={{ color: 'rgba(0,56,69,0.35)', flexShrink: 0 }} />
+            <input
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              type="text"
+              placeholder="Search by ID or title…"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              onPointerDown={e => e.stopPropagation()}
+              style={{ flex: 1, border: 'none', outline: 'none', fontSize: 13, color: '#003845', background: 'transparent', fontFamily: 'inherit' }}
+            />
+            {searchQuery && (
+              <button
+                onPointerDown={e => e.stopPropagation()}
+                onClick={() => setSearchQuery('')}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,56,69,0.35)', fontSize: 16, lineHeight: 1, padding: '0 2px' }}
+              >×</button>
+            )}
+          </div>
+
+          {/* Results */}
+          <div style={{ maxHeight: 340, overflowY: 'auto' }}>
+            {searchQuery.length >= 1 && searchResults.length === 0 && (
+              <div style={{ padding: '18px 14px', fontSize: 12, color: 'rgba(0,56,69,0.4)', textAlign: 'center' }}>No posts found</div>
+            )}
+            {searchResults.map((post, i) => {
+              const pc = PILLAR_COLOR[post.pillar] ?? '#003845'
+              return (
+                <button
+                  key={post.id}
+                  onPointerDown={e => e.stopPropagation()}
+                  onClick={() => handleSearchSelect(post.id)}
+                  style={{
+                    width: '100%', display: 'flex', alignItems: 'center', gap: 9,
+                    padding: '8px 12px', background: 'none', border: 'none', cursor: 'pointer',
+                    textAlign: 'left',
+                    borderBottom: i < searchResults.length - 1 ? '1px solid rgba(0,56,69,0.05)' : 'none',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,56,69,0.04)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'none')}
+                >
+                  <span style={{ fontSize: 11, fontWeight: 800, color: pc, background: pc + '18', padding: '2px 7px', borderRadius: 5, flexShrink: 0 }}>{post.id}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: '#003845', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{post.title}</div>
+                    <div style={{ fontSize: 10, color: 'rgba(0,56,69,0.4)', marginTop: 1 }}>{fmtDay(post.scheduledDate)}</div>
+                  </div>
+                  <PlatformIcons platforms={post.platforms} size={11} />
+                </button>
+              )
+            })}
+            {searchQuery.length === 0 && (
+              <div style={{ padding: '14px 14px', fontSize: 11, color: 'rgba(0,56,69,0.4)', lineHeight: 1.55 }}>
+                Type a post ID (e.g. <strong style={{ color: '#003845' }}>P21</strong>) or part of a title to jump to it on the canvas.
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          {searchResults.length > 0 && (
+            <div style={{ padding: '6px 12px', fontSize: 10, color: 'rgba(0,56,69,0.35)', borderTop: '1px solid rgba(0,56,69,0.06)', background: 'rgba(0,56,69,0.02)' }}>
+              {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} · click to jump and highlight on canvas
+            </div>
+          )}
         </div>
       )}
 
