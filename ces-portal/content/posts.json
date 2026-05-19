@@ -2,7 +2,7 @@
   {
     "id": "P01",
     "slug": "p01-campaign-launch---meet-the-ces-team",
-    "title": "Meet the CES Medical team",
+    "title": "What CES Medical is about",
     "pillar": "leadership",
     "platforms": [
       "instagram",
@@ -15,7 +15,7 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "carousel",
-    "caption": "Cataracts. Eyelid surgery. Glaucoma. Dry eye.\n\nBehind every condition is a question someone has been sitting on for too long.\n\nWe are here to answer them. In Kent, close to home, with the same consultants and the same standards whether you come to us through the NHS or privately.",
+    "caption": "Cataracts. Eyelid surgery. Glaucoma. Dry eye.\n\nBehind every condition is a question someone has been sitting on for too long.\n\nWe are here to answer them. In Kent, close to home, with the same consultants and the same standards whether you come to us through the NHS or privately.\n\nFollow us for honest conversations about eye health in Kent.",
     "cta": {
       "label": "Follow our journey",
       "type": "save"
@@ -29,7 +29,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Campaign launch carousel. Design brief: draw quotes from EH-B1 and NK-B1 interview answers. 6 to 8 slides. Deep teal brand colours. Introduce the four consultants and the CES mission. Must be ready for 1 May launch. CES brand review required before scheduling. Export as separate native files for Instagram, Facebook and LinkedIn."
+    "notes": "Campaign launch carousel. Design brief: draw quotes from EH-B1 and NK-B1 interview answers. 6 to 8 slides. Deep teal brand colours. Introduce the four consultants and the CES mission. Must be ready for 1 May launch. CES brand review required before scheduling. Export as separate native files for Instagram, Facebook and LinkedIn.\n\nNote for designer: Do not display https://www.cesmedical.co.uk as visible text in any slide. The URL belongs on the final end card as a button or logo lockup only. If team photographs are available before publishing, add one image of the full team to slide 3 or 4 to ensure the title \"Meet the CES Medical team\" is accurate."
   },
   {
     "id": "P02",
@@ -60,7 +60,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Myth vs fact carousel. Stock photography. Brief the design team. 5 to 6 slides. Clinical review required — confirm all claims about cataract risk factors are accurate. No video asset needed."
+    "notes": "Myth vs fact carousel. Stock photography. Brief the design team. 5 to 6 slides. Clinical review required — confirm all claims about cataract risk factors are accurate. No video asset needed.\n\nNote for designer: Slide 4 wording has been updated to avoid repeating the smudged lens metaphor from the caption — use \"Blurry, hazy or washed-out vision?\" instead. Slide 5 should display the URL as plain text without the https:// prefix."
   },
   {
     "id": "P03",
@@ -79,7 +79,7 @@
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "reel",
-    "caption": "That foggy, hazy feeling when your vision is not quite right? It could be a cataract.\n\nIn 60 seconds, we break down exactly what is happening inside your eye, what it feels like and what treating it involves.\n\nVisit cespatientinformation.co.uk to find out more or ask our patient AI any question about your care.",
+    "caption": "That foggy, hazy feeling when your vision is not quite right? It could be a cataract.\n\nIn 60 seconds, we break down exactly what is happening inside your eye, what it feels like and what treating it involves.\n\nVisit cespatientinformation.co.uk to find out more about cataracts and what treatment involves.",
     "cta": {
       "label": "Learn more about cataract care",
       "type": "web",
@@ -95,7 +95,7 @@
       "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks."
+    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks.\n\nReel script Scene 4 update: after \"Difficulty seeing clearly at night.\" add — \"These symptoms do not always mean a cataract, but they are always worth getting checked.\" This one line of clinical caution prevents implied self-diagnosis and satisfies ASA health advertising standards.\n\nPlatform note: This Reel must be exported as a separate native file for Facebook. Do not repost from Instagram. No watermarks. Facebook requires a clean native export. Patient AI reference has been removed from the caption pending confirmation that the feature is live on cespatientinformation.co.uk. Do not reinstate this line until the feature is confirmed operational."
   },
   {
     "id": "P04",
@@ -113,11 +113,11 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "reel",
-    "caption": "Our consultants work across both NHS and private pathways. The same hands. The same standards. Regardless of how you come to us.\n\nMr Nick Kopsachilis is a Consultant Ophthalmic Surgeon specialising in corneal and cataract surgery. He holds an MD, PhD and a Postgraduate Diploma in Cataract and Refractive Surgery, awarded with distinction. He trained in Munich, at Moorfields Eye Hospital and at King's College London before joining CES Medical.\n\nHe sees patients at Headcorn, Pantiles, Chatham and Southborough.",
+    "caption": "Mr Nick Kopsachilis is a Consultant Ophthalmic Surgeon specialising in corneal and cataract surgery. He holds an MD, PhD and a Postgraduate Diploma in Cataract and Refractive Surgery, awarded with distinction. He trained in Munich, at Moorfields Eye Hospital and at King's College London before joining CES Medical.\n\nHe has authored more than 80 peer-reviewed publications and leads the corneal service at East Kent Hospitals NHS Foundation Trust.\n\nHe sees patients across both NHS and private pathways at Headcorn, Pantiles, Chatham and Southborough. The same standards, regardless of how you come to us.\n\nQuestions about cataract or corneal surgery? We are always happy to talk.",
     "cta": {
       "label": "Meet the team",
       "type": "web",
-      "target": "https://www.cesmedical.co.uk",
+      "target": "https://www.cesmedical.co.uk/consultants/mr-nick-kopsachilis",
       "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P04"
     },
     "productionLocation": "chatham",
@@ -129,7 +129,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Consultant introduction reel for Mr Kopsachilis. Source: NK headshot photography (T01) and NK-B1 to NK-B2 interview answers from Filming Day 1 at Chatham. Edit to 45 to 60 seconds. Subtitled. Square crop for Instagram and Facebook. Landscape for LinkedIn. Spell out FRCOphth (Fellow of the Royal College of Ophthalmologists) on first use. Clinical review of credential claims before publishing."
+    "notes": "Consultant introduction reel for Mr Kopsachilis. Source: NK headshot photography (T01) and NK-B1 to NK-B2 interview answers from Filming Day 1 at Chatham. Edit to 45 to 60 seconds. Subtitled. Square crop for Instagram and Facebook. Landscape for LinkedIn. Spell out FRCOphth (Fellow of the Royal College of Ophthalmologists) on first use. Clinical review of credential claims before publishing.\n\nNote for Leonna: Capture at least one shot of Mr Kopsachilis engaging with a patient or piece of diagnostic equipment, not only a standalone portrait. This adds clinical context to the single image format. Select the image that best communicates both expertise and approachability. Profile page link to add to the CTA: https://www.cesmedical.co.uk/consultants/mr-nick-kopsachilis"
   },
   {
     "id": "P05",
@@ -163,7 +163,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Monofocal lens educational carousel. Design team brief using NK-C9, KQ-C8 and SS-C8 interview answers for clinical accuracy. 6 to 8 slides. Stock clinical imagery. Commercial priority post. Clinical review required before scheduling. No video."
+    "notes": "Monofocal lens educational carousel. Design team brief using NK-C9, KQ-C8 and SS-C8 interview answers for clinical accuracy. 6 to 8 slides. Stock clinical imagery. Commercial priority post. Clinical review required before scheduling. No video.\n\nNote for designer: Slide 5 wording updated — use \"for whom a multifocal lens is not clinically recommended, assessed at consultation\" rather than \"not suited to multifocal technology.\" This avoids any implication that multifocal lenses are inferior. Slide 6 URL should be displayed as readable text without the https:// prefix. The verbal bridge \"Find out more about lens options at\" should precede the URL."
   },
   {
     "id": "P06",
