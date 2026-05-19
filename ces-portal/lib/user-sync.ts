@@ -10,7 +10,18 @@ export async function syncUserOnSignIn(email: string, displayName: string): Prom
 
   if (!existing) {
     await prisma.user.create({ data: { email, firstName, role, welcomeSent: false } })
+    // Send welcome email after record is created. Fire-and-forget — never blocks sign-in.
+    sendWelcome(email, firstName).catch(err =>
+      console.error('[user-sync] welcome email failed:', err)
+    )
   } else {
     await prisma.user.update({ where: { email }, data: { firstName, role } })
   }
+}
+
+async function sendWelcome(email: string, firstName: string): Promise<void> {
+  const { sendPortalWelcomeEmail } = await import('@/lib/emails/sendPortalWelcome')
+  await sendPortalWelcomeEmail({ email, firstName })
+  // Mark sent so retries on subsequent sign-ins do not re-send
+  await prisma.user.update({ where: { email }, data: { welcomeSent: true } })
 }
