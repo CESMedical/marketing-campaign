@@ -47,11 +47,9 @@ export async function syncPostContent() {
         cta:                  post.cta as object,
         pillar:               post.pillar,
         platforms:            post.platforms,
-        // scheduledDate and weekNumber are authoritative from posts.json.
-        // Canvas drags persist until the next deploy, at which point
-        // the schedule from posts.json takes precedence.
-        scheduledDate:        post.scheduledDate,
-        weekNumber:           post.weekNumber,
+        // scheduledDate and weekNumber are intentionally excluded from updates.
+        // Dates are owned by the canvas (bulk shifts, drag-and-drop) and must
+        // not be overwritten by a content sync. They are only set on first create.
         isCommercialPriority: post.isCommercialPriority,
         format:               post.format,
         service:              post.service              ?? null,
