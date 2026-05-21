@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 const FROM   = 'CES Medical <marketing@cesmedical.co.uk>'
-const PORTAL = process.env.PORTAL_URL ?? process.env.AUTH_URL ?? 'https://marketing.cesmedical.co.uk'
+const PORTAL = process.env.PORTAL_URL ?? process.env.AUTH_URL ?? 'https://marketing.cesmedical.co.uk/'
 
 function client(): Resend | null {
   const key = process.env.RESEND_API_KEY
@@ -113,15 +113,31 @@ function buildFallbackHtml(firstName: string, portalUrl: string): string {
 </html>`
 }
 
+// Role-specific feature line shown in the feature block.
+// Returns a fully-formed <div class="fi">…</div> row, or empty string for viewers.
+export function roleFeatureLine(role: string): string {
+  const lines: Record<string, string> = {
+    clinical_reviewer: 'Clinically review posts and move approved content to brand review',
+    brand_reviewer:    'Review posts for brand and tone, and approve them for scheduling',
+    admin:             'Manage users, sync content and administer the full roadmap',
+    editor:            'Edit post copy, move statuses and manage the full campaign schedule',
+  }
+  const text = lines[role]
+  if (!text) return ''
+  return `<div class="fi"><div class="fd"></div><span class="ft">${text}</span></div>`
+}
+
 export interface SendPortalWelcomeParams {
-  email:     string
-  firstName: string
-  portalUrl?: string
+  email:       string
+  firstName:   string
+  role?:       string
+  portalUrl?:  string
 }
 
 export async function sendPortalWelcomeEmail({
   email,
   firstName,
+  role = 'viewer',
   portalUrl = PORTAL,
 }: SendPortalWelcomeParams): Promise<void> {
   const resend = client()
@@ -140,6 +156,7 @@ export async function sendPortalWelcomeEmail({
       .replace(/\{\{first_name\}\}/g, escapeHtml(firstName))
       .replace(/\{\{portal_url\}\}/g, escapeHtml(portalUrl))
       .replace(/\{\{unsubscribe_url\}\}/g, '') // Resend handles via List-Unsubscribe header
+      .replace(/\{\{role_feature\}\}/g, roleFeatureLine(role))
   } else {
     html = buildFallbackHtml(firstName, portalUrl)
   }
