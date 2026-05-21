@@ -22,7 +22,7 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: 'CES Medical — Campaign Roadmap | May–July 2026',
   description:
-    'Interactive roadmap of CES Medical\u2019s May\u2013July 2026 social media campaign. 48 posts across cataract, oculoplastic and brand pillars.',
+    'Interactive roadmap of CES Medical\u2019s May\u2013July 2026 social media campaign. 164 posts across cataract, oculoplastic and brand pillars.',
   robots: { index: false, follow: false },
 };
 

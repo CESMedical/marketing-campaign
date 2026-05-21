@@ -35,7 +35,7 @@ export default async function HomePage() {
             </h1>
             <p className="mb-8 text-lg text-white/85 sm:text-xl">
               An interactive view of the next three months of CES Medical&apos;s social campaign —
-              48 posts across cataract, oculoplastic, and brand pillars.
+              164 posts across cataract, oculoplastic, and brand pillars.
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href="/roadmap/" size="lg" variant="primary">

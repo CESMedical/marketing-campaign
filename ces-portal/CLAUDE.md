@@ -6,7 +6,7 @@ This file tells Claude Code how this project is structured, the conventions to f
 
 An internal campaign roadmap portal for **CES Medical** (UK private ophthalmology). Built by agency **Alastra**. Audience is internal: agency, clinic team, consultants. Not patient-facing.
 
-It visualises the May–July 2026 social media campaign — 48 posts, 15 commercial-priority — in three views: Timeline (by week), Board (by status), Priority (by service).
+It visualises the May–July 2026 social media campaign — 164 posts, 32 commercial-priority — in three views: Timeline (by week), Board (by status), Priority (by service).
 
 ## Stack
 
