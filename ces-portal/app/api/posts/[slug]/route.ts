@@ -18,7 +18,7 @@ const ALLOWED_STATUSES: Status[] = [
 ]
 
 const ALLOWED_PLATFORMS: Platform[] = ['instagram', 'facebook', 'linkedin', 'youtube', 'x']
-const ALLOWED_FORMATS: Format[] = ['single-image', 'carousel', 'document-carousel', 'reel', 'story', 'video', 'text']
+const ALLOWED_FORMATS: Format[] = ['single-image', 'carousel', 'document-carousel', 'reel', 'story', 'video', 'video-long-form', 'video-interview', 'video-patient-story', 'youtube-short', 'text']
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
 function weekNumberFor(date: string): number {
