@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
 <title>CES Medical</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -42,6 +44,44 @@ body { background:#f0f2f2; font-family:-apple-system,BlinkMacSystemFont,'Segoe U
 .footer-address a { color:#aabcbe; text-decoration:none; }
 .footer-logo { display:inline-block; opacity:1; }
 @media(max-width:480px){.header,.body,.footer{padding-left:22px;padding-right:22px;}}
+/* Apple Mail · iOS Mail · Samsung Mail */
+@media(prefers-color-scheme:dark){
+  body{background:#0a1a1f !important;color:#dce9eb !important;}
+  .header{background:#003845 !important;}
+  .header-rule{background:#008080 !important;}
+  .body{background:#0f2830 !important;}
+  .greeting{color:#dce9eb !important;}
+  .body p{color:#a8c4c8 !important;}
+  .body p strong{color:#dce9eb !important;}
+  .feature-block{background:#0a2230 !important;border-left-color:#008080 !important;}
+  .feature-label{color:#66a9b0 !important;}
+  .ft{color:#a8c4c8 !important;}
+  .fd{background:#66a9b0 !important;}
+  .cta-btn{background:#008080 !important;color:#ffffff !important;}
+  .cta-note{color:#5a8a90 !important;}
+  .cta-note a{color:#66a9b0 !important;}
+  .footer{background:#0f2830 !important;border-top-color:#1a3a44 !important;}
+  .footer-address,.footer-address a{color:#4a7a80 !important;}
+  .si{opacity:0.65 !important;filter:invert(1) brightness(3);}
+}
+/* Gmail app dark mode (uses data-ogsc attribute) */
+[data-ogsc] body{background:#0a1a1f !important;color:#dce9eb !important;}
+[data-ogsc] .header{background:#003845 !important;}
+[data-ogsc] .header-rule{background:#008080 !important;}
+[data-ogsc] .body{background:#0f2830 !important;}
+[data-ogsc] .greeting{color:#dce9eb !important;}
+[data-ogsc] .body p{color:#a8c4c8 !important;}
+[data-ogsc] .body p strong{color:#dce9eb !important;}
+[data-ogsc] .feature-block{background:#0a2230 !important;border-left-color:#008080 !important;}
+[data-ogsc] .feature-label{color:#66a9b0 !important;}
+[data-ogsc] .ft{color:#a8c4c8 !important;}
+[data-ogsc] .fd{background:#66a9b0 !important;}
+[data-ogsc] .cta-btn{background:#008080 !important;color:#ffffff !important;}
+[data-ogsc] .cta-note{color:#5a8a90 !important;}
+[data-ogsc] .cta-note a{color:#66a9b0 !important;}
+[data-ogsc] .footer{background:#0f2830 !important;border-top-color:#1a3a44 !important;}
+[data-ogsc] .footer-address,[data-ogsc] .footer-address a{color:#4a7a80 !important;}
+[data-ogsc] .si{opacity:0.65 !important;filter:invert(1) brightness(3);}
 </style>
 </head>
 <body>
