@@ -542,9 +542,9 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
               {/* Notes */}
               <div>
                 <p className="label-xs mb-2">Production notes</p>
-                <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={2}
+                <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={6}
                   placeholder="Notes for the production team…"
-                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none" />
+                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-y" />
               </div>
             </>
           ) : (

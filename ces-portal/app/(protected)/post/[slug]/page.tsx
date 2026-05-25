@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { getAdjacentPostsData, getPostBySlugData, seedPostSlugs } from '@/lib/post-data';
 import { PostHero } from '@/components/post/PostHero';
 import { PostTimeline } from '@/components/post/PostTimeline';
@@ -62,17 +62,22 @@ export default async function PostPage({ params }: PageProps) {
 
           {post.notes && (
             <section aria-labelledby="notes-heading" className="mb-8">
-              <h2
-                id="notes-heading"
-                className="mb-3 font-display text-base font-semibold text-brand-deep"
-              >
-                Production notes
-              </h2>
-              <div className="rounded-xl bg-brand-bg-soft p-5">
-                <p className="whitespace-pre-line text-sm leading-relaxed text-brand-deep">
-                  {post.notes}
-                </p>
-              </div>
+              <details className="group rounded-xl bg-brand-bg-soft overflow-hidden">
+                <summary className="flex cursor-pointer select-none list-none items-center justify-between px-5 py-4 [&::-webkit-details-marker]:hidden">
+                  <h2
+                    id="notes-heading"
+                    className="font-display text-base font-semibold text-brand-deep"
+                  >
+                    Production notes
+                  </h2>
+                  <ChevronDown className="h-4 w-4 shrink-0 text-brand-deep/40 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="border-t border-brand-deep/10 px-5 pb-6 pt-4">
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-brand-deep">
+                    {post.notes}
+                  </p>
+                </div>
+              </details>
             </section>
           )}
 
