@@ -46,7 +46,7 @@ function pickPostUpdates(body: unknown): Partial<Post> | null {
   }
 
   if ('notes' in input) {
-    if (typeof input.notes !== 'string' || input.notes.length > 2000) return null
+    if (typeof input.notes !== 'string' || input.notes.length > 10000) return null
     updates.notes = input.notes
   }
 
