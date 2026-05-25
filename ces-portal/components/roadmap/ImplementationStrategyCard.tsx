@@ -183,8 +183,8 @@ export function ImplementationStrategyCard() {
           />
           <TypeRow
             letter="B"
-            name="Leonna Premises Reel"
-            desc="Location-based reel led by Leonna. Requires a booked filming day at the relevant centre and a confirmed shot list."
+            name="Premises Video"
+            desc="Location walk-through. Leonna presents reception, waiting area and operational patient journey. Ana presents clinical environment at Chatham. Lucy presents clinical environment at Headcorn. Named clinical lead or consultant presents clinical environment at Southborough. Requires a booked filming day and confirmed shot list per presenter."
           />
           <TypeRow
             letter="C"
