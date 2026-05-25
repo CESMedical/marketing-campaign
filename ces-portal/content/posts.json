@@ -3330,14 +3330,14 @@
     "isCommercialPriority": true,
     "service": "general",
     "format": "reel",
-    "caption": "Coming to a cataract consultation for the first time?\n\nHere is what actually happens.\n\nPatients are seen by a consultant ophthalmologist. Not a nurse, not a junior doctor. A qualified eye surgeon.\n\nThey will examine your eyes, measure your vision and discuss your options with you.\n\nNo decisions are required on the day.\n\nThe first step is finding out where you stand.\n\nCall 01732 757771 or find us at cesmedical.co.uk",
+    "caption": "Coming to a cataract consultation for the first time?\n\nHere is what actually happens.\n\nPatients are seen by a consultant ophthalmologist. The same person who will perform your surgery if you decide to proceed.\n\nThey will examine your eyes, measure your vision and discuss your options with you.\n\nNo decisions are required on the day.\n\nThe first step is finding out where you stand.\n\nCall 01732 757771 to book your consultation.",
     "cta": {
       "label": "Call 01732 757771",
       "type": "phone",
       "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
-    "notes": "Reel 20 to 25 seconds. Text on screen in PP Telegraph. Warm background image or short footage from Chatham. Calm, reassuring voiceover or text-only with music. Upload natively to Facebook without any other platform watermark. Post at 8am Wednesday.",
+    "notes": "Format: Facebook Reel. 20 to 25 seconds. 4:5 format. Text on screen throughout. No voiceover. Upload natively to Facebook — no watermarks from other platforms.\n\nBackground: Chatham reception area or calm consulting room. No surgical equipment. Warm, unhurried feel. If no footage available, clean teal background works for this format.\n\nOn-screen text — each line appears as a separate card in this order:\n\nCard 1: Coming to a cataract consultation for the first time?\nCard 2: Here is what actually happens.\nCard 3: Patients are seen by a consultant ophthalmologist. The same person who will perform your surgery if you decide to proceed.\nCard 4: They will examine your eyes, measure your vision and discuss your options with you.\nCard 5: You will not be asked to decide anything on the day.\nCard 6: The first step is finding out where you stand.\nCard 7: Call 01732 757771 to book your consultation.\n\nTone: calm and reassuring throughout. This is for a patient who is anxious about their first specialist appointment. Every card should feel like a hand on the shoulder, not a sales pitch.\n\nCaption for the Facebook post below the Reel:\nComing to a cataract consultation for the first time and not sure what to expect?\n\nThis is what actually happens at CES Medical.\n\nYou see a consultant ophthalmologist. The same person who would perform your surgery. You are not asked to decide anything on the day.\n\nThe first step is simply finding out where you stand.\n\nCall 01732 757771 or visit cesmedical.co.uk",
     "sortOrder": 0,
     "strategyRef": [
       "ces_facebook_strategy_card"
