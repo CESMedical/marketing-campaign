@@ -599,21 +599,38 @@ export function LeonnaProductionCard() {
   return (
     <>
       <ProductionAssetCard
-        title="Leonna: Premises & Behind the Scenes"
+        title="Premises and Behind the Scenes"
         type="Production Asset" pillar="Premises" status="Draft" accent={accent}
-        postsFed={['P07','P12','P16','P21','P24','P40','P45','P47']}
-        meta={['6 videos', 'Chatham (3d) · Headcorn (1d) · TW (2d)']}
-        description="Six location-led videos produced by Leonna across the three primary filming locations. Theatre morning, sterilisation, Headcorn walk-through, Pantiles BTS, oculoplastic morning and campaign wrap."
+        postsFed={['P07','P12','P16','P21','P24','P40','P45','P47','P160']}
+        meta={['7 videos', 'Chatham (3d) · Headcorn (1d) · TW (2d) · Southborough (1d)']}
+        description="Seven location-led videos across four filming locations. Leonna presents reception, waiting areas and the operational patient journey. Ana (Chatham clinical lead) presents the theatre and clinical environment at Chatham. Lucy (Headcorn clinical lead) presents the diagnostic suite and consulting rooms at Headcorn. Mr Kopsachilis presents the oculoplastic clinical content. Leonna's primary on-camera role is GP and optometrist relationship content — showing referrers how CES works and why they should trust the pathway."
         onOpen={() => setShow(true)}
       />
       {show && (
         <ProductionModal
-          title="Leonna: Premises & Behind the Scenes" subtitle="6 videos · 8 posts · 3 locations"
+          title="Premises and Behind the Scenes" subtitle="7 videos · 9 posts · 4 locations"
           accent={accent} tabs={['Videos','Production Notes']} activeTab={tab} onTabChange={setTab}
-          postsFed={['P07','P12','P16','P21','P24','P40','P45','P47']} onClose={() => setShow(false)}
+          postsFed={['P07','P12','P16','P21','P24','P40','P45','P47','P160']} onClose={() => setShow(false)}
         >
           {tab === 'Videos' ? (
             <div style={{ padding: '0 24px 24px' }}>
+              <div style={{ marginBottom: 20, padding: '14px 16px', background: 'rgba(0,56,69,0.04)', borderRadius: 12, borderLeft: `4px solid ${accent}` }}>
+                <p style={{ fontSize: 10, fontWeight: 800, color: accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>On-Camera Contributors</p>
+                {[
+                  { name: 'Leonna', role: 'Business Relationship Manager', territory: 'Reception, waiting areas, patient arrival, GP/optometrist relationship content, campaign reflections' },
+                  { name: 'Ana', role: 'Clinical Lead, Chatham', territory: 'Theatre preparation, sterilisation, clinical environment at Chatham' },
+                  { name: 'Lucy', role: 'Clinical Lead, Headcorn', territory: 'Diagnostic suite, consulting rooms, clinical environment at Headcorn' },
+                ].map(c => (
+                  <div key={c.name} style={{ display: 'flex', gap: 10, marginBottom: 8 }}>
+                    <div style={{ width: 7, height: 7, borderRadius: '50%', background: accent, marginTop: 5, flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#003845' }}>{c.name}</span>
+                      <span style={{ fontSize: 11, color: 'rgba(0,56,69,0.5)', marginLeft: 6 }}>{c.role}</span>
+                      <div style={{ fontSize: 11, color: 'rgba(0,56,69,0.6)', lineHeight: 1.5 }}>{c.territory}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
               {videos.map(v => <LeonnaVideoRow key={v.id} v={v} accent={accent} onUpdate={p => patchVideo(v.id, p)} />)}
             </div>
           ) : <EditableNotes storageKey="ces-prod-leonna-notes" accent={accent} />}
