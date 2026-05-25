@@ -168,7 +168,7 @@
   {
     "id": "P06",
     "slug": "p06-nhs-waiting-list-vs-private---whats-the-actual-difference",
-    "title": "NHS vs private cataract surgery, what actually changes?",
+    "title": "NHS vs private cataract surgery: what actually changes?",
     "pillar": "business",
     "platforms": [
       "facebook",
@@ -180,9 +180,9 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "NHS cataract waiting times have stretched in many areas of Kent. Going private with CES means you can typically be assessed within two weeks and have surgery shortly after.\n\nThe consultants are the same. The clinical standards are the same. What changes is the timeline, the time at consultation and the range of lens options available to you.\n\nIf you have been on an NHS list and want to understand your options, a conversation costs nothing.",
+    "caption": "NHS cataract waiting times have stretched in many areas of Kent. Going private with CES means you can be assessed promptly and have surgery planned around your schedule.\n\nThe consultants are the same. The clinical standards are the same. What changes is the timeline, the time at consultation and the range of lens options available to you.\n\nIf you have been on an NHS list and want to understand your options, a conversation costs nothing.",
     "cta": {
-      "label": "Speak to our team",
+      "label": "Facebook: Call 01732 757771 | LinkedIn: cesmedical.co.uk/cataract-surgery",
       "type": "phone",
       "target": "tel:01732757771"
     },
@@ -194,7 +194,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "NHS vs private single image with caption. Design brief using NK-B3 answer as clinical source. Confirm NHS waiting time data is current at time of posting — check with CES admin. Clinical review required. Phone CTA: 01732 757771. No video."
+    "notes": "Clean single image. Teal background. Two-column comparison: NHS pathway vs CES private pathway. Timeline, lens choice, consultation length. No language suggesting private is superior in quality. The comparison must be readable at mobile scale — minimum font size for body text in the comparison columns. Test at 375px width before finalising.\n\nContent for the two-column comparison:\n\nNHS pathway:\n- Waiting time: varies by trust, often 6 months or more in Kent\n- Lens options: standard monofocal lens\n- Consultation: allocated time within a busy clinic\n- Schedule: determined by NHS list position\n\nCES Medical private pathway:\n- Waiting time: assessed promptly, surgery planned around your schedule\n- Lens options: monofocal, multifocal, EDOF and toric lenses available\n- Consultation: dedicated time with your consultant\n- Schedule: agreed with you directly\n\nNote: design must not make the private column appear superior in clinical quality. Both columns should be visually equal in weight. The differences shown are about access and choice, not about the quality of care.\n\nDesign brief using NK-B3 answer as clinical source. Confirm NHS waiting time data is current at time of posting — check with CES admin. Clinical review required."
   },
   {
     "id": "P07",
