@@ -60,7 +60,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Myth vs fact carousel. Stock photography. Brief the design team. 5 to 6 slides. Clinical review required — confirm all claims about cataract risk factors are accurate. No video asset needed.\n\nNote for designer: Slide 4 wording has been updated to avoid repeating the smudged lens metaphor from the caption — use \"Blurry, hazy or washed-out vision?\" instead. Slide 5 should display the URL as plain text without the https:// prefix."
+    "notes": "Myth vs fact carousel. Stock photography. Brief the design team. 5 to 6 slides. Clinical review required \u2014 confirm all claims about cataract risk factors are accurate. No video asset needed.\n\nNote for designer: Slide 4 wording has been updated to avoid repeating the smudged lens metaphor from the caption \u2014 use \"Blurry, hazy or washed-out vision?\" instead. Slide 5 should display the URL as plain text without the https:// prefix."
   },
   {
     "id": "P03",
@@ -95,7 +95,7 @@
       "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks.\n\nReel script Scene 4 update: after \"Difficulty seeing clearly at night.\" add — \"These symptoms do not always mean a cataract, but they are always worth getting checked.\" This one line of clinical caution prevents implied self-diagnosis and satisfies ASA health advertising standards.\n\nPlatform note: This Reel must be exported as a separate native file for Facebook. Do not repost from Instagram. No watermarks. Facebook requires a clean native export. Patient AI reference has been removed from the caption pending confirmation that the feature is live on cespatientinformation.co.uk. Do not reinstate this line until the feature is confirmed operational."
+    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks.\n\nReel script Scene 4 update: after \"Difficulty seeing clearly at night.\" add \u2014 \"These symptoms do not always mean a cataract, but they are always worth getting checked.\" This one line of clinical caution prevents implied self-diagnosis and satisfies ASA health advertising standards.\n\nPlatform note: This Reel must be exported as a separate native file for Facebook. Do not repost from Instagram. No watermarks. Facebook requires a clean native export. Patient AI reference has been removed from the caption pending confirmation that the feature is live on cespatientinformation.co.uk. Do not reinstate this line until the feature is confirmed operational."
   },
   {
     "id": "P04",
@@ -163,7 +163,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Carousel. 6 slides. Square format (1080x1080px) for Instagram and Facebook.\n\nBrand colours: Background #003845 (deep teal) for Slides 1 and 4. Background #ffffff (white) for Slides 2, 3, 5 and 6. Accent #008080 (teal) for slide numbers, dividers and highlight elements. Text on dark: #ffffff white. Text on white: #003845 for headlines, #2a3a3e for body.\n\nTypography: Slide headlines — PP Telegraph Bold or semibold. Body copy — Clash Display Regular. Slide number label (optional) — PP Telegraph Light, small, top left or bottom right.\n\nSlide 1 (Cover — background #003845): Headline \"What is a monofocal lens?\" in white PP Telegraph, large, centred or left-aligned. Subheading: \"A guide for cataract patients\" in white Clash Display, smaller. Bottom left: CES Medical logo in white. Optional: subtle abstract lens or optical diagram in very low opacity teal in background. No clinical eye imagery on the cover.\n\nSlide 2 (What it corrects — white background): Headline: \"One distance. Usually distance.\" in #003845 PP Telegraph. Body: \"A monofocal lens corrects your vision at one distance. Usually distance. Some patients choose near focus depending on their occupation or lifestyle.\" in Clash Display. Optional: simple diagram showing a single focal point. Clean, not clinical.\n\nSlide 3 (Reading glasses — white background): Headline: \"Reading glasses are still needed.\" in #003845 PP Telegraph. Body: \"Most patients still need reading glasses for close-up tasks. This is not a drawback. For many patients it is a straightforward trade-off they are comfortable with.\" in Clash Display. Optional: warm lifestyle image of a person reading. No medical context.\n\nSlide 4 (NHS credibility — KEY SLIDE — background #003845): Headline: \"The same lens used in standard NHS cataract surgery.\" in white PP Telegraph, large. Three descriptors below in white Clash Display, spaced apart: \"Well-established.\" \"Reliable.\" \"Predictable.\" No other imagery. The words carry the slide. Let them breathe.\n\nSlide 5 (Who it suits — white background): Headline: \"Who suits a monofocal lens?\" in #003845 PP Telegraph. Three bullet points in Clash Display: (1) Patients who are comfortable with reading glasses. (2) Patients for whom a multifocal lens is not clinically recommended, assessed at consultation. (3) Patients who want a straightforward, proven outcome. Use #008080 teal dots or dashes as bullet markers.\n\nSlide 6 (CTA — white background with thin #008080 teal top border): Headline: \"Not sure which lens is right for you?\" in #003845 PP Telegraph. Body: \"That is exactly what the consultation is for. There is no pressure to choose anything before you feel ready.\" in Clash Display. CTA line in #008080 teal: \"cespatientinformation.co.uk/cataract-surgery\". Phone number below in #003845: \"or call 01732 757771\". Bottom right: CES Medical logo in #003845.\n\nGeneral rules for all slides: Consistent slide number indicator (e.g. 01/06) in small PP Telegraph, bottom right, #008080. Minimum 48px padding on all sides. No stock photography of eyes, surgical instruments or clinical environments on any slide. Warm and clean — clinical credibility through typography and colour, not imagery. All text legible at 375px width."
+    "notes": "Carousel. 6 slides. Square format (1080x1080px) for Instagram and Facebook.\n\nBrand colours: Background #003845 (deep teal) for Slides 1 and 4. Background #ffffff (white) for Slides 2, 3, 5 and 6. Accent #008080 (teal) for slide numbers, dividers and highlight elements. Text on dark: #ffffff white. Text on white: #003845 for headlines, #2a3a3e for body.\n\nTypography: Slide headlines \u2014 PP Telegraph Bold or semibold. Body copy \u2014 Clash Display Regular. Slide number label (optional) \u2014 PP Telegraph Light, small, top left or bottom right.\n\nSlide 1 (Cover \u2014 background #003845): Headline \"What is a monofocal lens?\" in white PP Telegraph, large, centred or left-aligned. Subheading: \"A guide for cataract patients\" in white Clash Display, smaller. Bottom left: CES Medical logo in white. Optional: subtle abstract lens or optical diagram in very low opacity teal in background. No clinical eye imagery on the cover.\n\nSlide 2 (What it corrects \u2014 white background): Headline: \"One distance. Usually distance.\" in #003845 PP Telegraph. Body: \"A monofocal lens corrects your vision at one distance. Usually distance. Some patients choose near focus depending on their occupation or lifestyle.\" in Clash Display. Optional: simple diagram showing a single focal point. Clean, not clinical.\n\nSlide 3 (Reading glasses \u2014 white background): Headline: \"Reading glasses are still needed.\" in #003845 PP Telegraph. Body: \"Most patients still need reading glasses for close-up tasks. This is not a drawback. For many patients it is a straightforward trade-off they are comfortable with.\" in Clash Display. Optional: warm lifestyle image of a person reading. No medical context.\n\nSlide 4 (NHS credibility \u2014 KEY SLIDE \u2014 background #003845): Headline: \"The same lens used in standard NHS cataract surgery.\" in white PP Telegraph, large. Three descriptors below in white Clash Display, spaced apart: \"Well-established.\" \"Reliable.\" \"Predictable.\" No other imagery. The words carry the slide. Let them breathe.\n\nSlide 5 (Who it suits \u2014 white background): Headline: \"Who suits a monofocal lens?\" in #003845 PP Telegraph. Three bullet points in Clash Display: (1) Patients who are comfortable with reading glasses. (2) Patients for whom a multifocal lens is not clinically recommended, assessed at consultation. (3) Patients who want a straightforward, proven outcome. Use #008080 teal dots or dashes as bullet markers.\n\nSlide 6 (CTA \u2014 white background with thin #008080 teal top border): Headline: \"Not sure which lens is right for you?\" in #003845 PP Telegraph. Body: \"That is exactly what the consultation is for. There is no pressure to choose anything before you feel ready.\" in Clash Display. CTA line in #008080 teal: \"cespatientinformation.co.uk/cataract-surgery\". Phone number below in #003845: \"or call 01732 757771\". Bottom right: CES Medical logo in #003845.\n\nGeneral rules for all slides: Consistent slide number indicator (e.g. 01/06) in small PP Telegraph, bottom right, #008080. Minimum 48px padding on all sides. No stock photography of eyes, surgical instruments or clinical environments on any slide. Warm and clean \u2014 clinical credibility through typography and colour, not imagery. All text legible at 375px width."
   },
   {
     "id": "P06",
@@ -194,7 +194,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Clean single image. Teal background. Two-column comparison: NHS pathway vs CES private pathway. Timeline, lens choice, consultation length. No language suggesting private is superior in quality. The comparison must be readable at mobile scale — minimum font size for body text in the comparison columns. Test at 375px width before finalising.\n\nContent for the two-column comparison:\n\nNHS pathway:\n- Waiting time: varies by trust, often 6 months or more in Kent\n- Lens options: standard monofocal lens\n- Consultation: allocated time within a busy clinic\n- Schedule: determined by NHS list position\n\nCES Medical private pathway:\n- Waiting time: assessed promptly, surgery planned around your schedule\n- Lens options: monofocal, multifocal, EDOF and toric lenses available\n- Consultation: dedicated time with your consultant\n- Schedule: agreed with you directly\n\nNote: design must not make the private column appear superior in clinical quality. Both columns should be visually equal in weight. The differences shown are about access and choice, not about the quality of care.\n\nDesign brief using NK-B3 answer as clinical source. Confirm NHS waiting time data is current at time of posting — check with CES admin. Clinical review required."
+    "notes": "Clean single image. Teal background. Two-column comparison: NHS pathway vs CES private pathway. Timeline, lens choice, consultation length. No language suggesting private is superior in quality. The comparison must be readable at mobile scale \u2014 minimum font size for body text in the comparison columns. Test at 375px width before finalising.\n\nContent for the two-column comparison:\n\nNHS pathway:\n- Waiting time: varies by trust, often 6 months or more in Kent\n- Lens options: standard monofocal lens\n- Consultation: allocated time within a busy clinic\n- Schedule: determined by NHS list position\n\nCES Medical private pathway:\n- Waiting time: assessed promptly, surgery planned around your schedule\n- Lens options: monofocal, multifocal, EDOF and toric lenses available\n- Consultation: dedicated time with your consultant\n- Schedule: agreed with you directly\n\nNote: design must not make the private column appear superior in clinical quality. Both columns should be visually equal in weight. The differences shown are about access and choice, not about the quality of care.\n\nDesign brief using NK-B3 answer as clinical source. Confirm NHS waiting time data is current at time of posting \u2014 check with CES admin. Clinical review required."
   },
   {
     "id": "P07",
@@ -211,12 +211,11 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "reel",
-    "caption": "Theatre prep, the team checking the day list, the first patient through the door.\n\nEvery morning here starts before any patient arrives. We wanted to show you what that looks like.",
+    "caption": "Theatre prep, the team checking the day list, the first patient through the door.\n\nEvery morning here starts before any patient arrives. We wanted to show you what that looks like.\n\nFollow us to see more of what happens behind the scenes at CES Medical in Kent.",
     "cta": {
-      "label": "Visit Chatham",
-      "type": "web",
-      "target": "https://www.cesmedical.co.uk/service-chatham-eye-clinic-and-surgical-centre",
-      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P07"
+      "label": "Facebook: 01732 757771 | Instagram: Link in bio \u2014 cesmedical.co.uk",
+      "type": "phone",
+      "target": "tel:01732757771"
     },
     "productionLocation": "chatham",
     "productionLead": "leonna",
@@ -226,7 +225,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Split between two presenters. Leonna presents the reception, waiting area and patient arrival sequence — the operational patient journey. Ana presents the clinical environment: theatre prep, surgical team briefing, equipment check. Leonna introduces Ana on camera: 'This is Ana, our clinical lead at Chatham. She runs the morning here.' Hand camera to Ana for the clinical sections. Leonna closes the piece at reception. 60 to 90 seconds total.\n\nSource: L01 filmed on Filming Day 1 at Chatham. Asset delivery deadline: 8 May. Square crop (1:1) for Instagram. Export native file for Facebook — do not cross-post from Instagram. Subtitled. Deliver one week before scheduled date."
+    "notes": "Premises Reel. 60 to 90 seconds. IG and FB. Native upload to each platform separately \u2014 no watermarks.\n\nBackground: Chatham Eye Clinic and Surgical Centre. Filming Day 1. Source: Leonna L01.\n\nOn-screen content sequence:\n\nSection 1 \u2014 Leonna at reception and exterior (0:00 to 0:20)\nLeonna to camera at the Chatham entrance or reception. Natural and unscripted. Suggested opener: \"This is what a morning at CES Medical in Chatham looks like before the first patient arrives.\"\nShow: exterior of Chatham, reception desk, team arriving, day list being checked.\n\nSection 2 \u2014 Ana presents the clinical morning (0:20 to 1:00)\nLeonna introduces Ana on camera: \"This is Ana, our clinical lead here at Chatham. She runs the morning.\"\nAna takes over. Natural and observational. She shows: theatre preparation, equipment checks, surgical team briefing, sterilisation process. Ana does not need to script this \u2014 she speaks naturally about what she is doing and why it matters for patients.\nAna closes her section: \"By the time the first patient arrives, everything has been checked twice. That is just how we work.\"\n\nSection 3 \u2014 Leonna closing (1:00 to 1:20)\nLeonna back at reception as the first patient arrives. Closing line: \"All of this, before the first patient even checks in. That is what you are walking into when you come here.\"\n\nTone: Warm, observational, honest. Not promotional. The viewer should feel like they are being given a genuine behind-the-scenes look, not a marketing tour.\n\nNo scripted lines for Ana or Leonna beyond the suggested openers and closers. Let the environment and the natural activity carry the content.\n\nCaption for Facebook post:\nTheatre prep, the team checking the day list, the first patient through the door.\n\nEvery morning here starts before any patient arrives. We wanted to show you what that looks like.\n\nFollow us to see more of what happens behind the scenes at CES Medical in Kent.\n\nCaption for Instagram post:\nSame caption. Add to Stories the same day: behind-the-scenes still from the filming."
   },
   {
     "id": "P08",
@@ -260,7 +259,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Multifocal lens educational carousel. Design brief using NK-C9 and NK-C10 interview answers. 6 to 8 slides. Commercial priority post. Clinical review required — multifocal lens content carries higher regulatory risk. No exaggerated claims about glasses independence. Stock clinical imagery. No video."
+    "notes": "Multifocal lens educational carousel. Design brief using NK-C9 and NK-C10 interview answers. 6 to 8 slides. Commercial priority post. Clinical review required \u2014 multifocal lens content carries higher regulatory risk. No exaggerated claims about glasses independence. Stock clinical imagery. No video."
   },
   {
     "id": "P09",
@@ -294,7 +293,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Lens comparison carousel. Design brief using NK-C9, NK-C10 and KQ-C8 answers. 8 slides minimum — cover monofocal, multifocal, EDOF and toric. Commercial priority post. Clinical review required. Brand review for ASA compliance on any benefit claims. No video."
+    "notes": "Lens comparison carousel. Design brief using NK-C9, NK-C10 and KQ-C8 answers. 8 slides minimum \u2014 cover monofocal, multifocal, EDOF and toric. Commercial priority post. Clinical review required. Brand review for ASA compliance on any benefit claims. No video."
   },
   {
     "id": "P10",
@@ -360,7 +359,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Eyelid lesion awareness single image. Design brief using NK-C7 and NK-B4 answers. Clinical review required — any mention of lesion classification or cancer risk must be approved by the clinical team before publishing. Stock clinical imagery. No video."
+    "notes": "Eyelid lesion awareness single image. Design brief using NK-C7 and NK-B4 answers. Clinical review required \u2014 any mention of lesion classification or cancer risk must be approved by the clinical team before publishing. Stock clinical imagery. No video."
   },
   {
     "id": "P12",
@@ -392,7 +391,7 @@
       "ces_instagram_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Ana presents this section. Theatre sterilisation is a clinical process and Ana is the clinical lead at Chatham. Leonna is not on camera for this post. Ana explains briefly what is happening and why it matters for patient safety. Warm, confident, matter-of-fact. 60 seconds.\n\nSource: L02 filmed on Filming Day 2 at Chatham. Asset delivery deadline: 19 May. Square crop for Instagram. Landscape for LinkedIn. Subtitled. Do not use \"safe\" as a standalone claim — preferred language: \"This is the standard we hold ourselves to every time.\" Deliver one week before scheduled date."
+    "notes": "Ana presents this section. Theatre sterilisation is a clinical process and Ana is the clinical lead at Chatham. Leonna is not on camera for this post. Ana explains briefly what is happening and why it matters for patient safety. Warm, confident, matter-of-fact. 60 seconds.\n\nSource: L02 filmed on Filming Day 2 at Chatham. Asset delivery deadline: 19 May. Square crop for Instagram. Landscape for LinkedIn. Subtitled. Do not use \"safe\" as a standalone claim \u2014 preferred language: \"This is the standard we hold ourselves to every time.\" Deliver one week before scheduled date."
   },
   {
     "id": "P13",
@@ -458,7 +457,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Laser eye surgery myths carousel. Design team brief. 6 to 8 slides. Clinical review required — confirm all claims about laser vision correction are accurate and ASA-compliant. No video."
+    "notes": "Laser eye surgery myths carousel. Design team brief. 6 to 8 slides. Clinical review required \u2014 confirm all claims about laser vision correction are accurate and ASA-compliant. No video."
   },
   {
     "id": "P15",
@@ -520,7 +519,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Leonna presents the Pantiles location for this post — reception, waiting area, the physical environment. This is operational and relational content. If the post enters the consulting room or clinical area, Lucy or Mr Kopsachilis presents that section. Leonna does not present clinical content at Pantiles. 60 seconds.\n\nSource: L04 filmed on Filming Day 5 at Tunbridge Wells. Asset delivery deadline: 28 May. Square crop for Instagram. Native export for Facebook. Subtitled. Conversational tone — Leonna on camera, natural and unscripted."
+    "notes": "Leonna presents the Pantiles location for this post \u2014 reception, waiting area, the physical environment. This is operational and relational content. If the post enters the consulting room or clinical area, Lucy or Mr Kopsachilis presents that section. Leonna does not present clinical content at Pantiles. 60 seconds.\n\nSource: L04 filmed on Filming Day 5 at Tunbridge Wells. Asset delivery deadline: 28 May. Square crop for Instagram. Native export for Facebook. Subtitled. Conversational tone \u2014 Leonna on camera, natural and unscripted."
   },
   {
     "id": "P17",
@@ -584,7 +583,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Eyelid surgery recovery carousel. Design brief using NK-C8 answer. 6 slides covering: Day 1, Day 7, Week 2 and Week 6. Commercial priority post. Clinical review required. Include both typical and variable recovery experiences — do not minimise or overstate. No video."
+    "notes": "Eyelid surgery recovery carousel. Design brief using NK-C8 answer. 6 slides covering: Day 1, Day 7, Week 2 and Week 6. Commercial priority post. Clinical review required. Include both typical and variable recovery experiences \u2014 do not minimise or overstate. No video."
   },
   {
     "id": "P19",
@@ -615,7 +614,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Insurance coverage single image. Design brief. List insurers accurately: Bupa, AXA Health, Vitality, WPA. Clinical review and legal review required before publishing — insurance coverage claims carry regulatory risk. Confirm policy coverage with CES admin before scheduling. Phone CTA: 01732 757771. No video."
+    "notes": "Insurance coverage single image. Design brief. List insurers accurately: Bupa, AXA Health, Vitality, WPA. Clinical review and legal review required before publishing \u2014 insurance coverage claims carry regulatory risk. Confirm policy coverage with CES admin before scheduling. Phone CTA: 01732 757771. No video."
   },
   {
     "id": "P20",
@@ -648,7 +647,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Glaucoma awareness carousel. Design team brief. Stock medical imagery or glaucoma diagram. Clinical review required — confirm glaucoma screening guidance aligns with current NICE guidelines. No video."
+    "notes": "Glaucoma awareness carousel. Design team brief. Stock medical imagery or glaucoma diagram. Clinical review required \u2014 confirm glaucoma screening guidance aligns with current NICE guidelines. No video."
   },
   {
     "id": "P21",
@@ -680,7 +679,7 @@
       "ces_instagram_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Mr Kopsachilis presents the clinical morning. Leonna introduces the piece from reception: 'This is a typical morning at our Pantiles oculoplastic clinic. I am going to hand over to Mr Kopsachilis who will walk you through what actually happens.' Mr Kopsachilis takes over for the clinical sections. Leonna is not in the clinical environment on camera. 90 seconds.\n\nSource: L05 filmed on Filming Day 5 at Tunbridge Wells. Asset delivery deadline: 5 June. Commercial priority post. Square crop for Instagram. Landscape for LinkedIn. Subtitled. Consultant on camera — brief from NK interview script. Confirm written patient consent for any patient-facing footage before publishing."
+    "notes": "Mr Kopsachilis presents the clinical morning. Leonna introduces the piece from reception: 'This is a typical morning at our Pantiles oculoplastic clinic. I am going to hand over to Mr Kopsachilis who will walk you through what actually happens.' Mr Kopsachilis takes over for the clinical sections. Leonna is not in the clinical environment on camera. 90 seconds.\n\nSource: L05 filmed on Filming Day 5 at Tunbridge Wells. Asset delivery deadline: 5 June. Commercial priority post. Square crop for Instagram. Landscape for LinkedIn. Subtitled. Consultant on camera \u2014 brief from NK interview script. Confirm written patient consent for any patient-facing footage before publishing."
   },
   {
     "id": "P22",
@@ -743,7 +742,7 @@
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card"
     ],
-    "notes": "Dry eye IPL single image. Design brief. Clinical review required — IPL efficacy claims must be evidence-based and ASA-compliant. No video."
+    "notes": "Dry eye IPL single image. Design brief. Clinical review required \u2014 IPL efficacy claims must be evidence-based and ASA-compliant. No video."
   },
   {
     "id": "P24",
@@ -877,7 +876,7 @@
       "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Patient story: PS02 James, acute eye condition. Source: filmed on Filming Day 2 at Chatham. Patient recruitment and consent required by 16 May — recruitment must begin by 19 May. Edit to 2 to 3 minutes. Export short vertical cut (9:16) separately for Instagram. Landscape for YouTube. Subtitled. Full YouTube version: P147."
+    "notes": "Patient story: PS02 James, acute eye condition. Source: filmed on Filming Day 2 at Chatham. Patient recruitment and consent required by 16 May \u2014 recruitment must begin by 19 May. Edit to 2 to 3 minutes. Export short vertical cut (9:16) separately for Instagram. Landscape for YouTube. Subtitled. Full YouTube version: P147."
   },
   {
     "id": "P28",
@@ -941,7 +940,7 @@
       "ces_instagram_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Zeiss IOLMaster 700 technology single image. Photograph of the device required — capture on Filming Day 1 at Chatham or Filming Day 4 at Headcorn. Brief using KQ-C5 answer. Clinical review required. Do not include accuracy percentage claims without verified source data. No branded promotional materials from Zeiss to be republished without permission."
+    "notes": "Zeiss IOLMaster 700 technology single image. Photograph of the device required \u2014 capture on Filming Day 1 at Chatham or Filming Day 4 at Headcorn. Brief using KQ-C5 answer. Clinical review required. Do not include accuracy percentage claims without verified source data. No branded promotional materials from Zeiss to be republished without permission."
   },
   {
     "id": "P30",
@@ -1038,7 +1037,7 @@
       "ces_linkedin_strategy_card",
       "ces_instagram_strategy_card"
     ],
-    "notes": "Founder message single image. Source: pull quote from EH-B1 interview answer. Brief design team with the quote text and Elion headshot. Elion must approve the final wording before publishing — this is a sensitive brand asset. Clinical and brand review required. No video."
+    "notes": "Founder message single image. Source: pull quote from EH-B1 interview answer. Brief design team with the quote text and Elion headshot. Elion must approve the final wording before publishing \u2014 this is a sensitive brand asset. Clinical and brand review required. No video."
   },
   {
     "id": "P33",
@@ -1101,7 +1100,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Insurance funding process single image. Design brief using NK-B3 content for the four-step process. Clinical review and legal review required — insurance pathway information must be accurate. Confirm the process with CES admin before publishing. No video."
+    "notes": "Insurance funding process single image. Design brief using NK-B3 content for the four-step process. Clinical review and legal review required \u2014 insurance pathway information must be accurate. Confirm the process with CES admin before publishing. No video."
   },
   {
     "id": "P35",
@@ -1134,7 +1133,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Natural photograph at Chatham reception. This post introduces the patient coordinator role — the first point of contact for new patients. If Leonna manages patient coordinator introductions, she presents this. If this is Ana's operational territory at Chatham, Ana should be consulted on who appears in this post. The person photographed must be the actual patient coordinator that patients will encounter when they call or visit.\n\nSource: T02 photography on Filming Day 3 at Chatham. Asset delivery deadline: 30 June. Warm, natural portrait — not a corporate headshot. Confirm patient coordinator name and role title with CES before caption is finalised. Brand review required."
+    "notes": "Natural photograph at Chatham reception. This post introduces the patient coordinator role \u2014 the first point of contact for new patients. If Leonna manages patient coordinator introductions, she presents this. If this is Ana's operational territory at Chatham, Ana should be consulted on who appears in this post. The person photographed must be the actual patient coordinator that patients will encounter when they call or visit.\n\nSource: T02 photography on Filming Day 3 at Chatham. Asset delivery deadline: 30 June. Warm, natural portrait \u2014 not a corporate headshot. Confirm patient coordinator name and role title with CES before caption is finalised. Brand review required."
   },
   {
     "id": "P36",
@@ -1168,7 +1167,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Diabetic retinopathy educational carousel. Design brief using KQ-C9, SS-B3 and SS-C9 answers. 6 to 8 slides. Clinical review required — confirm screening guidance aligns with NHS Diabetic Eye Screening Programme. No video."
+    "notes": "Diabetic retinopathy educational carousel. Design brief using KQ-C9, SS-B3 and SS-C9 answers. 6 to 8 slides. Clinical review required \u2014 confirm screening guidance aligns with NHS Diabetic Eye Screening Programme. No video."
   },
   {
     "id": "P37",
@@ -1232,7 +1231,7 @@
       "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Patient story: PS03 Anna, functional ptosis. Source: filmed on Filming Day 6 at Pantiles. Patient recruitment and consent required by 7 June — must begin recruitment by 12 May. Commercial priority post. Edit to 2 to 3 minutes. Export short vertical cut (9:16) separately for Instagram and Facebook. Landscape for YouTube. Subtitled. Full YouTube version: P148."
+    "notes": "Patient story: PS03 Anna, functional ptosis. Source: filmed on Filming Day 6 at Pantiles. Patient recruitment and consent required by 7 June \u2014 must begin recruitment by 12 May. Commercial priority post. Edit to 2 to 3 minutes. Export short vertical cut (9:16) separately for Instagram and Facebook. Landscape for YouTube. Subtitled. Full YouTube version: P148."
   },
   {
     "id": "P39",
@@ -1293,7 +1292,7 @@
     "strategyRef": [
       "ces_instagram_strategy_card"
     ],
-    "notes": "Leonna reflects on the GP and optometrist relationship work she has done over the campaign — referral conversations, the questions she gets asked by GPs, what has changed in how referrers think about CES Medical. This is her genuine territory. Not clinical content. Not a premises tour. Her reflection should be about partnerships and trust-building with referrers. 60 seconds.\n\nSource: L06 filmed on Filming Day 6 at Pantiles. Asset delivery deadline: 10 July. Square vertical for Instagram. Subtitled. Conversational and reflective tone — Leonna natural and unscripted. No promotional content."
+    "notes": "Leonna reflects on the GP and optometrist relationship work she has done over the campaign \u2014 referral conversations, the questions she gets asked by GPs, what has changed in how referrers think about CES Medical. This is her genuine territory. Not clinical content. Not a premises tour. Her reflection should be about partnerships and trust-building with referrers. 60 seconds.\n\nSource: L06 filmed on Filming Day 6 at Pantiles. Asset delivery deadline: 10 July. Square vertical for Instagram. Subtitled. Conversational and reflective tone \u2014 Leonna natural and unscripted. No promotional content."
   },
   {
     "id": "P41",
@@ -1325,7 +1324,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Five consultation questions carousel. Design brief using NK-C12 answer. 7 slides. Educational content only — no commercial claims. Clinical review required. High save-rate post: design for readability and easy screen-saving. No video."
+    "notes": "Five consultation questions carousel. Design brief using NK-C12 answer. 7 slides. Educational content only \u2014 no commercial claims. Clinical review required. High save-rate post: design for readability and easy screen-saving. No video."
   },
   {
     "id": "P42",
@@ -1488,7 +1487,7 @@
       "ces_linkedin_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Patient story: PS04 glaucoma patient. Source: filmed on Filming Day 3 at Chatham. Patient recruitment and consent required by 22 June. Patient may wish to remain anonymous — use first name only at their choice. Asset delivery deadline: 22 July. Edit to 2 to 3 minutes. Export short vertical cut for Instagram and Facebook. Landscape for YouTube. Subtitled. Full YouTube version: P149."
+    "notes": "Patient story: PS04 glaucoma patient. Source: filmed on Filming Day 3 at Chatham. Patient recruitment and consent required by 22 June. Patient may wish to remain anonymous \u2014 use first name only at their choice. Asset delivery deadline: 22 July. Edit to 2 to 3 minutes. Export short vertical cut for Instagram and Facebook. Landscape for YouTube. Subtitled. Full YouTube version: P149."
   },
   {
     "id": "P47",
@@ -1657,7 +1656,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Elion Hyseni introduction reel. Source: EH headshot photography and EH-B1 to EH-B2 interview answers filmed at Chatham. Edit to 45 to 60 seconds. Subtitled. Square for Instagram and Facebook. Landscape for LinkedIn. Brand review required — founder introduction is a high-profile brand asset. Elion to review and approve final edit before publishing."
+    "notes": "Elion Hyseni introduction reel. Source: EH headshot photography and EH-B1 to EH-B2 interview answers filmed at Chatham. Edit to 45 to 60 seconds. Subtitled. Square for Instagram and Facebook. Landscape for LinkedIn. Brand review required \u2014 founder introduction is a high-profile brand asset. Elion to review and approve final edit before publishing."
   },
   {
     "id": "P52",
@@ -1802,7 +1801,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Elion Hyseni consultant-led care explainer reel. Source: EH-B3 and EH-C6 interview answers filmed at Chatham. Edit to 45 to 60 seconds. Subtitled. Square for Instagram and Facebook. Landscape for LinkedIn. Brand review required — Elion on camera is a high-profile brand asset. Elion to review and approve final edit before publishing."
+    "notes": "Elion Hyseni consultant-led care explainer reel. Source: EH-B3 and EH-C6 interview answers filmed at Chatham. Edit to 45 to 60 seconds. Subtitled. Square for Instagram and Facebook. Landscape for LinkedIn. Brand review required \u2014 Elion on camera is a high-profile brand asset. Elion to review and approve final edit before publishing."
   },
   {
     "id": "P82",
@@ -1825,7 +1824,7 @@
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
     "linkedInHook": "Most cataract referrals arrive six months later than they should.",
-    "notes": "Slides: (1) Hook. (2) The five signs. (3) Night driving difficulty. (4) Changed reading habits. (5) Colours washed out or lights glary. (6) Glasses prescription changed twice in 18 months. (7) Fall or near miss attributed to clumsiness. Slide body: \"Visual impairment from cataracts affects depth perception and contrast sensitivity, increasing fall risk.\" Do not reference peripheral vision — peripheral vision loss is clinically associated with glaucoma and optic nerve conditions, not cataract. This post reaches GPs and referrers; clinical precision is required. (8) What to include in a CES referral. (9) We see 98% within two weeks: self-referral possible. (10) CES Medical logo and cesmedical.co.uk.\n\nPDF document carousel. Deep teal cover. PP Telegraph headlines. Clash Display body. 10 slides. No external link in post body.",
+    "notes": "Slides: (1) Hook. (2) The five signs. (3) Night driving difficulty. (4) Changed reading habits. (5) Colours washed out or lights glary. (6) Glasses prescription changed twice in 18 months. (7) Fall or near miss attributed to clumsiness. Slide body: \"Visual impairment from cataracts affects depth perception and contrast sensitivity, increasing fall risk.\" Do not reference peripheral vision \u2014 peripheral vision loss is clinically associated with glaucoma and optic nerve conditions, not cataract. This post reaches GPs and referrers; clinical precision is required. (8) What to include in a CES referral. (9) We see 98% within two weeks: self-referral possible. (10) CES Medical logo and cesmedical.co.uk.\n\nPDF document carousel. Deep teal cover. PP Telegraph headlines. Clash Display body. 10 slides. No external link in post body.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
@@ -3283,7 +3282,7 @@
       "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
-    "notes": "Carousel. 7 slides. Warm family-oriented cover image — adult child with older parent, relaxed setting, not clinical. Written to be shared by adult children with their parents. This is the highest share-potential post in the campaign. The fifth sign (reading habits) was added to fulfil the \"five signs\" promise in the title. Do not reduce back to four slides. \"Save this one\" in the caption is a save prompt, not engagement bait.\n\nSlide 1: Five signs your parent might have a cataract they have not mentioned.\nSlide 2: They have stopped driving at night. They probably said it is a preference. It may not be.\nSlide 3: The television is louder than it used to be. When vision becomes difficult, people often compensate in other ways without realising it.\nSlide 4: They are holding things further away to read. This is often mistaken for a reading glasses issue. It can be both.\nSlide 5: They have stopped reading for pleasure or switched to large-print books. Patients often attribute this to preference rather than difficulty. It is worth asking about.\nSlide 6: They seem less confident in unfamiliar places. Reduced contrast sensitivity from a cataract affects how clearly the world appears, making navigation harder. This is often attributed to age.\nSlide 7: A simple eye test at their optician will show whether a cataract is developing. If it is, call us on 01732 757771 and our patient coordinator will help you find the right next step for them.",
+    "notes": "Carousel. 7 slides. Warm family-oriented cover image \u2014 adult child with older parent, relaxed setting, not clinical. Written to be shared by adult children with their parents. This is the highest share-potential post in the campaign. The fifth sign (reading habits) was added to fulfil the \"five signs\" promise in the title. Do not reduce back to four slides. \"Save this one\" in the caption is a save prompt, not engagement bait.\n\nSlide 1: Five signs your parent might have a cataract they have not mentioned.\nSlide 2: They have stopped driving at night. They probably said it is a preference. It may not be.\nSlide 3: The television is louder than it used to be. When vision becomes difficult, people often compensate in other ways without realising it.\nSlide 4: They are holding things further away to read. This is often mistaken for a reading glasses issue. It can be both.\nSlide 5: They have stopped reading for pleasure or switched to large-print books. Patients often attribute this to preference rather than difficulty. It is worth asking about.\nSlide 6: They seem less confident in unfamiliar places. Reduced contrast sensitivity from a cataract affects how clearly the world appears, making navigation harder. This is often attributed to age.\nSlide 7: A simple eye test at their optician will show whether a cataract is developing. If it is, call us on 01732 757771 and our patient coordinator will help you find the right next step for them.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_facebook_strategy_card"
@@ -3310,7 +3309,7 @@
       "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
-    "notes": "Single image. Facebook. Evening post — schedule at 7pm.\n\nImage content: One of two options depending on what is available at production time.\n\nOption A (preferred): A photograph of the CES Medical reception or waiting area at Chatham. Warm lighting. Welcoming and accessible. Reinforces that CES is a local, approachable service.\n\nOption B (if no photography available): Clean text-based graphic. Large text: \"NHS or private — we can help you find the right path.\" Subtext: \"CES Medical, Kent.\" CES Medical logo bottom right.\n\nThe image must not show: NHS branding, waiting room queues, clinical distress or anything that could be read as critical of NHS care or as commercially exploiting NHS capacity problems.\n\nTone: Warm, genuinely helpful, balanced. This post serves both NHS and private patients. It must feel like a community healthcare resource, not an advertisement.\n\nBEFORE SCHEDULING: Verify that NHS cataract waiting times in Kent are still extended at the time of posting. If times have improved significantly, update the first paragraph to reflect current reality. Do not publish an inaccurate claim about NHS waiting times.\n\nNOTE FOR COMPLIANCE: CES Medical holds NHS contracts with Kent Integrated Care Boards. This post has been written to reflect that dual role. Do not edit the caption in ways that remove the NHS pathway references or that position CES solely as a private alternative to NHS care. The balance between NHS and private is intentional and must be maintained.",
+    "notes": "Single image. Facebook. Evening post \u2014 schedule at 7pm.\n\nImage content: One of two options depending on what is available at production time.\n\nOption A (preferred): A photograph of the CES Medical reception or waiting area at Chatham. Warm lighting. Welcoming and accessible. Reinforces that CES is a local, approachable service.\n\nOption B (if no photography available): Clean text-based graphic. Large text: \"NHS or private \u2014 we can help you find the right path.\" Subtext: \"CES Medical, Kent.\" CES Medical logo bottom right.\n\nThe image must not show: NHS branding, waiting room queues, clinical distress or anything that could be read as critical of NHS care or as commercially exploiting NHS capacity problems.\n\nTone: Warm, genuinely helpful, balanced. This post serves both NHS and private patients. It must feel like a community healthcare resource, not an advertisement.\n\nBEFORE SCHEDULING: Verify that NHS cataract waiting times in Kent are still extended at the time of posting. If times have improved significantly, update the first paragraph to reflect current reality. Do not publish an inaccurate claim about NHS waiting times.\n\nNOTE FOR COMPLIANCE: CES Medical holds NHS contracts with Kent Integrated Care Boards. This post has been written to reflect that dual role. Do not edit the caption in ways that remove the NHS pathway references or that position CES solely as a private alternative to NHS care. The balance between NHS and private is intentional and must be maintained.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_facebook_strategy_card"
@@ -3337,7 +3336,7 @@
       "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
-    "notes": "Format: Facebook Reel. 20 to 25 seconds. 4:5 format. Text on screen throughout. No voiceover. Upload natively to Facebook — no watermarks from other platforms.\n\nBackground: Chatham reception area or calm consulting room. No surgical equipment. Warm, unhurried feel. If no footage available, clean teal background works for this format.\n\nOn-screen text — each line appears as a separate card in this order:\n\nCard 1: Coming to a cataract consultation for the first time?\nCard 2: Here is what actually happens.\nCard 3: Patients are seen by a consultant ophthalmologist. The same person who will perform your surgery if you decide to proceed.\nCard 4: They will examine your eyes, measure your vision and discuss your options with you.\nCard 5: You will not be asked to decide anything on the day.\nCard 6: The first step is finding out where you stand.\nCard 7: Call 01732 757771 to book your consultation.\n\nTone: calm and reassuring throughout. This is for a patient who is anxious about their first specialist appointment. Every card should feel like a hand on the shoulder, not a sales pitch.\n\nCaption for the Facebook post below the Reel:\nComing to a cataract consultation for the first time and not sure what to expect?\n\nThis is what actually happens at CES Medical.\n\nYou see a consultant ophthalmologist. The same person who would perform your surgery. You are not asked to decide anything on the day.\n\nThe first step is simply finding out where you stand.\n\nCall 01732 757771 or visit cesmedical.co.uk",
+    "notes": "Format: Facebook Reel. 20 to 25 seconds. 4:5 format. Text on screen throughout. No voiceover. Upload natively to Facebook \u2014 no watermarks from other platforms.\n\nBackground: Chatham reception area or calm consulting room. No surgical equipment. Warm, unhurried feel. If no footage available, clean teal background works for this format.\n\nOn-screen text \u2014 each line appears as a separate card in this order:\n\nCard 1: Coming to a cataract consultation for the first time?\nCard 2: Here is what actually happens.\nCard 3: Patients are seen by a consultant ophthalmologist. The same person who will perform your surgery if you decide to proceed.\nCard 4: They will examine your eyes, measure your vision and discuss your options with you.\nCard 5: You will not be asked to decide anything on the day.\nCard 6: The first step is finding out where you stand.\nCard 7: Call 01732 757771 to book your consultation.\n\nTone: calm and reassuring throughout. This is for a patient who is anxious about their first specialist appointment. Every card should feel like a hand on the shoulder, not a sales pitch.\n\nCaption for the Facebook post below the Reel:\nComing to a cataract consultation for the first time and not sure what to expect?\n\nThis is what actually happens at CES Medical.\n\nYou see a consultant ophthalmologist. The same person who would perform your surgery. You are not asked to decide anything on the day.\n\nThe first step is simply finding out where you stand.\n\nCall 01732 757771 or visit cesmedical.co.uk",
     "sortOrder": 0,
     "strategyRef": [
       "ces_facebook_strategy_card"
@@ -3661,7 +3660,7 @@
       "target": "https://www.cespatientinformation.co.uk"
     },
     "videoRelationship": "no-video",
-    "notes": "Carousel 8 slides. Slide 1: Five things to check before choosing a private ophthalmologist. Slide 2: 1. Does the surgeon who assesses you perform the surgery? In a consultant-led model, yes. In others, no. This matters for continuity and clinical safety. Slide 3: 2. What qualifications does the surgeon hold? FRCOphth (Fellow of the Royal College of Ophthalmologists) is the highest professional qualification for eye surgeons in the UK. Check for it. Slide 4: 3. What does the package actually include? Consultation. Surgery. Lens. Follow-up appointments. Post-operative helpline. Ask what is and is not included before committing. Slide 5: 4. How quickly will you be seen? And does that apply to your chosen location, not just their flagship centre? Slide 6: 5. Does your insurance cover it? Bupa, AXA Health, Vitality and WPA often cover cataract surgery and functional eyelid procedures. Ask the provider to check before you book. Slide 7: At CES Medical, our consultant surgeons — Mr Kashif Qureshi, Mr Nick Kopsachilis and Mr Syed Shahid — are all Fellows of the Royal College of Ophthalmologists (FRCOphth). Most patients are seen within two weeks. Slide 8: Questions? cespatientinformation.co.uk or call 01732 757771. CES mention is in slide 7 not slide 1. Credibility through objectivity first. Hashtags: #privatehealthcare #eyesurgery #ophthalmology #cataract #eyehealth #Kenthealthcare #FRCOphth. Post 9am Wednesday.",
+    "notes": "Carousel 8 slides. Slide 1: Five things to check before choosing a private ophthalmologist. Slide 2: 1. Does the surgeon who assesses you perform the surgery? In a consultant-led model, yes. In others, no. This matters for continuity and clinical safety. Slide 3: 2. What qualifications does the surgeon hold? FRCOphth (Fellow of the Royal College of Ophthalmologists) is the highest professional qualification for eye surgeons in the UK. Check for it. Slide 4: 3. What does the package actually include? Consultation. Surgery. Lens. Follow-up appointments. Post-operative helpline. Ask what is and is not included before committing. Slide 5: 4. How quickly will you be seen? And does that apply to your chosen location, not just their flagship centre? Slide 6: 5. Does your insurance cover it? Bupa, AXA Health, Vitality and WPA often cover cataract surgery and functional eyelid procedures. Ask the provider to check before you book. Slide 7: At CES Medical, our consultant surgeons \u2014 Mr Kashif Qureshi, Mr Nick Kopsachilis and Mr Syed Shahid \u2014 are all Fellows of the Royal College of Ophthalmologists (FRCOphth). Most patients are seen within two weeks. Slide 8: Questions? cespatientinformation.co.uk or call 01732 757771. CES mention is in slide 7 not slide 1. Credibility through objectivity first. Hashtags: #privatehealthcare #eyesurgery #ophthalmology #cataract #eyehealth #Kenthealthcare #FRCOphth. Post 9am Wednesday.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_instagram_strategy_card"
@@ -3934,7 +3933,7 @@
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "KQ-C4,KQ-C5,KQ-C8,KQ-C10,L01,NK-C12",
-    "notes": "Edited from Mr Qureshi interview footage (KQ-C4 to KQ-C8) plus Leonna Chatham premises B-roll. Target length 8 to 12 minutes. Chapter timestamps required. Custom thumbnail: Mr Qureshi in clinical attire, warm expression, text overlay \"Cataract Surgery Explained\" in PP Telegraph. Export in 16:9. End screen CTAs: Subscribe to channel. Link to P146 (Susan's Cataract Journey — most relevant next video for a cataract patient). Link to P140 (Premium Lens Implants) as secondary. Link to cespatientinformation.co.uk. Add to playlist: Cataract Surgery at CES Medical.\n\nVideo structure notes: Recovery section (8:30 to 10:00) must use KQ-C4 only — do not use SS-C6. Mr Qureshi performs the surgery in this video; his recovery guidance is the correct source.\n\nAt 10:00 (NK-C12, five questions to ask your surgeon): introduce Mr Kopsachilis on screen with a lower-third title — Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, CES Medical. This avoids confusion about who is speaking after a video primarily featuring Mr Qureshi.\n\nNote: private@cesmedical.co.uk has been removed from the YouTube description pending confirmation that the inbox is actively monitored for patient enquiries. Once confirmed, add back as: \"To book or ask a question: 01732 757771 | private@cesmedical.co.uk\"",
+    "notes": "Edited from Mr Qureshi interview footage (KQ-C4 to KQ-C8) plus Leonna Chatham premises B-roll. Target length 8 to 12 minutes. Chapter timestamps required. Custom thumbnail: Mr Qureshi in clinical attire, warm expression, text overlay \"Cataract Surgery Explained\" in PP Telegraph. Export in 16:9. End screen CTAs: Subscribe to channel. Link to P146 (Susan's Cataract Journey \u2014 most relevant next video for a cataract patient). Link to P140 (Premium Lens Implants) as secondary. Link to cespatientinformation.co.uk. Add to playlist: Cataract Surgery at CES Medical.\n\nVideo structure notes: Recovery section (8:30 to 10:00) must use KQ-C4 only \u2014 do not use SS-C6. Mr Qureshi performs the surgery in this video; his recovery guidance is the correct source.\n\nAt 10:00 (NK-C12, five questions to ask your surgeon): introduce Mr Kopsachilis on screen with a lower-third title \u2014 Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, CES Medical. This avoids confusion about who is speaking after a video primarily featuring Mr Qureshi.\n\nNote: private@cesmedical.co.uk has been removed from the YouTube description pending confirmation that the inbox is actively monitored for patient enquiries. Once confirmed, add back as: \"To book or ask a question: 01732 757771 | private@cesmedical.co.uk\"",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
@@ -4352,7 +4351,7 @@
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "PS04",
-    "notes": "Full edit from PS04 filming at Chatham. Target length 3 to 5 minutes. Patient may remain unnamed — use first name only at their choice. Structure: ordinary moment of diagnosis, emotional adjustment, management over time, message to audience about annual checks. Export in 16:9 for YouTube. Export short vertical cut for social. Subtitled. Custom thumbnail: Patient or symbolic eye health image. Add to playlist: Patient Stories.",
+    "notes": "Full edit from PS04 filming at Chatham. Target length 3 to 5 minutes. Patient may remain unnamed \u2014 use first name only at their choice. Structure: ordinary moment of diagnosis, emotional adjustment, management over time, message to audience about annual checks. Export in 16:9 for YouTube. Export short vertical cut for social. Subtitled. Custom thumbnail: Patient or symbolic eye health image. Add to playlist: Patient Stories.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
@@ -4407,7 +4406,7 @@
       "target": "https://cespatientinformation.co.uk/cataract-surgery"
     },
     "videoRelationship": "no-video",
-    "notes": "YouTube Short. 45 to 50 seconds. Motion design — no filming required. Source content from P72 slide text adapted for Short format.\n\nOn-screen text cards in order:\n\nCard 1: \"Five signs your parent might have a cataract they have not mentioned.\"\n\nCard 2: \"Sign 1: They have stopped driving at night.\" / \"They probably said it is a preference. It may not be.\"\n\nCard 3: \"Sign 2: The television is louder than it used to be.\" / \"When vision becomes difficult, people often compensate in other ways without realising it.\"\n\nCard 4: \"Sign 3: They are holding things further away to read.\" / \"This is often mistaken for a reading glasses issue. It can be both.\"\n\nCard 5: \"Sign 4: They have stopped reading for pleasure or switched to large-print books.\" / \"Patients often attribute this to preference rather than difficulty.\"\n\nCard 6: \"Sign 5: They seem less confident in unfamiliar places.\" / \"Reduced contrast sensitivity from a cataract affects how clearly the world appears. This is often attributed to age.\"\n\nCard 7: \"If any of these sound familiar, start with an eye test.\" / \"Call 01732 757771\"\n\nBackground: Clean deep teal (#003845). Same visual language as P72 Facebook carousel. Warm, not alarming.\n\nTone: Gentle and observational. Written for an adult child who recognises these signs in a parent and feels concerned. Not clinical. Not urgent. Empathetic.\n\nNo voiceover. Text on screen throughout. Warm background music, low volume.\n\nAdd CES Medical logo in white, bottom right, from Card 2 onwards.\n\nThumbnail: Card 1 text on teal background. No face needed for a Short thumbnail. Bold PP Telegraph text. Clean.\n\nUpload natively to YouTube as a Short. Do not upload as a standard video. Do not repost from Instagram or TikTok — no watermarks.\n\nNote: P72 is the related Facebook carousel covering the same topic. The content of this Short and P72 must remain consistent. If P72 is updated, check whether P151 needs updating too.\n\nYouTube tags: cataract symptoms, signs of cataract, parent has cataract, cataract family, cataract awareness, eye health Kent, CES Medical, cataract surgery Kent, eye test, ophthalmology",
+    "notes": "YouTube Short. 45 to 50 seconds. Motion design \u2014 no filming required. Source content from P72 slide text adapted for Short format.\n\nOn-screen text cards in order:\n\nCard 1: \"Five signs your parent might have a cataract they have not mentioned.\"\n\nCard 2: \"Sign 1: They have stopped driving at night.\" / \"They probably said it is a preference. It may not be.\"\n\nCard 3: \"Sign 2: The television is louder than it used to be.\" / \"When vision becomes difficult, people often compensate in other ways without realising it.\"\n\nCard 4: \"Sign 3: They are holding things further away to read.\" / \"This is often mistaken for a reading glasses issue. It can be both.\"\n\nCard 5: \"Sign 4: They have stopped reading for pleasure or switched to large-print books.\" / \"Patients often attribute this to preference rather than difficulty.\"\n\nCard 6: \"Sign 5: They seem less confident in unfamiliar places.\" / \"Reduced contrast sensitivity from a cataract affects how clearly the world appears. This is often attributed to age.\"\n\nCard 7: \"If any of these sound familiar, start with an eye test.\" / \"Call 01732 757771\"\n\nBackground: Clean deep teal (#003845). Same visual language as P72 Facebook carousel. Warm, not alarming.\n\nTone: Gentle and observational. Written for an adult child who recognises these signs in a parent and feels concerned. Not clinical. Not urgent. Empathetic.\n\nNo voiceover. Text on screen throughout. Warm background music, low volume.\n\nAdd CES Medical logo in white, bottom right, from Card 2 onwards.\n\nThumbnail: Card 1 text on teal background. No face needed for a Short thumbnail. Bold PP Telegraph text. Clean.\n\nUpload natively to YouTube as a Short. Do not upload as a standard video. Do not repost from Instagram or TikTok \u2014 no watermarks.\n\nNote: P72 is the related Facebook carousel covering the same topic. The content of this Short and P72 must remain consistent. If P72 is updated, check whether P151 needs updating too.\n\nYouTube tags: cataract symptoms, signs of cataract, parent has cataract, cataract family, cataract awareness, eye health Kent, CES Medical, cataract surgery Kent, eye test, ophthalmology",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
@@ -4574,7 +4573,7 @@
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "NK-C9",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"Monofocal or multifocal lens — what is the difference?\" Source: NK-C9.",
+    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"Monofocal or multifocal lens \u2014 what is the difference?\" Source: NK-C9.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
