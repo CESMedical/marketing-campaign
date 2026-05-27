@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search, RefreshCw } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
@@ -413,6 +414,8 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 }) {
   const { data: session } = useSession()
   const canEdit = canEditPost(session?.user?.role)
+  const router = useRouter()
+  const [, startTransition] = useTransition()
 
   const [posts, setPosts]       = useState(init)
   const postsRef                = useRef(init)
@@ -1428,6 +1431,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           onSave={updated => {
             setPosts(prev => prev.map(p => p.slug === updated.slug ? updated : p))
             setSelected(updated)
+            startTransition(() => router.refresh())
           }}
           onDelete={slug => {
             setPosts(prev => prev.filter(p => p.slug !== slug))

@@ -80,6 +80,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   const [oneDriveLoading, setOneDriveLoading] = useState(false)
   const [saving, setSaving]         = useState(false)
   const [savedAt, setSavedAt]       = useState<number | null>(null)
+  const [saveError, setSaveError]   = useState<string | null>(null)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [deleting, setDeleting]     = useState(false)
   const [comments, setComments]   = useState<Comment[]>([])
@@ -116,7 +117,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   }
 
   async function handleSave() {
-    setSaving(true)
+    setSaving(true); setSaveError(null)
     try {
       const payload = canEdit
         ? { title, caption, status, format, platforms, scheduledDate, notes, imageUrl, images }
@@ -125,7 +126,14 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
-      if (res.ok) { onSave(await res.json()); setSavedAt(Date.now()) }
+      if (res.ok) {
+        onSave(await res.json()); setSavedAt(Date.now())
+      } else {
+        const body = await res.json().catch(() => ({}))
+        setSaveError(body.error ?? `Save failed (${res.status})`)
+      }
+    } catch {
+      setSaveError('Network error — changes not saved')
     } finally { setSaving(false) }
   }
 
@@ -687,21 +695,28 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
               </div>
             </div>
           ) : (
-            <div className="flex gap-2">
-              {role === 'admin' && (
-                <button onClick={() => setConfirmDelete(true)}
-                  className="flex items-center justify-center gap-1.5 rounded-xl border border-brand-deep/15 px-3 py-2.5 text-xs font-semibold text-brand-deep/50 hover:border-red-200 hover:text-red-400 transition-colors"
-                  title="Delete post">
-                  <Trash2 size={13} />
+            <>
+              <div className="flex gap-2">
+                {role === 'admin' && (
+                  <button onClick={() => setConfirmDelete(true)}
+                    className="flex items-center justify-center gap-1.5 rounded-xl border border-brand-deep/15 px-3 py-2.5 text-xs font-semibold text-brand-deep/50 hover:border-red-200 hover:text-red-400 transition-colors"
+                    title="Delete post">
+                    <Trash2 size={13} />
+                  </button>
+                )}
+                <button onClick={handleSave} disabled={saving}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-50"
+                  style={{ background: justSaved ? '#22c55e' : '#008080' }}>
+                  <Save size={14} />
+                  {saving ? 'Saving…' : justSaved ? 'Saved ✓' : 'Save changes'}
                 </button>
+              </div>
+              {saveError && (
+                <p className="mt-2 rounded-lg bg-red-50 px-3 py-2 text-xs font-medium text-red-600 border border-red-200">
+                  {saveError}
+                </p>
               )}
-              <button onClick={handleSave} disabled={saving}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-50"
-                style={{ background: justSaved ? '#22c55e' : '#008080' }}>
-                <Save size={14} />
-                {saving ? 'Saving…' : justSaved ? 'Saved ✓' : 'Save changes'}
-              </button>
-            </div>
+            </>
           )}
         </div>
       )}
