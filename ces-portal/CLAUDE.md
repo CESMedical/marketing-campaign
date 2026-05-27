@@ -116,3 +116,23 @@ This split is intentional and matches the strategy doc.
 - Do not introduce `framer-motion`, `radix-ui`, or other heavy deps without checking — this is a small internal tool.
 - Do not change the brand colour values.
 - Do not remove `trailingSlash: true` — it changes every URL in the project.
+
+## Em Dash Rule — Non-Negotiable
+
+Before saving any field on any post card — including but not limited to: YouTube titles, captions, slide content, production notes, descriptions, tags, hashtags, chapter timestamps, CTAs, titles and metadata — run a check for em dashes (—).
+
+An em dash is this character: —
+It is NOT the same as a hyphen (-) or an en dash (–).
+
+If an em dash is found anywhere in any field being saved:
+1. Stop immediately
+2. Replace the em dash with the appropriate alternative:
+   - Use a colon (:) where the em dash introduces a clause or subtitle
+   - Use a comma (,) where the em dash creates a pause
+   - Use "and" or "but" where the em dash connects two thoughts
+   - Use a full stop where the em dash separates two complete sentences
+3. Save the corrected version
+
+This rule has no exceptions. It applies to every field, every post, every format, every platform. It applies to content written by Claude Code as well as content copied from correction prompt files. Even if a correction file contains an em dash, Claude Code must remove it before saving.
+
+Do not ask for confirmation before removing an em dash. Remove it and apply the correct alternative automatically. Note the correction in the response so the user can see it was caught.
