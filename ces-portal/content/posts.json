@@ -265,7 +265,7 @@
     "id": "P09",
     "slug": "p09-which-cataract-lens-is-right-for-you---interactive-guide",
     "title": "Which cataract lens is right for you?",
-    "pillar": "business",
+    "pillar": "educational",
     "platforms": [
       "instagram",
       "facebook",
@@ -277,12 +277,11 @@
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
     "format": "carousel",
-    "caption": "Monofocal, multifocal, EDOF, toric. The choice can feel overwhelming.\n\nThe honest answer is: the right lens depends on your eyes, your lifestyle, your hobbies and your expectations. Not on what looks best on a comparison chart.\n\nSwipe through our breakdown. Then bring your questions to the consultation.",
+    "caption": "Monofocal, multifocal, EDOF, toric. The choice can feel overwhelming.\n\nThe honest answer is: the right lens depends on your eyes, your lifestyle, your hobbies and your expectations. Not on what looks best on a comparison chart.\n\nSwipe through our breakdown. Then bring your questions to the consultation.\n\nQuestions before you book? Call 01732 757771 or visit cespatientinformation.co.uk/cataract-surgery",
     "cta": {
-      "label": "Book a lens consultation",
+      "label": "cespatientinformation.co.uk/cataract-surgery | 01732 757771",
       "type": "web",
-      "target": "https://cespatientinformation.co.uk/cataract-surgery",
-      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P09"
+      "target": "https://cespatientinformation.co.uk/cataract-surgery"
     },
     "productionLocation": "stock",
     "productionLead": "external",
@@ -293,7 +292,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Lens comparison carousel. Design brief using NK-C9, NK-C10 and KQ-C8 answers. 8 slides minimum \u2014 cover monofocal, multifocal, EDOF and toric. Commercial priority post. Clinical review required. Brand review for ASA compliance on any benefit claims. No video."
+    "notes": "Carousel. 6 slides. IG FB LI. Source: NK-C9 and NK-C10 (Mr Kopsachilis on lens choice), KQ-C8 (Mr Qureshi on lens selection).\n\nPLATFORM NOTE: If a consultant video clip is used as a slide, the Instagram and Facebook versions can include it. The LinkedIn version must be a PDF document carousel and cannot contain video. Replace any video slide in the LinkedIn version with a static still and quote.\n\nSlide 1: Which cataract lens is right for you?\n\nSlide 2: Monofocal. Corrects one distance, usually distance vision. Reading glasses still needed for close-up tasks. Some patients choose near focus depending on their occupation. Well-established. Reliable.\n\nSlide 3: Multifocal. Corrects multiple distances. Many patients find they need glasses far less or not at all. Not for everyone.\n\nSlide 4: EDOF (Extended Depth of Focus). Extended intermediate range. Fewer haloes than full multifocal. Some may still need reading glasses.\n\nSlide 5: Toric. Corrects distance vision and astigmatism at the same time. Astigmatism is a common condition where the cornea is slightly irregular, causing blurry or distorted vision. A toric design can also be combined with multifocal technology for patients who want to correct both astigmatism and reading distance. Your consultant will advise at assessment.\n\nSlide 6: The right lens is the one that fits your life. That conversation starts at consultation. Find out more at cespatientinformation.co.uk/cataract-surgery or call 01732 757771."
   },
   {
     "id": "P10",
