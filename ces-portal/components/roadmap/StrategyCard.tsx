@@ -59,7 +59,7 @@ export function StrategyCard({ roadmapId }: { roadmapId?: string }) {
     setUploading(true)
     try {
       const form = new FormData(); form.append('file', file)
-      const uploadRes = await fetch('/api/upload/document', { method: 'POST', body: form })
+      const uploadRes = await fetch('/api/upload/document/', { method: 'POST', body: form })
       if (!uploadRes.ok) return
       const { url, fileName } = await uploadRes.json()
       await saveStrategy({ strategyFileUrl: url, strategyFileName: fileName, strategyTitle: title })

@@ -100,8 +100,8 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     setScheduledDate(post.scheduledDate.slice(0, 10))
     setNotes(post.notes ?? ''); setImageUrl(post.imageUrl ?? '')
     setImages(post.images ?? (post.imageUrl ? [post.imageUrl] : []))
-    fetch(`/api/posts/${post.slug}/comments`).then(r => r.json()).then(setComments).catch(() => {})
-    fetch('/api/users').then(r => r.json()).then(setPortalUsers).catch(() => {})
+    fetch(`/api/posts/${post.slug}/comments/`).then(r => r.json()).then(setComments).catch(() => {})
+    fetch('/api/users/').then(r => r.json()).then(setPortalUsers).catch(() => {})
   }, [post.slug]) // eslint-disable-line
 
   useEffect(() => {
@@ -111,7 +111,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   async function handleDelete() {
     setDeleting(true)
     try {
-      const res = await fetch(`/api/posts/${post.slug}`, { method: 'DELETE' })
+      const res = await fetch(`/api/posts/${post.slug}/`, { method: 'DELETE' })
       if (res.ok) { onDelete?.(post.slug); onClose() }
     } finally { setDeleting(false) }
   }
@@ -122,7 +122,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
       const payload = canEdit
         ? { title, caption, status, format, platforms, scheduledDate, notes, imageUrl, images }
         : { status }
-      const res = await fetch(`/api/posts/${post.slug}`, {
+      const res = await fetch(`/api/posts/${post.slug}/`, {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
@@ -142,7 +142,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     setUploading(true)
     try {
       const form = new FormData(); form.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: form })
+      const res = await fetch('/api/upload/', { method: 'POST', body: form })
       if (res.ok) {
         const { url } = await res.json()
         setImageUrl(url)
@@ -156,7 +156,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     setUploadingSlide(true)
     try {
       const form = new FormData(); form.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: form })
+      const res = await fetch('/api/upload/', { method: 'POST', body: form })
       if (res.ok) {
         const { url } = await res.json()
         setImages(prev => {
@@ -196,7 +196,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   }
 
   async function handleDeleteComment(id: string) {
-    const res = await fetch(`/api/posts/${post.slug}/comments`, {
+    const res = await fetch(`/api/posts/${post.slug}/comments/`, {
       method: 'DELETE', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),
     })
@@ -207,7 +207,7 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
     if (!commentText.trim()) return
     setSubmitting(true)
     try {
-      const res = await fetch(`/api/posts/${post.slug}/comments`, {
+      const res = await fetch(`/api/posts/${post.slug}/comments/`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: commentText }),
       })

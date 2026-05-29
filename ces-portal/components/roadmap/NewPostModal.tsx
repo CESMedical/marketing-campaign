@@ -41,7 +41,7 @@ export function NewPostModal({ defaultDate, roadmapId, onClose, onCreate }: {
     if (platforms.length === 0) { setError('Select at least one platform'); return }
     setSaving(true); setError('')
     try {
-      const res = await fetch('/api/posts', {
+      const res = await fetch('/api/posts/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: title.trim(), pillar, platforms, format, scheduledDate: date, roadmapId }),

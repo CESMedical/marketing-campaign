@@ -434,11 +434,11 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     if (syncing) return
     setSyncing(true); setSyncMsg(null)
     try {
-      const res = await fetch('/api/admin/sync-posts', { method: 'POST' })
+      const res = await fetch('/api/admin/sync-posts/', { method: 'POST' })
       setSyncMsg(res.ok ? 'ok' : 'err')
       if (res.ok) {
         // Reload posts from server so the canvas reflects synced data
-        const fresh = await fetch(`/api/posts${roadmapId ? `?r=${roadmapId}` : ''}`)
+        const fresh = await fetch(`/api/posts/${roadmapId ? `?r=${roadmapId}` : ''}`)
         const data = await fresh.json()
         if (Array.isArray(data)) setPosts(data)
       }
@@ -500,7 +500,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
 
   useEffect(() => {
     if (!roadmapId) return
-    fetch(`/api/roadmaps/${roadmapId}/canvas`)
+    fetch(`/api/roadmaps/${roadmapId}/canvas/`)
       .then(r => r.ok ? r.json() : null)
       .then((data: LayoutPayload | null) => { if (data) applyServerLayout(data) })
       .catch(() => {})
@@ -511,7 +511,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     if (!roadmapId) return
     const id = setInterval(() => {
       if (Date.now() - lastLocalChangeRef.current < 10_000) return
-      fetch(`/api/roadmaps/${roadmapId}/canvas`)
+      fetch(`/api/roadmaps/${roadmapId}/canvas/`)
         .then(r => r.ok ? r.json() : null)
         .then((data: LayoutPayload | null) => { if (data) applyServerLayout(data) })
         .catch(() => {})
@@ -524,7 +524,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   useEffect(() => {
     if (!roadmapId) return
     const id = setInterval(() => {
-      fetch(`/api/posts?r=${roadmapId}`)
+      fetch(`/api/posts/?r=${roadmapId}`)
         .then(r => r.ok ? r.json() : null)
         .then((fresh: Post[] | null) => { if (fresh?.length) setPosts(fresh) })
         .catch(() => {})
@@ -602,7 +602,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           if (saved) cardPositions[key] = JSON.parse(saved)
         } catch {}
       }
-      fetch(`/api/roadmaps/${roadmapId}/canvas`, {
+      fetch(`/api/roadmaps/${roadmapId}/canvas/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cardPositions, nodes: nodesRef.current, edges: edgesRef.current }),
@@ -810,7 +810,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
         // PATCH all cards in target column with new sortOrder (and date for dragged card)
         const results = await Promise.all(
           newCol.map((p, idx) =>
-            fetch(`/api/posts/${p.slug}`, {
+            fetch(`/api/posts/${p.slug}/`, {
               method: 'PATCH', headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 sortOrder: idx,
@@ -849,7 +849,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     try {
       // Single atomic request — shifts every post in the DB (P, LI, FB, IG…)
       // so posts not currently loaded into the canvas view are also moved.
-      const res = await fetch('/api/posts/bulk-shift', {
+      const res = await fetch('/api/posts/bulk-shift/', {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ days: delta }),
       })
