@@ -470,12 +470,11 @@
     "isCommercialPriority": false,
     "service": "cataract-toric",
     "format": "single-image",
-    "caption": "If you have astigmatism alongside a cataract, a toric lens can correct both at the same time. Many patients find they no longer need distance glasses afterwards.\n\nIt is worth raising at your consultation if it applies to you. The difference in outcome can be significant.",
+    "caption": "If you have astigmatism alongside a cataract, a toric lens can correct both at the same time. Astigmatism is a common condition where the cornea is slightly irregular, causing blurry or distorted vision. Many patients with a toric lens find they need distance glasses far less or not at all.\n\nIt is worth raising at your consultation. Your consultant will assess whether a toric lens is right for your eyes.\n\nFind out more at cespatientinformation.co.uk/cataract-surgery or call 01732 757771.",
     "cta": {
-      "label": "Book a consultation",
+      "label": "cespatientinformation.co.uk/cataract-surgery | 01732 757771",
       "type": "web",
-      "target": "https://cespatientinformation.co.uk/cataract-surgery",
-      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P15"
+      "target": "https://cespatientinformation.co.uk/cataract-surgery"
     },
     "productionLocation": "stock",
     "productionLead": "external",
@@ -485,7 +484,7 @@
       "ces_instagram_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Toric lens single image with caption. Design brief using KQ-C8 answer for clinical copy. Clinical review required. Stock medical imagery or diagram. No video."
+    "notes": "Single image. IG and LI. Single image, no video, LinkedIn-compatible.\n\nVisual concept: Clean diagram showing how a toric lens corrects an irregular (astigmatic) cornea. Show the difference between how light focuses through an astigmatic cornea versus through a toric lens. Accessible and clear, not overly clinical. If using a stock or licensed medical illustration, confirm it is medically accurate before use.\n\nText overlay on image: \"Astigmatism and cataracts? One lens can correct both.\" CES Medical logo bottom right.\n\nSource: KQ-C8 (Mr Qureshi on lens selection) for reference, though this is a static image not a video.\n\nCaption:\nIf you have astigmatism alongside a cataract, a toric lens can correct both at the same time. Astigmatism is a common condition where the cornea is slightly irregular, causing blurry or distorted vision. Many patients with a toric lens find they need distance glasses far less or not at all.\n\nIt is worth raising at your consultation. Your consultant will assess whether a toric lens is right for your eyes.\n\nFind out more at cespatientinformation.co.uk/cataract-surgery or call 01732 757771."
   },
   {
     "id": "P16",
