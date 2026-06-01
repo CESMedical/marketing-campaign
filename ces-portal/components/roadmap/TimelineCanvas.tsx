@@ -1436,6 +1436,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
           onDelete={slug => {
             setPosts(prev => prev.filter(p => p.slug !== slug))
             setSelected(null)
+            startTransition(() => router.refresh())
           }}
         />
       )}
