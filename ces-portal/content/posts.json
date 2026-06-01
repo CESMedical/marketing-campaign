@@ -2777,25 +2777,25 @@
   {
     "id": "P118",
     "slug": "p118-the-patient-who-made-him-reconsider-how-ces-communicates",
-    "title": "The patient who made him reconsider how CES communicates",
+    "title": "The patient who changed how we communicate",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-16",
-    "weekNumber": 7,
+    "scheduledDate": "2026-07-14",
+    "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: A specific patient story that changed something about how CES Medical communicates. Elion to write in his own voice. This should be specific and personal, not generalised.",
+    "caption": "A while ago, a patient said something to me that changed how we communicate at CES.\n\n[ELION: describe the moment in general, non-identifiable terms. What did the patient say or experience? Avoid any detail that could identify them, no specific age plus condition plus location, no distinctive personal circumstances. Focus on the realisation, not the individual.]\n\nWhat struck me was not a clinical issue. The care had been good. The problem was that we had explained something in a way that made complete sense to us and very little sense to them. We had assumed a level of familiarity that was not fair to assume.\n\n[ELION: what specifically did you change as a result? A process, a piece of communication, how a particular thing is explained at consultation, a change to written information. Be specific about the change, general about the patient.]\n\nIt is easy, when you do something every day, to forget that for the patient it is often the first and only time. The language that is second nature to us can be a wall to them.\n\nI think the willingness to be told you have got something wrong, by the person you are meant to be serving, is one of the most useful things in healthcare. We changed what we do because one patient was honest with us.\n\nFor others in healthcare or any service: what is a change you made because a customer or patient told you something you did not want to hear?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "A specific patient story that changed something about how the practice operates.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "A while ago, a patient said something to me that changed how we communicate at CES.",
+    "notes": "TEMPLATE DRAFT. Elion to complete the bracketed sections with a genuine, anonymised patient experience. Must not be published with invented patient detail or with anything that could identify a real patient.\n\nText only. No image. No external link. Post at 8am Tuesday from Elion Hyseni personal LinkedIn account.\n\nCONFIDENTIALITY, NON-NEGOTIABLE: Per GMC guidance, protect patient confidentiality. No identifying details. If the experience is identifiable, anonymise further or obtain consent. The focus is the communication lesson and the change made, not the patient. This is the single most important requirement for this post. If confidentiality cannot be assured, do not publish.\n\nConfidentiality requirements:\n1. No detail that could identify the patient: avoid combining age, specific condition, location and circumstance. Avoid dates. Avoid anything distinctive.\n2. If the experience is at all identifiable, Elion must either anonymise it further or obtain the patient's consent to share.\n3. The focus must be on the communication lesson and the change made, not on the patient as an individual.\n4. When in doubt, generalise. A composite or generalised version is safer and makes the same point.\n\nConsistency: NHS-commissioned positioning, no private group language.\n\nGOLDEN HOUR: Elion available to respond to comments within 60 minutes of posting.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
