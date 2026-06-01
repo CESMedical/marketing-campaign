@@ -2722,25 +2722,25 @@
   {
     "id": "P116",
     "slug": "p116-what-13000-patient-episodes-a-year-teaches-you",
-    "title": "What 13,000 patient episodes a year teaches you",
+    "title": "What treating thousands of patients a year teaches you",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-09",
-    "weekNumber": 6,
+    "scheduledDate": "2026-06-30",
+    "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: What 13,000 patient episodes a year teaches you. Volume creates pattern recognition that changes how you see individual cases. Elion to write from scratch in his own voice.",
+    "caption": "When you see a small number of patients, every case feels unique. When you see many thousands a year, something changes. You start to recognise patterns you would never have seen otherwise.\n\n[FIGURE TO CONFIRM: across CES Medical we now see in the region of 13,000 patient episodes a year. Confirm this number is accurate before posting. If it is not, adjust or remove it.]\n\nThat volume does something to how you practise. The unusual presentation that a clinician might see once in a decade, we might see several times a year. The subtle sign that is easy to dismiss in isolation becomes familiar. You learn what is genuinely rare and what only feels rare because you have not seen enough of it.\n\nI am cautious about how I say this, because it is not that any individual clinician is better or worse. It is that scale builds a particular kind of pattern recognition, and that pattern recognition changes the questions you ask and the things you notice.\n\nIt also changes how you design a service. When you see enough patients, the gaps in the pathway stop being anecdotes and start being data. You can see where people fall through, where they wait too long, where the system could be smoother.\n\nFor others working at scale in healthcare: what has volume taught you that you could not have learned any other way?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "Volume creates pattern recognition that changes how you see individual cases.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "When you see a small number of patients, every case feels unique. When you see many thousands a year, something changes. You start to recognise patterns you would never have seen otherwise.",
+    "notes": "PLACEHOLDER DRAFT. Elion to refine in his own voice before publishing.\n\nText only. No image. No external link. Post at 8am Tuesday from Elion Hyseni personal LinkedIn account.\n\nVERIFY BEFORE POSTING: The 13,000 patient episodes a year figure must be confirmed accurate. If it cannot be confirmed, the draft works with the figure removed (replace with many thousands of patient episodes a year). Do not publish a specific number that has not been verified.\n\nThis is a placeholder draft for Elion to refine in his own voice. The reflective framing must be preserved.\n\nLines and framing that must survive Elion's rewrite:\n1. The humility line: it is not that any individual clinician is better or worse. It is that scale builds a particular kind of pattern recognition. This keeps the post from being a boast and protects professional credibility.\n2. The reflective tone. This is a reflection on what scale teaches, not a marketing claim that CES is superior because it is busy.\n\nConsistency: NHS-commissioned positioning, no private group language.\n\nGOLDEN HOUR: Elion available to respond to comments within 60 minutes of posting. Other healthcare leaders may engage on the volume and pattern recognition point. Respond reflectively, not defensively.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
