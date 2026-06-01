@@ -2164,16 +2164,18 @@
     "scheduledDate": "2026-06-18",
     "weekNumber": 7,
     "isCommercialPriority": false,
+    "service": "corneal",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Modern corneal transplantation: who needs it, what the procedure involves, different techniques (PKP, DMEK, DSEK), outcomes and what recovery looks like.",
+    "caption": "Corneal transplantation is not as widely understood as cataract or glaucoma surgery, yet it restores sight for patients whose cornea has become damaged, scarred or clouded. And modern surgery is often more targeted than the word transplant suggests.\n\nThis is a short guide to who needs a corneal transplant and what to expect, for patients and for colleagues who may be the first to see these patients.\n\nMr Nick Kopsachilis, who holds a PhD in corneal research, leads our corneal service.\n\nIf you have a patient with keratoconus, Fuchs' dystrophy or corneal scarring affecting vision, we are happy to discuss.",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "Corneal transplantation has changed more in the past decade than almost any other ophthalmic procedure.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "The word transplant sounds drastic. Modern corneal surgery is often far more targeted than people expect, frequently replacing only the affected layer.",
+    "notes": "SLIDES (10):\n\nSlide 1: Corneal transplantation: who needs it and what to expect.\n\nSlide 2: What the cornea does. It is the clear front window of the eye. When it becomes damaged, scarred or clouded, vision is significantly affected and glasses cannot fully correct it.\n\nSlide 3: Who may need a transplant. Patients with keratoconus that has progressed, Fuchs' endothelial dystrophy affecting vision, corneal scarring from injury or infection, or a failed previous graft.\n\nSlide 4: The traditional approach. A full thickness transplant (penetrating keratoplasty) replaces the entire cornea. This is still needed in some cases.\n\nSlide 5: The modern approach. Surgery is often partial, replacing only the affected layer. DALK for the front layers. DMEK and DSAEK for the inner layer. This means faster recovery and lower rejection risk where it is appropriate.\n\nSlide 6: What recovery involves. Recovery is gradual and varies by transplant type and individual. Follow-up is important. Your surgeon will explain what to expect for your specific procedure.\n\nSlide 7: Why early referral helps. For conditions like keratoconus, earlier assessment can mean treatments that preserve the patient's own cornea, sometimes avoiding the need for a transplant altogether.\n\nSlide 8: Our corneal service. Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, holds a PhD in corneal research and trained in Munich, at Moorfields Eye Hospital and King's College London. He performs the full range of corneal procedures.\n\nSlide 9: We provide corneal surgery at Headcorn, Chatham and Southborough. To discuss a patient or refer, call 01732 757771.\n\nSlide 10: CES Medical. Consultant-led ophthalmology across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: patients and referrers. PDF document carousel, no video, LinkedIn-compatible.\n\nThis is the LinkedIn carousel in the corneal content family (P53, P65, P138, P155, P132). Keep consistent: the modern surgery is often partial key message, procedure names DMEK, DSAEK, DALK, and Mr Kopsachilis as the authority.\n\nCLINICAL REVIEW REQUIRED: Corneal transplantation is Mr Kopsachilis's specialist area. He should review the clinical content (conditions, transplant types, recovery framing) before publishing.\n\nACCURACY: Mr Kopsachilis holds an MD, PhD and senior international qualifications, NOT FRCOphth. Do not describe or tag with FRCOphth. Recovery information is honest with no fixed guarantee. Surgery is performed at Headcorn, Chatham and Southborough, not Pantiles (consultation only).\n\nNO GRAPHIC IMAGERY: Corneal surgery visuals distress general audiences. Use clean design, no surgical or clinical eye close-up imagery.\n\nSlide 7 (early referral) connects to P132 (keratoconus early detection).",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
