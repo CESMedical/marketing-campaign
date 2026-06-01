@@ -4794,9 +4794,9 @@
     "isCommercialPriority": false,
     "service": "vitreoretinal",
     "format": "single-image",
-    "caption": "A sudden increase in floaters. Flashes of light at the edge of your vision. A shadow or curtain moving across your sight.\n\nThese are the warning signs of retinal detachment. It is a medical emergency. Do not wait for a routine appointment.\n\nMr Syed Shahid is a Moorfields-trained vitreoretinal surgeon based in Kent, one of very few in the region. If you or someone you know experiences these symptoms, seek urgent eye care the same day.\n\nFor urgent private assessment: 01732 757771",
+    "caption": "A sudden increase in floaters. Flashes of light at the edge of your vision. A shadow or curtain moving across your sight.\n\nThese are the warning signs of retinal detachment. It is a medical emergency. Do not wait.\n\nIf you or someone you know experiences these symptoms, go to your nearest eye casualty department or call 111 the same day. This is not something to leave until morning or until a routine appointment.\n\nMr Syed Shahid, our Moorfields-trained vitreoretinal surgeon, is one of a small number of vitreoretinal surgeons in Kent. For non-urgent retinal concerns or follow-up, call us on 01732 757771.",
     "cta": {
-      "label": "Call 01732 757771",
+      "label": "Urgent symptoms: eye casualty or 111. Non-urgent: 01732 757771",
       "type": "phone",
       "target": "tel:01732757771"
     },
@@ -4804,7 +4804,7 @@
     "productionLead": "leonna",
     "videoRelationship": "direct-snippet",
     "videoReference": "SS-C5",
-    "notes": "Single image. Clean, calm, serious but not alarming. Dark teal background. White text. Key symptoms listed clearly. Phone number prominent. This post could prevent sight loss. Treat it accordingly.",
+    "notes": "Single image. IG, FB and LI. Clean, calm, serious but not alarming. Dark teal background. White text. Key symptoms listed clearly. This post could prevent sight loss, treat it accordingly.\n\nCRITICAL CTA, PATIENT SAFETY: The primary call to action for these emergency symptoms is eye casualty or 111 the same day, NOT a private booking. Do not make the CES phone number the primary response to emergency symptoms. CES is credited and the number is offered for non-urgent concerns and follow-up only. Consistent with P153, P56, P89, P130 and P131.\n\nThe symptom triad (sudden floaters, flashes, shadow or curtain) must be clearly legible. If posted to Instagram or Facebook with any sound element, the urgent message must also be readable without sound.\n\nCaption:\nA sudden increase in floaters. Flashes of light at the edge of your vision. A shadow or curtain moving across your sight.\n\nThese are the warning signs of retinal detachment. It is a medical emergency. Do not wait.\n\nIf you or someone you know experiences these symptoms, go to your nearest eye casualty department or call 111 the same day. This is not something to leave until morning or until a routine appointment.\n\nMr Syed Shahid, our Moorfields-trained vitreoretinal surgeon, is one of a small number of vitreoretinal surgeons in Kent. For non-urgent retinal concerns or follow-up, call us on 01732 757771.",
     "strategyRef": [
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card",
