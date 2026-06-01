@@ -2751,25 +2751,25 @@
   {
     "id": "P117",
     "slug": "p117-why-we-invested-in-the-zeiss-iolmaster-700",
-    "title": "Why we invested in the Zeiss IOLMaster 700",
+    "title": "Why we invested in precision measurement",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-12",
-    "weekNumber": 7,
+    "scheduledDate": "2026-07-07",
+    "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: Why we invested in the Zeiss IOLMaster 700. Precision at the measurement stage directly affects the surgical outcome. Elion to write in his own voice.",
+    "caption": "When people think about cataract surgery, they think about the operation itself. The part that determines the result often happens before the patient is anywhere near the theatre.\n\nBefore any lens is chosen, the eye has to be measured. Its length, the curvature of the cornea, the depth of the chamber. Those measurements determine which lens, and which lens power, will give the patient the vision they are hoping for. Get the measurement slightly wrong and the lens choice follows it, and the patient notices.\n\nThat is why we invested in the Zeiss IOLMaster 700 for our biometry. It is not the visible part of the service. No patient ever chose us because of a measurement device. But it is one of the quiet decisions that shapes whether someone gets the outcome they were promised.\n\nI think about investment this way. The things worth spending on are often the things the patient never sees, because those are the things that determine whether the visible parts work.\n\nThis matters more, not less, for premium lenses. A multifocal or toric lens is less forgiving of a measurement error than a standard lens. The precision has to be there for the technology to deliver what it promises.\n\nFor others making decisions about where to invest in a clinical service: how do you weigh the things patients can see against the things they cannot?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "Precision at the measurement stage directly affects the surgical outcome.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "When people think about cataract surgery, they think about the operation itself. The part that determines the result often happens before the patient is anywhere near the theatre.",
+    "notes": "PLACEHOLDER DRAFT. Elion to refine in his own voice before publishing.\n\nText only. No image. No external link. Post at 8am Tuesday from Elion Hyseni personal LinkedIn account.\n\nThis is a placeholder draft for Elion to refine in his own voice. The framing must stay a reflection on why measurement precision matters for patients, not an equipment brag.\n\nConsistency: The Zeiss IOLMaster 700 reference must match how it appears in P86 and P88 (biometry for lens measurement). NHS-commissioned positioning, no private group language.\n\nLines and framing that must survive Elion's rewrite:\n1. The humility line: No patient ever chose us because of a measurement device. This prevents the post from reading as a brag.\n2. The investment philosophy framing: spending on what patients cannot see because it determines whether the visible parts work.\n3. Must not imply providers using other equipment are inferior.\n\nGOLDEN HOUR: Elion available to respond to comments within 60 minutes of posting.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
