@@ -3184,25 +3184,26 @@
   {
     "id": "P133",
     "slug": "p133-vitreous-floaters-when-reassurance-is-appropriate-and-when-it-is-not",
-    "title": "Vitreous floaters: when reassurance is appropriate and when it is not",
+    "title": "Vitreous floaters: when reassurance is right, and when it is not",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-24",
-    "weekNumber": 8,
+    "scheduledDate": "2026-07-15",
+    "weekNumber": 11,
     "isCommercialPriority": false,
+    "service": "medical-retina",
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: Vitreous floaters: when reassurance is appropriate and when it is not. Posterior vitreous detachment vs retinal tear. What symptoms change the clinical picture. Mr Qureshi to review before posting.",
+    "caption": "Floaters are one of the most common things patients worry about, and one of the trickiest to advise on, because most of the time they are nothing, and occasionally they are the first sign of something serious.\n\nMost floaters are harmless. They are usually caused by age-related changes in the vitreous gel inside the eye, including posterior vitreous detachment, which is a normal part of getting older. If they have been stable for a long time and there are no other symptoms, reassurance is usually the right answer.\n\nWhat changes the picture is a sudden change. A sudden shower of new floaters. Flashes of light. A shadow or curtain moving across the vision. Any of those, particularly together, can signal a retinal tear or detachment, and that is not something to reassure away. It needs same-day assessment.\n\nThe difficulty is that the symptom itself, floaters, is the same in both cases. The history is what separates them. How suddenly did they appear? Are there flashes? Is there a shadow? Those questions matter more than the floaters themselves.\n\nFor anyone unsure: a sudden change with flashes or a shadow should be treated as urgent and assessed the same day, through eye casualty, not left for a routine appointment. When in doubt, it is safer to check.\n\nFor colleagues: how do you talk patients through the difference between the floaters that need watching and the ones that need acting on?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "kashif-qureshi",
-    "linkedInHook": "Most vitreous floaters are benign. A small number are not. The difference matters.",
-    "notes": "Placeholder post on vitreous floaters for Mr Qureshi personal LinkedIn. Topic: when reassurance is appropriate and when it is not. Mr Qureshi must review and approve before publishing from his personal account.",
+    "linkedInHook": "Floaters are one of the most common things patients worry about. Most are harmless. Some are the first sign of something serious. The history is what separates them.",
+    "notes": "DRAFT. Mr Kashif Qureshi to review and post from his personal LinkedIn account.\n\nRESOLVE BEFORE PUBLISHING:\n1. SPECIALIST FIT: Floaters and retinal detachment are vitreoretinal territory (Mr Shahid's specialty, see P130/P131). Mr Qureshi is a cataract and medical retina specialist, which overlaps with the vitreous, so he can credibly speak to this from a medical retina perspective. Confirm Mr Qureshi is comfortable being the voice on floaters, or consider reassigning to Mr Shahid. The draft is framed as his medical-retina clinical perspective.\n2. OVERLAP WITH P89: P89 is the brand GP carousel on floaters (when to refer/reassure). This post is Mr Qureshi's personal reflective take. They can complement as personal vs institutional voice, but confirm both are wanted and that they are distinct enough.\n\nCLINICAL ACCURACY: The red flag triad (sudden floaters, flashes, shadow or curtain) must route to eye casualty the same day, NOT routine or private booking. Consistent with P89, P130, P131, P153 and P162. Benign causes (age-related vitreous change, PVD) accurately described.\n\nGOLDEN HOUR: Mr Qureshi available to respond to comments within 60 minutes of posting.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
