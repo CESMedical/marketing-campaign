@@ -2183,8 +2183,8 @@
   {
     "id": "P96",
     "slug": "p96-nhs-vs-private-the-honest-comparison-for-cataract-patients",
-    "title": "NHS vs private: the honest comparison for cataract patients",
-    "pillar": "business",
+    "title": "NHS or private cataract surgery: an honest comparison",
+    "pillar": "educational",
     "platforms": [
       "linkedin"
     ],
@@ -2192,16 +2192,18 @@
     "scheduledDate": "2026-06-22",
     "weekNumber": 8,
     "isCommercialPriority": false,
+    "service": "cataract-monofocal",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: An honest comparison of NHS and private cataract pathways. Same consultants, same standards. Different access speed, lens options and time at consultation. No false claims.",
+    "caption": "One of the most common questions we are asked is whether to have cataract surgery on the NHS or privately. Because we are an NHS-commissioned provider, we offer both, which means we have no reason to push one over the other.\n\nHere is an honest comparison, so you can make the decision that is right for you.\n\nThe short version: the NHS pathway provides excellent cataract surgery, fully funded. Private care does not give you a better surgeon or a better operation. What it gives you is faster access, a wider choice of lens, and more time. For some people that matters. For others it does not.\n\nIf you are weighing it up, we are happy to talk it through honestly.",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk | 01732 757771",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "The honest answer about NHS and private cataract surgery is not what most people expect.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "We are an NHS-commissioned provider, and we also offer private care. So when patients ask us which cataract pathway is right for them, we can give an honest answer.",
+    "notes": "SLIDES (10):\n\nSlide 1: NHS or private cataract surgery: an honest comparison.\n\nSlide 2: First, an important point. We are an NHS-commissioned provider. We offer cataract surgery through both the NHS and privately. We are not trying to move you from one to the other.\n\nSlide 3: The NHS pathway. Cataract surgery on the NHS is excellent. It is fully funded, performed by experienced consultant surgeons, to the same clinical standards as private care. For most people it is a very good option.\n\nSlide 4: What the NHS pathway involves. A referral, an assessment, and surgery when you reach the top of the list. There may be a wait. The standard lens provided is a monofocal lens, which gives clear vision at one distance, usually distance, with glasses for reading.\n\nSlide 5: The private pathway. The clinical care is the same. The same standards, often the same surgeons. What differs is not the quality of the surgery.\n\nSlide 6: What private care adds. Faster access, surgery planned around your timing. A wider choice of lens, including multifocal, extended depth of focus and toric lenses for astigmatism. More time at consultation to discuss your options.\n\nSlide 7: The honest bottom line. Private does not buy you a better surgeon or a safer operation. It buys you speed, lens choice and time. Whether that is worth it depends entirely on your circumstances and preferences.\n\nSlide 8: How to decide. If you are happy to wait and a standard lens suits your lifestyle, the NHS pathway is an excellent choice. If faster access or a premium lens matters to you, private may suit you better. There is no wrong answer.\n\nSlide 9: Either way, we can help. As an NHS-commissioned provider, we can discuss both pathways with you honestly. Call 01732 757771.\n\nSlide 10: CES Medical. Consultant-led cataract surgery, NHS and private, across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: patients considering cataract surgery. PDF document carousel, no video, LinkedIn-compatible.\n\nTHIS IS THE MOST SENSITIVE POST IN THE CAMPAIGN. Handle with care.\n\nNHS POSITIONING, NON-NEGOTIABLE:\n1. CES is an NHS-commissioned provider offering both pathways. The post must make this clear (Slides 2 and 9).\n2. Never imply private surgery or the surgeon is clinically better. The clinical quality, standards and often the surgeons are the same. The difference is access speed, lens choice and consultation time only. Slides 5, 6 and 7 carry this.\n3. Must NOT exploit or amplify NHS capacity concerns. The NHS pathway must be presented as excellent and valid (Slide 3). Do not say or imply NHS waits are bad, go private.\n4. The honest, balanced tone is the entire point. There is no wrong answer (Slide 8) must remain.\n\nAligns with P111 (Elion's personal NHS vs private post). Keep consistent.\n\nNo timeline commitments: do not state specific NHS wait times.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
