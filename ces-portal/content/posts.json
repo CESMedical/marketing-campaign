@@ -4662,17 +4662,17 @@
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "brand",
-    "format": "video",
-    "caption": "Our Southborough clinic sees patients across cataract surgery, vitreoretinal conditions and general ophthalmology. A short walk-through of the space, the team and what to expect when you arrive.",
+    "format": "reel",
+    "caption": "Our Southborough clinic is now open, bringing consultant-led eye care, including surgery, to the Tunbridge Wells area.\n\nFor patients in this part of Kent, it means specialist assessment and treatment closer to home.\n\nCome and have a look around. Call us on 01732 757771. Follow us to see more of what happens behind the scenes at CES Medical.",
     "cta": {
-      "label": "cesmedical.co.uk",
-      "type": "web",
-      "target": "https://www.cesmedical.co.uk"
+      "label": "01732 757771",
+      "type": "phone",
+      "target": "tel:01732757771"
     },
     "productionLocation": "southborough",
     "productionLead": "leonna",
-    "videoRelationship": "no-video",
-    "notes": "Leonna presents the exterior and reception. The clinical lead or Mr Shahid presents the consulting rooms and clinical environment at Southborough. Leonna introduces: 'I am going to hand you over to [clinical lead name] who runs the clinical side here.' If no clinical lead has been named for Southborough yet, Mr Shahid presents the clinical sections. 60 to 90 seconds.\n\nSame format as L03 Headcorn walk-through. Confirm filming date with Southborough team.",
+    "videoRelationship": "leonna-premises",
+    "notes": "ON-SCREEN CONTENT SEQUENCE:\n\nSection 1 (0:00 to 0:25): Leonna at exterior and reception.\nLeonna to camera at the entrance: We have just opened our Southborough clinic. Let me show you around.\nShow: exterior, signage, reception, waiting area. Warm and welcoming.\n\nSection 2 (0:25 to 0:55): Clinical lead or consultant presents the clinical environment.\nLeonna introduces: This is where the clinical work happens. I am going to hand over to [clinical lead or consultant name] who runs the clinical side here.\nThe clinical presenter shows the consulting rooms and clinical environment, describing briefly what happens there. If no named clinical lead is confirmed for Southborough, Mr Syed Shahid (Consultant Ophthalmologist and Vitreoretinal Surgeon, based at Southborough) presents this section.\n\nSection 3 (0:55 to 1:15): Leonna closing at reception.\nLeonna: Southborough means specialist eye care, including surgery, closer to home for patients across the Tunbridge Wells area. Call us on 01732 757771 to find out more.\n\nPRODUCTION NOTES:\n\nReel. 60 to 90 seconds. Filmed Day 7 at Southborough. 9:16 for IG and FB. 16:9 for LI (uploads as native video, not a document carousel, so no platform conflict). Native upload to each platform. No watermarks.\n\nPRESENTER SPLIT (consistent with the on-camera role boundaries): Leonna presents the exterior, reception and waiting area, and introduces the clinical team. She does not present clinical content. The consulting rooms and clinical environment are presented by a named clinical lead for Southborough, or by Mr Syed Shahid if no clinical lead is confirmed. Leonna introduces the clinical presenter by name on camera.\n\nACCURACY CHECK BEFORE PUBLISHING: Confirm Southborough is operational, including as a surgical site, before this walk-through posts on 2 June. A walk-through that shows or implies surgical facilities must not run before those facilities are actually open and operating. If the Southborough opening slips, move this post to match the real opening date. The caption states including surgery so surgical services must be live.",
     "strategyRef": [
       "ces_instagram_strategy_card",
       "ces_facebook_strategy_card",
