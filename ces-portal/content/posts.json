@@ -4537,26 +4537,38 @@
   {
     "id": "P155",
     "slug": "p155-what-is-a-corneal-transplant-shorts",
-    "title": "What is a corneal transplant? #Shorts",
+    "title": "What is a Corneal Transplant? #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-11",
-    "weekNumber": 6,
+    "scheduledDate": "2026-07-18",
+    "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "corneal",
     "format": "youtube-short",
-    "caption": "When the clear front of the eye is damaged or diseased, a corneal transplant replaces it. Mr Kopsachilis explains who needs one and what it involves. #cornealtransplant #eyesurgery #ophthalmology",
+    "caption": "The word transplant sounds daunting. But modern corneal transplant surgery is often far more targeted than people expect, frequently replacing only the affected layer of the cornea rather than the whole thing.\n\nMr Nick Kopsachilis, Consultant Ophthalmic Surgeon at CES Medical, explains what a corneal transplant involves. Mr Kopsachilis holds a PhD in corneal research and leads our corneal service.\n\nThis is relevant for anyone with conditions such as keratoconus, Fuchs' dystrophy or corneal scarring.\n\nCES Medical provides corneal surgery at Headcorn, Chatham and Southborough.\n\nTo find out more: 01732 757771\nPatient information: https://cespatientinformation.co.uk",
     "cta": {
-      "label": "Full video on channel",
+      "label": "cespatientinformation.co.uk | 01732 757771",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk"
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "NK-C11",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"What is a corneal transplant?\" Source: NK-C11.",
+    "tags": [
+      "corneal transplant",
+      "what is a corneal transplant",
+      "keratoconus",
+      "Fuchs dystrophy",
+      "DMEK",
+      "partial corneal transplant",
+      "corneal surgery Kent",
+      "Mr Nick Kopsachilis",
+      "CES Medical",
+      "corneal specialist"
+    ],
+    "notes": "YouTube Short. 45 to 55 seconds. Source: NK-C11 interview clip with Mr Nick Kopsachilis, or motion design using the on-screen text sequence. Subtitled throughout.\n\nThis is the Short companion to P138 (corneal transplant long-form video). It distils the single most reassuring fact: modern corneal transplants are often partial.\n\nTONE: Calm and educational, like P152 (YAG) and P154 (eyelid recovery). Not urgent. The audience is someone who may have been told they need a corneal transplant and is frightened by the word. The Short reassures by explaining that surgery is often targeted and less drastic than expected.\n\nCLINICAL ACCURACY: Modern corneal surgery is often partial (DMEK, DSAEK, DALK), replacing only the affected layer, with faster recovery and lower rejection risk than full transplant where appropriate. Must NOT give fixed recovery guarantees. Your surgeon will explain what is right for your eye must remain. Mr Kopsachilis should review the clinical content given it is his specialist area.\n\nNO GRAPHIC IMAGERY: Do not show surgical footage or clinical eye close-ups. Corneal surgery visuals distress general audiences. Keep it calm and face-led or motion design.\n\nLOCATION: Corneal surgery is performed at Headcorn, Chatham and Southborough, not Pantiles (consultation only).\n\nON-SCREEN TEXT CARDS:\n\nCard 1 (0:00 to 0:08): What is a corneal transplant? / And why it is often less drastic than it sounds.\n\nCard 2 (0:08 to 0:17): The cornea is the clear front window of the eye. / When it becomes damaged or clouded, vision is affected.\n\nCard 3 (0:17 to 0:27): A transplant replaces the damaged tissue with healthy donor tissue.\n\nCard 4 (0:27 to 0:38): But modern surgery is often partial. / Only the affected layer is replaced, not the whole cornea.\n\nCard 5 (0:38 to 0:46): This can mean faster recovery and lower rejection risk. / Your surgeon will explain what is right for your eye.\n\nCard 6 (0:46 to 0:52): Conditions like keratoconus? Call 01732 757771 to learn more.\n\nBackground: calm, deep teal. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL BRIEF: Mr Kopsachilis in clinical attire, warm and reassuring, direct to camera. Text overlay in PP Telegraph white on teal bar: Corneal transplant explained. Calm and reassuring, not clinical or alarming. No graphic surgical or eye imagery. Alternatively, clean teal background with the text overlay.\n\nUpload natively to YouTube as a Short. No watermarks. No graphic imagery.\n\nEnd screen or pinned comment: Link to P138 (corneal transplant long-form video) for the full explanation. Link to cespatientinformation.co.uk.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
