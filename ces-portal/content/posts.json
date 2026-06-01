@@ -2128,7 +2128,7 @@
   {
     "id": "P94",
     "slug": "p94-what-frcophth-means-and-why-it-matters-to-your-patient",
-    "title": "What FRCOphth means and why it matters to your patient",
+    "title": "What FRCOphth means, and what to look for in an eye surgeon's credentials",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
@@ -2138,15 +2138,16 @@
     "weekNumber": 7,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: What the FRCOphth qualification actually means. Training requirements, examination process, ongoing revalidation. Why it matters when choosing a surgeon.",
+    "caption": "Patients often see letters after a surgeon's name without knowing what they signify. For GPs and optometrists advising patients, and for patients themselves, it helps to understand what these credentials actually represent.\n\nThis is a short guide to FRCOphth and the equivalent senior qualifications held by internationally trained consultants, and how anyone can verify a surgeon's standing.\n\nHow often do your patients ask you about a consultant's qualifications when choosing where to be referred?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk/consultants",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk/consultants"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "FRCOphth is not honorary. Here is what it demands.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "When a patient asks how they know their eye surgeon is properly qualified, the answer involves more than one set of letters. Here is what they mean.",
+    "notes": "SLIDES (10):\n\nSlide 1: What FRCOphth means, and what to look for in an eye surgeon's credentials.\n\nSlide 2: FRCOphth stands for Fellow of the Royal College of Ophthalmologists. It is the highest professional qualification for eye surgeons trained through the UK pathway.\n\nSlide 3: What it requires. Years of supervised surgical training, written and practical examinations, and ongoing revalidation. It is not honorary. It is earned and maintained.\n\nSlide 4: But FRCOphth is not the only route. Many excellent consultants trained outside the UK and hold equivalent senior qualifications, such as an MD, a PhD, or European board certification (FEBO). These represent rigorous training through a different system.\n\nSlide 5: What matters for the patient. Not a single set of letters, but that the surgeon has completed the full specialist training their field demands and is registered to practise. UK and internationally trained consultants both meet that bar.\n\nSlide 6: How to verify. Every doctor practising in the UK is on the General Medical Council (GMC) register, which anyone can search. It confirms registration, specialty and any conditions on practice.\n\nSlide 7: At CES Medical. Our consultant surgeons include Fellows of the Royal College of Ophthalmologists and internationally trained consultants with senior qualifications such as MD and PhD. Every one has completed the rigorous training their specialty demands.\n\nSlide 8: The takeaway. Credentials are worth understanding, but the question is not which letters a surgeon has. It is whether they have completed full specialist training and are properly registered. Ours have, and are.\n\nSlide 9: You can see each of our consultants' qualifications on their profile pages. cesmedical.co.uk/consultants\n\nSlide 10: CES Medical. Consultant-led ophthalmology across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: GPs, optometrists and patients. PDF document carousel, no video, LinkedIn-compatible.\n\nThis is the LinkedIn companion to P17 (FRCOphth single image). Must align with the P17 correction.\n\nCRITICAL ACCURACY: Not all CES consultants hold FRCOphth. Mr Qureshi and Mr Shahid hold FRCOphth. Mr Kopsachilis holds an MD, PhD and senior international qualifications. The carousel must:\n1. Explain FRCOphth accurately as the highest UK-pathway qualification.\n2. Acknowledge that internationally trained consultants hold equivalent senior qualifications (MD, PhD, FEBO).\n3. Never claim all CES consultants hold FRCOphth.\n4. Never imply FRCOphth is the only valid route or that consultants without it are lesser. This protects accuracy and protects Mr Kopsachilis.\n\nCREDIBILITY: For a GP audience, this transparency is a strength. GPs know there are multiple valid routes to consultant status. A post that explains this accurately positions CES as honest about its consultants' credentials. Do not oversimplify into all our surgeons are FRCOphth.\n\nClosing question in the caption invites referrer engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
