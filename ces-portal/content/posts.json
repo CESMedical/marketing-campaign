@@ -2699,19 +2699,19 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-02",
-    "weekNumber": 5,
+    "scheduledDate": "2026-06-23",
+    "weekNumber": 8,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Elion to write this post from scratch. Topic: what was genuinely hard about building CES that he did not anticipate. Honest and specific rather than a success narrative. Name the difficulty without wrapping it in a lesson. End with a genuine question about what others in healthcare building have found unexpectedly hard. This is one of the most important posts in the series.",
+    "caption": "People assume the hard part of building a healthcare business is the funding, or the recruitment, or the regulation. Those were hard. But they were the kind of hard I expected.\n\nThe part I underestimated was changing what people believed was possible near where they live.\n\nFor years, patients in this part of Kent assumed that anything beyond a routine eye test meant a long wait or a trip to London. That belief was so settled that even when we could offer consultant-led care locally, people did not quite believe it applied to them. They would ask whether they needed to go to London for the surgery we were offering two miles from their home.\n\nYou cannot fix that with marketing. You fix it slowly, one patient at a time, by doing what you said you would do and letting them tell the next person. It is the slowest part of the whole thing and there is no shortcut I have found.\n\nI still do not think we have fully changed it. There are people in Kent today who are travelling further or waiting longer than they need to, because they do not know there is another option locally. That sits with me more than any of the operational challenges did.\n\nFor others who have built something in healthcare or in their community: what did you find unexpectedly hard? Not the thing you tell people about. The thing that actually kept you up.",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "Elion to write from scratch.",
-    "notes": "PLACEHOLDER. Elion to write from scratch. Post at 8am Tuesday.",
+    "linkedInHook": "People assume the hard part of building a healthcare business is the funding, or the recruitment, or the regulation. Those were hard. But they were the kind of hard I expected.",
+    "notes": "PLACEHOLDER DRAFT. Elion to refine in his own voice before publishing. The structure and key arguments must be preserved.\n\nText only. No image. No external link. Post at 8am Tuesday from Elion Hyseni personal LinkedIn account.\n\nThis is one of the most important posts in the Elion series. A candid founder reflection on difficulty performs significantly better than a polished success story.\n\nKEY INSTRUCTION: Name the difficulty without wrapping it in a lesson. When Elion refines this in his own voice, he must resist the instinct to end on a positive resolution or a takeaway. The post should sit with the difficulty honestly.\n\nPROTECTED PARAGRAPH: The fifth paragraph (admitting it is not solved, that people in Kent are still travelling further than they need to, that it sits with him) is the heart of the post and must not be smoothed over or rewritten into a resolved success story. If this paragraph becomes a tidy lesson, the post loses everything that makes it work.\n\nConsistency: NHS-commissioned positioning, no private group language. Thematically linked to P113 (Southborough, closing the geographic gap) but should not repeat it.\n\nGOLDEN HOUR: Elion available to respond to comments within 60 minutes of posting. A candid post will attract candid responses from other founders and healthcare leaders. Engage genuinely.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
