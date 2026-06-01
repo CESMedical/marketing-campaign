@@ -11,9 +11,16 @@ export async function syncPostContent() {
   const defaultRoadmap = await prisma.roadmap.findFirst({ orderBy: { createdAt: 'asc' } })
   const defaultRoadmapId = defaultRoadmap?.id ?? null
 
+  // Collect slugs that have been soft-deleted so the sync never restores them.
+  const deletedSlugs = new Set(
+    (await prisma.post.findMany({ where: { deletedAt: { not: null } }, select: { slug: true } }))
+      .map(p => p.slug)
+  )
+
   let n = 0
 
   for (const post of posts) {
+    if (deletedSlugs.has(post.slug)) continue  // never restore an intentionally deleted post
     await prisma.post.upsert({
       where: { slug: post.slug },
       create: {
@@ -76,7 +83,7 @@ export async function syncPostContent() {
   // This cleans up old IG/FB/LI/YT prefixed records after the P-number unification.
   const validSlugs = posts.map(p => p.slug)
   const stale = await prisma.post.deleteMany({
-    where: { slug: { notIn: validSlugs } },
+    where: { slug: { notIn: validSlugs }, deletedAt: null },
   })
   if (stale.count > 0) {
     console.log(`[sync-post-content] ${stale.count} stale posts removed (slug no longer in posts.json)`)

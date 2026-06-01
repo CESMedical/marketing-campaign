@@ -47,7 +47,10 @@ function jsonPosts(): Post[] {
 
 export async function loadPostsData(opts?: { roadmapId?: string }): Promise<Post[]> {
   if (!hasDatabase()) return jsonPosts()
-  const where = opts?.roadmapId ? { roadmapId: opts.roadmapId } : {}
+  const where = {
+    deletedAt: null,
+    ...(opts?.roadmapId ? { roadmapId: opts.roadmapId } : {}),
+  }
   const posts = await prisma.post.findMany({
     where,
     orderBy: [{ scheduledDate: 'asc' }, { sortOrder: 'asc' }, { id: 'asc' }],
@@ -108,7 +111,7 @@ async function seedDatabase() {
 
 export async function getPostBySlugData(slug: string): Promise<Post | undefined> {
   if (!hasDatabase()) return jsonPosts().find((post) => post.slug === slug)
-  const post = await prisma.post.findUnique({ where: { slug } })
+  const post = await prisma.post.findFirst({ where: { slug, deletedAt: null } })
   return post ? toPost(post) : undefined
 }
 
@@ -155,7 +158,7 @@ export async function updatePostData(slug: string, updates: Partial<Post>): Prom
 
 export async function postExistsData(slug: string): Promise<boolean> {
   if (!hasDatabase()) return jsonPosts().some((post) => post.slug === slug)
-  const count = await prisma.post.count({ where: { slug } })
+  const count = await prisma.post.count({ where: { slug, deletedAt: null } })
   return count > 0
 }
 
@@ -200,6 +203,8 @@ export async function createPostData(data: {
 
 export async function deletePostData(slug: string): Promise<boolean> {
   if (!hasDatabase()) return false
-  await prisma.post.delete({ where: { slug } })
+  const post = await prisma.post.findFirst({ where: { slug, deletedAt: null } })
+  if (!post) return false
+  await prisma.post.update({ where: { slug }, data: { deletedAt: new Date() } })
   return true
 }
