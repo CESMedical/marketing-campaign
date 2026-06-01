@@ -4593,25 +4593,37 @@
   {
     "id": "P156",
     "slug": "p156-glaucoma-has-no-symptoms-here-is-why-that-matters-shorts",
-    "title": "Glaucoma has no symptoms. Here is why that matters. #Shorts",
+    "title": "Glaucoma Has No Symptoms. Here Is Why That Matters. #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-18",
-    "weekNumber": 7,
+    "scheduledDate": "2026-06-06",
+    "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "glaucoma",
     "format": "youtube-short",
-    "caption": "Glaucoma damages your optic nerve silently. By the time most people notice something is wrong, some damage has already occurred. That is why screening matters. #glaucoma #eyehealth #visionloss",
+    "caption": "Glaucoma is one of the leading causes of preventable sight loss in the UK, and in its early stages it has no symptoms at all. No pain, no blurring, no warning. The damage it causes cannot be reversed, but caught early it can be managed and further sight loss slowed.\n\nThe only reliable way to catch glaucoma early is a routine eye test, even when your vision feels completely normal.\n\nIf you have not had an eye test in the past two years, book one. It is the single most useful thing you can do to protect your sight.\n\nCES Medical provides glaucoma diagnosis and management across Kent.\n\nTo find out more: 01732 757771\nPatient information: https://cespatientinformation.co.uk/glaucoma",
     "cta": {
-      "label": "Full video on channel",
+      "label": "cespatientinformation.co.uk/glaucoma | 01732 757771",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk/glaucoma"
     },
     "videoRelationship": "no-video",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"Glaucoma has no symptoms. That is what makes it dangerous.\" Source: brand content.",
+    "tags": [
+      "glaucoma",
+      "glaucoma no symptoms",
+      "glaucoma awareness",
+      "eye test importance",
+      "preventable sight loss",
+      "glaucoma early detection",
+      "routine eye test",
+      "CES Medical",
+      "glaucoma Kent",
+      "eye health"
+    ],
+    "notes": "YouTube Short. 45 to 55 seconds. Brand content, motion design with on-screen text. Subtitled throughout.\n\nThis is the distilled glaucoma awareness Short. It pairs with P62 (Instagram carousel), P85 (LinkedIn), P136 (long-form explainer) and P149 (patient story). Top-of-funnel awareness.\n\nTONE: Calm and clear, with genuine importance. Not alarming, but not casual. This is public health get tested messaging. The fact that glaucoma is symptomless is the hook, and the action is a routine eye test.\n\nCLINICAL ACCURACY: Glaucoma damages peripheral vision first (correct for glaucoma, do not change to central). No symptoms or pain in early stages. The brain compensates for early peripheral loss, which is why it goes unnoticed. Damage is irreversible but progression can be slowed if caught early.\n\nCTA, IMPORTANT: Glaucoma is not an emergency. The action is a routine eye test (at an optician or CES), NOT eye casualty. This is different from the retinal detachment Short (P153), which routes to urgent care. Here the message is book a routine eye test. Public health first.\n\nON-SCREEN TEXT CARDS:\n\nCard 1 (0:00 to 0:08): Glaucoma has no symptoms in its early stages. / No pain. No blurring. No warning.\n\nCard 2 (0:08 to 0:17): It slowly damages your peripheral vision first. / Your brain compensates, so you do not notice.\n\nCard 3 (0:17 to 0:26): By the time most people notice, some sight has already been lost. / And that loss cannot be reversed.\n\nCard 4 (0:26 to 0:35): But caught early, glaucoma can be managed. / Further sight loss can be slowed.\n\nCard 5 (0:35 to 0:44): The only reliable way to catch it early is a routine eye test. / Even when your vision feels normal.\n\nCard 6 (0:44 to 0:50): Not had an eye test in two years? Book one. It protects your sight.\n\nBackground: deep teal, clean, serious but not alarming. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL BRIEF: Text-led on a serious but not alarming background (deep teal). Text: Glaucoma has no symptoms. Large PP Telegraph white text. This is the arresting fact that stops the scroll. Clean and serious. No graphic eye imagery. If a face is used, a calm, direct expression conveying the importance of the message.\n\nUpload natively to YouTube as a Short. No watermarks. No graphic eye imagery.\n\nEnd screen or pinned comment: Link to P136 (glaucoma long-form explainer) and P149 (glaucoma patient story). Link to cespatientinformation.co.uk/glaucoma.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
