@@ -754,12 +754,11 @@
     "isCommercialPriority": false,
     "service": "brand",
     "format": "video",
-    "caption": "A short walk-through of our Headcorn site, diagnostics, consulting rooms, theatres and the team that makes it all run.\n\nIf you have an appointment coming up at Headcorn and are not sure what to expect, this is it.",
+    "caption": "A short walk-through of our Headcorn site, diagnostics, consulting rooms, theatres and the team that makes it all run.\n\nIf you have an appointment coming up at Headcorn and are not sure what to expect, this is it.\n\nQuestions before your visit? Call 01732 757771.",
     "cta": {
-      "label": "Book at Headcorn",
+      "label": "cesmedical.co.uk or call 01732 757771",
       "type": "web",
-      "target": "https://www.cesmedical.co.uk/service-headcorn-diagnostic-surgical-centre",
-      "utm": "utm_source=social&utm_medium=instagram&utm_campaign=may-jul-2026&utm_content=P24"
+      "target": "https://www.cesmedical.co.uk"
     },
     "productionLocation": "headcorn",
     "productionLead": "leonna",
@@ -771,7 +770,7 @@
       "ces_linkedin_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Split between Leonna and Lucy. Leonna presents the exterior, car park, reception and waiting area. Lucy presents the diagnostic suite and consulting rooms: 'I am Lucy, clinical lead here at Headcorn. This is where we carry out the diagnostic work before surgery.' Leonna closes from reception. Lucy is introduced by name on camera. 90 seconds.\n\nSource: L03 filmed on Filming Day 4 at Headcorn. Asset delivery deadline: 11 June. Square crop for Instagram and Facebook. Landscape 16:9 for LinkedIn and YouTube. Subtitled. Add YouTube end screen linking to cesmedical.co.uk/service-headcorn-diagnostic-surgical-centre on the YouTube version."
+    "notes": "See videography strategy L03. Premises video. 90 seconds. IG, FB, LI and YT. On LinkedIn this uploads as native video, not a document carousel. On YouTube it can be a standard landscape video. Native upload to each platform. Subtitled.\n\nPRESENTER SPLIT (consistent with the on-camera role boundaries and ces_leonna_role_corrections.md): Leonna presents the exterior, car park, reception and waiting area, the operational arrival journey. Lucy, the clinical lead at Headcorn, presents the diagnostic suite, consulting rooms and theatre, the clinical environment. Leonna introduces Lucy on camera: This is Lucy, our clinical lead here at Headcorn. She runs the clinical side. Lucy presents the clinical sections. Leonna closes from reception.\n\nHeadcorn is a surgical site (Headcorn Diagnostic and Surgical Centre), so showing theatres here is correct.\n\nLeonna closing line (at reception): If you have got an appointment coming up at Headcorn and you are not sure what to expect, this is it. The team here sees both NHS and private patients. You will be looked after from the moment you arrive.\n\nAlso capture IOLMaster 700 B-roll and a consultant on camera at diagnostics for P29.\n\nTone: warm, observational, anxiety-reducing for patients with an upcoming appointment.\n\nCaption:\nA short walk-through of our Headcorn site, diagnostics, consulting rooms, theatres and the team that makes it all run.\n\nIf you have an appointment coming up at Headcorn and are not sure what to expect, this is it.\n\nQuestions before your visit? Call 01732 757771."
   },
   {
     "id": "P25",
