@@ -4152,26 +4152,40 @@
   {
     "id": "P141",
     "slug": "p141-diabetic-retinopathy-screening-and-management-ces-medical-kent",
-    "title": "Diabetic Retinopathy | Screening and Management | CES Medical Kent",
+    "title": "Diabetic Retinopathy Explained: Screening, Grades and Treatment | CES Medical Kent",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-22",
-    "weekNumber": 8,
+    "scheduledDate": "2026-07-03",
+    "weekNumber": 9,
     "isCommercialPriority": false,
-    "service": "general",
+    "service": "medical-retina",
     "format": "video-long-form",
-    "caption": "Mr Syed Shahid explains diabetic retinopathy: what it is, how it is detected through screening, what the stages mean and what treatment options are available at CES Medical.\n\nIf you have diabetes, this video explains why your annual eye screening appointment matters and what happens if you are referred for specialist care.\n\nTo book: 01732 757771 | private@cesmedical.co.uk",
+    "caption": "If you have diabetes, your eyes are at risk in a way that often has no symptoms until damage is done. Diabetic retinopathy is one of the leading causes of preventable sight loss in working-age adults, and screening is what catches it early.\n\nMr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon at CES Medical, explains what diabetic retinopathy is, why the NHS screening programme matters, what the screening grades mean, and how the condition is managed when treatment is needed.\n\nMr Shahid is the Clinical Lead for the Kent and Medway Diabetic Eye Screening Programme.\n\nThis video supports the NHS diabetic eye screening programme. If you have diabetes, attend your annual screening. It is the single most important thing you can do to protect your sight.\n\nCES Medical provides specialist assessment and treatment for referable diabetic eye disease across Kent.\n\nTo find out more: 01732 757771\nPatient information: https://cespatientinformation.co.uk\n\nChapters:\n0:00 Why diabetes affects the eyes\n1:30 Why screening matters\n3:00 What the screening grades mean\n5:30 When treatment is needed\n7:00 Laser and injection treatments\n9:00 Surgery for advanced disease\n10:30 The role of diabetes control\n11:30 Diabetic eye care at CES Medical",
     "cta": {
-      "label": "cesmedical.co.uk",
+      "label": "cespatientinformation.co.uk | 01732 757771",
       "type": "web",
-      "target": "https://www.cesmedical.co.uk"
+      "target": "https://cespatientinformation.co.uk"
     },
+    "productionLead": "leonna",
     "videoRelationship": "direct-snippet",
-    "videoReference": "SS-C9",
-    "notes": "Edited from Mr Shahid interview footage (SS-C9, SS-B3). Target length 8 to 10 minutes. Chapter timestamps required. Custom thumbnail: Mr Shahid in clinical attire. Export in 16:9. Add to playlist: Eye Conditions Explained.",
+    "videoReference": "SS-C9, SS-B3",
+    "tags": [
+      "diabetic retinopathy",
+      "diabetic eye screening",
+      "diabetic retinopathy treatment",
+      "diabetic maculopathy",
+      "retinopathy grades",
+      "intravitreal injections",
+      "diabetic eye disease",
+      "Mr Syed Shahid",
+      "CES Medical",
+      "vitreoretinal surgery Kent",
+      "preventable sight loss"
+    ],
+    "notes": "YouTube educational long-form. 10 to 14 minutes. Presenter: Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon, Clinical Lead for the Kent and Medway Diabetic Eye Screening Programme. Embed on cesmedical.co.uk diabetic eye disease page and Mr Shahid's consultant profile. Add to playlist: Eye Conditions Explained.\n\nNHS SCREENING SUPPORT, CRITICAL: This video must reinforce the value of NHS diabetic eye screening and encourage attendance. It must NOT divert patients from NHS screening. CES is positioned as specialist management for referable disease (R2, R3, M1), working with the screening pathway, which Mr Shahid leads regionally. The attend your annual screening message must be prominent. Consistent with P79, P92 and the ICB relationship rule.\n\nCLINICAL REVIEW REQUIRED: Mr Shahid should review the clinical content (grades, treatments) for accuracy before publishing.\n\nCLINICAL ACCURACY: Diabetic retinopathy is damage to retinal blood vessels from diabetes. Symptomless in early stages. Screening grades R0 to R3 and M1 (consistent with P92). Management for referable disease: laser, intravitreal (IVT) injections, vitreoretinal surgery for advanced cases. Good glucose and blood pressure control slows progression at every stage. No outcome guarantees.\n\nTHUMBNAIL BRIEF: Mr Shahid in clinical attire, warm and authoritative, direct to camera. Text overlay in PP Telegraph white on teal bar: Diabetes and your eyes. Face-first. No graphic retinal imagery, which can look frightening. Capture a dedicated thumbnail shot on the filming day.\n\nVIDEO STRUCTURE. Mr Shahid presents throughout. Clinical attire.\n\n0:00 to 0:20: Introduction. I am Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon at CES Medical, and Clinical Lead for the Kent and Medway Diabetic Eye Screening Programme.\n\n0:20 to 1:30: Why diabetes affects the eyes. High blood sugar damages the small blood vessels in the retina over time.\n\n1:30 to 3:00: Why screening matters. Diabetic retinopathy is symptomless early on. Annual NHS screening catches it before sight is affected. Strong encouragement to attend.\n\n3:00 to 5:30: What the grades mean. R0 no retinopathy, R1 background (common, monitored), R2 pre-proliferative, R3 proliferative, M1 maculopathy. Reassure that R0 and R1 are managed within routine screening.\n\n5:30 to 7:00: When treatment is needed. Referable grades (R2, R3, M1) mean specialist assessment.\n\n7:00 to 9:00: Laser and injection treatments. Laser for proliferative disease, intravitreal injections for maculopathy and proliferative disease. Explained in plain English.\n\n9:00 to 10:30: Surgery for advanced disease. Vitreoretinal surgery for advanced complications such as vitreous haemorrhage or tractional detachment.\n\n10:30 to 11:30: The role of diabetes control. Good glucose and blood pressure control slows progression at every stage. The patient's own management matters enormously.\n\n11:30 to 13:00: Diabetic eye care at CES Medical. Mr Shahid closing. Attend your annual diabetic eye screening. If you are referred for specialist assessment, we are here. Call us on 01732 757771.\n\nExport: 16:9. Upload natively to YouTube. Embed on diabetic eye disease page and consultant profile. No watermarks. No graphic retinal imagery.\n\nEnd screen: Subscribe button. Link to P92 (LinkedIn screening grades). Link to cespatientinformation.co.uk.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
