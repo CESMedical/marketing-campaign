@@ -4483,26 +4483,37 @@
   {
     "id": "P154",
     "slug": "p154-what-does-eyelid-surgery-recovery-look-like-shorts",
-    "title": "What does eyelid surgery recovery look like? #Shorts",
+    "title": "What Does Eyelid Surgery Recovery Look Like? #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-04",
-    "weekNumber": 5,
+    "scheduledDate": "2026-07-11",
+    "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "youtube-short",
-    "caption": "Day one to week two after eyelid surgery. What to expect and what is normal. #eyelidsurgery #blepharoplasty #eyehealth",
+    "caption": "If you are considering eyelid surgery, one of the first questions is usually about recovery. How long will the bruising last, when can you go back to work, when will you look and feel like yourself again.\n\nMr Nick Kopsachilis, our oculoplastic specialist, explains what recovery from eyelid surgery typically involves. Everyone heals differently, so your surgeon will give you advice specific to you.\n\nCES Medical provides oculoplastic surgery at Headcorn and Chatham.\n\nTo book a consultation: 01732 757771\nPatient information: https://cespatientinformation.co.uk",
     "cta": {
-      "label": "Full video on channel",
+      "label": "cespatientinformation.co.uk | 01732 757771",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk"
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "NK-C8",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"What does eyelid surgery recovery actually look like?\" Source: NK-C8.",
+    "tags": [
+      "eyelid surgery recovery",
+      "blepharoplasty recovery",
+      "ptosis surgery recovery",
+      "oculoplastic surgery",
+      "eyelid surgery aftercare",
+      "Mr Nick Kopsachilis",
+      "CES Medical",
+      "eyelid surgery Kent",
+      "oculoplastics Kent"
+    ],
+    "notes": "YouTube Short. 45 to 55 seconds. Source: NK-C8 interview snippet with Mr Nick Kopsachilis, or motion design using the on-screen text sequence. Subtitled throughout.\n\nTONE: Calm and reassuring. This Short reduces anxiety for patients considering oculoplastic surgery. It is tonally similar to P152 (YAG capsulotomy) and the opposite of P153 (retinal detachment urgency). Do not make it feel clinical or worrying.\n\nCLINICAL ACCURACY: Recovery information must be honest and must NOT give a fixed back to normal in X days guarantee. Bruising and swelling for the first one to two weeks, stitches removed around a week, return to normal activities within a week or two but varies. The lines this varies from person to person and your surgeon will give you recovery advice specific to you must remain. They keep the Short honest and route the specifics to the consultation.\n\nLOCATION: Oculoplastic surgery is performed at Headcorn and Chatham. Not Pantiles (consultation only).\n\nPRESENTER: If using NK-C8 footage, Mr Kopsachilis appears warm and reassuring. Lower-third on his first appearance: Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, CES Medical.\n\nON-SCREEN TEXT CARDS:\n\nCard 1 (0:00 to 0:07): Thinking about eyelid surgery? Here is what recovery usually looks like.\n\nCard 2 (0:07 to 0:16): The first few days: some bruising and swelling around the eye. / This is completely normal and settles over the following week or two.\n\nCard 3 (0:16 to 0:25): Most people use cool compresses and rest in the first few days. / Any stitches are usually removed at around a week.\n\nCard 4 (0:25 to 0:34): Many people feel ready to return to work and normal activities within a week or two. / Though this varies from person to person.\n\nCard 5 (0:34 to 0:43): Your surgeon will give you recovery advice specific to you.\n\nCard 6 (0:43 to 0:50): Considering eyelid surgery? Call 01732 757771 to find out more.\n\nBackground: warm, calm, deep teal. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL BRIEF: Mr Kopsachilis in clinical attire, warm and reassuring, direct to camera. Text overlay in PP Telegraph white on teal bar: Eyelid surgery recovery. Calm and reassuring tone, not clinical or alarming. No graphic post-surgical imagery. If using motion design instead, clean teal background with the text overlay.\n\nUpload natively to YouTube as a Short. No watermarks. No graphic post-surgical imagery.\n\nEnd screen or pinned comment: Link to P148 (Anna's eyelid patient story) and the oculoplastic surgery page.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
