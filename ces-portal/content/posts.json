@@ -2045,7 +2045,7 @@
   {
     "id": "P91",
     "slug": "p91-five-things-patients-get-wrong-about-eyelid-surgery",
-    "title": "Five things patients get wrong about eyelid surgery",
+    "title": "Five common misconceptions about eyelid surgery",
     "pillar": "educational",
     "platforms": [
       "linkedin"
@@ -2054,16 +2054,18 @@
     "scheduledDate": "2026-06-04",
     "weekNumber": 5,
     "isCommercialPriority": false,
+    "service": "oculoplastic-eyelid",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Five things patients get wrong about eyelid surgery. Common misconceptions about recovery, results, who should perform it and whether insurance covers it.",
+    "caption": "Eyelid surgery is one of the most misunderstood procedures we discuss with patients and referrers. The biggest misconception is that it is always cosmetic, when for many patients a drooping upper eyelid is a medical condition affecting their vision.\n\nHere are five things worth clarifying, for patients considering it and for colleagues who may be the first to see these patients.\n\nIf you have a patient whose drooping eyelid is affecting their visual field, it may be a funded medical procedure rather than a cosmetic one. We are happy to advise.\n\nWhich of these comes up most in your conversations with patients?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk | 01732 757771",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "Eyelid surgery is the most misunderstood procedure we perform.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "The most common misconception about eyelid surgery is that it is always cosmetic. For many patients, it is a medical procedure that restores their field of vision.",
+    "notes": "SLIDES (10):\n\nSlide 1: Five common misconceptions about eyelid surgery.\n\nSlide 2: Misconception one: it is always cosmetic. In fact, when a drooping upper eyelid (ptosis) cuts into the upper field of vision, it is a functional medical condition. Functional eyelid surgery is a different pathway to cosmetic blepharoplasty.\n\nSlide 3: Misconception two: insurance never covers it. When the eyelid is affecting vision, many private medical insurers do cover functional eyelid surgery. The functional versus cosmetic distinction is what determines this.\n\nSlide 4: Misconception three: it is a major operation. Eyelid surgery is usually performed under local anaesthetic as a day case. Most patients describe pressure rather than pain.\n\nSlide 5: Misconception four: the scars will be obvious. Incisions are placed in the natural crease of the eyelid. Scarring is usually minimal and fades over the months following surgery.\n\nSlide 6: Misconception five: recovery takes months. Bruising and swelling settle over one to two weeks. Most people return to normal activities within a couple of weeks, though recovery varies and your surgeon will advise you individually.\n\nSlide 7: The one that matters most. If a drooping eyelid is affecting vision, it may be a medical condition, not a cosmetic concern. That distinction changes the pathway and often the funding.\n\nSlide 8: Our oculoplastic care. Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, leads our oculoplastic service. We assess whether an eyelid concern is functional or cosmetic at consultation, with no assumption and no pressure.\n\nSlide 9: CES Medical provides oculoplastic surgery at Headcorn and Chatham. To discuss a patient or book an assessment, call 01732 757771.\n\nSlide 10: CES Medical. Consultant-led ophthalmology across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: patients and referrers (GPs, optometrists). PDF document carousel, no video, LinkedIn-compatible.\n\nThis post complements the Facebook eyelid FAQ (FB11) rather than duplicating it. The LinkedIn version takes a more clinical angle and leads with the functional versus cosmetic distinction, which is the most valuable misconception to correct for both patients and referrers.\n\nCREDIBILITY NOTE: The framing is common misconceptions, not things patients get wrong. This is respectful patient myth-busting. Do not phrase any slide as patients being foolish or ignorant. These are understandable misconceptions.\n\nCLINICAL ACCURACY: Ptosis cuts into the upper field of vision is correct. Do not change to peripheral vision (peripheral vision loss is a glaucoma marker, not ptosis). Recovery information is honest with no fixed guarantee, consistent with P76 and P154.\n\nLOCATION: Oculoplastic surgery is performed at Headcorn and Chatham, not Pantiles (consultation only). Slide 9 names the correct surgical sites.\n\nClosing question in the caption invites referrer engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
