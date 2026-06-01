@@ -2016,7 +2016,7 @@
   {
     "id": "P90",
     "slug": "p90-the-case-for-slt-over-drops-in-newly-diagnosed-glaucoma",
-    "title": "The case for SLT over drops in newly diagnosed glaucoma",
+    "title": "The case for SLT as first-line treatment in newly diagnosed glaucoma",
     "pillar": "educational",
     "platforms": [
       "linkedin"
@@ -2025,16 +2025,18 @@
     "scheduledDate": "2026-06-01",
     "weekNumber": 5,
     "isCommercialPriority": false,
+    "service": "glaucoma",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: SLT (selective laser trabeculoplasty) as a first-line treatment in newly diagnosed glaucoma. Clinical evidence, patient compliance benefits, when it is appropriate. Written for GPs and optometrists.",
+    "caption": "When a patient is newly diagnosed with open-angle glaucoma, the traditional first step has been daily eye drops. The evidence base has shifted, and current NICE guidance now reflects that.\n\nThis is a short summary for primary care and optometry colleagues on where first-line treatment stands, based on the LiGHT trial and NICE guideline NG81.\n\nIt is not that drops are wrong. It is that for many patients, selective laser trabeculoplasty is now a recommended first option, with advantages in compliance and quality of life. We thought it was worth setting out the current position clearly.\n\nHow are you seeing this play out in your referrals and prescribing? We are interested in how widely the first-line SLT recommendation has filtered through to primary care.",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "For newly diagnosed glaucoma, drops are not always the right first step.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "For decades, eye drops were the default first step in glaucoma. The evidence has moved. Here is where first-line treatment stands now.",
+    "notes": "SLIDES (10):\n\nSlide 1: The case for SLT as first-line treatment in newly diagnosed glaucoma. Where the evidence stands now.\n\nSlide 2: The traditional pathway. For many years, newly diagnosed open-angle glaucoma was managed first with daily pressure-lowering eye drops, with laser or surgery reserved for later.\n\nSlide 3: What changed. The LiGHT trial (Gazzard et al, Lancet 2019) compared selective laser trabeculoplasty (SLT) with eye drops as first-line treatment in open-angle glaucoma and ocular hypertension.\n\nSlide 4: What the LiGHT trial found. SLT as first-line treatment was at least as effective as drops at controlling pressure, with more patients achieving target pressure without the need for daily medication, and with cost and quality of life advantages.\n\nSlide 5: What the guidance says. NICE guideline NG81 now recommends offering SLT as a first-line treatment option for people with newly diagnosed open-angle glaucoma and ocular hypertension.\n\nSlide 6: Why it matters for patients. Daily drops depend on compliance, which is difficult to sustain over years. They can cause local side effects. SLT is a single outpatient procedure that lowers pressure without the daily burden, and it can be repeated if needed.\n\nSlide 7: The honest caveats. SLT is not suitable for every patient or every type of glaucoma. It does not always remove the need for drops entirely. The right first step is still an individual clinical decision.\n\nSlide 8: What this means for referrals. A newly diagnosed open-angle glaucoma patient can now reasonably be offered SLT as a first option. It is worth knowing this when discussing the pathway with your patients.\n\nSlide 9: SLT at CES Medical. We offer SLT as a five-minute outpatient procedure at Chatham and Headcorn. We are happy to discuss whether a specific patient is a suitable candidate.\n\nSlide 10: CES Medical. Glaucoma services across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: GPs and optometrists. PDF document carousel, no video, LinkedIn-compatible.\n\nCLINICAL REVIEW REQUIRED: This post cites the LiGHT trial (Gazzard et al, Lancet 2019) and NICE guideline NG81. Confirm both citations are accurate and current before publishing. A CES clinician should review the clinical claims. If the NICE guidance has been updated since this build, reflect the current version.\n\nPROFESSIONAL TONE: This post must read as colleagues sharing the current evidence position, not as CES claiming superior knowledge. Slide 7 (the honest caveats) is essential to maintaining professional credibility. Do not remove it. The post must never imply that clinicians who still start with drops are practising poorly.\n\nSlide content as listed above, Slides 1 to 10.\n\nCitations are named specifically (LiGHT trial, NICE NG81) in line with the rule that studies show without naming the study is prohibited.\n\nClosing question in the caption invites professional engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
