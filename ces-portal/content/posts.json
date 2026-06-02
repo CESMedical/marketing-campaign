@@ -2918,7 +2918,7 @@
   {
     "id": "P123",
     "slug": "p123-the-conversation-i-have-with-every-new-consultant-before-they-join-ces",
-    "title": "The conversation I have with every new consultant before they join CES",
+    "title": "The question I ask every consultant before they join us",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
@@ -2928,15 +2928,15 @@
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: The conversation Elion has with every new consultant before they join CES Medical. What he asks and why. Should reveal something specific about CES culture and values. Elion to write in his own voice.",
+    "caption": "There is one conversation I have with every consultant before they join CES. The clinical credentials matter, of course, and we check them carefully. But the credentials are not what the conversation is about.\n\nWhat I am really trying to understand is how they handle the moment when the honest answer and the profitable answer are not the same.\n\nIn private healthcare, there is always a quieter version of every consultation, the one where a patient could be sold something they do not really need. A premium lens that will not change much for them. A procedure that could reasonably wait. A patient who, told the truth, would walk away without booking anything.\n\nSo I ask, in one way or another: what do you do in that moment?\n\nThe answer I am listening for is not clever. It is simply someone who finds the question easy, because for them there was never really a choice. The patient gets the honest answer, even when the honest answer is \"you do not need this,\" or \"not yet,\" or \"this is not the right thing for you.\"\n\nI would rather have a consultant who sends a patient away without booking than one who is comfortable selling them something they do not need. The first builds a practice that lasts. The second does not, and it should not.\n\nThat is the conversation. It tells me more than any CV.\n\nFor others who hire in a field where trust is the product: what is the one thing you have to know about someone before you bring them in?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "What he asks and why.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "There is one conversation I have with every consultant before they join CES. The clinical credentials matter. But the credentials are not what the conversation is about.",
+    "notes": "Text only. No image. No external link. Post at 8am from Elion Hyseni personal LinkedIn account.\n\nDATE DISCREPANCY: One table shows 2026-07-10, another shows 2026-07-02. Confirm the correct date before scheduling. Currently set to 2026-07-10.\n\nThis is a placeholder draft for Elion to refine in his own voice. The framing must stay: a specific recruitment conversation revealing CES's value of patient honesty. Not a boast. Not a criticism of other employers.\n\nLINES AND FRAMING THAT MUST SURVIVE ELION'S REWRITE:\n1. The core value line: \"I would rather have a consultant who sends a patient away without booking than one who is comfortable selling them something they do not need.\"\n2. Must NOT disparage other employers or clinicians. The post is about the value CES looks for, not about others lacking it.\n3. Must not name or characterise actual individuals.\n\nConsistency: connects to the honesty theme across the campaign (premium lens posts, P100, \"we will tell you honestly which suits you\"). No \"private group\" language.\n\nGolden hour: Elion available to respond to comments within 60 minutes.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
