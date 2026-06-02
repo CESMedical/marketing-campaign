@@ -2890,7 +2890,7 @@
   {
     "id": "P122",
     "slug": "p122-what-a-99-patient-satisfaction-rate-does-and-does-not-tell-you",
-    "title": "What a 99% patient satisfaction rate does and does not tell you",
+    "title": "Why I do not fully trust patient satisfaction scores, even good ones",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
@@ -2900,15 +2900,15 @@
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: What a 99% patient satisfaction rate does and does not tell you. The number is meaningful but here is what it hides. Elion to write in his own voice. Honest and self-critical.",
+    "caption": "Patient satisfaction scores are one of the most quoted numbers in healthcare. I pay attention to ours. But I have learned not to trust them completely, even when they are good. Especially when they are good.\n\nHere is what a satisfaction score does not capture.\n\nIt does not capture the patient who was quietly unhappy and simply did not come back. They do not fill in the survey. They just go elsewhere, and the number stays high without you ever learning why.\n\nIt does not always distinguish between a patient who felt well looked after and a patient who got the best clinical outcome. Those usually go together, but not always. Someone can have a warm, reassuring experience and still not have had the result they should have had. A high satisfaction score can hide that.\n\nAnd it rewards the things that are easy to feel, like friendliness and a nice waiting room, more reliably than the things that are hard to judge, like whether the clinical decision was the right one.\n\nNone of this means the score is worthless. A consistently poor score would tell me something is wrong. But a good score does not tell me everything is right. It tells me people were happy, which is necessary but not sufficient.\n\nWhat I actually watch is the harder stuff: outcomes, complications, the patients who needed a second intervention, the feedback that did not come wrapped in a compliment. Those are less flattering and more useful.\n\nFor others who run a service: which number do you trust least, even when it looks good?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "The number is meaningful but here is what it hides.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "Patient satisfaction scores are one of the most quoted numbers in healthcare. I pay attention to ours. But I have learned not to trust them completely, even when they are good.",
+    "notes": "Text only. No image. No external link. Post at 8am from Elion Hyseni personal LinkedIn account.\n\nNO SATISFACTION PERCENTAGE: This post must not cite a patient satisfaction percentage or any specific satisfaction statistic. The original topic referenced \"99%,\" which is removed entirely. Do not reinstate any figure. Specific satisfaction-rate claims are not used in this campaign.\n\nDATE DISCREPANCY: One table shows 2026-07-07, another shows 2026-06-19. Confirm the correct date before scheduling. Currently set to 2026-07-07.\n\nThis is a placeholder draft for Elion to refine in his own voice. The reflective, self-interrogating framing must be preserved. Do not let it become a humble-brag by reintroducing a high score.\n\nLINE THAT MUST SURVIVE ELION'S REWRITE: \"A good score does not tell me everything is right. It tells me people were happy, which is necessary but not sufficient.\" And the focus on harder data: outcomes, complications, second interventions, feedback that did not come wrapped in a compliment.\n\nConsistency: reflective Elion voice (P116, P117). No \"private group\" language.\n\nGolden hour: Elion available to respond to comments within 60 minutes.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
