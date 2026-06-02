@@ -1,25 +1,12 @@
 import Link from 'next/link';
-import { ArrowRight, Star, Calendar, Layers } from 'lucide-react';
-import { loadCampaign, getCommercialPriority } from '@/lib/posts';
-import { loadPostsData } from '@/lib/post-data';
+import { ArrowRight, Star, MapPin, SlidersHorizontal, FileText } from 'lucide-react';
+import { loadCampaign } from '@/lib/posts';
 import { LinkButton } from '@/components/ui/Button';
-import { Logo } from '@/components/brand/Logo';
 
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const campaign = loadCampaign();
-  const posts = await loadPostsData();
-  const priority = getCommercialPriority(posts);
-
-  // Calculate weeks remaining (or campaign complete)
-  const today = new Date();
-  const end = new Date(campaign.endDate);
-  const weeksRemaining = Math.max(
-    0,
-    Math.ceil((end.getTime() - today.getTime()) / (1000 * 60 * 60 * 24 * 7)),
-  );
-  const campaignComplete = today > end;
 
   return (
     <div>
@@ -34,12 +21,12 @@ export default async function HomePage() {
               {campaign.name}
             </h1>
             <p className="mb-8 text-lg text-white/85 sm:text-xl">
-              An interactive view of the next three months of CES Medical&apos;s social campaign —
-              164 posts across cataract, oculoplastic, and brand pillars.
+              The central planning tool for CES Medical&apos;s social media campaign. Every post,
+              brief and production note — organised by week, pillar and platform.
             </p>
             <div className="flex flex-wrap gap-3">
               <LinkButton href="/roadmap/" size="lg" variant="primary">
-                View the roadmap
+                Open the roadmap
                 <ArrowRight size={16} />
               </LinkButton>
               <Link
@@ -54,74 +41,84 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* KPI tiles */}
-      <section aria-labelledby="kpi-heading" className="border-b border-brand-deep/10">
-        <div className="container-page py-12">
-          <h2 id="kpi-heading" className="sr-only">
-            Campaign at a glance
+      {/* How to use */}
+      <section className="container-page py-16">
+        <div className="mb-10 max-w-2xl">
+          <h2 className="mb-3 font-display text-3xl font-semibold text-brand-deep">
+            How to use this portal
           </h2>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <KpiTile
-              icon={<Layers size={20} />}
-              label="Total posts"
-              value={posts.length}
-              hint="Across 13 weeks"
-            />
-            <KpiTile
-              icon={<Star size={20} />}
-              label="Commercial priority"
-              value={priority.length}
-              hint="Conversion-focused"
-            />
-            <KpiTile
-              icon={<Calendar size={20} />}
-              label={campaignComplete ? 'Status' : 'Weeks remaining'}
-              value={campaignComplete ? '✓' : weeksRemaining}
-              hint={campaignComplete ? 'Campaign complete' : 'Until 31 July'}
-            />
-          </div>
+          <p className="text-base text-muted">
+            The roadmap is the main view. Everything else supports it.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <Step
+            number={1}
+            icon={<MapPin size={20} />}
+            title="Start with the roadmap"
+            description="The timeline shows every post arranged by week. Scroll forward through the campaign to see what is coming up and when."
+          />
+          <Step
+            number={2}
+            icon={<SlidersHorizontal size={20} />}
+            title="Filter by pillar or platform"
+            description="Use the filters at the top to focus on a specific content pillar — educational, business, leadership, or any other — or narrow by platform."
+          />
+          <Step
+            number={3}
+            icon={<FileText size={20} />}
+            title="Open a card for the full brief"
+            description="Click any post card to see the complete brief: caption, slide content, production notes, CTA and platform guidance."
+          />
+          <Step
+            number={4}
+            icon={<Star size={20} />}
+            title="Use the Priority Board"
+            description="Switch to the Priority Board to focus on the commercial-priority posts — the ones that drive consultations and conversions."
+          />
         </div>
       </section>
 
-      {/* Pillars summary */}
-      <section className="container-page py-16">
-        <div className="mb-10 max-w-2xl">
-          <h2 className="mb-4 font-display text-3xl font-semibold text-brand-deep">
-            Built around the seven content pillars
-          </h2>
-          <p className="text-base text-muted">
-            Educational, business, premises, team, leadership, events, and technology.
-            Together they balance trust-building, awareness, and conversion across the campaign.
+      {/* Pillars */}
+      <section className="border-t border-brand-deep/10">
+        <div className="container-page py-12">
+          <p className="text-sm font-medium uppercase tracking-wider text-muted mb-3">
+            Content pillars
           </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <Logo variant="mark" className="h-8 w-auto" />
-          <p className="text-sm italic text-muted">Global Care for Local People</p>
+          <p className="text-base text-brand-deep max-w-2xl">
+            Educational, business, leadership, premises, employee, technology and events.
+            Every post is tagged to one pillar — use the filter to move between them on the roadmap.
+          </p>
         </div>
       </section>
     </div>
   );
 }
 
-function KpiTile({
+function Step({
+  number,
   icon,
-  label,
-  value,
-  hint,
+  title,
+  description,
 }: {
+  number: number;
   icon: React.ReactNode;
-  label: string;
-  value: string | number;
-  hint: string;
+  title: string;
+  description: string;
 }) {
   return (
     <div className="rounded-2xl border border-brand-deep/10 bg-white p-6">
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-tint-3 text-brand-teal">
-        {icon}
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-tint-3 text-brand-teal">
+          {icon}
+        </div>
+        <span className="text-xs font-bold uppercase tracking-widest text-muted">
+          Step {number}
+        </span>
       </div>
-      <p className="mb-1 text-sm font-medium text-muted">{label}</p>
-      <p className="font-display text-4xl font-semibold text-brand-deep">{value}</p>
-      <p className="mt-1 text-xs text-muted">{hint}</p>
+      <h3 className="mb-2 font-display text-lg font-semibold text-brand-deep">{title}</h3>
+      <p className="text-sm text-muted leading-relaxed">{description}</p>
     </div>
   );
 }
