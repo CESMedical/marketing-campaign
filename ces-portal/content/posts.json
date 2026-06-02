@@ -2220,16 +2220,18 @@
     "scheduledDate": "2026-06-25",
     "weekNumber": 8,
     "isCommercialPriority": false,
+    "service": "cataract-monofocal",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Posterior capsule opacification: what it is, why it happens, how it differs from a recurrent cataract and how YAG laser capsulotomy treats it quickly and effectively.",
+    "caption": "One of the most common worries we hear from patients is that their cataract has returned. Their vision was clear after surgery, and now, months or years later, it is blurring again.\n\nThe reassuring truth: a cataract cannot come back. Once the natural lens is removed, it is gone. What can happen is posterior capsule opacification, a clouding of the membrane that holds the new lens in place. It is common, it is benign, and it is treated in minutes.\n\nThis is worth knowing for patients and for GPs who may see these patients first.\n\nHave you come across patients who assumed their cataract had returned?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk | 01732 757771",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "If your vision has clouded again months after cataract surgery, the cataract has not come back.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "If your vision blurs again months or years after cataract surgery, it is natural to assume the cataract has come back. It has not. Cataracts cannot recur. This is something else, and it is easily fixed.",
+    "notes": "SLIDES (10):\n\nSlide 1: Posterior capsule opacification: the cataract that is not a cataract.\n\nSlide 2: The worry. After successful cataract surgery, some patients find their vision gradually blurs again, months or even years later. It is natural to assume the cataract has come back.\n\nSlide 3: The reassurance. A cataract cannot return. During surgery the cloudy natural lens is removed and replaced with a clear artificial one. That lens does not develop a cataract.\n\nSlide 4: So what is happening? The artificial lens sits in a thin natural membrane called the capsule. In some people, that capsule becomes cloudy over time. This is posterior capsule opacification, or PCO.\n\nSlide 5: Why it feels familiar. Because the cloudiness is in roughly the same place, the symptoms mimic the original cataract: gradual blurring, glare, reduced clarity. Understandably, patients think the cataract is back.\n\nSlide 6: The treatment: YAG capsulotomy. A quick, painless laser procedure that creates a clear opening in the cloudy capsule. It is done in an outpatient setting, takes only a few minutes, and needs no incision.\n\nSlide 7: What to expect. Vision usually improves quickly after the procedure. There is no downtime for most people. Your eye specialist will explain what to expect in your case.\n\nSlide 8: For GPs. A patient reporting blurring after previous cataract surgery is very likely describing PCO, not a recurrence. It is straightforward to assess and treat. Worth knowing when these patients present.\n\nSlide 9: YAG capsulotomy at CES Medical. We provide YAG capsulotomy as a quick outpatient procedure. If you or a patient is experiencing blurring after cataract surgery, call 01732 757771.\n\nSlide 10: CES Medical. Consultant-led cataract care across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: patients and GPs. PDF document carousel, no video, LinkedIn-compatible.\n\nThis is the LinkedIn version of the YAG content. P152 (YAG Short) covers the same topic for patients. Keep the core reassurance consistent: cataracts cannot recur, PCO is the capsule clouding, YAG fixes it in minutes.\n\nTONE: Reassuring. The entire purpose is to remove the fear that the cataract has come back. Calm and clear.\n\nCLINICAL ACCURACY: PCO is clouding of the lens capsule after cataract surgery, not a recurrence (cataracts cannot recur). Common and benign. Treated with YAG capsulotomy, a quick painless outpatient laser, no incision. Vision usually improves quickly, but no fixed outcome guarantee. Your eye specialist will explain what to expect in your case must remain.\n\nYAG capsulotomy is a confirmed CES private service.\n\nClosing question in the caption invites GP engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
