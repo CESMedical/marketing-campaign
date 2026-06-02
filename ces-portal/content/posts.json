@@ -593,7 +593,7 @@
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "single-image",
-    "caption": "Bupa, AXA Health, Vitality, WPA, many UK private medical insurance policies cover cataract surgery and functional eyelid procedures.\n\nOur team can check your cover before you commit to anything. No obligation, no pressure. We handle most of the pre-authorisation paperwork once you are ready to proceed.",
+    "caption": "Many major UK private medical insurance policies cover cataract surgery and functional eyelid procedures. Whether yours does depends on your policy.\n\nOur team can check your cover before you commit to anything. No obligation, no pressure. We handle most of the pre-authorisation paperwork once you are ready to proceed.",
     "cta": {
       "label": "Check your cover",
       "type": "phone",
@@ -607,7 +607,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Insurance coverage single image. Design brief. List insurers accurately: Bupa, AXA Health, Vitality, WPA. Clinical review and legal review required before publishing \u2014 insurance coverage claims carry regulatory risk. Confirm policy coverage with CES admin before scheduling. Phone CTA: 01732 757771. No video."
+    "notes": "Clean single image. FB and LI. Process explained in simple steps: check cover, pre-authorisation, consultation, surgery. CES handles the paperwork framing.\n\nVERIFY BEFORE PUBLISHING: If the image or caption names specific insurers (Bupa, AXA Health, Vitality, WPA), confirm CES Medical is a recognised provider with each one. Do not name an insurer CES is not formally recognised by. If any are unconfirmed, use the general phrasing (\"many major UK private medical insurers\") instead.\n\nCoverage accuracy: The post must not promise coverage. Coverage depends on the individual policy. The \"our team can check your cover\" line handles this, keep it. \"May cover\" and \"depending on your policy\" framing must be present.\n\n\"Functional eyelid procedures\" is correctly specified (functional ptosis affecting vision may be covered; cosmetic blepharoplasty is not). Keep this distinction.\n\nVisual concept: clean single image, simple four-step process: check cover, pre-authorisation, consultation, surgery. If naming insurers, only those confirmed. CES Medical logo. Phone number 01732 757771 visible."
   },
   {
     "id": "P20",
