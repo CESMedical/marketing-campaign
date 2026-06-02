@@ -31,30 +31,38 @@ function isAllowedImage(buffer: Buffer, type: AllowedImageType): boolean {
 
 // ── Cloudflare R2 (S3-compatible, zero egress fees) ──────────────────────────
 
+// Supports both R2_BUCKET and R2_BUCKET_NAME (Railway uses the latter)
+function r2Bucket() { return process.env.R2_BUCKET_NAME ?? process.env.R2_BUCKET ?? '' }
+// Supports both explicit R2_ENDPOINT and construction from R2_ACCOUNT_ID
+function r2Endpoint() {
+  return process.env.R2_ENDPOINT ?? `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`
+}
+
 function hasR2() {
   return Boolean(
-    process.env.R2_ACCOUNT_ID &&
+    r2Bucket() &&
     process.env.R2_ACCESS_KEY_ID &&
     process.env.R2_SECRET_ACCESS_KEY &&
-    process.env.R2_BUCKET
+    process.env.R2_PUBLIC_URL &&
+    (process.env.R2_ACCOUNT_ID || process.env.R2_ENDPOINT)
   )
 }
 
 async function uploadToR2(buffer: Buffer, mimeType: string): Promise<string> {
   const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3')
 
-  const accountId = process.env.R2_ACCOUNT_ID!
-  const bucket    = process.env.R2_BUCKET!
-  const ext       = mimeType.split('/')[1].replace('jpeg', 'jpg')
-  const key       = `images/${randomUUID()}.${ext}`
+  const bucket = r2Bucket()
+  const ext    = mimeType.split('/')[1].replace('jpeg', 'jpg')
+  const key    = `images/${randomUUID()}.${ext}`
 
   const client = new S3Client({
-    region: 'auto',
-    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+    region:   process.env.R2_REGION ?? 'auto',
+    endpoint: r2Endpoint(),
     credentials: {
       accessKeyId:     process.env.R2_ACCESS_KEY_ID!,
       secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
     },
+    forcePathStyle: process.env.R2_FORCE_PATH_STYLE === 'true',
   })
 
   await client.send(new PutObjectCommand({
@@ -64,7 +72,6 @@ async function uploadToR2(buffer: Buffer, mimeType: string): Promise<string> {
     ContentType: mimeType,
   }))
 
-  // R2_PUBLIC_URL is the custom domain or r2.dev public URL set on the bucket.
   const base = process.env.R2_PUBLIC_URL!.replace(/\/$/, '')
   return `${base}/${key}`
 }
