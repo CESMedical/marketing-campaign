@@ -41,7 +41,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-17",
+    "scheduledDate": "2026-05-16",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "general",
@@ -142,7 +142,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-24",
+    "scheduledDate": "2026-05-23",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -272,7 +272,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-07",
+    "scheduledDate": "2026-06-06",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -495,7 +495,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-21",
+    "scheduledDate": "2026-06-20",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -877,7 +877,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-12",
+    "scheduledDate": "2026-07-11",
     "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1198,7 +1198,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-26",
+    "scheduledDate": "2026-07-25",
     "weekNumber": 11,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1357,7 +1357,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-09",
+    "scheduledDate": "2026-08-08",
     "weekNumber": 13,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -1553,7 +1553,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-31",
+    "scheduledDate": "2026-05-30",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -1655,7 +1655,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-14",
+    "scheduledDate": "2026-06-13",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1691,7 +1691,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-28",
+    "scheduledDate": "2026-06-27",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -1763,7 +1763,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-02",
+    "scheduledDate": "2026-08-01",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "reel",
@@ -4852,7 +4852,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-05",
+    "scheduledDate": "2026-07-04",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
