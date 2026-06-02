@@ -77,14 +77,16 @@ export async function GET(
   }
   const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60
 
-  const downloadUrl: string = (cloudinary.utils as unknown as {
-    private_download_url: (id: string, fmt: string, opts: object) => string
-  }).private_download_url(publicId, '', {
+  // Use cloudinary.url() with sign_url to generate a signed delivery URL
+  // (res.cloudinary.com). private_download_url generates an api.cloudinary.com
+  // endpoint URL that Cloudinary has been returning "Resource not found" for.
+  const signedUrl: string = cloudinary.url(publicId, {
     resource_type: 'raw',
     type:          'authenticated',
+    sign_url:      true,
+    secure:        true,
     expires_at:    expiresAt,
-    attachment:    mode === 'download',
   })
 
-  return NextResponse.redirect(downloadUrl, { status: 302 })
+  return NextResponse.redirect(signedUrl, { status: 302 })
 }
