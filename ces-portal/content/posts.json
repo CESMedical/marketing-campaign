@@ -4691,26 +4691,38 @@
   {
     "id": "P158",
     "slug": "p158-what-does-a-cataract-consultation-involve-shorts",
-    "title": "What does a cataract consultation involve? #Shorts",
+    "title": "What Does a Cataract Consultation Involve? #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-02",
+    "scheduledDate": "2026-07-04",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
     "format": "youtube-short",
-    "caption": "First cataract consultation? Here is exactly what happens in the room. #cataract #eyehealth #privatehealthcare",
+    "caption": "If you have booked a cataract consultation, or are thinking about it, it helps to know what to expect. There is nothing to be nervous about.\n\nMr Kashif Qureshi, Consultant Ophthalmic Surgeon at CES Medical, explains what happens at a cataract consultation, from the measurements to the conversation about your options. It is about understanding your eyes and giving you information, not pressure.\n\nCES Medical provides consultant-led cataract care across Kent.\n\nTo book: 01732 757771\nPatient information: https://cespatientinformation.co.uk/cataract-surgery",
     "cta": {
-      "label": "Full video on channel",
+      "label": "Book a cataract consultation",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk/cataract-surgery",
+      "utm": "utm_source=youtube&utm_medium=short&utm_campaign=may-jul-2026&utm_content=P158"
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "KQ-C8",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"What actually happens at a cataract consultation?\" Source: KQ-C8.",
+    "tags": [
+      "cataract consultation",
+      "what to expect cataract surgery",
+      "cataract assessment",
+      "cataract surgery consultation",
+      "lens options",
+      "Mr Kashif Qureshi",
+      "CES Medical",
+      "cataract surgery Kent",
+      "eye consultation"
+    ],
+    "notes": "YouTube Short. 45 to 55 seconds. Vertical format 9:16. Subtitled throughout. No watermarks. No clinical eye imagery. Source: KQ-C8 interview clip with Mr Kashif Qureshi, or motion design using on-screen text sequence.\n\nTONE: Calm, warm, reassuring. Reduces pre-appointment anxiety for a nervous first-timer. Consistent with P152, P155, P157.\n\nPRESENTER: Mr Kashif Qureshi, cataract specialist. Lower-third on first appearance: Mr Kashif Qureshi, Consultant Ophthalmic Surgeon, CES Medical.\n\nON-SCREEN TEXT:\nCard 1 (0:00 to 0:08): \"Booked a cataract consultation? Here is what to expect.\" / \"There is nothing to be nervous about.\"\nCard 2 (0:08 to 0:18): \"First, we measure your eyes.\" / \"Painless scans that help us plan the right treatment and lens for you.\"\nCard 3 (0:18 to 0:28): \"Then we talk through your options.\" / \"Including the different lens choices and what would suit your lifestyle.\"\nCard 4 (0:28 to 0:38): \"You can ask anything.\" / \"The consultation is about understanding your eyes, not pressure to proceed.\"\nCard 5 (0:38 to 0:46): \"We will tell you honestly what we recommend and why.\"\nCard 6 (0:46 to 0:52): \"Ready to book? Call 01732 757771.\"\n\nCards 4 and 5 must remain as written. They carry the CES brand voice on honesty and no-pressure care.\n\nBACKGROUND: Calm, warm, deep teal. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL: Mr Qureshi in clinical attire, warm and reassuring, direct to camera. Text overlay in PP Telegraph white on teal bar: \"Your cataract consultation.\" Calm and welcoming. No clinical eye imagery.\n\nEND SCREEN / PINNED COMMENT: Link to P88 (first cataract consultation carousel, LinkedIn) and P140 (premium lens implants full guide). Link to cespatientinformation.co.uk/cataract-surgery.\n\nThis is the Short version of P88 (LinkedIn cataract consultation carousel). Keep consistent.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
