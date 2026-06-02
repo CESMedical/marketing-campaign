@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Star, MapPin, SlidersHorizontal, FileText } from 'lucide-react';
+import { ArrowRight, Star, MapPin, SlidersHorizontal, FileText, ShieldCheck } from 'lucide-react';
 import { loadCampaign } from '@/lib/posts';
 import { LinkButton } from '@/components/ui/Button';
 
@@ -52,7 +52,7 @@ export default async function HomePage() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <Step
             number={1}
             icon={<MapPin size={20} />}
@@ -76,6 +76,12 @@ export default async function HomePage() {
             icon={<Star size={20} />}
             title="Use the Priority Board"
             description="Switch to the Priority Board to focus on the commercial-priority posts — the ones that drive consultations and conversions."
+          />
+          <Step
+            number={5}
+            icon={<ShieldCheck size={20} />}
+            title="Check clinical review flags"
+            description="Many posts carry a clinical review requirement in the production notes. Before any post is scheduled, confirm the review flag has been cleared and the status updated to approved."
           />
         </div>
       </section>
