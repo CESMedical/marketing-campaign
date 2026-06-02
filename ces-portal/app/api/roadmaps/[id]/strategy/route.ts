@@ -8,11 +8,20 @@ function isAllowedStrategyFileUrl(value: string): boolean {
 
   try {
     const url = new URL(value)
-    return (
-      url.protocol === 'https:' &&
-      url.hostname === 'res.cloudinary.com' &&
-      url.pathname.includes('/raw/authenticated/')
-    )
+    if (url.protocol !== 'https:') return false
+
+    // Cloudflare R2 — public bucket domain or configured custom domain
+    const r2PublicUrl = process.env.R2_PUBLIC_URL
+    if (r2PublicUrl) {
+      try {
+        const r2Base = new URL(r2PublicUrl)
+        if (url.hostname === r2Base.hostname) return true
+      } catch {}
+    }
+    if (url.hostname.endsWith('.r2.dev')) return true
+
+    // Cloudinary authenticated raw asset (legacy)
+    return url.hostname === 'res.cloudinary.com' && url.pathname.includes('/raw/authenticated/')
   } catch {
     return false
   }

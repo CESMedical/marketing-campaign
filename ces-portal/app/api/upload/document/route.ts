@@ -4,6 +4,45 @@ import { auth } from '@/auth'
 import { canEditPost } from '@/lib/roles'
 import { rateLimit } from '@/lib/rate-limit'
 
+// ── Cloudflare R2 ─────────────────────────────────────────────────────────────
+
+function hasR2() {
+  return Boolean(
+    process.env.R2_ACCOUNT_ID &&
+    process.env.R2_ACCESS_KEY_ID &&
+    process.env.R2_SECRET_ACCESS_KEY &&
+    process.env.R2_BUCKET &&
+    process.env.R2_PUBLIC_URL,
+  )
+}
+
+async function uploadToR2(buffer: Buffer, mimeType: string, originalName: string): Promise<string> {
+  const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3')
+  const accountId = process.env.R2_ACCOUNT_ID!
+  const bucket    = process.env.R2_BUCKET!
+  const safeName  = originalName.replace(/[^a-z0-9._-]/gi, '_').slice(0, 80)
+  const key       = `docs/${Date.now()}-${safeName}`
+
+  const client = new S3Client({
+    region:   'auto',
+    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId:     process.env.R2_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+    },
+  })
+
+  await client.send(new PutObjectCommand({
+    Bucket:      bucket,
+    Key:         key,
+    Body:        buffer,
+    ContentType: mimeType,
+  }))
+
+  const base = process.env.R2_PUBLIC_URL!.replace(/\/$/, '')
+  return `${base}/${key}`
+}
+
 const ALLOWED_TYPES: Record<string, string> = {
   'application/pdf': 'pdf',
   'application/msword': 'doc',
@@ -104,9 +143,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const url = hasCloudinary()
-      ? await uploadToCloudinary(buffer, file.name)
-      : await uploadToLocal(buffer, file.name, ext)
+    let url: string
+    if (hasR2())             url = await uploadToR2(buffer, file.type, file.name)
+    else if (hasCloudinary()) url = await uploadToCloudinary(buffer, file.name)
+    else                     url = await uploadToLocal(buffer, file.name, ext)
     return NextResponse.json({ url, fileName: file.name })
   } catch {
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 })

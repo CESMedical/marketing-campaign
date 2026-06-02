@@ -36,7 +36,7 @@ export async function GET(
     return NextResponse.json({ error: 'Invalid mode' }, { status: 400 })
   }
 
-  // Local dev files only. Production documents should be authenticated Cloudinary assets.
+  // Local dev: serve from public folder directly.
   if (process.env.NODE_ENV !== 'production' && roadmap.strategyFileUrl.startsWith('/uploads/docs/')) {
     return NextResponse.redirect(roadmap.strategyFileUrl)
   }
@@ -47,12 +47,25 @@ export async function GET(
   } catch {
     return NextResponse.json({ error: 'Invalid strategy document URL' }, { status: 400 })
   }
+  if (strategyUrl.protocol !== 'https:') {
+    return NextResponse.json({ error: 'Invalid strategy document URL' }, { status: 400 })
+  }
+
+  // Cloudflare R2 public bucket — redirect directly, no signing needed.
+  const r2PublicUrl = process.env.R2_PUBLIC_URL
+  const isR2 =
+    strategyUrl.hostname.endsWith('.r2.dev') ||
+    (r2PublicUrl && (() => { try { return strategyUrl.hostname === new URL(r2PublicUrl).hostname } catch { return false } })())
+  if (isR2) {
+    return NextResponse.redirect(roadmap.strategyFileUrl, { status: 302 })
+  }
+
+  // Cloudinary authenticated asset — generate a signed URL.
   if (
-    strategyUrl.protocol !== 'https:' ||
     strategyUrl.hostname !== 'res.cloudinary.com' ||
     !strategyUrl.pathname.includes('/raw/authenticated/')
   ) {
-    return NextResponse.json({ error: 'Strategy document is not stored privately' }, { status: 403 })
+    return NextResponse.json({ error: 'Unsupported document storage' }, { status: 403 })
   }
 
   const { v2: cloudinary } = await import('cloudinary')
@@ -64,10 +77,6 @@ export async function GET(
   }
   const expiresAt = Math.floor(Date.now() / 1000) + 60 * 60
 
-  // Build download URL using the admin-API signature method (private_download_url)
-  // This works regardless of account-level delivery restrictions.
-  // For Cloudinary raw files the extension IS part of the public_id.
-  // Pass the full publicId and an empty format so the SDK doesn't double-append it.
   const downloadUrl: string = (cloudinary.utils as unknown as {
     private_download_url: (id: string, fmt: string, opts: object) => string
   }).private_download_url(publicId, '', {
@@ -77,7 +86,5 @@ export async function GET(
     attachment:    mode === 'download',
   })
 
-  // Redirect the browser directly to the time-limited signed URL.
-  // Cloudinary serves the file; no server-side proxy fetch needed.
   return NextResponse.redirect(downloadUrl, { status: 302 })
 }
