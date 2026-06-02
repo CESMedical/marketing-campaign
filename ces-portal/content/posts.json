@@ -4649,26 +4649,38 @@
   {
     "id": "P157",
     "slug": "p157-monofocal-vs-multifocal-lens-in-60-seconds-shorts",
-    "title": "Monofocal vs multifocal lens in 60 seconds #Shorts",
+    "title": "Monofocal vs Multifocal Lens in 60 Seconds #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-25",
-    "weekNumber": 8,
+    "scheduledDate": "2026-06-20",
+    "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
     "format": "youtube-short",
-    "caption": "Not sure which lens to choose for your cataract surgery? Here is the 60-second comparison. #cataract #IOL #eyesurgery",
+    "caption": "If you are having cataract or lens surgery, one of the biggest decisions is which lens. Here is the difference between the two most common options, monofocal and multifocal, in 60 seconds.\n\nMr Nick Kopsachilis, Consultant Ophthalmic Surgeon at CES Medical, explains. Which lens is right for you depends on your eyes and your lifestyle, and we will always tell you honestly which one suits you.\n\nCES Medical provides consultant-led cataract and lens surgery across Kent.\n\nTo find out more: 01732 757771\nPatient information: https://cespatientinformation.co.uk/cataract-surgery",
     "cta": {
-      "label": "Full video on channel",
+      "label": "cespatientinformation.co.uk/cataract-surgery | 01732 757771",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk/cataract-surgery"
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "NK-C9",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"Monofocal or multifocal lens \u2014 what is the difference?\" Source: NK-C9.",
+    "tags": [
+      "monofocal vs multifocal",
+      "cataract lens options",
+      "multifocal lens",
+      "monofocal lens",
+      "premium lens implants",
+      "cataract surgery lens choice",
+      "Mr Nick Kopsachilis",
+      "CES Medical",
+      "lens surgery Kent",
+      "intraocular lens"
+    ],
+    "notes": "YouTube Short. 55 to 60 seconds. Source: NK-C9 interview clip with Mr Nick Kopsachilis, or motion design using the on-screen text sequence. Subtitled throughout.\n\nThis is the Short version of the lens-education content (P08, P09, P15, P58 carousels, P140 long-form video). Keep consistent.\n\nTONE: Calm, clear, educational. A decision-aid, not a hard sell.\n\nCLINICAL ACCURACY AND HONESTY, IMPORTANT: Even in 60 seconds, the honest trade-off must be included (Card 4: haloes, reduced contrast, not suitable for everyone). Do not build a Short that only sells multifocal. Need glasses far less or not at all, NOT glasses-free. The decision is individual and made at consultation. The we will tell you honestly which suits you line must remain. No outcome guarantees. Consistent with P08 and P140.\n\nON-SCREEN TEXT CARDS:\n\nCard 1 (0:00 to 0:07): Monofocal vs multifocal lens. / The most common cataract lens decision, in 60 seconds.\n\nCard 2 (0:07 to 0:18): Monofocal: focuses at one distance, usually far. / Clear distance vision, but you will still need reading glasses.\n\nCard 3 (0:18 to 0:30): Multifocal: focuses at multiple distances. / Many patients need glasses far less, or not at all.\n\nCard 4 (0:30 to 0:42): The trade-off: some people notice haloes or reduced contrast with multifocal. / And it is not suitable for everyone.\n\nCard 5 (0:42 to 0:52): The right choice depends on your eyes and your lifestyle. / We will tell you honestly which suits you.\n\nCard 6 (0:52 to 0:58): Considering lens surgery? Call 01732 757771.\n\nBackground: calm, deep teal. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL BRIEF: Mr Kopsachilis in clinical attire, warm and direct to camera, or a clean split-graphic showing Monofocal vs Multifocal. Text overlay in PP Telegraph white on teal bar: Which lens is right for you? Calm and clear. No clinical eye imagery.\n\nUpload natively to YouTube as a Short. No watermarks. No clinical eye imagery.\n\nEnd screen or pinned comment: Link to P140 (premium lens implants full guide) and P08 (multifocal carousel). Link to cespatientinformation.co.uk/cataract-surgery.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
