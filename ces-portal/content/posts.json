@@ -2861,7 +2861,7 @@
   {
     "id": "P121",
     "slug": "p121-what-insurance-companies-do-not-understand-about-ophthalmology",
-    "title": "What insurance companies do not understand about ophthalmology",
+    "title": "Where private insurance and clinical urgency sometimes pull against each other",
     "pillar": "leadership",
     "platforms": [
       "linkedin"
@@ -2871,15 +2871,15 @@
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "text",
-    "caption": "PLACEHOLDER. Topic: What insurance companies do not understand about ophthalmology. The pre-authorisation process creates delays that have clinical consequences. Elion to write in his own voice. Direct and specific.",
+    "caption": "Most of the private patients we see are insured, and the insurance system works well most of the time. But there is a tension I think is worth naming honestly, because it affects patients.\n\nPrivate medical insurance involves a pre-authorisation step before treatment is approved. For planned, non-urgent care, that process is reasonable and works fine. Where it becomes difficult is when a condition is time-sensitive.\n\nIn ophthalmology, some conditions do not wait. The interval between recognising a problem and treating it can affect the outcome. When the approval process and the clinical clock are pulling in different directions, that is a hard position for everyone, the patient most of all.\n\nI am not blaming anyone for this. Pre-authorisation exists for sensible reasons, and the people administering it are doing their jobs. But I do think the system, as a whole, could do better at recognising when ophthalmic urgency means the usual timelines need to flex.\n\nWhat we do in the meantime is manage it actively for the patient: we push, we document the urgency clearly, and where a delay would be clinically unsafe we make sure the patient still gets seen. That is part of our job.\n\nFor colleagues who work across insured care: where have you found the process and the clinical need pulling against each other, and what helps?",
     "cta": {
       "label": "Follow for more",
       "type": "save"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "elion-hyseni",
-    "linkedInHook": "The pre-authorisation process creates delays that have clinical consequences.",
-    "notes": "Placeholder post. Topic and key message confirmed in ces_linkedin_posts.md. Elion must write this post in his own voice before scheduling. Do not publish any AI-drafted text directly. Brief Elion with the topic and key message and allow him to write the final version. Review against CES copywriting rules before scheduling.",
+    "linkedInHook": "Most of the private patients we see are insured, and the insurance system works well most of the time. But there is a tension I think is worth naming honestly, because it affects patients.",
+    "notes": "PLACEHOLDER DRAFT. Elion to refine in his own voice. DECISION REQUIRED before scheduling: see risk flag below.\n\nSCHEDULING NOTE: DATE DISCREPANCY. Two dates recorded: 2026-06-30 and 2026-06-02. This build uses 2026-06-30. Confirm with the team before scheduling.\n\nText only. No image. No external link. Post at 8am Tuesday from Elion Hyseni personal LinkedIn account, if the commercial sensitivity has been considered and cleared.\n\nCOMMERCIAL SENSITIVITY, RISK FLAG: This is the most delicate Elion post. Insurers are a referral and payment source for CES private work. The draft is constructive and fair, but the decision to post should be made deliberately with CES. If there is any concern about insurer relationships, hold or drop this post. It can be removed from the schedule without loss to the campaign.\n\nFraming that must survive Elion's rewrite:\n1. Do NOT attack insurers or imply they routinely harm patients. The I am not blaming anyone and pre-authorisation exists for sensible reasons framing must remain.\n2. Do NOT name specific insurers.\n3. Keep it patient-advocacy focused: the tension between process and clinical urgency, and how CES manages it for patients.\n4. If in doubt about the commercial impact, hold or drop it.\n\nConsistency: NHS-commissioned positioning, no private group language.\n\nGOLDEN HOUR: Elion available to respond to comments within 60 minutes. If insurers or their representatives engage, respond constructively and without escalation.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
