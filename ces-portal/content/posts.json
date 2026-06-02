@@ -10,7 +10,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-01",
+    "scheduledDate": "2026-05-15",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "brand",
@@ -41,7 +41,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-03",
+    "scheduledDate": "2026-05-17",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "general",
@@ -74,7 +74,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-05",
+    "scheduledDate": "2026-05-19",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -108,7 +108,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-08",
+    "scheduledDate": "2026-05-22",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -142,7 +142,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-10",
+    "scheduledDate": "2026-05-24",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -175,7 +175,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-12",
+    "scheduledDate": "2026-05-26",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -206,7 +206,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-15",
+    "scheduledDate": "2026-05-29",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "brand",
@@ -238,7 +238,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-22",
+    "scheduledDate": "2026-06-05",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -272,7 +272,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-24",
+    "scheduledDate": "2026-06-07",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -305,7 +305,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-26",
+    "scheduledDate": "2026-06-09",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -337,7 +337,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-09",
+    "scheduledDate": "2026-06-23",
     "weekNumber": 6,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -368,7 +368,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-26",
+    "scheduledDate": "2026-06-09",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "brand",
@@ -400,7 +400,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-29",
+    "scheduledDate": "2026-06-12",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -435,7 +435,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-04",
+    "scheduledDate": "2026-06-18",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "general",
@@ -464,7 +464,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-28",
+    "scheduledDate": "2026-06-11",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "cataract-toric",
@@ -495,7 +495,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-07",
+    "scheduledDate": "2026-06-21",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -525,7 +525,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-12",
+    "scheduledDate": "2026-06-26",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "brand",
@@ -556,7 +556,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-30",
+    "scheduledDate": "2026-07-14",
     "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -588,7 +588,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-02",
+    "scheduledDate": "2026-07-16",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -620,7 +620,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-17",
+    "scheduledDate": "2026-07-31",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -652,7 +652,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-19",
+    "scheduledDate": "2026-07-03",
     "weekNumber": 8,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -683,7 +683,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-18",
+    "scheduledDate": "2026-07-02",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -715,7 +715,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-21",
+    "scheduledDate": "2026-08-04",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "dry-eye",
@@ -748,7 +748,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-16",
+    "scheduledDate": "2026-06-30",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "brand",
@@ -782,7 +782,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-26",
+    "scheduledDate": "2026-07-10",
     "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -814,7 +814,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-24",
+    "scheduledDate": "2026-07-08",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "general",
@@ -845,7 +845,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-23",
+    "scheduledDate": "2026-07-07",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "general",
@@ -877,7 +877,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-28",
+    "scheduledDate": "2026-07-12",
     "weekNumber": 9,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -908,7 +908,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-02",
+    "scheduledDate": "2026-07-16",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -941,7 +941,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-03",
+    "scheduledDate": "2026-07-17",
     "weekNumber": 10,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -974,7 +974,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-23",
+    "scheduledDate": "2026-08-06",
     "weekNumber": 12,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -1005,7 +1005,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-06",
+    "scheduledDate": "2026-07-20",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1037,7 +1037,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-10",
+    "scheduledDate": "2026-07-24",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1069,7 +1069,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-11",
+    "scheduledDate": "2026-07-25",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -1101,7 +1101,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-13",
+    "scheduledDate": "2026-07-27",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1134,7 +1134,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-09",
+    "scheduledDate": "2026-07-23",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "general",
@@ -1167,7 +1167,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-15",
+    "scheduledDate": "2026-07-29",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1198,7 +1198,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-12",
+    "scheduledDate": "2026-07-26",
     "weekNumber": 11,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1231,7 +1231,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-14",
+    "scheduledDate": "2026-07-28",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "general",
@@ -1263,7 +1263,7 @@
       "x"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-20",
+    "scheduledDate": "2026-08-03",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1293,7 +1293,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-24",
+    "scheduledDate": "2026-08-07",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
@@ -1324,7 +1324,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-25",
+    "scheduledDate": "2026-08-08",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1357,7 +1357,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-26",
+    "scheduledDate": "2026-08-09",
     "weekNumber": 13,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -1389,7 +1389,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-27",
+    "scheduledDate": "2026-08-10",
     "weekNumber": 13,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -1421,7 +1421,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-31",
+    "scheduledDate": "2026-08-14",
     "weekNumber": 14,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1453,7 +1453,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-28",
+    "scheduledDate": "2026-08-11",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -1488,7 +1488,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-29",
+    "scheduledDate": "2026-08-12",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "brand",
@@ -1520,7 +1520,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-30",
+    "scheduledDate": "2026-08-13",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
@@ -1553,7 +1553,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-17",
+    "scheduledDate": "2026-05-31",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -1587,7 +1587,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-19",
+    "scheduledDate": "2026-06-02",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -1621,7 +1621,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-05",
+    "scheduledDate": "2026-06-19",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "format": "reel",
@@ -1655,7 +1655,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-31",
+    "scheduledDate": "2026-06-14",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -1691,7 +1691,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-14",
+    "scheduledDate": "2026-06-28",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -1727,7 +1727,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-07",
+    "scheduledDate": "2026-07-21",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -1763,7 +1763,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-19",
+    "scheduledDate": "2026-08-02",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "reel",
@@ -1795,7 +1795,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-04",
+    "scheduledDate": "2026-05-18",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1822,7 +1822,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-07",
+    "scheduledDate": "2026-05-21",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1849,7 +1849,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-11",
+    "scheduledDate": "2026-05-25",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1876,7 +1876,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-14",
+    "scheduledDate": "2026-05-28",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1903,7 +1903,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-18",
+    "scheduledDate": "2026-06-01",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1930,7 +1930,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-21",
+    "scheduledDate": "2026-06-04",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1957,7 +1957,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-25",
+    "scheduledDate": "2026-06-08",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -1985,7 +1985,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-29",
+    "scheduledDate": "2026-06-12",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2013,7 +2013,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-01",
+    "scheduledDate": "2026-06-15",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -2042,7 +2042,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-04",
+    "scheduledDate": "2026-06-18",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -2071,7 +2071,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-08",
+    "scheduledDate": "2026-06-22",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -2100,7 +2100,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-13",
+    "scheduledDate": "2026-06-27",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "dry-eye",
@@ -2129,7 +2129,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-15",
+    "scheduledDate": "2026-06-29",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2157,7 +2157,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-16",
+    "scheduledDate": "2026-06-30",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -2186,7 +2186,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-22",
+    "scheduledDate": "2026-07-06",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -2215,7 +2215,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-27",
+    "scheduledDate": "2026-07-11",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -2244,7 +2244,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-29",
+    "scheduledDate": "2026-07-13",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -2273,7 +2273,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-04",
+    "scheduledDate": "2026-07-18",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2301,7 +2301,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-06",
+    "scheduledDate": "2026-07-20",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2329,7 +2329,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-11",
+    "scheduledDate": "2026-07-25",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2357,7 +2357,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-13",
+    "scheduledDate": "2026-07-27",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2385,7 +2385,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-16",
+    "scheduledDate": "2026-07-30",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2413,7 +2413,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-20",
+    "scheduledDate": "2026-08-03",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2441,7 +2441,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-23",
+    "scheduledDate": "2026-08-06",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2469,7 +2469,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-27",
+    "scheduledDate": "2026-08-10",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2496,7 +2496,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-08-01",
+    "scheduledDate": "2026-08-15",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "format": "document-carousel",
@@ -2524,7 +2524,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-05",
+    "scheduledDate": "2026-05-19",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "format": "text",
@@ -2551,7 +2551,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-05",
+    "scheduledDate": "2026-05-19",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "format": "text",
@@ -2578,7 +2578,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-12",
+    "scheduledDate": "2026-05-26",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "format": "text",
@@ -2605,7 +2605,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-15",
+    "scheduledDate": "2026-05-29",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "text",
@@ -2632,7 +2632,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-19",
+    "scheduledDate": "2026-06-02",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "text",
@@ -2659,7 +2659,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-09",
+    "scheduledDate": "2026-06-23",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "format": "text",
@@ -2686,7 +2686,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-29",
+    "scheduledDate": "2026-06-12",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "format": "text",
@@ -2713,7 +2713,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-23",
+    "scheduledDate": "2026-07-07",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "format": "text",
@@ -2740,7 +2740,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-30",
+    "scheduledDate": "2026-07-14",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "text",
@@ -2767,7 +2767,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-07",
+    "scheduledDate": "2026-07-21",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "text",
@@ -2794,7 +2794,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-14",
+    "scheduledDate": "2026-07-28",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "text",
@@ -2821,7 +2821,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-21",
+    "scheduledDate": "2026-08-04",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "text",
@@ -2848,7 +2848,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-26",
+    "scheduledDate": "2026-07-10",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "text",
@@ -2875,7 +2875,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-30",
+    "scheduledDate": "2026-07-14",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "format": "text",
@@ -2902,7 +2902,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-07",
+    "scheduledDate": "2026-07-21",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "text",
@@ -2929,7 +2929,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-10",
+    "scheduledDate": "2026-07-24",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "text",
@@ -2956,7 +2956,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-14",
+    "scheduledDate": "2026-07-28",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "text",
@@ -2983,7 +2983,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-21",
+    "scheduledDate": "2026-08-04",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "format": "text",
@@ -3010,7 +3010,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-06",
+    "scheduledDate": "2026-05-20",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "format": "text",
@@ -3037,7 +3037,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-13",
+    "scheduledDate": "2026-05-27",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "format": "text",
@@ -3064,7 +3064,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-20",
+    "scheduledDate": "2026-06-03",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "format": "text",
@@ -3091,7 +3091,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-27",
+    "scheduledDate": "2026-06-10",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "format": "text",
@@ -3118,7 +3118,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-03",
+    "scheduledDate": "2026-06-17",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "format": "text",
@@ -3145,7 +3145,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-10",
+    "scheduledDate": "2026-06-24",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "format": "text",
@@ -3172,7 +3172,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-08",
+    "scheduledDate": "2026-07-22",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -3200,7 +3200,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-15",
+    "scheduledDate": "2026-07-29",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -3228,7 +3228,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-02",
+    "scheduledDate": "2026-05-16",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3255,7 +3255,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-07",
+    "scheduledDate": "2026-05-21",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3282,7 +3282,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-09",
+    "scheduledDate": "2026-05-23",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -3309,7 +3309,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-14",
+    "scheduledDate": "2026-05-28",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3336,7 +3336,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-16",
+    "scheduledDate": "2026-05-30",
     "weekNumber": 3,
     "isCommercialPriority": true,
     "service": "general",
@@ -3363,7 +3363,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-21",
+    "scheduledDate": "2026-06-04",
     "weekNumber": 3,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -3390,7 +3390,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-23",
+    "scheduledDate": "2026-06-06",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -3417,7 +3417,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-28",
+    "scheduledDate": "2026-06-11",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -3444,7 +3444,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-30",
+    "scheduledDate": "2026-06-13",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "brand",
@@ -3472,7 +3472,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-04",
+    "scheduledDate": "2026-06-18",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "general",
@@ -3499,7 +3499,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-06",
+    "scheduledDate": "2026-06-20",
     "weekNumber": 6,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -3526,7 +3526,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-11",
+    "scheduledDate": "2026-06-25",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "brand",
@@ -3553,7 +3553,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-08",
+    "scheduledDate": "2026-05-22",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "general",
@@ -3580,7 +3580,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-08",
+    "scheduledDate": "2026-05-22",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -3606,7 +3606,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-13",
+    "scheduledDate": "2026-05-27",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3633,7 +3633,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-15",
+    "scheduledDate": "2026-05-29",
     "weekNumber": 3,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -3660,7 +3660,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-22",
+    "scheduledDate": "2026-06-05",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "general",
@@ -3687,7 +3687,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-27",
+    "scheduledDate": "2026-06-10",
     "weekNumber": 4,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -3715,7 +3715,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-29",
+    "scheduledDate": "2026-06-12",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -3742,7 +3742,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-05",
+    "scheduledDate": "2026-06-19",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "brand",
@@ -3769,7 +3769,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-10",
+    "scheduledDate": "2026-06-24",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "dry-eye",
@@ -3796,7 +3796,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-12",
+    "scheduledDate": "2026-06-26",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -3824,7 +3824,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-19",
+    "scheduledDate": "2026-07-03",
     "weekNumber": 8,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3851,7 +3851,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-24",
+    "scheduledDate": "2026-07-08",
     "weekNumber": 8,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3879,7 +3879,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-08",
+    "scheduledDate": "2026-07-22",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "brand",
@@ -3906,7 +3906,7 @@
       "instagram"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-22",
+    "scheduledDate": "2026-08-05",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "brand",
@@ -3932,7 +3932,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-04",
+    "scheduledDate": "2026-05-18",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -3960,7 +3960,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-11",
+    "scheduledDate": "2026-05-25",
     "weekNumber": 2,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -3988,7 +3988,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-18",
+    "scheduledDate": "2026-06-01",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -4016,7 +4016,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-25",
+    "scheduledDate": "2026-06-08",
     "weekNumber": 4,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -4044,7 +4044,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-01",
+    "scheduledDate": "2026-06-15",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -4088,7 +4088,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-08",
+    "scheduledDate": "2026-06-22",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "dry-eye",
@@ -4128,7 +4128,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-15",
+    "scheduledDate": "2026-06-29",
     "weekNumber": 7,
     "isCommercialPriority": true,
     "service": "cataract-multifocal",
@@ -4170,7 +4170,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-03",
+    "scheduledDate": "2026-07-17",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -4212,7 +4212,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-05",
+    "scheduledDate": "2026-05-19",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -4240,7 +4240,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-12",
+    "scheduledDate": "2026-05-26",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "medical-retina",
@@ -4268,7 +4268,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-19",
+    "scheduledDate": "2026-06-02",
     "weekNumber": 3,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -4296,7 +4296,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-19",
+    "scheduledDate": "2026-07-03",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "brand",
@@ -4324,7 +4324,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-06",
+    "scheduledDate": "2026-05-20",
     "weekNumber": 1,
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
@@ -4352,7 +4352,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-13",
+    "scheduledDate": "2026-05-27",
     "weekNumber": 2,
     "isCommercialPriority": false,
     "service": "general",
@@ -4380,7 +4380,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-17",
+    "scheduledDate": "2026-07-31",
     "weekNumber": 12,
     "isCommercialPriority": true,
     "service": "oculoplastic-eyelid",
@@ -4408,7 +4408,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-31",
+    "scheduledDate": "2026-08-14",
     "weekNumber": 13,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -4436,7 +4436,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-07",
+    "scheduledDate": "2026-05-21",
     "weekNumber": 1,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -4464,7 +4464,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-05-30",
+    "scheduledDate": "2026-06-13",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -4491,7 +4491,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-13",
+    "scheduledDate": "2026-06-27",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -4519,7 +4519,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-27",
+    "scheduledDate": "2026-07-11",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -4547,7 +4547,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-11",
+    "scheduledDate": "2026-07-25",
     "weekNumber": 10,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -4586,7 +4586,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-18",
+    "scheduledDate": "2026-08-01",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -4626,7 +4626,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-06",
+    "scheduledDate": "2026-06-20",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "glaucoma",
@@ -4665,7 +4665,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-20",
+    "scheduledDate": "2026-07-04",
     "weekNumber": 7,
     "isCommercialPriority": false,
     "service": "cataract-multifocal",
@@ -4705,7 +4705,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-04",
+    "scheduledDate": "2026-07-18",
     "weekNumber": 9,
     "isCommercialPriority": false,
     "service": "cataract-monofocal",
@@ -4745,7 +4745,7 @@
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-25",
+    "scheduledDate": "2026-08-08",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
@@ -4788,7 +4788,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-02",
+    "scheduledDate": "2026-06-16",
     "weekNumber": 5,
     "isCommercialPriority": false,
     "service": "brand",
@@ -4820,7 +4820,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-06",
+    "scheduledDate": "2026-06-20",
     "weekNumber": 6,
     "isCommercialPriority": false,
     "service": "brand",
@@ -4852,7 +4852,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-06-21",
+    "scheduledDate": "2026-07-05",
     "weekNumber": 8,
     "isCommercialPriority": false,
     "service": "vitreoretinal",
@@ -4885,7 +4885,7 @@
       "linkedin"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-16",
+    "scheduledDate": "2026-07-30",
     "weekNumber": 11,
     "isCommercialPriority": false,
     "service": "corneal",
@@ -4917,7 +4917,7 @@
       "facebook"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-22",
+    "scheduledDate": "2026-08-05",
     "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "dry-eye",
