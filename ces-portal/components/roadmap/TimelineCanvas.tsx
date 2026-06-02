@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search, RefreshCw } from 'lucide-react'
+import { ZoomIn, ZoomOut, Maximize2, CalendarDays, Plus, ChevronsRight, Loader2, X, Link2, Search, RefreshCw, Mail } from 'lucide-react'
 import { Post, STATUS_LABELS, PILLAR_LABELS, Pillar } from '@/types/post'
 import { PlatformIcons } from './PlatformIcons'
 import { PostEditPanel } from './PostEditPanel'
@@ -429,6 +429,21 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const [searchQuery, setSearchQuery] = useState('')
   const [syncing, setSyncing]         = useState(false)
   const [syncMsg, setSyncMsg]         = useState<'ok' | 'err' | null>(null)
+  const [mailing, setMailing]         = useState(false)
+  const [mailMsg, setMailMsg]         = useState<'ok' | 'err' | null>(null)
+
+  async function handleSendWelcomes() {
+    if (mailing) return
+    setMailing(true); setMailMsg(null)
+    try {
+      const res = await fetch('/api/admin/send-all-welcomes/', { method: 'POST' })
+      setMailMsg(res.ok ? 'ok' : 'err')
+    } catch { setMailMsg('err') }
+    finally {
+      setMailing(false)
+      setTimeout(() => setMailMsg(null), 4000)
+    }
+  }
 
   async function handleSync() {
     if (syncing) return
@@ -930,6 +945,18 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
             }`}
           >
             <RefreshCw size={14} className={syncing ? 'animate-spin' : ''} />
+          </button>
+          <button
+            onClick={handleSendWelcomes}
+            disabled={mailing}
+            title="Send welcome emails to all portal users"
+            className={`flex items-center justify-center w-9 h-9 rounded-xl border transition-all ${
+              mailMsg === 'ok'  ? 'bg-green-500 border-green-500 text-white' :
+              mailMsg === 'err' ? 'bg-red-400 border-red-400 text-white' :
+              'border-brand-deep/10 text-brand-deep/50 hover:text-brand-deep hover:bg-brand-bg-soft'
+            }`}
+          >
+            {mailing ? <Loader2 size={14} className="animate-spin" /> : <Mail size={14} />}
           </button>
         </>}
       </div>
