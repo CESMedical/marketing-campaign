@@ -2361,15 +2361,16 @@
     "weekNumber": 11,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: What consultant-led care actually means for the referral pathway, for patients and for insurers. Clinical value of the same consultant from assessment to surgery and post-op review.",
+    "caption": "When patients and referrers hear \"consultant-led,\" it is not always clear what it means in practice. At its simplest, it means the same named consultant is responsible for your care from assessment through surgery to follow-up.\n\nThis is a short explanation of the consultant-led model and what continuity of care offers, for GPs and insurers who want to understand how we work.\n\nThis is not a comment on other models, many excellent services are team-based. It is an explanation of how ours is structured and why.\n\nFor referring colleagues: how much does continuity of the named clinician matter in the feedback you hear from patients?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "Refer a patient or discuss our model",
+      "type": "phone",
+      "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "Continuity of care is not a differentiator. It should be the standard.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "In a consultant-led model, the same named consultant assesses you, performs your surgery and follows you up. Here is why that continuity matters.",
+    "notes": "Document carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: GPs and insurers. PDF document carousel, no video, LinkedIn-compatible.\n\nCREDIBILITY, IMPORTANT: Slide 7 (the honest note) is essential and must remain. It explicitly states the post is not a criticism of team-based or NHS models, which deliver excellent care. CES does NHS work and must not disparage NHS or team-based models. The framing is \"how we are structured and why,\" not \"others fragment care.\" Consistent with the Professional Credibility Rule and the NHS-commissioned positioning.\n\nConnects to the consultant-led theme (P49-51 consultant profiles, P88 consultation carousel, P94/P17 credentials). Keep consistent.\n\nSLIDES:\nSlide 1: The consultant-led model: what it means for continuity of care.\nSlide 2: What it means. The same named consultant assesses you, plans your treatment, performs your surgery and sees you at follow-up. One clinician, accountable throughout.\nSlide 3: Why continuity matters. The consultant who plans your surgery knows your eye, your history and your expectations. Nothing is lost in handover between different people at each stage.\nSlide 4: For the patient. You meet the person who will operate on you before the day. You build a relationship. If something needs discussing afterwards, it is with the consultant who did the work.\nSlide 5: For referring GPs. You refer to a named consultant, not a department. Communication is direct, and you know who is accountable for your patient.\nSlide 6: For insurers. Clear clinical accountability and continuity, with a named consultant responsible for the episode of care from start to finish.\nSlide 7: An honest note. This is not a criticism of team-based models. Many excellent services, including in the NHS, are structured around teams and deliver superb care. The consultant-led model is simply how we have chosen to work, and we think the continuity is worth it.\nSlide 8: How it works at CES. Our consultants carry their patients through the whole pathway. You can see each consultant and their specialty on their profile pages.\nSlide 9: To refer a patient or discuss our model, call 01732 757771 or visit cesmedical.co.uk/consultants.\nSlide 10: CES Medical. Consultant-led ophthalmology across Kent. cesmedical.co.uk\n\nClosing question in the caption invites referrer engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
