@@ -77,32 +77,7 @@ export async function GET(
     attachment:    mode === 'download',
   })
 
-  try {
-    const upstream = await fetch(downloadUrl)
-
-    if (!upstream.ok) {
-      const body = await upstream.text().catch(() => '')
-      console.error('[strategy/file] Cloudinary error', upstream.status, body.slice(0, 400))
-      return NextResponse.json({ error: 'Failed to fetch document' }, { status: 502 })
-    }
-
-    const contentType = upstream.headers.get('Content-Type') ?? 'application/octet-stream'
-    const fileName    = (roadmap.strategyFileName ?? 'document').replace(/"/g, '')
-
-    const headers = new Headers()
-    headers.set('Content-Type', contentType)
-    headers.set('X-Content-Type-Options', 'nosniff')
-    headers.set(
-      'Content-Disposition',
-      mode === 'download'
-        ? `attachment; filename="${fileName}"`
-        : `inline; filename="${fileName}"`,
-    )
-    headers.set('Cache-Control', 'private, max-age=3300')
-
-    return new NextResponse(upstream.body, { status: 200, headers })
-  } catch (err) {
-    console.error('[strategy/file] fetch threw', err)
-    return NextResponse.json({ error: 'Failed to serve document' }, { status: 500 })
-  }
+  // Redirect the browser directly to the time-limited signed URL.
+  // Cloudinary serves the file; no server-side proxy fetch needed.
+  return NextResponse.redirect(downloadUrl, { status: 302 })
 }
