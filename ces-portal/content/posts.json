@@ -4734,26 +4734,39 @@
   {
     "id": "P159",
     "slug": "p159-is-your-drooping-eyelid-a-medical-condition-shorts",
-    "title": "Is your drooping eyelid a medical condition? #Shorts",
+    "title": "Is Your Drooping Eyelid a Medical Condition? #Shorts",
     "pillar": "educational",
     "platforms": [
       "youtube"
     ],
     "status": "draft",
-    "scheduledDate": "2026-07-09",
-    "weekNumber": 10,
+    "scheduledDate": "2026-07-25",
+    "weekNumber": 12,
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "youtube-short",
-    "caption": "A drooping upper eyelid is not always cosmetic. If it is cutting into your field of vision, it is a medical condition. Mr Kopsachilis explains the difference in 45 seconds. #eyelidsurgery #ptosis #eyehealth",
+    "caption": "Many people assume a drooping eyelid is just a cosmetic issue. For some, it is. But when a drooping upper eyelid starts to block the upper part of your vision, it becomes a medical condition, and that often changes everything, including whether treatment may be covered by insurance.\n\nMr Nick Kopsachilis, our oculoplastic specialist at CES Medical, explains the difference.\n\nCES Medical provides oculoplastic surgery at Headcorn and Chatham.\n\nTo find out more: 01732 757771\nPatient information: https://cespatientinformation.co.uk",
     "cta": {
-      "label": "Full video on channel",
+      "label": "Find out more",
       "type": "web",
-      "target": "https://www.youtube.com/@CESMedical"
+      "target": "https://cespatientinformation.co.uk",
+      "utm": "utm_source=youtube&utm_medium=short&utm_campaign=may-jul-2026&utm_content=P159"
     },
     "videoRelationship": "direct-snippet",
     "videoReference": "NK-C6",
-    "notes": "Under 60 seconds. Vertical format 9:16. Subtitled throughout in Clash Display font, white text, teal background bar. No watermarks from other platforms. First 3 seconds must deliver the hook visually. Export as YouTube Short. Add to playlist: Shorts. Each Short must link to the corresponding long-form video in the description. Hook: \"Is your drooping eyelid a medical condition?\" Source: NK-C6.",
+    "tags": [
+      "drooping eyelid",
+      "ptosis",
+      "is my drooping eyelid medical",
+      "eyelid surgery",
+      "functional eyelid surgery",
+      "oculoplastic surgery",
+      "Mr Nick Kopsachilis",
+      "CES Medical",
+      "eyelid surgery Kent",
+      "ptosis surgery"
+    ],
+    "notes": "YouTube Short. 45 to 55 seconds. Vertical format 9:16. Subtitled throughout. No watermarks. Source: NK-C6 interview clip with Mr Nick Kopsachilis, or motion design using the on-screen text sequence.\n\nThis is the Short version of the functional-vs-cosmetic eyelid message, the highest-value point in the oculoplastic content (P10, P75, P80, P91, P148, P61). Keep consistent.\n\nCLINICAL ACCURACY: A drooping upper eyelid (ptosis) that affects the UPPER FIELD OF VISION is a functional medical condition. Use \"field of vision\" or \"upper field of vision,\" NOT \"peripheral vision\" (peripheral vision loss is a glaucoma marker, not ptosis). The functional vs cosmetic distinction determines the pathway and often insurance coverage. Suitability and the functional/cosmetic determination are assessed at consultation.\n\nTONE: Calm, informative, empowering. Like the calm Shorts (P152, P155, P157, P158). The hook is the question, prompting self-recognition. No pressure.\n\nPRESENTER: Mr Nick Kopsachilis, oculoplastic specialist. Lower-third: Mr Nick Kopsachilis, Consultant Ophthalmic Surgeon, CES Medical.\n\nLOCATION: Oculoplastic surgery is performed at Headcorn and Chatham, not Pantiles (consultation only).\n\nNO GRAPHIC IMAGERY and NO IDENTIFIABLE REAL PATIENT without consent.\n\nON-SCREEN TEXT:\nCard 1 (0:00 to 0:08): \"Is your drooping eyelid a medical condition?\" / \"It depends on one thing: your vision.\"\nCard 2 (0:08 to 0:18): \"If a drooping eyelid is purely about appearance, it is cosmetic.\"\nCard 3 (0:18 to 0:30): \"But if it droops far enough to block your upper field of vision, it becomes a functional, medical condition.\"\nCard 4 (0:30 to 0:40): \"That distinction matters.\" / \"Functional eyelid surgery is a different pathway, and is often covered by private medical insurance.\"\nCard 5 (0:40 to 0:48): \"An assessment can tell you which yours is. There is no assumption either way.\"\nCard 6 (0:48 to 0:54): \"Wondering about yours? Call 01732 757771.\"\n\nBackground: calm, deep teal. CES Medical logo bottom right from Card 2.\n\nTHUMBNAIL: Mr Kopsachilis in clinical attire, warm and direct to camera, or illustrative graphic of eyelid drooping into upper field of vision (no identifiable real patient). Text overlay in PP Telegraph white on teal bar: \"Medical or cosmetic?\"\n\nEND SCREEN / PINNED COMMENT: Link to P148 (Anna's eyelid patient story) and P91 (eyelid misconceptions). Link to cespatientinformation.co.uk.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_youtube_strategy_card"
