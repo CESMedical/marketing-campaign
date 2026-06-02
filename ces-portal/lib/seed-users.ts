@@ -24,6 +24,7 @@ const PORTAL_USERS: { email: string; firstName: string; defaultRole: string }[] 
   // Alastra (agency)
   { email: 'miran@alastralabs.com',     firstName: 'Miran',    defaultRole: 'admin' },
   { email: 'kush@alastralabs.com',      firstName: 'Kush',     defaultRole: 'admin' },
+  { email: 'anick@alastralabs.com',     firstName: 'Anick',    defaultRole: 'admin' },
 ]
 
 export async function syncUsers(): Promise<void> {
