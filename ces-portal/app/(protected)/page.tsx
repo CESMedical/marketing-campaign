@@ -62,8 +62,8 @@ export default async function HomePage() {
           <Step
             number={2}
             icon={<SlidersHorizontal size={20} />}
-            title="Filter by pillar or platform"
-            description="Use the filters at the top to focus on a specific content pillar — educational, business, leadership, or any other — or narrow by platform."
+            title="Understand the rationale before you execute"
+            description="The roadmap starts with strategy: one core idea becomes one hero video, which feeds multiple platforms, which generates multiple short-form snippets. Read the strategy document first, then use the timeline to see how that logic plays out across the full campaign before scheduling or producing anything."
           />
           <Step
             number={3}
