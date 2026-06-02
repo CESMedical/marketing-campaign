@@ -2238,7 +2238,7 @@
   {
     "id": "P98",
     "slug": "p98-what-a-vitreoretinal-surgeon-does-that-a-general-ophthalmologist-cannot",
-    "title": "What a vitreoretinal surgeon does that a general ophthalmologist cannot",
+    "title": "What a vitreoretinal surgeon does, and when to refer to one",
     "pillar": "educational",
     "platforms": [
       "linkedin"
@@ -2247,16 +2247,18 @@
     "scheduledDate": "2026-06-29",
     "weekNumber": 9,
     "isCommercialPriority": false,
+    "service": "vitreoretinal",
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: What vitreoretinal surgery involves, what conditions require this level of subspecialty training and why having a vitreoretinal surgeon in Kent matters geographically.",
+    "caption": "Vitreoretinal surgery is a subspecialty within ophthalmology, focused on the retina, the vitreous and the back of the eye. It requires fellowship training beyond general ophthalmology, and it covers some of the most time-sensitive conditions in eye care.\n\nThis is a short guide for primary care and referring colleagues: what a vitreoretinal surgeon does, and when to refer.\n\nFor the urgent conditions in particular, knowing the pathway can protect a patient's sight.\n\nHow confident do you feel recognising the conditions that need a vitreoretinal opinion?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "cesmedical.co.uk | 01732 757771",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "Vitreoretinal surgery is a subspecialty for a reason.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "Vitreoretinal surgery is one of the most specialised areas in ophthalmology. Here is what it covers, and when a patient should be referred to one.",
+    "notes": "SLIDES (10):\n\nSlide 1: What a vitreoretinal surgeon does, and when to refer to one.\n\nSlide 2: The subspecialty. Vitreoretinal surgery focuses on the retina, the vitreous gel and the structures at the back of the eye. It is an area of ophthalmology that requires additional fellowship training.\n\nSlide 3: The conditions it covers. Retinal detachment, macular hole, epiretinal membrane, vitreous haemorrhage, diabetic vitreoretinal disease, and some forms of eye trauma.\n\nSlide 4: Why it is a distinct subspecialty. Operating on the retina and vitreous requires specific surgical training and equipment. General ophthalmologists appropriately refer these cases on, just as a GP refers to any specialist. It is good practice, not a gap.\n\nSlide 5: The urgent one to know. Retinal detachment. Sudden floaters, flashes, or a shadow or curtain across the vision. This is a same-day emergency.\n\nSlide 6: What to do with a suspected retinal detachment. Direct the patient to the nearest eye casualty department the same day, or call 111. Do not wait for a routine referral. This is the single most important referral to get right.\n\nSlide 7: The less urgent but important. Macular hole, epiretinal membrane and persistent floaters with a confirmed benign cause warrant a vitreoretinal opinion, but on a routine pathway.\n\nSlide 8: Our vitreoretinal service. Mr Syed Shahid, Consultant Ophthalmologist and Vitreoretinal Surgeon, is Moorfields-trained and one of a small number of vitreoretinal surgeons in Kent. He also leads the Kent and Medway Diabetic Eye Screening Programme.\n\nSlide 9: How to refer or discuss. For urgent symptoms, eye casualty or 111 the same day. For non-urgent vitreoretinal concerns or to discuss a patient, call 01732 757771.\n\nSlide 10: CES Medical. Vitreoretinal services across Kent. cesmedical.co.uk\n\nPRODUCTION NOTES:\n\nDocument carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: GPs and referrers. PDF document carousel, no video, LinkedIn-compatible.\n\nCREDIBILITY: Frame the subspecialty positively. Slide 4 explicitly states that general ophthalmologists appropriately referring on is good practice, not a gap. Do not imply general ophthalmologists are deficient. Consistent with the Professional Credibility Rule.\n\nOVERLAP WITH P131: P131 is Mr Shahid's personal post on the vitreoretinal subspecialty (personal voice, access-focused). P98 is the brand version (clinical scope and referral guide). Confirm both are wanted. They can complement, but should not be near-identical.\n\nCLINICAL ACCURACY: Retinal detachment is the time-sensitive emergency, routed to eye casualty or 111 the same day, NOT routine or private booking. Consistent with P89, P130, P131, P153 and P162. Mr Shahid is Moorfields-trained and leads the regional diabetic eye screening programme.\n\nClosing question in the caption invites referrer engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
