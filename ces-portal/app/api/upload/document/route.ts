@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
   if (!isAllowedDocument(buffer, file.type)) {
     return NextResponse.json({ error: 'Invalid document file' }, { status: 400 })
   }
-  if (!hasCloudinary() && process.env.NODE_ENV === 'production') {
+  if (!hasR2() && !hasCloudinary() && process.env.NODE_ENV === 'production') {
     return NextResponse.json({ error: 'Document storage is not configured' }, { status: 500 })
   }
 
