@@ -1,5 +1,6 @@
 import { prisma } from './prisma'
 import { resolveRole } from './roles'
+import { sendPortalWelcomeEmail } from './emails/sendPortalWelcome'
 
 /**
  * Canonical user list for the CES portal.
@@ -28,14 +29,32 @@ const PORTAL_USERS: { email: string; firstName: string; defaultRole: string }[] 
 export async function syncUsers(): Promise<void> {
   if (!process.env.DATABASE_URL) return
 
+  let welcomed = 0
+
   for (const u of PORTAL_USERS) {
     const role = resolveRole(u.email) || u.defaultRole
-    await prisma.user.upsert({
-      where:  { email: u.email },
-      create: { email: u.email, firstName: u.firstName, role, welcomeSent: false },
-      update: { firstName: u.firstName, role },
-    })
+
+    const existing = await prisma.user.findUnique({ where: { email: u.email } })
+
+    if (!existing) {
+      await prisma.user.create({ data: { email: u.email, firstName: u.firstName, role, welcomeSent: false } })
+    } else {
+      await prisma.user.update({ where: { email: u.email }, data: { firstName: u.firstName, role } })
+    }
+
+    // Send welcome email to anyone who hasn't received one yet.
+    const needsWelcome = !existing || !existing.welcomeSent
+    if (needsWelcome) {
+      try {
+        await sendPortalWelcomeEmail({ email: u.email, firstName: u.firstName, role })
+        await prisma.user.update({ where: { email: u.email }, data: { welcomeSent: true } })
+        welcomed++
+        console.log(`[seed-users] welcome email sent to ${u.email}`)
+      } catch (err) {
+        console.error(`[seed-users] welcome email failed for ${u.email}:`, err)
+      }
+    }
   }
 
-  console.log(`[seed-users] ${PORTAL_USERS.length} users synced`)
+  console.log(`[seed-users] ${PORTAL_USERS.length} users synced, ${welcomed} welcome emails sent`)
 }
