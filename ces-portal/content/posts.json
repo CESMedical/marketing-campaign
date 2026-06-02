@@ -1074,7 +1074,7 @@
     "isCommercialPriority": false,
     "service": "oculoplastic-eyelid",
     "format": "single-image",
-    "caption": "Step one: pre-authorisation from your insurer.\nStep two: consultation.\nStep three: confirmation of cover.\nStep four: surgery.\n\nWe handle most of the paperwork. Here is what you would actually need to do.",
+    "caption": "Step one: consultation, to establish whether your eyelid condition is functional and affecting your vision.\nStep two: pre-authorisation from your insurer.\nStep three: confirmation of cover.\nStep four: surgery.\n\nWe handle most of the paperwork. Functional eyelid surgery (where a drooping eyelid affects your vision) is often covered. Purely cosmetic procedures are not. Here is what you would actually need to do.",
     "cta": {
       "label": "Check your cover",
       "type": "phone",
@@ -1088,7 +1088,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Insurance funding process single image. Design brief using NK-B3 content for the four-step process. Clinical review and legal review required \u2014 insurance pathway information must be accurate. Confirm the process with CES admin before publishing. No video."
+    "notes": "Clean single image. FB and LI. Business pillar. Four-step process clearly laid out. Tone: CES makes this easy, not the patient having to fight for it.\n\nVERIFY BEFORE PUBLISHING:\n1. The step order matches the actual CES process. Consultation before pre-authorisation is standard, but confirm with the team.\n2. Insurer logos: only use if CES is a recognised provider with each insurer AND has permission to display the logo. Otherwise use general phrasing (\"most major UK private medical insurers\") or omit logos. Same requirement as P19.\n\nFunctional vs cosmetic: insurance covers functional eyelid surgery (affecting vision), not cosmetic. The caption now notes this. Do not imply cosmetic eyelid surgery is insurance-funded.\n\nVisual concept: four-step process graphic (consultation, pre-authorisation, confirmation, surgery). Deep teal. CES Medical logo. Phone number 01732 757771 visible."
   },
   {
     "id": "P35",
