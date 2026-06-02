@@ -2295,7 +2295,7 @@
   {
     "id": "P100",
     "slug": "p100-premium-lens-implants-the-questions-patients-should-ask-before-deciding",
-    "title": "Premium lens implants: the questions patients should ask before deciding",
+    "title": "Premium lens implants: the questions worth asking before you decide",
     "pillar": "educational",
     "platforms": [
       "linkedin"
@@ -2305,15 +2305,16 @@
     "weekNumber": 10,
     "isCommercialPriority": false,
     "format": "document-carousel",
-    "caption": "Caption to be written. Topic: Five questions patients should ask their surgeon before agreeing to a premium lens implant. Lens selection, trade-offs, driving at night, surgical volume, what is included in the package.",
+    "caption": "When patients consider a premium lens for cataract or lens surgery, the marketing tends to focus on the upsides. The honest picture is more nuanced, and the best way to get it is to ask the right questions.\n\nHere are the questions worth asking before you decide, including the ones a good clinic should welcome.\n\nThe right lens is the one that suits your eyes and your life, which is sometimes a premium lens and sometimes not. A clinic worth trusting will tell you honestly either way.\n\nFor colleagues and patients: what would you add to this list?",
     "cta": {
-      "label": "See more on cesmedical.co.uk",
-      "type": "save"
+      "label": "Book a consultation",
+      "type": "phone",
+      "target": "tel:01732757771"
     },
     "videoRelationship": "no-video",
     "linkedInAccount": "ces-brand",
-    "linkedInHook": "The lens conversation is the most important part of any cataract consultation.",
-    "notes": "Full copy to be written once Weeks 1 to 3 are approved.",
+    "linkedInHook": "A premium lens is a permanent decision and a significant cost. Before you choose one, here are the questions worth asking, including the ones that might lead you not to.",
+    "notes": "Document carousel. 10 slides. LinkedIn brand account. Educational pillar. Audience: patients. PDF document carousel, no video, LinkedIn-compatible.\n\nTHE FRAMING IS PATIENT EMPOWERMENT, NOT A SELL: This post hands patients the questions to ask, including the hard ones (candidacy, trade-offs, realistic expectations, cost, what if I am not happy). It must NOT become a disguised sell. The questions that might lead a patient away from a premium lens (Slides 2, 3, 4) are essential and must remain. Consistent with P140 and the premium lens rule.\n\nHONESTY: \"Glasses far less, not necessarily never,\" NOT \"glasses-free\" (Slide 4). The \"we will tell you honestly which suits you, including if a premium lens is not right for you\" line (Slide 9) must remain. No outcome guarantees.\n\nSlide 7 (\"would you recommend this for your own family member\") is a deliberately disarming, trust-building question. Keep it.\n\nPart of the lens family (P08, P09, P15, P25, P58, P140, P157). P100 is the patient-empowerment \"how to decide\" piece. Keep consistent.\n\nSLIDES:\nSlide 1: Premium lens implants: the questions worth asking before you decide.\nSlide 2: Question 1. Am I actually a good candidate? Not everyone is suited to a premium lens. Ask whether your eyes, your prescription and your eye health make you a good candidate, or whether a standard lens would serve you better.\nSlide 3: Question 2. What are the trade-offs? Multifocal lenses can cause haloes or reduced contrast in some lighting for some patients. Ask what the downsides are, not just the benefits.\nSlide 4: Question 3. Will I definitely not need glasses, or just less? Be wary of \"glasses-free\" promises. The honest answer for most premium lenses is that you will need glasses far less, not necessarily never. Ask for a realistic expectation.\nSlide 5: Question 4. What is the difference in cost, and is it worth it for my lifestyle? A premium lens is a significant cost. Ask what you are paying for and whether it matches how you actually use your eyes.\nSlide 6: Question 5. What happens if I am not happy with the result? Ask what the clinic does if the outcome is not what you hoped. A good clinic will have an honest answer.\nSlide 7: Question 6. Would you recommend this lens for your own family member with my eyes? A revealing question. It asks the clinician to set aside the sale and give you their genuine clinical view.\nSlide 8: The principle. The right lens is the one that suits your eyes and your life. Sometimes that is a premium lens. Sometimes it is a standard one. A clinic worth trusting will tell you honestly either way.\nSlide 9: At CES Medical. We talk patients through all of these questions at consultation, and we will tell you honestly which lens suits you, including if a premium lens is not right for you. Call 01732 757771.\nSlide 10: CES Medical. Consultant-led cataract and lens surgery across Kent. cesmedical.co.uk\n\nClosing question in the caption invites engagement.",
     "sortOrder": 0,
     "strategyRef": [
       "ces_linkedin_strategy_card"
