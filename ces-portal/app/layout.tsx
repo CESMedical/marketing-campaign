@@ -20,9 +20,9 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'CES Medical — Campaign Roadmap | May–July 2026',
+  title: 'CES Medical — Campaign Roadmap',
   description:
-    'Interactive roadmap of CES Medical\u2019s May\u2013July 2026 social media campaign. 164 posts across cataract, oculoplastic and brand pillars.',
+    'Interactive campaign roadmap for CES Medical. Plan, review and track social media content across all brand pillars and platforms.',
   robots: { index: false, follow: false },
 };
 

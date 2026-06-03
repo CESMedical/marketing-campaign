@@ -1,6 +1,16 @@
 import { Logo } from '@/components/brand/Logo';
+import { loadCampaign } from '@/lib/posts';
+
+function campaignRange(start: string, end: string): string {
+  const fmt = (d: string) =>
+    new Date(d).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
+  return `${fmt(start)} – ${fmt(end)}`
+}
 
 export function Footer() {
+  const campaign = loadCampaign()
+  const range = campaignRange(campaign.startDate, campaign.endDate)
+
   return (
     <footer className="mt-24 border-t border-brand-deep/10 bg-brand-bg-soft">
       <div className="container-page py-10">
@@ -8,7 +18,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Logo className="h-8 w-auto sm:h-9" />
             <p className="text-sm text-muted">
-              Campaign roadmap · May–July 2026
+              Campaign roadmap · {range}
             </p>
           </div>
           <p className="text-sm text-muted">
