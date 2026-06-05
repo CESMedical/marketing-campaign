@@ -1,7 +1,7 @@
 [
   {
     "id": "P01",
-    "slug": "p01-campaign-launch---meet-the-ces-team",
+    "slug": "p01-campaign-launch-meet-the-ces-team",
     "title": "What CES Medical is about",
     "pillar": "leadership",
     "platforms": [
@@ -17,8 +17,10 @@
     "format": "carousel",
     "caption": "Cataracts. Eyelid surgery. Glaucoma. Dry eye.\n\nBehind every condition is a question someone has been sitting on for too long.\n\nWe are here to answer them. In Kent, close to home, with the same consultants and the same standards whether you come to us through the NHS or privately.\n\nFollow us for honest conversations about eye health in Kent.",
     "cta": {
-      "label": "Follow our journey",
-      "type": "save"
+      "label": "cesmedical.co.uk | 01732 757771",
+      "type": "web",
+      "target": "https://www.cesmedical.co.uk",
+      "utm": "utm_source=social&utm_medium=organic&utm_campaign=may-aug-2026&utm_content=P01"
     },
     "productionLocation": "chatham",
     "productionLead": "leonna",
@@ -29,7 +31,7 @@
       "ces_facebook_strategy_card",
       "ces_linkedin_strategy_card"
     ],
-    "notes": "Campaign launch carousel. Design brief: draw quotes from EH-B1 and NK-B1 interview answers. 6 to 8 slides. Deep teal brand colours. Introduce the four consultants and the CES mission. Must be ready for 1 May launch. CES brand review required before scheduling. Export as separate native files for Instagram, Facebook and LinkedIn.\n\nNote for designer: Do not display https://www.cesmedical.co.uk as visible text in any slide. The URL belongs on the final end card as a button or logo lockup only. If team photographs are available before publishing, add one image of the full team to slide 3 or 4 to ensure the title \"Meet the CES Medical team\" is accurate."
+    "notes": "Format: Carousel, 5 slides. Platforms: IG, FB, LI. Pillar: Leadership. This is the campaign launch post, the first thing the audience sees, so it sets the tone for the whole campaign. Calm, warm, human, confident without boasting.\n\nPurpose: Introduce CES Medical and the central promise of the campaign, that the conditions people worry about have answers, available locally in Kent, with consistent consultant-led care across NHS and private routes. This post is not a hard sell, it is a warm open that earns attention for everything that follows.\n\nVisual direction: Clean, editorial, brand-consistent. Deep teal (brand colour) and white. PP Telegraph for headings. Generous whitespace, one clear idea per slide. Real CES environment and people where possible, not stock, to make the introduction feel genuine. If using the optional video snippet (see below), the carousel can lead with a short founder or consultant clip frame.\n\nPresenter and source: Production led by Leonna (Business Relationship Manager and content lead) at Chatham. Optional opening video snippet: NK-B1 (Mr Nick Kopsachilis on why he joined CES) or EH-B1 (Elion Hyseni founding story). If a snippet is used, the clinician or founder speaks, Leonna is the off-camera producer, she does not present clinical content. Choose ONE snippet, the Elion founding story (EH-B1) is the stronger choice for a launch as it sets the why of CES.\n\nTone and copy rules: No outcome guarantees. No superlatives. The NHS line (\"same consultants and same standards whether NHS or private\") is a key brand message and must remain exactly, it positions CES as NHS-commissioned with consistent quality across routes, and must not be changed to imply private is clinically superior or to disparage the NHS. British English throughout. No em dashes.\n\nSlide text (do not change):\nSlide 1: Cataracts. Eyelid surgery. Glaucoma. Dry eye.\nSlide 2: Behind every condition is a question someone has been sitting on for too long.\nSlide 3: We are here to answer them.\nSlide 4: Same consultants. Same standards. NHS or private.\nSlide 5: In Kent. Close to home. Visit cesmedical.co.uk or call 01732 757771.\n\nAccessibility: Ensure text contrast meets standards on the teal background. Add alt text describing each slide for screen readers. If a video snippet is used, subtitle it."
   },
   {
     "id": "P02",
