@@ -684,6 +684,7 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef    = useRef<HTMLDivElement>(null)
   const rafRef       = useRef<number>(0)
+  const hasFitted    = useRef(false)
 
   // Compute layout — used both for rendering and for startRow calculation on drag start
   const drag = dragVisual ? { slug: dragVisual.slug, off: dragVisual.curOff, idx: dragVisual.insertIdx } : null
@@ -708,10 +709,35 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     return { x: -midWorld * z + vw / 2, y: panelCenterY }
   }
 
+  function fitToPosts() {
+    const vw = containerRef.current?.clientWidth ?? window.innerWidth
+    const vh = containerRef.current?.clientHeight ?? window.innerHeight
+    if (posts.length === 0) {
+      const { x, y } = centerOnPanel(INIT_ZOOM)
+      applyTransform(INIT_ZOOM, x, y)
+      return
+    }
+    const offsets = posts.map(p => Math.max(0, Math.min(TOTAL_DAYS - 1, toOff(p.scheduledDate))))
+    const minOff = Math.min(...offsets)
+    const maxOff = Math.max(...offsets)
+    const minX = GAL_PAD + minOff * DAY_W
+    const maxX = GAL_PAD + maxOff * DAY_W + CARD_W
+    const PAD = 0.08
+    // Fit panel height to viewport, capped at INIT_ZOOM so we don't over-zoom on few posts
+    const z = Math.max(MIN_ZOOM, Math.min(INIT_ZOOM, vh / (PANEL_H * (1 + PAD * 2))))
+    const cy = GAL_PAD + PANEL_H / 2
+    const panY = vh / 2 - cy * z
+    // If all posts fit horizontally, center them; otherwise start from left edge of first post
+    const panX = (maxX - minX) * z <= vw
+      ? vw / 2 - ((minX + maxX) / 2) * z
+      : vw * PAD - minX * z
+    applyTransform(z, panX, panY)
+  }
+
   useEffect(() => {
     const el = containerRef.current; if (!el) return
-    const { x, y } = centerOnPanel(INIT_ZOOM)
-    applyTransform(INIT_ZOOM, x, y)
+    fitToPosts()
+    hasFitted.current = true
 
     function onWheel(e: WheelEvent) {
       e.preventDefault()
@@ -734,6 +760,12 @@ export function TimelineCanvas({ posts: init, roadmapId, switcher }: {
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => (el as HTMLDivElement).removeEventListener('wheel', onWheel)
   }, []) // eslint-disable-line
+
+  useEffect(() => {
+    if (hasFitted.current || posts.length === 0) return
+    hasFitted.current = true
+    fitToPosts()
+  }, [posts.length]) // eslint-disable-line
 
   function onContainerPointerDown(e: React.PointerEvent<HTMLDivElement>) {
     const cardEl = (e.target as HTMLElement).closest('[data-card]') as HTMLElement | null
