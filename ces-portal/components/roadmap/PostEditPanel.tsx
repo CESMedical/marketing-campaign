@@ -53,8 +53,8 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
   const role = session?.user?.role
   const canEdit = canEditPost(role)
   const reviewStatuses: Status[] =
-    role === 'clinical_reviewer' && post.status === 'clinical-review'
-      ? ['draft', 'brand-review']
+    role === 'clinical_reviewer'
+      ? ['draft', 'clinical-review', 'approved']
       : role === 'brand_reviewer' && post.status === 'brand-review'
         ? ['clinical-review', 'approved']
         : []
@@ -454,127 +454,152 @@ export function PostEditPanel({ post, onClose, onSave, onDelete }: {
             </div>
           </div>
 
+          {/* Date */}
           {canEdit ? (
-            <>
-              {/* Date */}
-              <div>
-                <p className="label-xs mb-2">Scheduled date</p>
-                <input
-                  type="date"
-                  value={scheduledDate}
-                  onChange={e => setScheduledDate(e.target.value)}
-                  min="2026-05-05"
-                  max="2026-11-05"
-                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-teal"
-                />
-              </div>
+            <div>
+              <p className="label-xs mb-2">Scheduled date</p>
+              <input
+                type="date"
+                value={scheduledDate}
+                onChange={e => setScheduledDate(e.target.value)}
+                min="2026-05-05"
+                max="2026-11-05"
+                className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2 text-sm text-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-teal"
+              />
+            </div>
+          ) : null}
 
-              {/* Status */}
-              <div>
-                <p className="label-xs mb-2">Status</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {ALL_STATUSES.map(s => (
-                    <button key={s} onClick={() => setStatus(s)}
-                      className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
-                      style={status === s ? { background: STATUS_COLOR[s], borderColor: STATUS_COLOR[s], color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
-                      {STATUS_LABELS[s]}
-                    </button>
-                  ))}
-                </div>
+          {/* Status */}
+          <div>
+            <p className="label-xs mb-2">Status</p>
+            {canEdit ? (
+              <div className="flex flex-wrap gap-1.5">
+                {ALL_STATUSES.map(s => (
+                  <button key={s} onClick={() => setStatus(s)}
+                    className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                    style={status === s ? { background: STATUS_COLOR[s], borderColor: STATUS_COLOR[s], color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                    {STATUS_LABELS[s]}
+                  </button>
+                ))}
               </div>
-
-              {/* Platforms */}
-              <div>
-                <p className="label-xs mb-2">Platforms</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {ALL_PLATFORMS.map(p => (
-                    <button key={p} onClick={() => setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])}
-                      className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
-                      style={platforms.includes(p) ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
-                      {PLATFORM_LABELS[p]}
-                    </button>
-                  ))}
-                </div>
+            ) : canReview ? (
+              <div className="flex flex-wrap gap-1.5">
+                {reviewStatuses.map(s => (
+                  <button key={s} onClick={() => setStatus(s)}
+                    className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                    style={status === s ? { background: STATUS_COLOR[s], borderColor: STATUS_COLOR[s], color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                    {STATUS_LABELS[s]}
+                  </button>
+                ))}
               </div>
+            ) : (
+              <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-full text-white" style={{ background: sc }}>
+                {STATUS_LABELS[status]}
+              </span>
+            )}
+          </div>
 
-              {/* Format */}
-              <div>
-                <p className="label-xs mb-2">Format</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {ALL_FORMATS.map(f => (
-                    <button key={f} onClick={() => setFormat(f)}
-                      className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
-                      style={format === f ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
-                      {FORMAT_LABELS[f]}
-                    </button>
-                  ))}
-                </div>
+          {/* Platforms */}
+          <div>
+            <p className="label-xs mb-2">Platforms</p>
+            {canEdit ? (
+              <div className="flex flex-wrap gap-1.5">
+                {ALL_PLATFORMS.map(p => (
+                  <button key={p} onClick={() => setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])}
+                    className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                    style={platforms.includes(p) ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                    {PLATFORM_LABELS[p]}
+                  </button>
+                ))}
               </div>
+            ) : (
+              <div className="flex flex-wrap gap-1.5">
+                {post.platforms.map(p => (
+                  <span key={p} className="rounded-full border px-2.5 py-0.5 text-xs font-semibold"
+                    style={{ background: '#003845', borderColor: '#003845', color: '#fff' }}>
+                    {PLATFORM_LABELS[p]}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
 
-              {/* Caption */}
-              <div>
+          {/* Format */}
+          <div>
+            <p className="label-xs mb-2">Format</p>
+            {canEdit ? (
+              <div className="flex flex-wrap gap-1.5">
+                {ALL_FORMATS.map(f => (
+                  <button key={f} onClick={() => setFormat(f)}
+                    className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
+                    style={format === f ? { background: '#003845', borderColor: '#003845', color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
+                    {FORMAT_LABELS[f]}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <span className="text-sm text-brand-deep font-medium">{FORMAT_LABELS[post.format] ?? post.format}</span>
+            )}
+          </div>
+
+          {/* Caption */}
+          <div>
+            {canEdit ? (
+              <>
                 <div className="flex items-baseline justify-between mb-2">
                   <p className="label-xs">Caption</p>
                   <span className="text-[10px] text-brand-deep/30 tabular-nums">{caption.length} chars</span>
                 </div>
                 <textarea value={caption} onChange={e => setCaption(e.target.value)} rows={7}
                   className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-teal resize-none" />
-              </div>
+              </>
+            ) : (
+              <>
+                <p className="label-xs mb-2">Caption</p>
+                <p className="text-sm text-brand-deep leading-relaxed whitespace-pre-wrap">{post.caption}</p>
+              </>
+            )}
+          </div>
 
-              {/* Video relationship */}
-              {(post.videoRelationship || post.videoReference) && (
-                <div className="rounded-xl border border-brand-deep/10 bg-brand-bg-soft px-3.5 py-3 space-y-1">
-                  {post.videoRelationship && (
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Video</span>
-                      <span className="text-xs text-brand-deep font-medium">
-                        {post.videoRelationship === 'informed-by-interview' && 'Informed by interview'}
-                        {post.videoRelationship === 'direct-snippet' && 'Videography snippet (direct video use)'}
-                        {post.videoRelationship === 'leonna-premises' && 'Leonna premises video'}
-                        {post.videoRelationship === 'patient-story' && 'Patient story'}
-                        {post.videoRelationship === 'no-video' && 'No video'}
-                        {post.videoRelationship === 'motion-design' && 'Motion design'}
-                        {post.videoRelationship === 'team-photography' && 'Team photography'}
-                      </span>
-                    </div>
-                  )}
-                  {post.videoReference && (
-                    <div className="flex items-start gap-2">
-                      <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Reference</span>
-                      <span className="text-xs text-brand-deep/70 font-mono">{post.videoReference}</span>
-                    </div>
-                  )}
+          {/* Video relationship */}
+          {(post.videoRelationship || post.videoReference) && (
+            <div className="rounded-xl border border-brand-deep/10 bg-brand-bg-soft px-3.5 py-3 space-y-1">
+              {post.videoRelationship && (
+                <div className="flex items-start gap-2">
+                  <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Video</span>
+                  <span className="text-xs text-brand-deep font-medium">
+                    {post.videoRelationship === 'informed-by-interview' && 'Informed by interview'}
+                    {post.videoRelationship === 'direct-snippet' && 'Videography snippet (direct video use)'}
+                    {post.videoRelationship === 'leonna-premises' && 'Leonna premises video'}
+                    {post.videoRelationship === 'patient-story' && 'Patient story'}
+                    {post.videoRelationship === 'no-video' && 'No video'}
+                    {post.videoRelationship === 'motion-design' && 'Motion design'}
+                    {post.videoRelationship === 'team-photography' && 'Team photography'}
+                  </span>
                 </div>
               )}
-
-              {/* Notes */}
-              <div>
-                <p className="label-xs mb-2">Production notes</p>
-                <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={6}
-                  placeholder="Notes for the production team…"
-                  className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-y" />
-              </div>
-            </>
-          ) : (
-            <div>
-              <p className="label-xs mb-2">Caption</p>
-              <p className="text-sm text-brand-deep leading-relaxed whitespace-pre-wrap">{post.caption}</p>
-              {canReview && (
-                <div className="mt-5">
-                  <p className="label-xs mb-2">Review status</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {reviewStatuses.map(s => (
-                      <button key={s} onClick={() => setStatus(s)}
-                        className="rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all"
-                        style={status === s ? { background: STATUS_COLOR[s], borderColor: STATUS_COLOR[s], color: '#fff' } : { borderColor: 'rgba(0,56,69,0.2)', color: 'rgba(0,56,69,0.6)' }}>
-                        {STATUS_LABELS[s]}
-                      </button>
-                    ))}
-                  </div>
+              {post.videoReference && (
+                <div className="flex items-start gap-2">
+                  <span className="text-[10px] font-semibold text-brand-deep/40 uppercase tracking-wide w-28 shrink-0 pt-0.5">Reference</span>
+                  <span className="text-xs text-brand-deep/70 font-mono">{post.videoReference}</span>
                 </div>
               )}
             </div>
           )}
+
+          {/* Production notes */}
+          <div>
+            <p className="label-xs mb-2">Production notes</p>
+            {canEdit ? (
+              <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={6}
+                placeholder="Notes for the production team…"
+                className="w-full rounded-xl border border-brand-deep/20 px-3.5 py-2.5 text-sm text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:ring-2 focus:ring-brand-teal resize-y" />
+            ) : post.notes ? (
+              <p className="text-sm text-brand-deep leading-relaxed whitespace-pre-wrap">{post.notes}</p>
+            ) : (
+              <p className="text-xs text-brand-deep/35 italic">No production notes.</p>
+            )}
+          </div>
 
           {/* ── Comments ───────────────────────────────────────────────────── */}
           <div className="border-t border-brand-deep/10 pt-5">
