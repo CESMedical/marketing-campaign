@@ -66,7 +66,7 @@
   },
   {
     "id": "P03",
-    "slug": "p03-what-is-a-cataract---explained-in-60-seconds",
+    "slug": "p03-what-is-a-cataract-explained-in-60-seconds",
     "title": "What is a cataract?",
     "pillar": "educational",
     "platforms": [
@@ -81,7 +81,7 @@
     "isCommercialPriority": true,
     "service": "cataract-monofocal",
     "format": "reel",
-    "caption": "That foggy, hazy feeling when your vision is not quite right? It could be a cataract.\n\nIn 60 seconds, we break down exactly what is happening inside your eye, what it feels like and what treating it involves.\n\nVisit cespatientinformation.co.uk to find out more about cataracts and what treatment involves.",
+    "caption": "That foggy, hazy feeling when your vision is not quite right? It could be a cataract.\n\nIn 60 seconds, we break down exactly what is happening inside your eye, what it feels like and what treating it involves.\n\nVisit cespatientinformation.co.uk to find out more, or call 01732 757771.",
     "cta": {
       "label": "Learn more about cataract care",
       "type": "web",
@@ -97,7 +97,7 @@
       "ces_facebook_strategy_card",
       "ces_youtube_strategy_card"
     ],
-    "notes": "Export as a separate native file for Facebook. Do not repost from Instagram. No watermarks.\n\nReel script Scene 4 update: after \"Difficulty seeing clearly at night.\" add — \"These symptoms do not always mean a cataract, but they are always worth getting checked.\" This one line of clinical caution prevents implied self-diagnosis and satisfies ASA health advertising standards.\n\nPlatform note: This Reel must be exported as a separate native file for Facebook. Do not repost from Instagram. No watermarks. Facebook requires a clean native export. Patient AI reference has been removed from the caption pending confirmation that the feature is live on cespatientinformation.co.uk. Do not reinstate this line until the feature is confirmed operational."
+    "notes": "Format: Reel, motion design, approximately 60 seconds. Platforms: IG, YT, X. Pillar: Educational. Priority post (star marker). No live footage, motion design (see Cataract_Script_v2 for the full script). Subtitled throughout. Production led externally (motion design studio).\n\nPurpose: Top-of-funnel cataract education, the foundational \"what is a cataract\" explainer. Calm, clear, reassuring. This sits in the cataract education family with P88, P158 and the lens carousels, it is the \"what is it\" piece they build on.\n\nVisual direction: Clean motion design, brand teal and white, PP Telegraph for on-screen headings. The foggy-window metaphor (Scene 2) and the lens/protein animation (Scene 3) are the visual anchors, make these clear and simple. No alarming or graphic clinical imagery.\n\nCLINICAL ACCURACY: The script is accurate (lens anatomy, protein breakdown, symptom list). Do not overstate outcomes. \"Highly treatable\" is acceptable. Recovery framed with variation (Scene 5), no fixed timeline. No cure or guarantee language.\n\nVERIFY BEFORE PUBLISHING: the patient AI reference. Only reference it if it is live, reliable and safe, and even then frame it as general information, not clinical advice about the patient's care. Default is to remove the AI clause. It has been removed from the caption pending confirmation.\n\nScript amendments (apply to Cataract_Script_v2 before production):\nScene 4: after \"Difficulty seeing clearly at night.\" add: \"These symptoms do not always mean a cataract, but they are always worth getting checked.\"\nScene 5: replace \"Many patients notice an improvement in vision within days.\" with: \"Many patients notice their vision improving in the days after surgery, though recovery varies from person to person.\"\nScene 6: replace raw URL with: \"Visit cespatientinformation.co.uk or call 01732 757771.\"\n\nPlatform note: This Reel must be exported as a separate native file for Facebook. Do not repost from Instagram. No watermarks. Facebook requires a clean native export.\n\nCaption and script as corrected. British English. No em dashes."
   },
   {
     "id": "P04",
